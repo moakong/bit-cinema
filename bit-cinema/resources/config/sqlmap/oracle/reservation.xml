@@ -5,4 +5,12 @@
 <!-- 여기부터 입력! -->
 <mapper namespace="board.mapper.SeatMapper">
 	
+	<select id="selectMovie" resultType="string">
+		SELECT DISTINCT M.MOVIE_NAME
+  		  FROM SCHEDULE S
+		 INNER JOIN MOVIES M
+  		    ON S.MOVIE_ID = M.MOVIE_ID
+	     OEDER BY M.MOVIE_NAME
+	</select>
+	
 </mapper>

@@ -1,5 +1,9 @@
 package kr.co.bit_cinema.repository.mapper;
 
-public class ReservationMapper {
+import java.util.List;
 
+public interface ReservationMapper {
+	public List<String> selectMovie() throws Exception;
+	
+	
 }
