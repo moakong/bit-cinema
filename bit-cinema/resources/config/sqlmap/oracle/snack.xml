@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.bit_cinema.repository.mapper.SnackMapper">
+	<select id="detailSanck" parameterType="Snack">
+		select snack_id,img,name,price
+		from Snacks
+	</select>
+	<insert id="insertSnack" parameterType="Snack">
+		insert into cart(snack_id, img ,name,count,price)
+		values (#{snack_id}, #{img}, #{name}, #{count},#{price})
+	</insert>
+	<delete id="deleteSnack" parameterType="int">
+		delete from carts
+		where no = #{no}
+	</delete>
+	<select id="selectSnack" parameterType="int">
+		select *
+		from categorys
+		where no = #{no}
+	</select>
+	<select id="bestSnack" parameterType="int">
+		select *
+		from snack_sales
+		order by sales_total d
+	</select>
+</mapper>

@@ -7,6 +7,7 @@
 	<typeAliases>
 		<typeAlias alias="Theater" type="kr.co.bit_cinema.repository.vo.reservation.TheaterVO" /> 
 		<typeAlias alias="Member" type="kr.co.bit_cinema.repository.vo.MemberVO" /> 	
+		<typeAlias alias="Snack" type="kr.co.bit_cinema.repository.vo.SnackVO" /> 	
 	</typeAliases>
 	
 	<environments default="development">
