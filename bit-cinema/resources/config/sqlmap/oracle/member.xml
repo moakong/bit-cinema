@@ -43,7 +43,7 @@
 			member_id, pass, name, nickname, phone, email_id, email_addr, agree_email, agree_phone
 		)values(
 			#{memberId}, #{pass}, #{name}, #{nickname}, #{phone}, #{emailId}, #{emailAddr}, #{agreeEmail}, #{agreePhone}
-		);
+		)
 	</insert>
 	
 	<update id="modifyMember" parameterType="Member">
@@ -55,6 +55,7 @@
 				email_addr = #{emailAddr},
 				agree_email = #{agreeEmail},
 				agree_phone = #{agreePhone}
+		 where member_id = #{memberId}
 	</update>
 	
 	
