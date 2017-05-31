@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.bit_cinema.repository.mapper.MemberMapper">
+
+	<resultMap id="loginMap" type="Member">
+	    <result column="member_id" property="memberId" />
+	    <result column="pass" property="pass" />
+	    <result column="name" property="name" />
+	</resultMap>
+	
+	
+	<resultMap id="memberMap" type="Member">
+	    <result column="member_id" property="memberId" />
+	    <result column="pass" property="pass" />
+	    <result column="name" property="name" />
+	    <result column="nickname" property="nickname" />
+	    <result column="phone" property="phone" />
+	    <result column="email_id" property="emailId" />
+	    <result column="email_addr" property="emailAddr" />
+	    <result column="agree_email" property="agreeEmail" />
+	    <result column="agree_phone" property="agreePhone" />
+	    <result column="profile" property="profile" />
+	</resultMap>
+	
+	
+	<select id="loginMember" parameterType="Member" resultMap="loginMap">
+	    select *         
+		  from members  
+		 where member_id = #{memberId}
+		   and pass = #{pass}
+	</select>
+	
+	
+	<select id="infoMember" parameterType="String" resultMap="memberMap">
+		select *         
+		  from members  
+		 where member_id = #{memberId}
+	</select>
+	
+	<insert id="joinMember" parameterType="Member">
+		insert into members(
+			member_id, pass, name, nickname, phone, email_id, email_addr, agree_email, agree_phone
+		)values(
+			#{memberId}, #{pass}, #{name}, #{nickname}, #{phone}, #{emailId}, #{emailAddr}, #{agreeEmail}, #{agreePhone}
+		);
+	</insert>
+	
+	<update id="modifyMember" parameterType="Member">
+		update members
+			set pass = #{pass}, 
+				nickname = #{nickname},
+				phone = #{phone}
+				email_id = #{emailId},
+				email_addr = #{emailAddr},
+				agree_email = #{agreeEmail},
+				agree_phone = #{agreePhone}
+	</update>
+	
+	
+	<delete id="withdrawMember" parameterType="String">
+		delete from members
+		where member_id = #{memberId}
+	</delete>
+</mapper>
