@@ -22,11 +22,11 @@
 					별명 <input type="text" name="nickname"/><br>
 					이메일  <input type="text" name="emailId"/>@
 					<select name="emailAddr">
-						<option>naver.com</option>
-						<option>daum.com</option>
-						<option>gmail.com</option>
-						<option>nate.com</option>
-						<option>msn.com</option>
+						<option value="1">naver.com</option>
+						<option value="2">daum.com</option>
+						<option value="3">gmail.com</option>
+						<option value="4">nate.com</option>
+						<option value="5">msn.com</option>
 					</select><br>
 					<input type="radio" id="aE1" name="agreeEmail"/>
 					<label for="aE1">수신받기</label>
