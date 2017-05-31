@@ -12,7 +12,7 @@
 <div>
 	<ul>
 		<li>
-			<a href="${pageContext.request.contextPath}/reservation/selectMovie">예매</a> 	
+			<a href="${pageContext.request.contextPath}/reservation/selectMovie?order=name">예매</a> 	
 		</li>
 		<li>
 		스토어

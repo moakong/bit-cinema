@@ -5,12 +5,22 @@
 <!-- 여기부터 입력! -->
 <mapper namespace="kr.co.bit_cinema.repository.mapper.ReservationMapper">
 	
-	<select id="selectMovie" resultType="string">
-		SELECT DISTINCT MOVIE_NAME
- 		 FROM SCHEDULE
-		INNER JOIN MOVIES 
-  		   ON SCHEDULE.MOVIE_ID = MOVIES.MOVIE_ID 
-		order by MOVIE_NAME
+	<select id="selectMovieOrderByName" resultType="string">
+		SELECT DISTINCT m.MOVIE_NAME
+ 		  FROM SCHEDULE S
+		 INNER JOIN MOVIES M
+   			ON S.MOVIE_ID = M.MOVIE_ID 
+		 ORDER BY m.MOVIE_NAME
+	</select>
+	
+	<select id="selectMovieOrderByReservation" resultType="string">
+		SELECT DISTINCT M.MOVIE_NAME, R.R_NUMBERS 
+		  FROM SCHEDULE S
+	 	 INNER JOIN MOVIES M
+	  	    ON S.MOVIE_ID = M.MOVIE_ID
+		 INNER JOIN RESER_ORDER R
+		    ON M.MOVIE_ID = R.MOVIE_ID
+		 ORDER BY R_NUMBERS DESC
 	</select>
 	
 </mapper>

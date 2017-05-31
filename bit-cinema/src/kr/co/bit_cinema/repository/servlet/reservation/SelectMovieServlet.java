@@ -28,15 +28,21 @@ public class SelectMovieServlet extends HttpServlet{
 	
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String order = request.getParameter("order");
+		
 		List<String> list = null;
 		
 		try {
-			list = mapper.selectMovie();
+			if(order.equals("reservation")) {
+				list = mapper.selectMovieOrderByReservation();
+			} else {
+				list = mapper.selectMovieOrderByName();
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		
-		System.out.println("test!!!!!!!!!!!!!");
+		System.out.println("!!!test!!!");
 		System.out.println(list);
 		
 		request.setAttribute("list", list);
