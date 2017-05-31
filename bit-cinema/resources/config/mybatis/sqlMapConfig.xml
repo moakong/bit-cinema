@@ -6,6 +6,7 @@
 	
 	<typeAliases>
 		<typeAlias alias="Reservation" type="kr.co.bit_cinema.repository.vo.ReservationVO" /> 
+		<typeAlias alias="Member" type="kr.co.bit_cinema.repository.vo.MemberVO" /> 	
 	</typeAliases>
 	
 	<environments default="development">
@@ -23,5 +24,6 @@
 
 	<mappers>
 		<mapper resource="config/sqlmap/oracle/reservation.xml"/>
+		<mapper resource="config/sqlmap/oracle/member.xml"/>
 	</mappers>
 </configuration>
