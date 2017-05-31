@@ -36,6 +36,8 @@ public class SelectMovieServlet extends HttpServlet{
 			e.printStackTrace();
 		}
 		
+		System.out.println("test!!!!!!!!!!!!!");
+		System.out.println(list);
 		
 		request.setAttribute("list", list);
 		RequestDispatcher rd = request.getRequestDispatcher("/view/reservation/selectMovie.jsp");

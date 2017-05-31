@@ -13,7 +13,7 @@
 
 
 <div>
-	<form action="/action_page.php">
+	<form action="selectDate">
 		<c:forEach var="movie" items="${list}">
 		<input type="radio" name="movie" value="${movie}" id="1" /><label for="1">${movie}</label><br>
 		</c:forEach>
