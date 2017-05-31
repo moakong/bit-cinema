@@ -1,5 +1,11 @@
 package kr.co.bit_cinema.repository.mapper;
 
-public class MemberMapper {
+import kr.co.bit_cinema.repository.vo.MemberVO;
 
+public interface MemberMapper {
+	public MemberVO loginMember(MemberVO member) throws Exception;
+	public void joinMember(MemberVO member) throws Exception;
+	public MemberVO infoMember(String memberId) throws Exception;
+	public void modifyMember(MemberVO member) throws Exception;
+	public void withdrawMember(String memberId) throws Exception;
 }
