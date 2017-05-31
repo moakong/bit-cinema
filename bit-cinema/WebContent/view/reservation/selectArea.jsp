@@ -15,8 +15,8 @@
 	
 	<form action="selectTheater">
 		<c:forEach var="area" items="${list}">
-		<input type="radio" name="area" value="${area}" id="${area}" />
-				<label for="${area}">${area}</label><br>
+		<input type="radio" name="area" value="${area.locationName}" id="${area.locationName}" />
+				<label for="${area.locationName}">${area.locationName}</label><br>
 		</c:forEach>
 
 		<br><br>
