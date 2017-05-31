@@ -14,7 +14,7 @@
 	<hr>
 	
 	<form action="selectTheater">
-		<c:forEach var="area" items="${areas}">
+		<c:forEach var="area" items="${list}">
 		<input type="radio" name="area" value="${area}" id="${area}" />
 				<label for="${area}">${area}</label><br>
 		</c:forEach>

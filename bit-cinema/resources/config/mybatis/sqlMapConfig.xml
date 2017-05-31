@@ -25,5 +25,6 @@
 
 	<mappers>
 		<mapper resource="config/sqlmap/oracle/member.xml"/>
+		<mapper resource="config/sqlmap/oracle/reservation.xml"/>
 	</mappers>
 </configuration>
