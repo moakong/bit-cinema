@@ -5,7 +5,7 @@
 	<properties resource="config/mybatis/db.properties"/>
 	
 	<typeAliases>
-		<typeAlias alias="Reservation" type="kr.co.bit_cinema.repository.vo.ReservationVO" /> 
+		<typeAlias alias="Theater" type="kr.co.bit_cinema.repository.vo.reservation.TheaterVO" /> 
 		<typeAlias alias="Member" type="kr.co.bit_cinema.repository.vo.MemberVO" /> 	
 	</typeAliases>
 	
