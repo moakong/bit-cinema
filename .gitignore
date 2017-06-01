@@ -81,5 +81,4 @@ RemoteSystemsTempFiles/
 hs_err_pid*
 
 # End of https://www.gitignore.io/api/java,eclipse
-bit-cinema/.classpath
-bit-cinema/.settings/org.eclipse.wst.common.project.facet.core.xml
+
