@@ -2,26 +2,41 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.co.bit_cinema.repository.mapper.SnackMapper">
-	<select id="detailSanck" parameterType="Snack">
-		select snack_id,img,name,price
-		from Snacks
-	</select>
-	<insert id="insertSnack" parameterType="Snack">
-		insert into cart(snack_id, img ,name,count,price)
-		values (#{snack_id}, #{img}, #{name}, #{count},#{price})
-	</insert>
-	<delete id="deleteSnack" parameterType="int">
-		delete from carts
-		where no = #{no}
-	</delete>
-	<select id="selectSnack" parameterType="int">
-		select *
+	<!-- 매뉴판? -->
+	<select id="selectSnacks" parameterType="int">
+		select category_val
 		from categorys
-		where no = #{no}
+		where category_id = #{category_id}
 	</select>
-	<select id="bestSnack" parameterType="int">
+	<!-- 베스트스낵 -->
+	<select id="bestSnacks" parameterType="int">
 		select *
 		from snack_sales
 		order by sales_total d
+	</select>
+	<!-- 스낵상세정보 -->
+	<select id="detailSancks" parameterType="Snack">
+		select snack_id,img,name,price
+		from Snacks
+	</select>
+	<!-- 장바구니추가 -->
+	<insert id="insertCarts" parameterType="">
+		insert into cart(snack_id, img ,name,count,price)
+		values (#{snack_id}, #{img}, #{name}, #{count},#{price})
+	</insert>
+	<!-- 장바구니삭제 -->
+	<delete id="deleteCarts" parameterType="int">
+		delete from carts
+		where no = #{no}
+	</delete>
+	<!-- 주문상세페이지 -->
+	<select id="selectOrdersDetail" parameterType="">
+		select *
+		from orders_detail
+	</select>
+	<!-- 상세주문내역 -->
+	<select id="detailOrders" parameterType="">
+		select *
+		from orders
 	</select>
 </mapper>
