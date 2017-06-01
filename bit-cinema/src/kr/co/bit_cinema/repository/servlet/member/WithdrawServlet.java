@@ -31,11 +31,11 @@ public class WithdrawServlet extends HttpServlet {
 		
 			HttpSession session = request.getSession();
 			MemberVO user = (MemberVO)session.getAttribute("user");
-			String memberId = user.getMemberId();
-			System.out.println(memberId);
+//			String memberId = user.getMemberId();
+//			System.out.println(memberId);
 			
 			try {
-				mapper.withdrawMember(memberId);
+				mapper.withdrawMember(user.getMemberId());
 				sqlSession.commit();
 			} catch (Exception e) {
 				e.printStackTrace();

@@ -38,7 +38,6 @@ public class ModifyInfoFormServlet extends HttpServlet {
 			sqlSession.commit();
 		
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		

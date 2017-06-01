@@ -20,23 +20,8 @@
 					비밀번호 확인 <input type="password" name="pass2"/><br>
 					이름  <input type="text" name="name"/><br>
 					별명 <input type="text" name="nickname"/><br>
-					이메일  <input type="text" name="emailId"/>@
-					<select name="emailAddr">
-						<option value="1">naver.com</option>
-						<option value="2">daum.com</option>
-						<option value="3">gmail.com</option>
-						<option value="4">nate.com</option>
-						<option value="5">msn.com</option>
-					</select><br>
-					<input type="radio" id="aE1" name="agreeEmail"/>
-					<label for="aE1">수신받기</label>
-					<input type="radio" id="aE2" name="agreeEmail"/>
-					<label for="aE2">수신받지 않음</label><br>					
+					이메일  <input type="text" name="email"/><br>
 					휴대전화 <input type="text" name="phone"/><br>
-					<input type="radio" id="aP1" name="agreePhone"/>
-					<label for="aP1">수신받기</label>
-					<input type="radio" id="aP2" name="agreePhone"/>
-					<label for="aP2">수신받지 않음</label><br>	
 					<button>회원가입</button>
 				</form>
 			</div>	

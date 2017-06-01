@@ -16,34 +16,19 @@
 				<div>
 					<c:import url="/view/include/mypageMenu.jsp" />
 				</div>
-				<form action="ModifyInfo" method="post">
-					아이디  <c:out value="${ member.memberId }"/><br>
-					비밀번호  <input type="password" name="pass"/><br>
-					비밀번호 확인 <input type="password" name="pass2"/><br>
-					이름  <c:out value="${ member.name }"/><br>
-					별명 <input type="text" name="nickname" value="${ member.nickname }"/><br>
-					이메일  <input type="text" name="emailId" value="${ member.emailId }"/>@
-					
-					<select name="emailAddr">
-						<option>naver.com</option>
-						<option>daum.com</option>
-						<option>gmail.com</option>
-						<option>nate.com</option>
-						<option>msn.com</option>
-					</select><br>
-					<input type="radio" id="aE1" name="agreeEmail"/>
-					<label for="aE1">수신받기</label>
-					<input type="radio" id="aE2" name="agreeEmail"/>
-					<label for="aE2">수신받지 않음</label><br>					
-					휴대전화 <input type="text" name="phone" value="${ member.phone }"/><br>
-					
-					<input type="radio" id="aP1" name="agreePhone"/>
-					<label for="aP1">수신받기</label>
-					<input type="radio" id="aP2" name="agreePhone" />
-					<label for="aP2">수신받지 않음</label><br>	
-					<button>수정</button>
-					<input type="button" onclick="location.href='${pageContext.request.contextPath}/member/Withdraw'" value="회원탈퇴">
-				</form>
+				<div>
+					<form action="ModifyInfo" method="post">
+						아이디  <c:out value="${ member.memberId }"/><br>
+						비밀번호  <input type="password" name="pass"/><br>
+						비밀번호 확인 <input type="password" name="pass2"/><br>
+						이름  <c:out value="${ member.name }"/><br>
+						별명 <input type="text" name="nickname" value="${ member.nickname }"/><br>
+						이메일  <input type="text" name="email" value="${ member.email }"/>
+						휴대전화 <input type="text" name="phone" value="${ member.phone }"/><br>
+						<button>수정</button>
+						<input type="button" onclick="location.href='${pageContext.request.contextPath}/member/Withdraw'" value="회원탈퇴">
+					</form>
+				</div>
 			</div>	
 			<div>
 				<c:import url="/view/include/footer.jsp" />

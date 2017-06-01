@@ -16,10 +16,7 @@
 	    <result column="name" property="name" />
 	    <result column="nickname" property="nickname" />
 	    <result column="phone" property="phone" />
-	    <result column="email_id" property="emailId" />
-	    <result column="email_addr" property="emailAddr" />
-	    <result column="agree_email" property="agreeEmail" />
-	    <result column="agree_phone" property="agreePhone" />
+	    <result column="email" property="email" />
 	    <result column="profile" property="profile" />
 	</resultMap>
 	
@@ -40,27 +37,27 @@
 	
 	<insert id="joinMember" parameterType="Member">
 		insert into members(
-			member_id, pass, name, nickname, phone, email_id, email_addr, agree_email, agree_phone
+			member_id, pass, name, nickname, phone, email
 		)values(
-			#{memberId}, #{pass}, #{name}, #{nickname}, #{phone}, #{emailId}, #{emailAddr}, #{agreeEmail}, #{agreePhone}
+			#{memberId}, #{pass}, #{name}, #{nickname}, #{phone}, #{email}
 		)
 	</insert>
 	
 	<update id="modifyMember" parameterType="Member">
 		update members
-			set pass = #{pass}, 
-				nickname = #{nickname},
-				phone = #{phone}
-				email_id = #{emailId},
-				email_addr = #{emailAddr},
-				agree_email = #{agreeEmail},
-				agree_phone = #{agreePhone}
+		   set pass = #{pass}, 
+			   nickname = #{nickname},
+			   phone = #{phone},
+			   email = #{email}
+			   <!--  ,
+			   profile = #{profile}-->
 		 where member_id = #{memberId}
 	</update>
 	
 	
 	<delete id="withdrawMember" parameterType="String">
-		delete from members
-		where member_id = #{memberId}
+		delete 
+		  from members
+		 where member_id = #{memberId}
 	</delete>
 </mapper>

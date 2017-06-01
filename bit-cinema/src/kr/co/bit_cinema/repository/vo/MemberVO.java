@@ -7,11 +7,7 @@ public class MemberVO {
 	private String nickname;
 	private String profile;
 	private String phone;
-	private String emailId;
-	private int emailAddr;
-	private int agreePhone;
-	private int agreeEmail;
-	
+	private String email;
 	
 	public String getMemberId() {
 		return memberId;
@@ -49,28 +45,12 @@ public class MemberVO {
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
-	public String getEmailId() {
-		return emailId;
+	public String getEmail() {
+		return email;
 	}
-	public void setEmailId(String emailId) {
-		this.emailId = emailId;
+	public void setEmail(String email) {
+		this.email = email;
 	}
-	public int getEmailAddr() {
-		return emailAddr;
-	}
-	public void setEmailAddr(int emailAddr) {
-		this.emailAddr = emailAddr;
-	}
-	public int getAgreePhone() {
-		return agreePhone;
-	}
-	public void setAgreePhone(int agreePhone) {
-		this.agreePhone = agreePhone;
-	}
-	public int getAgreeEmail() {
-		return agreeEmail;
-	}
-	public void setAgreeEmail(int agreeEmail) {
-		this.agreeEmail = agreeEmail;
-	}
+	
+	
 }

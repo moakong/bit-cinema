@@ -16,7 +16,6 @@ public class LogoutServlet extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		HttpSession session = request.getSession();
-		// 세션 삭제
 		session.invalidate();
 		
 		response.sendRedirect(request.getContextPath() + "/main/Main");

@@ -13,9 +13,6 @@
 		<c:import url="/view/include/topMenu.jsp" />
 	</div>	
 	<div>
-		<div>
-			<c:import url="/view/include/mypageMenu.jsp" />
-		</div>
 		<p>그 동안 비트씨네마를 이용해주셔서 감사합니다</p>
 		<a href="${pageContext.request.contextPath}/main/Main">메인으로 가기</a>
 	</div>	

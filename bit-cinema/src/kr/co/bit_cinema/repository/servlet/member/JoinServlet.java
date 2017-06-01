@@ -35,11 +35,8 @@ public class JoinServlet extends HttpServlet{
 			String pass = request.getParameter("pass");
 			String name = request.getParameter("name");
 			String nickname = request.getParameter("nickname");
-			String emailId = request.getParameter("emailId");
-			String emailAddr = request.getParameter("emailAddr");
+			String email = request.getParameter("email");
 			String phone = request.getParameter("phone");
-			String agreeEmail = request.getParameter("agreeEmail");
-			String agreePhone = request.getParameter("agreePhone");
 		
 			member = new MemberVO();
 			member.setMemberId(id);
@@ -47,12 +44,7 @@ public class JoinServlet extends HttpServlet{
 			member.setName(name);
 			member.setNickname(nickname);
 			member.setPhone(phone);
-			member.setEmailId(emailId);
-			member.setEmailAddr(Integer.parseInt(emailAddr));
-			//member.setAgreeEmail(Integer.parseInt(agreeEmail));
-			member.setAgreeEmail(1);
-			//member.setAgreePhone(Integer.parseInt(agreePhone));
-			member.setAgreePhone(1);
+			member.setEmail(email);
 			
 			mapper.joinMember(member);
 			session.commit();
