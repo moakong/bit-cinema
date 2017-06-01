@@ -5,16 +5,28 @@
 <!-- 여기부터 입력! -->
 <mapper namespace="kr.co.bit_cinema.repository.mapper.ReservationMapper">
 	
-	<select id="selectMovieOrderByName" resultType="string">
-		SELECT DISTINCT m.MOVIE_NAME
+	<resultMap type="Schdule" id="schduleMap">
+		<result column="movie_id" property="movieId"/>
+		<result column="movie_name" property="movieName"/>
+		<result column="runtime" property="runtime"/>
+		<result column="schedule_id" property="scheduleId"/>
+		<result column="start_date" property="startDate"/>
+		<result column="start_time" property="startTime"/>
+		<result column="end_time" property="endTime"/>
+		<result column="r_numbers" property="rNumbers"/>
+		<result column="theater_id" property="theaterId"/>
+	</resultMap>
+	
+	<select id="selectMovieOrderByName" resultMap="schduleMap">
+		SELECT DISTINCT m.MOVIE_NAME, M.MOVIE_ID
  		  FROM SCHEDULE S
 		 INNER JOIN MOVIES M
    			ON S.MOVIE_ID = M.MOVIE_ID 
 		 ORDER BY m.MOVIE_NAME
 	</select>
 	
-	<select id="selectMovieOrderByReservation" resultType="string">
-		SELECT DISTINCT M.MOVIE_NAME, R.R_NUMBERS 
+	<select id="selectMovieOrderByReservation" resultMap="schduleMap">
+		SELECT DISTINCT M.MOVIE_NAME, M.MOVIE_ID, R.R_NUMBERS 
 		  FROM SCHEDULE S
 	 	 INNER JOIN MOVIES M
 	  	    ON S.MOVIE_ID = M.MOVIE_ID
@@ -29,20 +41,45 @@
 		<result  column="location_name" property="locationName" />
 		<result  column="theater_id" property="theaterId" />
 		<result  column="theater_name" property="theaterName" />
+	<!-- <result  column="movie_id" property="movieId" /> -->
 	</resultMap>
 	
 	
 	<select id="selectArea" resultMap="theaterMap" parameterType="int">
-		SELECT DISTINCT A.LOCATION_NAME
+		SELECT DISTINCT A.LOCATION_NAME, A.LOCATION_ID
 		  FROM SCHEDULE SCH
 		 INNER JOIN SCREEN SCRN
-		   ON SCH.SCREEN_ID = SCRN.SCREEN_ID AND SCH.THEATER_ID = SCRN.THEATER_ID
+		    ON SCH.SCREEN_ID = SCRN.SCREEN_ID AND SCH.THEATER_ID = SCRN.THEATER_ID
 		 INNER JOIN THEATER T
-		   ON T.THEATER_ID = SCRN.THEATER_ID
+		    ON T.THEATER_ID = SCRN.THEATER_ID
 		 INNER JOIN AREAS A
-		   ON T.LOCATION_ID = A.LOCATION_ID
-		WHERE SCH.MOVIE_ID = #{movieId}
+		    ON T.LOCATION_ID = A.LOCATION_ID
+		 WHERE SCH.MOVIE_ID = #{movieId}
+	</select>
+	
+	<select id="selectTheater" resultMap="theaterMap" parameterType="Theater">
+		SELECT DISTINCT T.THEATER_NAME, T.THEATER_ID
+		  FROM SCHEDULE SCH
+		 INNER JOIN SCREEN SCR
+		    ON SCH.SCREEN_ID = SCR.SCREEN_ID AND SCH.THEATER_ID = SCR.THEATER_ID
+		 INNER JOIN THEATER T
+		    ON T.THEATER_ID = SCR.THEATER_ID
+	     WHERE SCH.MOVIE_ID = #{movieId}
+		   AND T.LOCATION_ID = #{locationId}
 	</select>
 	
 	
+	
+	
+	<!--  mapper연결 필요 -->
+	<select id="selectTime" resultMap="schduleMap" parameterType="Schdule">
+		SELECT SCR.SCREEN_NAME, SCH.START_TIME, SCH.END_TIME
+		  FROM SCHEDULE SCH
+		 INNER JOIN SCREEN SCR
+		    ON SCH.SCREEN_ID = SCR.SCREEN_ID
+	     WHERE SCH.MOVIE_ID = #{movieId}
+		   AND SCR.THEATER_ID = #{theaterId}
+		   <!-- 상영날짜 제약조건으로 포함 필요 -->
+	</select>	   
+	   
 </mapper>

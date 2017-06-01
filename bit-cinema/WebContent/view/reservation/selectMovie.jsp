@@ -18,9 +18,9 @@
 	
 	<a href="selectMovie?order=name">이름순</a> 
 	<a href="selectMovie?order=reservation">예매순</a> <br><br>
-	<form action="selectDate">
+	<form action="selectArea">
 		<c:forEach var="movie" items="${list}">
-		<input type="radio" name="movie" value="${movie}" id="${movie}" /><label for="${movie}">${movie}</label><br>
+		<input type="radio" name="movieId" value="${movie.movieId}" id="${movie.movieId}" /><label for="${movie.movieId}">${movie.movieName}</label><br>
 		</c:forEach>
 		<br><br><button>다음</button>
 	</form>

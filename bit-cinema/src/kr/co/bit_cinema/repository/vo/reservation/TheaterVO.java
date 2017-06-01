@@ -5,7 +5,15 @@ public class TheaterVO {
 	private String locationName;
 	private int theaterId;
 	private String theaterName;
+	private int movieId;
 	
+	
+	public int getMovieId() {
+		return movieId;
+	}
+	public void setMovieId(int movieId) {
+		this.movieId = movieId;
+	}
 	public int getLocationId() {
 		return locationId;
 	}
