@@ -14,42 +14,64 @@ import org.apache.ibatis.session.SqlSession;
 
 import common.db.MyAppSqlConfig;
 import kr.co.bit_cinema.repository.mapper.ReservationMapper;
-import kr.co.bit_cinema.repository.vo.reservation.SchduleVO;
+import kr.co.bit_cinema.repository.vo.reservation.TheaterVO;
 
-@WebServlet("/reservation/selectMovie")
-public class SelectMovieServlet extends HttpServlet{
-
+@WebServlet("/reservation/selectTheater")
+public class SelectTheaterServlet extends HttpServlet {
+	
 	SqlSession session;
 	ReservationMapper mapper;
 	
-	public SelectMovieServlet() {
+	public SelectTheaterServlet() {
 		session = MyAppSqlConfig.getSqlSessionInstance();
 		mapper = session.getMapper(ReservationMapper.class);
 	}
-	
+
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String order = request.getParameter("order");
+		// reservation/selectTheater?area=2
+//		System.out.println(Integer.parseInt(request.getParameter("movieId"))); // test!!
 		
-		List<SchduleVO> list = null;
+		TheaterVO t = new TheaterVO();
+		t.setLocationId(Integer.parseInt(request.getParameter("area")));
+		t.setMovieId(Integer.parseInt(request.getParameter("movieId")));
 		
+		List<TheaterVO> list = null;
 		try {
-			if(order.equals("reservation")) {
-				list = mapper.selectMovieOrderByReservation();
-			} else {
-				list = mapper.selectMovieOrderByName();
-			}
+			list = mapper.selectTheater(t);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		
-//		System.out.println("!!!test!!!");
-//		System.out.println(list);
+		// 테스트
+		for(TheaterVO tt : list) {
+			System.out.println(tt.getTheaterName());
+			System.out.println("극장 이름 테스트===");
+			
+		}
+		
 		
 		request.setAttribute("list", list);
-		RequestDispatcher rd = request.getRequestDispatcher("/view/reservation/selectMovie.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("/view/reservation/selectTheater.jsp");
 		rd.forward(request, response);
+		
 		
 	}
 	
+	
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -10,14 +10,13 @@
 <body>
 
 <div>
-	<h2>지역 선택</h2>
+	<h2>극장 선택</h2>
 	<hr>
 	
-	<form action="selectTheater">
-		<input type="hidden" name="movieId" value="${movieId}">
-		<c:forEach var="area" items="${list}">
-		<input type="radio" name="area" value="${area.locationId}" id="${area.locationId}" />
-				<label for="${area.locationId}">${area.locationName}</label><br>
+	<form action="selectDate">
+		<c:forEach var="theater" items="${list}">
+		<input type="radio" name="theaterId" value="${theater.theaterId}" id="${theater.theaterId}" />
+				<label for="${theater.theaterId}">${theater.theaterName}</label><br>
 		</c:forEach>
 
 		<br><br>
@@ -25,7 +24,6 @@
 	</form>
 	
 </div>
-
 
 </body>
 </html>

@@ -30,11 +30,12 @@ public class SelectAreaServlet extends HttpServlet {
 	
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		int movieId = Integer.parseInt(request.getParameter("movieId"));
+				
 		List<TheaterVO> list = null;
 		
 		try {
-			list = mapper.selectArea(1); // 동적으로 변경필요!
+			list = mapper.selectArea(movieId); // 동적으로 변경필요!
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -42,6 +43,7 @@ public class SelectAreaServlet extends HttpServlet {
 		System.out.println("!!!지역test!!!");
 		System.out.println(list);
 		
+		request.setAttribute("movieId", movieId);
 		request.setAttribute("list", list);
 		RequestDispatcher rd = request.getRequestDispatcher("/view/reservation/selectArea.jsp");
 		rd.forward(request, response);

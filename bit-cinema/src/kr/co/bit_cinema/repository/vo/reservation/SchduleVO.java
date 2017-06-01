@@ -10,7 +10,22 @@ public class SchduleVO {
 	private Date startDate;
 	private String startTime;
 	private String endTime;
+	private int rNumbers;
+	private int theaterId;
 	
+	
+	public int getTheaterId() {
+		return theaterId;
+	}
+	public void setTheaterId(int theaterId) {
+		this.theaterId = theaterId;
+	}
+	public int getrNumbers() {
+		return rNumbers;
+	}
+	public void setrNumbers(int rNumbers) {
+		this.rNumbers = rNumbers;
+	}
 	public int getMovieId() {
 		return movieId;
 	}

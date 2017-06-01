@@ -7,7 +7,12 @@
 	<typeAliases>
 		<typeAlias alias="Schdule" type="kr.co.bit_cinema.repository.vo.reservation.SchduleVO" /> 
 		<typeAlias alias="Theater" type="kr.co.bit_cinema.repository.vo.reservation.TheaterVO" /> 
-		<typeAlias alias="Member" type="kr.co.bit_cinema.repository.vo.MemberVO" /> 	
+		<typeAlias alias="Member" type="kr.co.bit_cinema.repository.vo.MemberVO" /> 
+		<typeAlias alias="Snack" type="kr.co.bit_cinema.repository.vo.SnackVO" /> 	
+		<typeAlias alias="Cart" type="kr.co.bit_cinema.repository.vo.CartVO" /> 	
+		<typeAlias alias="Movie" type="kr.co.bit_cinema.repository.vo.MovieVO" /> 	
+		<typeAlias alias="Rating" type="kr.co.bit_cinema.repository.vo.RatingVO" /> 	
+		<typeAlias alias="Review" type="kr.co.bit_cinema.repository.vo.ReviewVO" /> 	
 		<typeAlias alias="Snack" type="kr.co.bit_cinema.repository.vo.SnackVO" /> 	
 	</typeAliases>
 	
@@ -25,6 +30,12 @@
 
 
 	<mappers>
+		<mapper resource="config/sqlmap/oracle/snack.xml"/>
+		<mapper resource="config/sqlmap/oracle/review.xml"/>
+		<mapper resource="config/sqlmap/oracle/rating.xml"/>
+		<mapper resource="config/sqlmap/oracle/order.xml"/>
+		<mapper resource="config/sqlmap/oracle/movie.xml"/>
+		<mapper resource="config/sqlmap/oracle/cart.xml"/>
 		<mapper resource="config/sqlmap/oracle/member.xml"/>
 		<mapper resource="config/sqlmap/oracle/reservation.xml"/>
 	</mappers>
