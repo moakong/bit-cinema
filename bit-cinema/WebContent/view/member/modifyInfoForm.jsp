@@ -22,7 +22,7 @@
 						비밀번호 확인 <input type="password" name="pass2"/><br>
 						이름  <c:out value="${ member.name }"/><br>
 						별명 <input type="text" name="nickname" value="${ member.nickname }"/><br>
-						이메일  <input type="text" name="email" value="${ member.email }"/>
+						이메일  <input type="text" name="email" value="${ member.email }"/></br>
 						휴대전화 <input type="text" name="phone" value="${ member.phone }"/><br>
 						<button>수정</button>
 						<input type="button" onclick="location.href='${pageContext.request.contextPath}/member/Withdraw'" value="회원탈퇴">
