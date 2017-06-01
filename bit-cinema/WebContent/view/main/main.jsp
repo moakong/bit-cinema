@@ -18,7 +18,14 @@
 					<c:out value="${user.name}"/></a>님 환영합니다.
 			</c:if>
 		</p>
-		<h1>페이지 정보 출력부분</h1>
+		<div>
+			<h3>박스오피스</h3>
+			<c:forEach var="movie" items="${ boxMovie }">
+				<a href="${pageContext.request.contextPath}/movie/DetailMovie?id=<c:out value="${ movie.movieId }"/>">
+					<c:out value="${ movie.movieName }"/>
+				</a><br>
+			</c:forEach>
+		</div>
 	</div>	
 	<div>
 		<c:import url="/view/include/footer.jsp" />

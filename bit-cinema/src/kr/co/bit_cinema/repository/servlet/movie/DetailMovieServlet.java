@@ -1,4 +1,4 @@
-package kr.co.bit_cinema.repository.servlet.snack;
+package kr.co.bit_cinema.repository.servlet.movie;
 
 import java.io.IOException;
 
@@ -12,36 +12,32 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.ibatis.session.SqlSession;
 
 import common.db.MyAppSqlConfig;
-import kr.co.bit_cinema.repository.mapper.SnackMapper;
-import kr.co.bit_cinema.repository.servlet.member.MypageServlet;
+import kr.co.bit_cinema.repository.mapper.MovieMapper;
+import kr.co.bit_cinema.repository.vo.MovieVO;
 
-
-@WebServlet("/snack/Snack")
-public class SnackServlet extends HttpServlet{
+@WebServlet("/movie/DetailMovie")
+public class DetailMovieServlet extends HttpServlet {
 
 	private SqlSession session = null;
-	private SnackMapper mapper = null;
+	private MovieMapper mapper = null;
 	
-	public SnackServlet() {
+	public DetailMovieServlet() {
 		session = MyAppSqlConfig.getSqlSessionInstance();
-		mapper = session.getMapper(SnackMapper.class);
+		mapper = session.getMapper(MovieMapper.class);
 	}
+	
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int no = 5;
-		String temp = request.getParameter("category");
-		if(temp != null){
-			no = Integer.parseInt(temp);
-		}
-		
+		int id = Integer.parseInt(request.getParameter("id"));
+		MovieVO movie = null;
 		try {
-			//mapper.selectSnacks(no);
+			movie = mapper.infoMovie(id);
 		} catch (Exception e) {
-			throw new ServletException(e);
+			e.printStackTrace();
 		}
-		
-		RequestDispatcher rd = request.getRequestDispatcher("/view/snack/snackList.jsp");
+		request.setAttribute("movie", movie);
+		RequestDispatcher rd = request.getRequestDispatcher("/view/movie/detailMovie.jsp");
 		rd.forward(request, response);
 	}
-	
+
 }

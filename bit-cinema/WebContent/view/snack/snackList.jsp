@@ -12,13 +12,12 @@
 			<c:import url="/view/include/topMenu.jsp" />
 		</div>
 		<div>
-			<ul>
-				<li><a href="Snack?category=5">베스트</a></li>
-				<li><a href="Snack?category=3">콤보</a></li>
-				<li><a href="Snack?category=1">팝콘</a></li>
-				<li><a href="Snack?category=2">음료</a></li>
-				<li><a href="Snack?category=4">스낵</a></li>
-			</ul>
+			<div>
+				<c:import url="/view/include/snackMenu.jsp"/>
+			</div>
+			<div>
+				<!-- 여기에다가 내용 -->
+			</div>
 		</div>
 		<div>
 			<c:import url="/view/include/footer.jsp" />

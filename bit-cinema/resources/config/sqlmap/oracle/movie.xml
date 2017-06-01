@@ -3,7 +3,58 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 	
 <mapper namespace="kr.co.bit_cinema.repository.mapper.MovieMapper">
-<!-- 여기부터 입력! -->
+	<resultMap id="movieMap" type="Movie">
+		<result column="movie_id" property="movieId"/>
+		<result column="movie_name" property="movieName"/>
+		<result column="release_date" property="releaseDate"/>
+		<result column="runtime" property="runtime"/>
+		<result column="genre" property="genre"/>
+		<result column="certificate" property="certificate"/>
+		<result column="storyline" property="storyline"/>
+	</resultMap>
+
+	<resultMap id="orderMovie" type="Movie">
+		<result column="movie_id" property="movieId"/>
+		<result column="movie_name" property="movieName"/>
+	</resultMap>
 	
+	<select id="infoMovie" parameterType="int" resultMap="movieMap">
+		select *
+		  from movies
+		 where movie_id = #{movieId}		
+	</select>
+	
+	<select id="boxMovie" resultMap="orderMovie">
+		select *
+		  from movies, box_order
+		 where movies.MOVIE_ID = box_order.MOVIE_ID
+		 order by box_order.S_NUMBERS desc
+	</select>
+	
+	<select id="reserMovie" resultMap="orderMovie">
+		select *
+		  from movies, reser_order
+		 where movies.MOVIE_ID = reser_order.MOVIE_ID
+		 order by reser_order.R_NUMBERS desc
+	</select>
+	
+<!-- 	<select id="selectDirector" parameterType="int" resultType="Director">
+		select *
+		  from directors
+		 where movie_id = #{movieId}
+	</select>
+	
+	<select id="selectActor" parameterType="int" resultType="Actor">
+		select *
+		  from actors
+		 where movie_id = #{movieId}
+	</select>
+
+	<select id="selectMedia" parameterType="int" resultType="Media">
+		select *
+		  from medias
+		 where movie_id = #{movieId}
+	</select>
+	 -->
 	   
 </mapper>
