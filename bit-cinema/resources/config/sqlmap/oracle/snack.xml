@@ -2,37 +2,5 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.co.bit_cinema.repository.mapper.SnackMapper">
-	
-	<!-- 매뉴판? -->
-	<select id="selectMenu" parameterType="int" resultMap="">
-		select category_val
-		from categorys
-	</select>
-	<!-- 베스트스낵 -->
-	<select id="bestSnacks" parameterType="int" resultMap="bestMap"> 
-		select *
-		from snack_sales
-		order by sales_total desc
-	</select>
-	<resultMap type="Snack" id="bestMap">
-		<result column="snack_id" property="snackId"/>
-		<result column="name" property="name"/>
-		<result column="img" property="img"/>
-		<result column="price" property="price"/>
-		<result column="explan" property="explan"/>
-		<result column="category_id" property="categoryId"/>
-	</resultMap>
-	<!-- 스낵상세정보 -->
-	<select id="detailSancks" parameterType="Snack" resultMap="snackMap">
-		select *
-		from Snacks
-	</select>
-	<resultMap type="Snack" id="snackMap">
-		<result column="snack_id" property="snackId"/>
-		<result column="name" property="name"/>
-		<result column="img" property="img"/>
-		<result column="price" property="price"/>
-		<result column="explan" property="explan"/>
-		<result column="category_id" property="categoryId"/>
-	</resultMap>
+
 </mapper>
