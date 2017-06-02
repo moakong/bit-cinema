@@ -1,9 +1,11 @@
 package kr.co.bit_cinema.repository.mapper;
 
+import java.util.List;
+
 import kr.co.bit_cinema.repository.vo.SnackVO;
 
 public interface SnackMapper {
-	public SnackVO selectSnacks(int no) throws Exception;
-	public SnackVO bestSnacks(int no) throws Exception;
-	public SnackVO detailScnacks(int no)throws Exception;
+	public List<SnackVO> listSnack(int categoryId) throws Exception;
+	public List<SnackVO> bestSnack() throws Exception;
+	public SnackVO detailScnack(int snackId)throws Exception;
 }

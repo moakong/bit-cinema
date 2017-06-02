@@ -16,7 +16,11 @@
 				<c:import url="/view/include/snackMenu.jsp"/>
 			</div>
 			<div>
-				<!-- 여기에다가 내용 -->
+				<c:forEach var="snack" items="${list}">
+					<c:out value="${snack.name}"/><br>
+					<c:out value="${snack.price}"/><br>
+					<hr>
+				</c:forEach>
 			</div>
 		</div>
 		<div>
