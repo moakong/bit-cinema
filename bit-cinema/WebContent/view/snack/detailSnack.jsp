@@ -12,17 +12,11 @@
 			<c:import url="/view/include/topMenu.jsp" />
 		</div>
 		<div>
-			<div>
-				<c:import url="/view/include/snackMenu.jsp"/>
-			</div>
-			<div>
-				<c:forEach var="snack" items="${list}">
-				<a href ="DetailSnack?snackId=<c:out value='${snack.snackId}'/>">
-					<c:out value="${snack.name}"/></a><br>
-					<c:out value="${snack.price}"/><br>
-					<hr>
-				</c:forEach>
-			</div>
+				
+				<c:out value="${snack.name}" /><br>
+				<c:out value="${snack.price}" /><br>
+				<c:out value="${snack.explan}" /><br>
+				유효기간 구매후 30일
 		</div>
 		<div>
 			<c:import url="/view/include/footer.jsp" />

@@ -2,49 +2,45 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.co.bit_cinema.repository.mapper.SnackMapper">
-	
+
 	<!-- 매뉴판? -->
-<!-- 	<select id="selectMenu" parameterType="int" resultType="String">
-		select category_val
-		from categorys
-	</select> -->
 	<resultMap type="Snack" id="listMap">
-		<result column="snack_id" property="snackId"/>
-		<result column="img" property="img"/>
-		<result column="name" property="name"/>
-		<result column="price" property="price"/>
+		<result column="snack_id" property="snackId" />
+		<result column="img" property="img" />
+		<result column="name" property="name" />
+		<result column="price" property="price" />
 	</resultMap>
-	
-	
+
+
 	<select id="listSnack" parameterType="int" resultMap="listMap">
 		select *
-		  from snacks
-		 where category_id = #{categoryId}
+		from snacks
+		where category_id = #{categoryId}
 	</select>
-	
-	
+
+
 	<!-- 베스트스낵 -->
-	<select id="bestSnack" resultMap="listMap"> 
-		select *
-		  from snack_sales ss, snacks s
-		 where ss.snack_id = s.snack_id
-		 order by ss.sales_total desc
+	<select id="bestSnack" resultMap="listMap">
+		select * 
+		from snack_sales ss, snacks s
+		where ss.snack_id = s.snack_id
+		order by ss.sales_total desc
 	</select>
-	
-	
+
+
 	<!-- 스낵상세정보 -->
-	<select id="detailSanck" resultMap="snackMap">
+	<select id="detailSnack" resultMap="snackMap">
 		select *
-		from Snacks
+		from snacks
+		where snack_id = #{snackId}
 	</select>
-	
-	
+
+
 	<resultMap type="Snack" id="snackMap">
-		<result column="snack_id" property="snackId"/>
-		<result column="name" property="name"/>
-		<result column="img" property="img"/>
-		<result column="price" property="price"/>
-		<result column="explan" property="explan"/>
-		<result column="category_id" property="categoryId"/>
+		<result column="snack_id" property="snackId" />
+		<result column="name" property="name" />
+		<result column="img" property="img" />
+		<result column="price" property="price" />
+		<result column="explan" property="explan" />
 	</resultMap>
 </mapper>
