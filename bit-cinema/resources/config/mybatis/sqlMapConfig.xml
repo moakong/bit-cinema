@@ -11,6 +11,9 @@
 		<typeAlias alias="Snack" type="kr.co.bit_cinema.repository.vo.SnackVO" /> 	
 		<typeAlias alias="Cart" type="kr.co.bit_cinema.repository.vo.CartVO" /> 	
 		<typeAlias alias="Movie" type="kr.co.bit_cinema.repository.vo.MovieVO" /> 	
+		<typeAlias alias="Director" type="kr.co.bit_cinema.repository.vo.DirectorVO" /> 	
+		<typeAlias alias="Actor" type="kr.co.bit_cinema.repository.vo.ActorVO" /> 	
+		<typeAlias alias="Media" type="kr.co.bit_cinema.repository.vo.MediaVO" /> 	
 		<typeAlias alias="Rating" type="kr.co.bit_cinema.repository.vo.RatingVO" /> 	
 		<typeAlias alias="Review" type="kr.co.bit_cinema.repository.vo.ReviewVO" /> 	
 		<typeAlias alias="Snack" type="kr.co.bit_cinema.repository.vo.SnackVO" /> 	
