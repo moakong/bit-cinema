@@ -38,7 +38,7 @@ public class ReviewServlet extends HttpServlet{
 			movie = mapperMovie.infoMovie(id);
 			list = mapper.listReview(id);
 		} catch (Exception e) {
-			e.printStackTrace();
+			new ServletException(e);
 		}
 		request.setAttribute("movie", movie);
 		request.setAttribute("list", list);

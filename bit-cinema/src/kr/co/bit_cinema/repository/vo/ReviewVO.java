@@ -13,7 +13,14 @@ public class ReviewVO {
 	private int recomCount; 	 /* 추천수 */
 	private String memberId; 	 /* 회원ID */
 	private int movieId; 	 /* 영화번호 */
+	private String nickname; 	 /* 회원정보 별명 */
 	
+	public String getNickname() {
+		return nickname;
+	}
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
+	}
 	public int getReviewNo() {
 		return reviewNo;
 	}

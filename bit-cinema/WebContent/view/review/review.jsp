@@ -57,7 +57,7 @@
 					<c:forEach var="review" items="${list }">
 							<tr>
 								<td><c:out value="${review.reviewNo }"/></td>
-								<td><a href="${pageContext.request.contextPath}/review/Detail"> <c:out value="${review.title }"/></a></td>
+								<td><a href="${pageContext.request.contextPath}/review/Detail?reviewNo=${review.reviewNo}"> <c:out value="${review.title }"/></a></td>
 								<td><c:out value="${review.memberId }"></c:out></td>
 								<td><c:out value="${review.regDate }"></c:out></td>
 								<td><c:out value="${review.recomCount }"></c:out></td>
