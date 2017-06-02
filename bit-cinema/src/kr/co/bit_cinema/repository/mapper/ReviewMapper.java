@@ -1,5 +1,13 @@
 package kr.co.bit_cinema.repository.mapper;
 
-public class ReviewMapper {
+import java.util.List;
 
+import kr.co.bit_cinema.repository.vo.ReviewVO;
+
+public interface ReviewMapper {
+	
+	public List<ReviewVO> listReview(int id) throws Exception;
+	public ReviewVO detailReview(int id) throws Exception;
+
+	
 }

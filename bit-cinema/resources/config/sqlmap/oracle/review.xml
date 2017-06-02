@@ -5,5 +5,37 @@
 <mapper namespace="kr.co.bit_cinema.repository.mapper.ReviewMapper">
 <!-- 여기부터 입력! -->
 	
+	<resultMap id="reviewMap" type="Review" >
+		<result column="review_no"  property="reviewNo"/>
+		<result column="title"  property="title"/>
+		<result column="content"  property="content"/>
+		<result column="reg_date"  property="regDate"/>
+		<result column="spoiler"  property="spoiler"/>
+		<result column="read_count"  property="readCount"/>
+		<result column="recom_count"  property="recomCount"/>
+		<result column="member_id"  property="memberId"/>
+		<result column="movie_id"  property="movieId"/>
+	</resultMap>
+	
+	<select id="listReview" resultMap="reviewMap" parameterType="int">
+	select * 
+	from REVIEWS
+	where movie_id = #{movieId}
+	order by review_no desc
+	</select>
+	
+	<!-- id 바꾸고 갈게요 -->
+	<!-- 이거 detail할 때 회원정보도 join해줘야돼여 -->
+	<select id="detailReview" resultMap="reviewMap" parameterType="int">
+	select * 
+	from REVIEWS
+	where review_no = #{reviewNo}
+	
+	</select>
+	
+	
+	
+	
+	
 	   
 </mapper>

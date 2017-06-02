@@ -29,7 +29,7 @@
 				<a href="${pageContext.request.contextPath}">감독/배우</a>
 				<a href="${pageContext.request.contextPath}">동영상</a>
 				<a href="${pageContext.request.contextPath}">평점</a>
-				<a href="${pageContext.request.contextPath}">리뷰</a>
+				<a href="${pageContext.request.contextPath}/review/Review?id=<c:out value="${ movie.movieId }" />"/>리뷰</a>
 			</div>
 			
 			<div>
