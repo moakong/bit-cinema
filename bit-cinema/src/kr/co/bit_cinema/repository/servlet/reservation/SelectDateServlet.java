@@ -48,15 +48,19 @@ public class SelectDateServlet extends HttpServlet {
 //		}
 		
 		List<String> dayList = new ArrayList<>();
-		dayList.add("" + (c.get(Calendar.MONTH) + 1) + "월 " + c.get(Calendar.DATE) + "일");
+		dayList.add((c.get(Calendar.MONTH) + 1) + " / " + c.get(Calendar.DATE));
 		
 		for(int i = 0; i < 6; i++) { 
 			c.add(Calendar.DATE, 1);
 			
-			dayList.add("" + (c.get(Calendar.MONTH) + 1) + "월 " + c.get(Calendar.DATE) + "일");
+			dayList.add((c.get(Calendar.MONTH) + 1) + " /  " + c.get(Calendar.DATE));
 		}
 		
+		
+		request.setAttribute("theaterId", request.getParameter("theaterId"));
+		request.setAttribute("movieId", request.getParameter("movieId"));
 //		request.setAttribute("monthList", monthList);
+		request.setAttribute("year", c.get(Calendar.YEAR));
 		request.setAttribute("dayList", dayList);
 		RequestDispatcher rd = request.getRequestDispatcher("/view/reservation/selectDate.jsp");
 		rd.forward(request, response);

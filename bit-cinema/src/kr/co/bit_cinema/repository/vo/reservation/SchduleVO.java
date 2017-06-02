@@ -12,8 +12,16 @@ public class SchduleVO {
 	private String endTime;
 	private int rNumbers;
 	private int theaterId;
+	private String screenName;
 	
 	
+	
+	public String getScreenName() {
+		return screenName;
+	}
+	public void setScreenName(String screenName) {
+		this.screenName = screenName;
+	}
 	public int getTheaterId() {
 		return theaterId;
 	}

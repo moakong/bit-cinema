@@ -35,7 +35,7 @@ public class SelectAreaServlet extends HttpServlet {
 		List<TheaterVO> list = null;
 		
 		try {
-			list = mapper.selectArea(movieId); // 동적으로 변경필요!
+			list = mapper.selectArea(movieId); 
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

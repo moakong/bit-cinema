@@ -1,6 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,14 +11,13 @@
 <body>
 
 <div>
-	<h2>극장 선택</h2>
+	<h2>시간 선택</h2>
 	<hr>
 	
 	<form action="selectDate">
-		<input type="hidden" name="movieId" value="${movieId}">
-		<c:forEach var="theater" items="${list}">
-		<input type="radio" name="theaterId" value="${theater.theaterId}" id="${theater.theaterId}" />
-				<label for="${theater.theaterId}">${theater.theaterName}</label><br>
+		<c:forEach var="time" items="${list}">
+		<input type="radio" name="time" value="${time.scheduleId}" id="${time.scheduleId}" />
+				<label for="${time.scheduleId}">${time.theaterName} : ${time.startTime} ~ ${time.endTime}</label><br>
 		</c:forEach>
 
 		<br><br>

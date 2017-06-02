@@ -34,7 +34,10 @@ public class SelectMovieServlet extends HttpServlet{
 		List<SchduleVO> list = null;
 		
 		try {
-			if(order.equals("reservation")) {
+			if(order == null){
+				list = mapper.selectMovieOrderByName();
+			}
+			else if(order.equals("reservation")) {
 				list = mapper.selectMovieOrderByReservation();
 			} else {
 				list = mapper.selectMovieOrderByName();

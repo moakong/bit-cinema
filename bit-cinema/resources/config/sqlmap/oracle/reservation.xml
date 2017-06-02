@@ -15,6 +15,7 @@
 		<result column="end_time" property="endTime"/>
 		<result column="r_numbers" property="rNumbers"/>
 		<result column="theater_id" property="theaterId"/>
+		<result column="screen_name" property="screenName"/>
 	</resultMap>
 	
 	<select id="selectMovieOrderByName" resultMap="schduleMap">
@@ -73,13 +74,13 @@
 	
 	<!--  mapper연결 필요 -->
 	<select id="selectTime" resultMap="schduleMap" parameterType="Schdule">
-		SELECT SCR.SCREEN_NAME, SCH.START_TIME, SCH.END_TIME
+		SELECT SCH.SCHEDULE_ID, SCR.SCREEN_NAME, SCH.START_TIME, SCH.END_TIME
 		  FROM SCHEDULE SCH
 		 INNER JOIN SCREEN SCR
 		    ON SCH.SCREEN_ID = SCR.SCREEN_ID
 	     WHERE SCH.MOVIE_ID = #{movieId}
 		   AND SCR.THEATER_ID = #{theaterId}
-		   <!-- 상영날짜 제약조건으로 포함 필요 -->
+		   AND SCH.START_DATE = #{startDate}
 	</select>	   
 	   
 </mapper>

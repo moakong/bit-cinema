@@ -30,7 +30,7 @@ public class SelectTheaterServlet extends HttpServlet {
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// reservation/selectTheater?area=2
-//		System.out.println(Integer.parseInt(request.getParameter("movieId"))); // test!!
+		//System.out.println(Integer.parseInt(request.getParameter("movieId"))); // test!!
 		
 		TheaterVO t = new TheaterVO();
 		t.setLocationId(Integer.parseInt(request.getParameter("area")));
@@ -51,6 +51,7 @@ public class SelectTheaterServlet extends HttpServlet {
 		}
 		
 		
+		request.setAttribute("movieId", request.getParameter("movieId"));
 		request.setAttribute("list", list);
 		RequestDispatcher rd = request.getRequestDispatcher("/view/reservation/selectTheater.jsp");
 		rd.forward(request, response);

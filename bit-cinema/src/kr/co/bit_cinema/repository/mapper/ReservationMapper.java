@@ -10,6 +10,7 @@ public interface ReservationMapper {
 	public List<SchduleVO> selectMovieOrderByReservation() throws Exception;
 	public List<TheaterVO> selectArea(int movieId) throws Exception;
 	public List<TheaterVO> selectTheater(TheaterVO t) throws Exception;
+	public List<SchduleVO> selectTime(SchduleVO s) throws Exception;
 	
 	
 }

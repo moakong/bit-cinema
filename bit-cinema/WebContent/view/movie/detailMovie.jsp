@@ -21,7 +21,7 @@
 				<c:out value="${ movie.runtime }" /><br>
 				<c:out value="${ movie.certificate }" /><br>
 				<c:out value="${ movie.storyline }" /><br><br>
-				<button>예매하기</button>
+				<button onclick="location.href='../reservation/selectArea?movieId=${movie.movieId}'" >예매하기</button>
 			</div>
 				<br><br>
 			<div>

@@ -4,7 +4,9 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -15,6 +17,7 @@ import org.apache.ibatis.session.SqlSession;
 
 import common.db.MyAppSqlConfig;
 import kr.co.bit_cinema.repository.mapper.ReservationMapper;
+import kr.co.bit_cinema.repository.vo.reservation.SchduleVO;
 
 @WebServlet("/reservation/selectTime")
 public class SelectTimeServlet extends HttpServlet {
@@ -31,22 +34,36 @@ public class SelectTimeServlet extends HttpServlet {
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String date = request.getParameter("date");
+		String year = request.getParameter("year") + " / ";
+		System.out.println("year : " + year);
 		
-		// 아래 두 개는 넘어오게 처리 안함
+		// 아래 두 개는 아직 넘어오게 처리 안함!
 		int theaterId = Integer.parseInt(request.getParameter("theaterId"));
 		int movieId = Integer.parseInt(request.getParameter("movieId"));
 		
-		SimpleDateFormat sdf = new SimpleDateFormat("MM월 dd일");
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy / MM / dd");
 		
+		SchduleVO sch = null;
+		Date startDate = null;
+		List<SchduleVO> list = null;
 		try {
-			Date d = sdf.parse(date); // 문자형식으로 넘어온 날짜 Date형식으로 형변환
-		} catch (ParseException e) {
+			startDate = sdf.parse(date); // 문자형식으로 넘어온 날짜 Date형식으로 형변환
+			System.out.println(startDate); 
+			
+			sch.setTheaterId(theaterId);
+			sch.setMovieId(movieId);
+			sch.setStartDate(startDate);
+			
+			list = mapper.selectTime(sch);
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		
 		
 		
-		
+		request.setAttribute("list", list);
+		RequestDispatcher rd = request.getRequestDispatcher("/view/reservation/selectTime.jsp");
+		rd.forward(request, response);
 		
 		
 	}
