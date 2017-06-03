@@ -23,11 +23,9 @@ public class temp {
 		
 		System.out.println();
 		System.out.println(c);
-		 
+		 */
 		
-		System.out.println("=========================================================");
-		System.out.println("=========================================================");
-		*/
+
 		
 		
 		
@@ -53,6 +51,34 @@ public class temp {
 		
 //		Calendar c = Calendar.getInstance();
 //		System.out.println(c.get(Calendar.YEAR));
+		
+		
+		
+		Calendar c = Calendar.getInstance();
+		
+		String d = c.get(Calendar.YEAR) + " / " + c.get(Calendar.MONTH) + " / " + c.get(Calendar.DATE);
+		System.out.println(d);
+		
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy / MM / dd");
+		
+		try {
+			Date da = sdf.parse(d);
+			System.out.println(da);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		
+		
+		/*
+		Date d;
+		try {
+			d = sdf.parse("2015-10-09"); // parse의 파라미터는 반드시 날짜의 형식과 일치해야한다
+			System.out.println(d);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		} */
+		
+		
 		
 		
 	}

@@ -17,6 +17,8 @@
 		<typeAlias alias="Rating" type="kr.co.bit_cinema.repository.vo.RatingVO" /> 	
 		<typeAlias alias="Review" type="kr.co.bit_cinema.repository.vo.ReviewVO" /> 	
 		<typeAlias alias="Snack" type="kr.co.bit_cinema.repository.vo.SnackVO" /> 	
+		<typeAlias alias="Seat" type="kr.co.bit_cinema.repository.vo.SeatVO" /> 	
+		<typeAlias alias="Reservation" type="kr.co.bit_cinema.repository.vo.ReservationVO" /> 	
 	</typeAliases>
 	
 	<environments default="development">

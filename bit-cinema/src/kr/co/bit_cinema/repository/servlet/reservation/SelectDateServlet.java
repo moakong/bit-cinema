@@ -53,7 +53,7 @@ public class SelectDateServlet extends HttpServlet {
 		for(int i = 0; i < 6; i++) { 
 			c.add(Calendar.DATE, 1);
 			
-			dayList.add((c.get(Calendar.MONTH) + 1) + " /  " + c.get(Calendar.DATE));
+			dayList.add((c.get(Calendar.MONTH) + 1) + " / " + c.get(Calendar.DATE));
 		}
 		
 		

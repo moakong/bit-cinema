@@ -33,9 +33,9 @@ public class SelectTimeServlet extends HttpServlet {
 	
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String date = request.getParameter("date");
 		String year = request.getParameter("year") + " / ";
-		System.out.println("year : " + year);
+		String date = year + request.getParameter("date");
+		System.out.println("date : " + date);
 		
 		// 아래 두 개는 아직 넘어오게 처리 안함!
 		int theaterId = Integer.parseInt(request.getParameter("theaterId"));
@@ -43,7 +43,7 @@ public class SelectTimeServlet extends HttpServlet {
 		
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy / MM / dd");
 		
-		SchduleVO sch = null;
+		SchduleVO sch = new SchduleVO();
 		Date startDate = null;
 		List<SchduleVO> list = null;
 		try {

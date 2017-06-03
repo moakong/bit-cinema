@@ -72,7 +72,7 @@
 	
 	
 	
-	<!--  mapper연결 필요 -->
+	
 	<select id="selectTime" resultMap="schduleMap" parameterType="Schdule">
 		SELECT SCH.SCHEDULE_ID, SCR.SCREEN_NAME, SCH.START_TIME, SCH.END_TIME
 		  FROM SCHEDULE SCH
@@ -81,6 +81,35 @@
 	     WHERE SCH.MOVIE_ID = #{movieId}
 		   AND SCR.THEATER_ID = #{theaterId}
 		   AND SCH.START_DATE = #{startDate}
-	</select>	   
+	</select>	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<select id="selectSeat" resultMap="schduleMap" parameterType="int">
+		SELECT S.SEAT_ID, S.R, S.C, S.TURN
+		  FROM SCHEDULE SCH
+		 INNER JOIN SCREEN SCR
+		   ON SCH.SCREEN_ID = SCR.SCREEN_ID AND SCH.THEATER_ID = SCR.THEATER_ID
+		 INNER JOIN SEATS S
+		    ON SCR.SCREEN_ID = S.SCREEN_ID AND SCR.THEATER_ID = S.THEATER_ID AND SCH.TURN = S.TURN
+		 WHERE SCH.SCHEDULE_ID = 1;   
+	 </select>
 	   
 </mapper>
+
+
+
+
+
+
+
+

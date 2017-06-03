@@ -11,13 +11,14 @@
 <body>
 
 <div>
-	<h2>시간 선택</h2>
+	<h2>인원 선택</h2>
 	<hr>
 	
-	<form action="selectPeople">
-		<c:forEach var="time" items="${list}">
-		<input type="radio" name="time" value="${time.scheduleId}" id="${time.scheduleId}" />
-				<label for="${time.scheduleId}">${time.screenName} : ${time.startTime} ~ ${time.endTime}</label><br>
+	<form action="selectSeat">
+		<input type="hidden" name="schNo" value="${schNo}" >
+		<c:forEach  var="i" begin="1" end="10" >
+			<input type="radio" name="peoeple" value="${i}" id="${i}" />
+				<label for="${i}">${i}</label><br>
 		</c:forEach>
 
 		<br><br>
