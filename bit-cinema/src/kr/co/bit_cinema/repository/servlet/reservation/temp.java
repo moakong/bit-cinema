@@ -7,6 +7,25 @@ import java.util.Date;
 
 public class temp {
 	public static void main(String[] args) {
+		
+		System.out.println((char)65);
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		/*
 		SimpleDateFormat sdf = new SimpleDateFormat("yy-MM-dd");
 		String str = sdf.format(new Date());
@@ -53,7 +72,7 @@ public class temp {
 //		System.out.println(c.get(Calendar.YEAR));
 		
 		
-		
+		/*
 		Calendar c = Calendar.getInstance();
 		
 		String d = c.get(Calendar.YEAR) + " / " + c.get(Calendar.MONTH) + " / " + c.get(Calendar.DATE);
@@ -67,7 +86,7 @@ public class temp {
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
-		
+		*/
 		
 		/*
 		Date d;

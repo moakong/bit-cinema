@@ -17,7 +17,7 @@
 	<form action="selectSeat">
 		<input type="hidden" name="schNo" value="${schNo}" >
 		<c:forEach  var="i" begin="1" end="10" >
-			<input type="radio" name="peoeple" value="${i}" id="${i}" />
+			<input type="radio" name="people" value="${i}" id="${i}" />
 				<label for="${i}">${i}</label><br>
 		</c:forEach>
 

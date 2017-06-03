@@ -37,6 +37,11 @@
 	</select>
 	
 	
+	
+	
+	
+	
+	
 	<resultMap type="Theater" id="theaterMap">
 		<result  column="location_id" property="locationId" />
 		<result  column="location_name" property="locationName" />
@@ -90,20 +95,37 @@
 	
 	
 	
+	<resultMap type="Seat" id="seatMap">
+		<result  column="seat_id" property="seatId" />
+		<result  column="r" property="r" />
+		<result  column="c" property="c" />
+		<result  column="turn" property="turn" />
+		<result  column="total_r" property="totalR" />
+		<result  column="total_c" property="totalC" />
+	</resultMap>
 	
 	
-	
-	
-	<select id="selectSeat" resultMap="schduleMap" parameterType="int">
-		SELECT S.SEAT_ID, S.R, S.C, S.TURN
+	<select id="selectAllSeat" resultMap="seatMap" parameterType="int">
+		SELECT S.SEAT_ID, S.R, S.C, S.TURN, SCR.TOTAL_R, SCR.TOTAL_C
 		  FROM SCHEDULE SCH
 		 INNER JOIN SCREEN SCR
 		   ON SCH.SCREEN_ID = SCR.SCREEN_ID AND SCH.THEATER_ID = SCR.THEATER_ID
 		 INNER JOIN SEATS S
 		    ON SCR.SCREEN_ID = S.SCREEN_ID AND SCR.THEATER_ID = S.THEATER_ID AND SCH.TURN = S.TURN
-		 WHERE SCH.SCHEDULE_ID = 1;   
+		 WHERE SCH.SCHEDULE_ID = #{scheduleId}  
 	 </select>
 	   
+	   
+	<select id="selectReservedSeat" resultMap="seatMap" parameterType="int">
+	    SELECT S.SEAT_ID
+		  FROM RESERVATIONS R
+		 INNER JOIN R_SEATS RS
+		    ON R.RESERVATION_ID = RS.RESERVATION_ID
+		 INNER JOIN SEATS S
+		    ON S.SEAT_ID = RS.SEAT_ID
+		 WHERE R.SCHEDULE_ID = #{scheduleId}
+ 	 </select>
+ 	 
 </mapper>
 
 
