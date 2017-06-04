@@ -60,4 +60,18 @@
 		  from members
 		 where member_id = #{memberId}
 	</delete>
+	
+	
+	<select id="findMemberId" parameterType="Member" resultType="String">
+		select member_id
+		  from members
+		 where name = #{name} and email = #{email}
+	</select>
+
+	<select id="findMemberPass" parameterType="Member" resultType="String">
+		select pass
+		  from members
+		 where name = #{name} and member_id = #{memberId} and email = #{email}
+	</select>
+	
 </mapper>

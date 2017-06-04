@@ -1,10 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
@@ -14,34 +14,34 @@
 	</div>
 		<div>
 			<div>
-				<c:out value="======©╘╠Б©║ ©╣х╜фВ╫╨ем======" /><br>
+				<c:out value="======Л≈╛Й╦╟Л≈░ Л≤│М≥■М▐╛Л┼╓М└╟======" /><br>
 				<c:out value="${ movie.movieName }" /><br>
 				<fmt:formatDate value="${ movie.releaseDate }" pattern="yyyy-MM-dd"/><br>
 				<c:out value="${ movie.genre }" /><br>
 				<c:out value="${ movie.runtime }" /><br>
 				<c:out value="${ movie.certificate }" /><br>
 				<c:out value="${ movie.storyline }" /><br><br>
-				<button onclick="location.href='../reservation/selectArea?movieId=${movie.movieId}'" >©╧╦его╠Б</button>
+				<button onclick="location.href='../reservation/selectArea?movieId=${movie.movieId}'" >Л≤┬К╖╓М∙≤Й╦╟</button>
 			</div>
 				<br><br>
 			<div>
-				<a href="${pageContext.request.contextPath}/movie/DetailMovie?id=<c:out value="${ movie.movieId }" />">аж©Да╓╨╦</a>
-				<a href="${pageContext.request.contextPath}/movie/DetailCast?id=<c:out value="${ movie.movieId }" />">╟╗╣╤  / ╧Х©Л</a>
-				<a href="${pageContext.request.contextPath}/movie/DetailMedia?id=<c:out value="${ movie.movieId }" />">╣©©╣╩С / фВеД</a>
-				<a href="${pageContext.request.contextPath}">фРа║</a>
-				<a href="${pageContext.request.contextPath}/review/Review?id=<c:out value="${ movie.movieId }" />"/>╦╝╨Д</a>
+				<a href="${pageContext.request.contextPath}/movie/DetailMovie?id=<c:out value="${ movie.movieId }" />">Лё╪Л ■Л═∙КЁ╢</a>
+				<a href="${pageContext.request.contextPath}/movie/DetailCast?id=<c:out value="${ movie.movieId }" />">Й╟░К▐┘  / К╟╟Л ╟</a>
+				<a href="${pageContext.request.contextPath}/movie/DetailMedia?id=<c:out value="${ movie.movieId }" />">К▐≥Л≤│Л┐│ / М▐╛М├═</a>
+				<a href="${pageContext.request.contextPath}">М▐┴Л═░</a>
+				<a href="${pageContext.request.contextPath}/review/Review?id=<c:out value="${ movie.movieId }" />"/>К╕╛К╥╟</a>
 			</div>
 			
 			<div>
-				<h2>╟╗╣╤</h2>
+				<h2>Й╟░К▐┘</h2>
 				<c:forEach var="director" items="${ directors }">
-					<c:out value="======га╥нгйюл╧лаЖ======" /><br>
-					╟╗╣╤ <br>
+					<c:out value="======М■└К║°М∙└Л²╢К╞╦Л╖─======" /><br>
+					Й╟░К▐┘ <br>
 					<c:out value="${ director.directorName }" /><br>
 				</c:forEach>
 				<hr>
 				
-				<h2>╧Х©Л</h2>
+				<h2>К╟╟Л ╟</h2>
 				<c:forEach var="actor" items="${ actors }">
 					<img width="320" height="240" src="http://t1.search.daumcdn.net/thumb/R438x0.q85/?fname=http%3A%2F%2Fcfile79.uf.daum.net%2Fimage%2F273B565051A55DDB2E41A6"/><br>
 					<c:out value="${ actor.type }" /><br>

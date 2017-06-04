@@ -13,16 +13,20 @@
 		<c:import url="/view/include/topMenu.jsp" />
 	</div>	
 	<div>
-		<h2>로그인</h2>
+		<p>아이디와 비밀번호를 입력하고 로그인 버튼을 누르세요.</p>
 		<hr>
-		<p>${error}</p>
+		<p3>${error}</p3>
 		<form action="Login" method="post">
-			<input type="text" name="id" /><br>
+			<input type="text" name="id" value="${ id }" /><br>
 			<input type="password" name="pass" /><br>
+			<input id="id_check" type="checkbox" name="id_rem"/>
+			<label for="id_check">아이디 저장</label><br>
 			<button>로그인</button>
 		</form>
 		<br>
-		아이디. 비밀번호를 잊어버리셨나요? 나도몰라여
+		아이디, 비밀번호를 잊어버리셨나요?
+		<a href="${pageContext.request.contextPath}/member/FindIdForm">> 아이디 찾기</a>
+		<a href="${pageContext.request.contextPath}/member/FindPassForm">> 비밀번호 찾기</a>
 		<br>
 		<p>
 			비트씨네마 회원이 아니신가요? 

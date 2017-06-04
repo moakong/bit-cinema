@@ -8,4 +8,7 @@ public interface MemberMapper {
 	public MemberVO infoMember(String memberId) throws Exception;
 	public void modifyMember(MemberVO member) throws Exception;
 	public void withdrawMember(String memberId) throws Exception;
+	
+	public String findMemberId(MemberVO member) throws Exception;
+	public String findMemberPass(MemberVO member) throws Exception;
 }
