@@ -1,9 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<label onclick="location.href='${pageContext.request.contextPath}/main/Main'">
-	<h1>BIT Cinema</h1>
-</label>
+<a href="${pageContext.request.contextPath}/main/Main"><h1>BIT Cinema</h1></a>
 
 <ul>
 	<li>

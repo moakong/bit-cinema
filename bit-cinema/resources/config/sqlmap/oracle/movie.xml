@@ -13,16 +13,17 @@
 		<result column="storyline" property="storyline"/>
 	</resultMap>
 
-	<resultMap id="orderMovie" type="Movie">
-		<result column="movie_id" property="movieId"/>
-		<result column="movie_name" property="movieName"/>
-	</resultMap>
 	
 	<select id="infoMovie" parameterType="int" resultMap="movieMap">
 		select *
 		  from movies
 		 where movie_id = #{movieId}		
 	</select>
+	
+	<resultMap id="orderMovie" type="Movie">
+		<result column="movie_id" property="movieId"/>
+		<result column="movie_name" property="movieName"/>
+	</resultMap>
 	
 	<select id="boxMovie" resultMap="orderMovie">
 		select *
@@ -38,23 +39,41 @@
 		 order by reser_order.R_NUMBERS desc
 	</select>
 	
-<!-- 	<select id="selectDirector" parameterType="int" resultType="Director">
+	<resultMap type="Director" id="directorMap">
+		<result column="director_name" property="directorName"/>
+		<result column="profile" property="profile"/>
+	</resultMap>
+	
+ 	<select id="selectDirector" parameterType="int" resultMap="directorMap">
 		select *
 		  from directors
 		 where movie_id = #{movieId}
 	</select>
 	
-	<select id="selectActor" parameterType="int" resultType="Actor">
+	<resultMap type="Actor" id="actorMap">
+		<result column="actor_name" property="actorName"/>
+		<result column="cast_name" property="castName"/>
+		<result column="type" property="type"/>
+		<result column="profile" property="profile"/>
+	</resultMap>
+	
+	<select id="selectActor" parameterType="int" resultMap="actorMap">
 		select *
-		  from actors
+		  from casts
 		 where movie_id = #{movieId}
+		 order by type desc
 	</select>
 
-	<select id="selectMedia" parameterType="int" resultType="Media">
+	<resultMap type="Media" id="mediaMap">
+		<result column="media_name" property="mediaName"/>
+		<result column="type" property="type"/>
+	</resultMap>
+	
+	<select id="selectMedia" parameterType="int" resultMap="mediaMap">
 		select *
 		  from medias
 		 where movie_id = #{movieId}
 	</select>
-	 -->
+	
 	   
 </mapper>

@@ -19,8 +19,11 @@
 			</c:if>
 		</p>
 		<div>
-			<h3>박스오피스</h3>
-			<c:forEach var="movie" items="${ boxMovie }">
+			<a href="${pageContext.request.contextPath}/main/Main?chart=1">박스오피스</a>
+			<a href="${pageContext.request.contextPath}/main/Main?chart=2">예매순</a><br>
+			
+			<c:forEach var="movie" varStatus="status" items="${ chartMovie }">
+				<c:out value="${ status.index +1 }" />
 				<a href="${pageContext.request.contextPath}/movie/DetailMovie?id=<c:out value="${ movie.movieId }"/>">
 					<c:out value="${ movie.movieName }"/>
 				</a><br>

@@ -18,13 +18,12 @@ import kr.co.bit_cinema.repository.vo.ActorVO;
 import kr.co.bit_cinema.repository.vo.DirectorVO;
 import kr.co.bit_cinema.repository.vo.MovieVO;
 
-@WebServlet("/movie/DetailMovie")
-public class DetailMovieServlet extends HttpServlet {
-
+@WebServlet("/movie/DetailCast")
+public class DetailCastServlet extends HttpServlet {
 	private SqlSession session = null;
 	private MovieMapper mapper = null;
 	
-	public DetailMovieServlet() {
+	public DetailCastServlet() {
 		session = MyAppSqlConfig.getSqlSessionInstance();
 		mapper = session.getMapper(MovieMapper.class);
 	}
@@ -45,9 +44,8 @@ public class DetailMovieServlet extends HttpServlet {
 		request.setAttribute("movie", movie);
 		request.setAttribute("directors", directors);
 		request.setAttribute("actors", actors);
-
-		RequestDispatcher rd = request.getRequestDispatcher("/view/movie/detailMovie.jsp");
+		
+		RequestDispatcher rd = request.getRequestDispatcher("/view/movie/detailCast.jsp");
 		rd.forward(request, response);
 	}
-
 }

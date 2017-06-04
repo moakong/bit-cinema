@@ -1,4 +1,4 @@
-package kr.co.bit_cinema.repository.main;
+package kr.co.bit_cinema.repository.servlet.movie;
 
 import java.io.IOException;
 import java.util.List;
@@ -14,54 +14,34 @@ import org.apache.ibatis.session.SqlSession;
 
 import common.db.MyAppSqlConfig;
 import kr.co.bit_cinema.repository.mapper.MovieMapper;
+import kr.co.bit_cinema.repository.vo.MediaVO;
 import kr.co.bit_cinema.repository.vo.MovieVO;
 
-@WebServlet("/main/Main")
-public class MainServlet extends HttpServlet {
-	
+@WebServlet("/movie/DetailMedia")
+public class DetailMediaServlet extends HttpServlet {
 	private SqlSession session = null;
 	private MovieMapper mapper = null;
 	
-	public MainServlet() {
+	public DetailMediaServlet() {
 		session = MyAppSqlConfig.getSqlSessionInstance();
 		mapper = session.getMapper(MovieMapper.class);
 	}
 	
 	@Override
-	public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int chart = 1;
-		String temp = request.getParameter("chart");
-		if(temp != null){
-			chart = Integer.parseInt(temp);
-		}
-		
-		List<MovieVO> chartMovie = null;
-		
+	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		int id = Integer.parseInt(request.getParameter("id"));
+		MovieVO movie = null;
+		List<MediaVO> medias = null;
 		try {
-			if(chart == 1){
-				chartMovie = mapper.boxMovie();
-			}else {
-				chartMovie = mapper.reserMovie();
-			}
+			movie = mapper.infoMovie(id);
+			medias = mapper.selectMedia(id);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		request.setAttribute("chartMovie", chartMovie);
+		request.setAttribute("movie", movie);
+		request.setAttribute("medias", medias);
 		
-		RequestDispatcher rd = request.getRequestDispatcher("/view/main/main.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("/view/movie/detailMedia.jsp");
 		rd.forward(request, response);
 	}
 }
-
-
-
-
-
-
-
-
-
-
-
-
