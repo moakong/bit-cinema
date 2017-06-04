@@ -195,6 +195,22 @@
 		    ON S.SEAT_ID = RS.SEAT_ID
 		 WHERE R.RESERVATION_ID = #{reservationId}
  	 </select>	
+ 	 
+ 	 
+ 	 
+ 	 
+ 	 <select id="checkReservations" resultMap="reservationMap" parameterType="string" >
+ 	 	SELECT R.RESERVATION_ID, M.movie_name, R.reg_date, sch.start_date, SCH.start_time, SCH.END_TIME, R.R_COUNT, SCR.SCREEN_NAME
+		  FROM RESERVATIONS R
+		 INNER JOIN SCHEDULE SCH
+		    ON SCH.SCHEDULE_ID = R.SCHEDULE_ID
+		 INNER JOIN MOVIES M
+		    ON SCH.MOVIE_ID = M.MOVIE_ID
+		 INNER JOIN SCREEN SCR
+		    ON SCH.SCREEN_ID = SCR.SCREEN_ID AND SCH.THEATER_ID = SCR.THEATER_ID
+		 WHERE R.MEMBER_ID = #{member_id}
+ 	 </select>
+ 	 
 </mapper>
 
 
