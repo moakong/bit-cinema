@@ -72,7 +72,7 @@ public class finishServlet extends HttpServlet {
 			rInfo.setStartTime(reservationParam.getStartTime());
 			rInfo.setEndTime(reservationParam.getEndTime());
 			
-			sList = mapper.selectSestInfo(reservationId);
+			sList = mapper.selectSeatInfo(reservationId);
 			rInfo.setrCount(sList.get(0).getrCount());
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -25,8 +25,9 @@ public interface ReservationMapper {
 	
 	public ReservationVO selectMovieName(int reservationId) throws Exception;
 	public ReservationVO selectSchduleInfo(int reservationId) throws Exception;
-	public List<ReservationVO> selectSestInfo(int reservationId) throws Exception;
+	public List<ReservationVO> selectSeatInfo(int reservationId) throws Exception;
 
 	
-	public List<ReservationVO> checkReservations(String memberId) throws Exception;
+	public List<ReservationVO> checkReservationsById(String memberId) throws Exception;
+	public ReservationVO checkReservationsByNO(int reservationId) throws Exception;
 }

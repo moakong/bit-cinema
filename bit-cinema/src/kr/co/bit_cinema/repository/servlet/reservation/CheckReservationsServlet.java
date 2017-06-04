@@ -38,7 +38,7 @@ public class CheckReservationsServlet extends HttpServlet {
 		List<ReservationVO> list = null;
 		
 		try {
-			list = mapper.checkReservations(member.getMemberId());
+			list = mapper.checkReservationsById(member.getMemberId());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

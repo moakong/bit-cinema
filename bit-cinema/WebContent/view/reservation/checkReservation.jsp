@@ -22,7 +22,6 @@
 			<fmt:formatDate value="${rInfo.startDate}" pattern="yyyy-MM-dd" /><br>
 			${rInfo.startTime} ~ ${rInfo.endTime}<br>
 			<button onclick="location.href='detail?reservationId=${rInfo.reservationId}'" >상세 내역</button>
-			<button onclick="location.href='cancel?reservationId=${rInfo.reservationId}'" >예매 취소</button>
 			<hr>
 		</p>
 	</c:forEach>
