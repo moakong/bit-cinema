@@ -11,7 +11,7 @@
 <body>
 
 <div>
-	<h1>예매 완료</h1>
+	<h2>예매 내역</h2>
 	<hr><br>
 	<div>
 	<strong>${rInfo.movieName}</strong><br>
@@ -24,6 +24,7 @@
 	<br><br>
 	</div>
 	
+	<button onclick="location.href='cancel'" >예매 취소</button><br><br>
 	<button onclick="location.href='${pageContext.request.contextPath}'" >확인</button>
 
 </div>

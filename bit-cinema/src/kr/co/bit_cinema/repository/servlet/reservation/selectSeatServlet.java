@@ -47,7 +47,7 @@ public class selectSeatServlet extends HttpServlet {
 		}
 		
 		////////////////////
-		System.out.println("좌석 가져오기 테스트!!");
+		System.out.println("예약된 좌석 가져오기 테스트!!");
 		for(SeatVO s : reserved){
 			System.out.println(s.getSeatId());
 		}

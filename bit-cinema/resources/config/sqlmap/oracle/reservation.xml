@@ -126,6 +126,75 @@
 		 WHERE R.SCHEDULE_ID = #{scheduleId}
  	 </select>
  	 
+ 	 
+ 	 
+ 	 
+ 	 
+ 	 
+ 	 
+ 	 <resultMap type="Reservation" id="reservationMap">
+		<result  column="reservation_id" property="reservationId" />
+		<result  column="schedule_id" property="scheduleId" />
+		<result  column="member_id" property="memberId" />
+		<result  column="r_count" property="rCount" />
+		<result  column="seat_id" property="seatId" />
+		
+		<result  column="movie_name" property="movieName" />
+		<result  column="screen_name" property="screenName" />
+		<result  column="start_date" property="startDate" />
+		<result  column="start_time" property="startTime" />
+		<result  column="end_time" property="endTime" />
+		<result  column="r" property="r" />
+		<result  column="c" property="c" />
+	</resultMap>
+	
+	
+	<insert id="insertReservation" parameterType="Reservation">
+		<selectKey keyProperty="reservationId" resultType="int" order="BEFORE" >
+       		select s_reservation_id.nextval from dual 
+   		</selectKey>
+		INSERT INTO RESERVATIONS(RESERVATION_ID, REG_DATE, SCHEDULE_ID, MEMBER_ID, R_COUNT)
+                 VALUES (#{reservationId}, SYSDATE, #{scheduleId}, #{memberId}, #{rCount})
+	</insert>
+	
+	
+	<insert id="insertReservedSeat" parameterType="Reservation">
+		INSERT INTO R_SEATS(RESERVATION_ID, SEAT_ID)
+    	         VALUES(#{reservationId}, #{seatId})
+	</insert>
+	
+	
+	
+	
+	<select id="selectMovieName" resultMap="reservationMap" parameterType="int">
+	    SELECT M.MOVIE_NAME
+		  FROM RESERVATIONS R
+		 INNER JOIN SCHEDULE S
+		    ON S.SCHEDULE_ID = R.SCHEDULE_ID
+		 INNER JOIN MOVIES M
+		    ON S.MOVIE_ID = M.MOVIE_ID
+		 WHERE R.RESERVATION_ID = #{reservationId}
+ 	 </select>
+	
+	 <select id="selectSchduleInfo" resultMap="reservationMap" parameterType="int">
+	    SELECT SCR.SCREEN_NAME, SCH.START_DATE, SCH.START_TIME, SCH.END_TIME
+		  FROM RESERVATIONS R
+		 INNER JOIN SCHEDULE SCH
+		    ON SCH.SCHEDULE_ID = R.SCHEDULE_ID
+		 INNER JOIN SCREEN SCR
+		    ON SCH.SCREEN_ID = SCR.SCREEN_ID AND SCH.THEATER_ID = SCR.THEATER_ID
+		 WHERE R.RESERVATION_ID = #{reservationId}
+ 	 </select>
+	
+	<select id="selectSestInfo" resultMap="reservationMap" parameterType="int">
+	    SELECT R.R_COUNT, S.R, S.C
+		  FROM RESERVATIONS R
+		 INNER JOIN R_SEATS RS
+		    ON R.RESERVATION_ID = RS.RESERVATION_ID
+		 INNER JOIN SEATS S
+		    ON S.SEAT_ID = RS.SEAT_ID
+		 WHERE R.RESERVATION_ID = #{reservationId}
+ 	 </select>	
 </mapper>
 
 

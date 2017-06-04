@@ -14,32 +14,15 @@ public class paymentServlet extends HttpServlet{
 
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// 원래는 이번 결제 프로세스가 끝난  예약 insert를 해야 하지만, 지금 예매는 형식적으로만 하기때문에
-		// 이번에 예매 관련 정보를 insert끝내고
-		// 다음 예매완료 서블릿에서 예매 정보 뿌려주는 것으로..
-		
-		int schNo =  Integer.parseInt(request.getParameter("schNo"));
-		int people =  Integer.parseInt(request.getParameter("people")); //필요한가?
+
 		
 		// 자리는 값이 여러개라 스트링 배열로 받음
-		String[] seats = request.getParameterValues("seat");
-		
-//		for(String e : seats){
-//			System.out.println(e);
-//		}
+		// String[] seats = request.getParameterValues("seat");
 		
 		
 		
-		// insert쿼리 넣어야함! ======================================
-		// 일단 commit;은 빼자
-		
-		
-		
-		
-		
-		
-		
-		
+		request.setAttribute("seats", request.getParameterValues("seat")); // 배열도 바로 넣을 수 있나? ㅇㅇ
+		request.setAttribute("schNo", request.getParameter("schNo"));
 		RequestDispatcher rd = request.getRequestDispatcher("/view/reservation/payment.jsp");
 		rd.forward(request, response);
 		

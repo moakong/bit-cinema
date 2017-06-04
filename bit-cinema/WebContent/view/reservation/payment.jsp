@@ -1,4 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,6 +19,11 @@
 	<hr>
 	
 	<form action="finish" >
+		<input type="hidden" name="schNo" value="${schNo}">
+		<c:forEach var="s" items="${seats}">
+			<input type="hidden" name="seat" value="${s}">
+		</c:forEach>
+		
 		<input type="radio" name="payment" value="account" id="1" /><label for="1">계좌이체</label><br>
 		<input type="radio" name="payment" value="credit" id="2" /><label for="2">신용/체크카드</label><br>
 		<input type="radio" name="payment" value="kakao" id="3" /><label for="3">Kakao Pay</label><br>

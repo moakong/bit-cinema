@@ -44,10 +44,9 @@ public class SelectTheaterServlet extends HttpServlet {
 		}
 		
 		// 테스트
+		System.out.println("극장 이름 테스트===");
 		for(TheaterVO tt : list) {
 			System.out.println(tt.getTheaterName());
-			System.out.println("극장 이름 테스트===");
-			
 		}
 		
 		
