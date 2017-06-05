@@ -34,8 +34,9 @@ public class LoginServlet extends HttpServlet {
 		String id = request.getParameter("id");
 		String pass = request.getParameter("pass");
 		String id_rem = request.getParameter("id_rem");
+		System.out.println(id_rem);
 		
-		if(id_rem.equals("on")){
+		if(id_rem != null && id_rem.equals("on")){
 			cookie = new Cookie("id", id);
 			cookie.setMaxAge(60*60*24*365);
 		}else{
