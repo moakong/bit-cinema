@@ -1,5 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <!DOCTYPE html >
 <html>
@@ -45,7 +46,7 @@
 	
 			<div>
 				<!-- 여기에 내용 -->
-				<a href="${pageContext.request.contextPath}/writeform">리뷰쓰기</a>
+				<a href="${pageContext.request.contextPath}/writeform?mid=${ movie.movieId }">리뷰쓰기</a>
 				<table>
 					<tr>
 						<th>번호</th>
@@ -60,7 +61,7 @@
 								<td><c:out value="${review.reviewNo }"/></td>
 								<td><a href="${pageContext.request.contextPath}/review/Detail?reviewNo=${review.reviewNo}"> <c:out value="${review.title }"/></a></td>
 								<td><c:out value="${review.memberId }"></c:out></td>
-								<td><c:out value="${review.regDate }"></c:out></td>
+								<td><fmt:formatDate value="${review.regDate }" pattern="yyyy-MM-dd" /></td>
 								<td><c:out value="${review.recomCount }"></c:out></td>
 								<td><c:out value="${review.content }"></c:out></td>
 							</tr>	

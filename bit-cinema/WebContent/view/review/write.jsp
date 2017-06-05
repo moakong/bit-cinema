@@ -9,7 +9,8 @@
 <body>
  리뷰작성이 완료되었습니다.
 
-	<a href="${pageContext.request.contextPath}/review/Review?id=<c:out value="${ movie.movieId }" />"/>리뷰</a>
-<a href="${pageContext.request.contextPath}/review/Review">되돌아가기</a>
+
+
+	<a href="${pageContext.request.contextPath}/review/Review?id=<c:out value="${ mid }" />"/>리뷰 돌아가기</a>
 </body>
 </html>

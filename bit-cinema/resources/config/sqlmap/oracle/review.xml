@@ -35,7 +35,11 @@
 	
 	</select>
 	
-
+	<insert id="insertReview" parameterType="Review"  >
+	insert into reviews(REVIEW_NO,TITLE,CONTENT,SPOILER,READ_COUNT,RECOM_COUNT,MEMBER_ID,MOVIE_ID)
+	values(s_reviews_no.nextval,#{title},#{content},#{spoiler},0,0,#{memberId},#{movieId})
+	
+	</insert>
 		
 	
     
