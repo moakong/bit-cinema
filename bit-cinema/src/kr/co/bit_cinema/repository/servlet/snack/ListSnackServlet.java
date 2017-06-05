@@ -16,13 +16,13 @@ import common.db.MyAppSqlConfig;
 import kr.co.bit_cinema.repository.mapper.SnackMapper;
 import kr.co.bit_cinema.repository.vo.SnackVO;
 
-@WebServlet("/snack/Snack")
-public class SnackServlet extends HttpServlet {
+@WebServlet("/snack/ListSnack")
+public class ListSnackServlet extends HttpServlet {
 
 	private SqlSession session = null;
 	private SnackMapper mapper = null;
 
-	public SnackServlet() {
+	public ListSnackServlet() {
 		session = MyAppSqlConfig.getSqlSessionInstance();
 		mapper = session.getMapper(SnackMapper.class);
 	}

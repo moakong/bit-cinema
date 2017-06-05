@@ -16,7 +16,7 @@
   	<url-pattern>*</url-pattern>
   </filter-mapping>
 
-  <filter>
+ <!--  <filter>
   	<filter-name>auth</filter-name>
   	<filter-class>kr.co.bit_cinema.repository.filter.AuthFilter</filter-class>
   	<init-param>
@@ -35,7 +35,7 @@
   	<filter-name>auth</filter-name>
   	<url-pattern>*</url-pattern>
   </filter-mapping> 
-  
+   -->
   
   
   <welcome-file-list>

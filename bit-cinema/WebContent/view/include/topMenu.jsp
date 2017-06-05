@@ -8,7 +8,7 @@
 		<a href="${pageContext.request.contextPath}/reservation/selectMovie">예매</a>
 	</li>
 	<li>
-		<a href="${pageContext.request.contextPath}/snack/Snack">스토어</a>
+		<a href="${pageContext.request.contextPath}/snack/ListSnack">스토어</a>
 	</li>
 	<c:choose>
 	 	<c:when test="${empty user}">

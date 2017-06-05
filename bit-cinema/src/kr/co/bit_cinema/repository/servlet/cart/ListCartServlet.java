@@ -17,12 +17,12 @@ import common.db.MyAppSqlConfig;
 import kr.co.bit_cinema.repository.mapper.CartMapper;
 import kr.co.bit_cinema.repository.vo.CartVO;
 
-@WebServlet("/member/CartList")
-public class CartServlet extends HttpServlet {
+@WebServlet("/cart/ListCart")
+public class ListCartServlet extends HttpServlet {
 	private SqlSession session = null;
 	private CartMapper mapper = null;
 
-	public CartServlet() {
+	public ListCartServlet() {
 		session = MyAppSqlConfig.getSqlSessionInstance();
 		mapper = session.getMapper(CartMapper.class);
 	}

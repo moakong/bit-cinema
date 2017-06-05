@@ -11,12 +11,14 @@
 		<div>
 			<c:import url="/view/include/topMenu.jsp" />
 		</div>
+		
 		<div>
 			<form action="order" method="post">
 				<h1>사거라</h1>
 				<button>결제</button>
 			</form>
 		</div>
+		
 		<div>
 			<c:import url="/view/include/footer.jsp" />
 		</div>

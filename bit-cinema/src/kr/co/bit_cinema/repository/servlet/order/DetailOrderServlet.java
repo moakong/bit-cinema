@@ -14,18 +14,18 @@ import org.apache.ibatis.session.SqlSession;
 import common.db.MyAppSqlConfig;
 import kr.co.bit_cinema.repository.mapper.CartMapper;
 
-@WebServlet("/order/Detailorder")
-public class OrderDetailServlet extends HttpServlet{
+@WebServlet("/order/DetailOrder")
+public class DetailOrderServlet extends HttpServlet{
 	private SqlSession session = null;
 	private CartMapper mapper = null;
 
-	public OrderDetailServlet() {
+	public DetailOrderServlet() {
 		session = MyAppSqlConfig.getSqlSessionInstance();
 		mapper = session.getMapper(CartMapper.class);
 	}
 	
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		RequestDispatcher rd = request.getRequestDispatcher("/view/order/orderDetail.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("/view/order/detailOrder.jsp");
 		rd.forward(request, response);
 	}
 	
