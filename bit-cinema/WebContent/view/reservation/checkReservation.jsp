@@ -9,26 +9,40 @@
 <title>Insert title here</title>
 </head>
 <body>
+<div>
+	<div>
+		<c:import url="/view/include/topMenu.jsp" />
+	</div>	
+	
+	<div>
+		<h2>예매 내역</h2>
+		<hr><br>
+		<div>
+		<c:forEach var="rInfo" items="${list}">
+			<p>
+				예매번호 : ${rInfo.reservationId}<br><br>
+				<strong>${rInfo.movieName}</strong><br>
+				비트시네마 ${rInfo.screenName}<br>
+				<fmt:formatDate value="${rInfo.startDate}" pattern="yyyy-MM-dd" /><br>
+				${rInfo.startTime} ~ ${rInfo.endTime}<br>
+				<button onclick="location.href='detail?reservationId=${rInfo.reservationId}'" >상세 내역</button>
+				<hr>
+			</p>
+		</c:forEach>
+		</div>
+		
+		<br><br>
+		<button onclick="location.href='${pageContext.request.contextPath}'" >메인 메뉴</button>
+	</div>	
+	
+	<div>
+		<c:import url="/view/include/footer.jsp" />
+	</div>	
+</div>
+
 
 <div>
-	<h2>예매 내역</h2>
-	<hr><br>
-	<div>
-	<c:forEach var="rInfo" items="${list}">
-		<p>
-			예매번호 : ${rInfo.reservationId}<br><br>
-			<strong>${rInfo.movieName}</strong><br>
-			비트시네마 ${rInfo.screenName}<br>
-			<fmt:formatDate value="${rInfo.startDate}" pattern="yyyy-MM-dd" /><br>
-			${rInfo.startTime} ~ ${rInfo.endTime}<br>
-			<button onclick="location.href='detail?reservationId=${rInfo.reservationId}'" >상세 내역</button>
-			<hr>
-		</p>
-	</c:forEach>
-	</div>
 	
-	<br><br>
-	<button onclick="location.href='${pageContext.request.contextPath}'" >메인 메뉴</button>
 </div>
 
 </body>

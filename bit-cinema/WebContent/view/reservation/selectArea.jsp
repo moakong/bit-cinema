@@ -8,24 +8,31 @@
 <title>Insert title here</title>
 </head>
 <body>
-
 <div>
-	<h2>지역 선택</h2>
-	<hr>
-	
-	<form action="selectTheater">
-		<input type="hidden" name="movieId" value="${movieId}">
-		<c:forEach var="area" items="${list}">
-		<input type="radio" name="area" value="${area.locationId}" id="${area.locationId}" />
-				<label for="${area.locationId}">${area.locationName}</label><br>
-		</c:forEach>
+	<div>
+		<c:import url="/view/include/topMenu.jsp" />
+	</div>	
 
-		<br><br>
-		<button>다음</button>
-	</form>
+	<div>
+		<h2>지역 선택</h2>
+		<hr>
+		
+		<form action="selectTheater">
+			<input type="hidden" name="movieId" value="${movieId}">
+			<c:forEach var="area" items="${list}">
+			<input type="radio" name="area" value="${area.locationId}" id="${area.locationId}" />
+					<label for="${area.locationId}">${area.locationName}</label><br>
+			</c:forEach>
 	
+			<br><br>
+			<button>다음</button>
+		</form>
+		
+	</div>
+	
+	<div>
+		<c:import url="/view/include/footer.jsp" />
+	</div>	
 </div>
-
-
 </body>
 </html>

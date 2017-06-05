@@ -11,22 +11,34 @@
 <body>
 
 <div>
-	<h1>예매 완료</h1>
-	<hr><br>
 	<div>
-	<strong>${rInfo.movieName}</strong><br>
-	비트시네마 ${rInfo.screenName}<br>
-	<fmt:formatDate value="${rInfo.startDate}" pattern="yyyy년 MM월 dd일" /><br>
-	${rInfo.startTime} ~ ${rInfo.endTime}<br>
-	<c:forEach var="seat" items="${sList}">
-		[&#${seat.r + 64}-${seat.c}] 
-	</c:forEach>
-	<br><br>
+		<c:import url="/view/include/topMenu.jsp" />
+	</div>	
+	
+	<div>
+		<h1>예매 완료</h1>
+		<hr><br>
+		<div>
+		<strong>${rInfo.movieName}</strong><br>
+		비트시네마 ${rInfo.screenName}<br>
+		<fmt:formatDate value="${rInfo.startDate}" pattern="yyyy년 MM월 dd일" /><br>
+		${rInfo.startTime} ~ ${rInfo.endTime}<br>
+		<c:forEach var="seat" items="${sList}">
+			[&#${seat.r + 64}-${seat.c}] 
+		</c:forEach>
+		<br><br>
+		</div>
+		
+		<button onclick="location.href='${pageContext.request.contextPath}'" >확인</button>
+	
 	</div>
 	
-	<button onclick="location.href='${pageContext.request.contextPath}'" >확인</button>
-
+	<div>
+		<c:import url="/view/include/footer.jsp" />
+	</div>	
 </div>
+
+
 
 </body>
 </html>

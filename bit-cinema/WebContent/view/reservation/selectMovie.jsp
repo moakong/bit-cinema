@@ -8,27 +8,28 @@
 <title>Insert title here</title>
 </head>
 <body>
-
-
-
-
 <div>
-	<h2>영화 선택</h2>
-	<hr>
+	<div>
+		<c:import url="/view/include/topMenu.jsp" />
+	</div>	
+
+	<div>
+		<h2>영화 선택</h2>
+		<hr>
+		
+		<a href="selectMovie?order=name">이름순</a> 
+		<a href="selectMovie?order=reservation">예매순</a> <br><br>
+		<form action="selectArea">
+			<c:forEach var="movie" items="${list}">
+			<input type="radio" name="movieId" value="${movie.movieId}" id="${movie.movieId}" /><label for="${movie.movieId}">${movie.movieName}</label><br>
+			</c:forEach>
+			<br><br><button>다음</button>
+		</form>
+	</div>
 	
-	<a href="selectMovie?order=name">이름순</a> 
-	<a href="selectMovie?order=reservation">예매순</a> <br><br>
-	<form action="selectArea">
-		<c:forEach var="movie" items="${list}">
-		<input type="radio" name="movieId" value="${movie.movieId}" id="${movie.movieId}" /><label for="${movie.movieId}">${movie.movieName}</label><br>
-		</c:forEach>
-		<br><br><button>다음</button>
-	</form>
+	<div>
+		<c:import url="/view/include/footer.jsp" />
+	</div>	
 </div>
-
-
-
-
-
 </body>
 </html>

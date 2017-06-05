@@ -14,6 +14,8 @@
 	
 	<div>
 		<p>찾으시는 아이디는 <h2><c:out value="${ id }"/></h2> 입니다.</p>
+		<a href="${pageContext.request.contextPath}/member/LoginForm">로그인 하기</a>
+		<a href="${pageContext.request.contextPath}/main/Main">메인메뉴</a>
 	</div>	
 	
 	<div>

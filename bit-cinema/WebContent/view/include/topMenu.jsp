@@ -19,3 +19,4 @@
 		</c:otherwise>
 	 </c:choose>
 </ul>
+<hr>

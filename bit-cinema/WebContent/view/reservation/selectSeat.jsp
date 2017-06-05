@@ -8,31 +8,40 @@
 <title>Insert title here</title>
 </head>
 <body>
-
-<!-- 자리에 대한 정보 이외에 hidden으로 schedule_id, 예매인원 reservationServlet으로 넘기고, 
-회원id는 reservationServlet에서 세션을 통해 얻는다 -->
 <div>
-	<h2>좌석 선택</h2>
-	<hr>
-	
-	<form action="payment">
-		<input type="hidden" name="schNo" value="${schNo}" />
-		<input type="hidden" name="people" value="${people}" />
+	<div>
+		<c:import url="/view/include/topMenu.jsp" />
+	</div>	
+
+	<!-- 자리에 대한 정보 이외에 hidden으로 schedule_id, 예매인원 reservationServlet으로 넘기고, 
+	회원id는 reservationServlet에서 세션을 통해 얻는다 -->
+	<div>
+		<h2>좌석 선택</h2>
+		<hr>
 		
-		<c:forEach var="i" begin="1" end="${all[0].totalC}">
-			&nbsp; &nbsp;${i}
-		</c:forEach>
-		<c:forEach var="seat" items="${all}">
-			<c:if test="${seat.c == 1}">
-			<br>&#${seat.r + 64};
-			</c:if>
-			<input type="checkbox" name="seat" id="${seat.seatId}" 
-			value="${seat.seatId}" onclick="CountChecked(this)" />
-		</c:forEach>
-<!-- disabled -->
-		<br><br>
-		<button>다음</button>
-	</form>
+		<form action="payment">
+			<input type="hidden" name="schNo" value="${schNo}" />
+			<input type="hidden" name="people" value="${people}" />
+			
+			<c:forEach var="i" begin="1" end="${all[0].totalC}">
+				&nbsp; &nbsp;${i}
+			</c:forEach>
+			<c:forEach var="seat" items="${all}">
+				<c:if test="${seat.c == 1}">
+				<br>&#${seat.r + 64};
+				</c:if>
+				<input type="checkbox" name="seat" id="${seat.seatId}" 
+				value="${seat.seatId}" onclick="CountChecked(this)" />
+			</c:forEach>
+		<!-- disabled -->
+			<br><br>
+			<button>다음</button>
+		</form>
+	</div>
+	
+	<div>
+		<c:import url="/view/include/footer.jsp" />
+	</div>	
 </div>
 
 </body>
