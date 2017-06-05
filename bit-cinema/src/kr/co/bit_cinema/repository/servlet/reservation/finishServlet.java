@@ -63,7 +63,7 @@ public class finishServlet extends HttpServlet {
 			//session.commit();///////////////////////////////////////
 			
 			
-			//방금 예약한 정보 꺼내기
+			//방금 넣은 정보 꺼내기
 			rInfo.setMovieName(mapper.selectMovieName(reservationId).getMovieName());
 			
 			reservationParam = mapper.selectSchduleInfo(reservationId);

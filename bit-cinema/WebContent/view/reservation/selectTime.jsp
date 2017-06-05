@@ -19,7 +19,10 @@
 		<input type="radio" name="time" value="${time.scheduleId}" id="${time.scheduleId}" />
 				<label for="${time.scheduleId}">${time.screenName} : ${time.startTime} ~ ${time.endTime}</label><br>
 		</c:forEach>
-
+		
+		<c:if test="${empty list}">
+			해당 영화의 상영이 없습니다.
+		</c:if>
 		<br><br>
 		<button>다음</button>
 	</form>
