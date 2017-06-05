@@ -36,7 +36,7 @@
 				</tr>
 		</table>
 
-
+<a href="${pageContext.request.contextPath}/review/Review?id=${review.movieId}">되돌아가기</a>
 
 </body>
 </html>

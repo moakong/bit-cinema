@@ -45,6 +45,7 @@
 	
 			<div>
 				<!-- 여기에 내용 -->
+				<a href="${pageContext.request.contextPath}/writeform">리뷰쓰기</a>
 				<table>
 					<tr>
 						<th>번호</th>

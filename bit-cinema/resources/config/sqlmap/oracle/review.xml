@@ -27,7 +27,7 @@
 	<!-- id 바꾸고 갈게요 -->
 	<!-- 이거 detail할 때 회원정보도 join해줘야돼여 -->
 	<select id="detailReview" resultMap="reviewMap" parameterType="int">
-	select r.review_no, r.title, r.content, r.reg_date, r.recom_count,m.nickname
+	select r.review_no, r.title, r.content, r.reg_date, r.recom_count,m.nickname,r.movie_id
 	from REVIEWS r
 	inner join members m
 	on r.member_id = m.member_id

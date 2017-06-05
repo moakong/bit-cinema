@@ -49,7 +49,7 @@ public class Detail extends HttpServlet{
 		
 		rd.forward(request, response);
 	
-	
+		
 	}
 
 	

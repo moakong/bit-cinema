@@ -6,6 +6,17 @@
 <title>Insert title here</title>
 </head>
 <body>
+ 
+<form action="${pageContext.request.contextPath}/write">
+
+
+	<button>글작성</button>
+</form>		
+
+
+
+
+
 
 </body>
 </html>
