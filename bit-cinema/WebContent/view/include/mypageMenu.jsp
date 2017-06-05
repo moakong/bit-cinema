@@ -6,7 +6,7 @@
 		<a>예매내역</a>
 	</li>
 	<li>
-		<a>스토어 장바구니</a>
+		<a href="${pageContext.request.contextPath}/member/CartList">스토어 장바구니</a>
 	</li>
 	<li>
 		<a>스토어 구매내역</a>

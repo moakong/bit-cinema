@@ -42,5 +42,6 @@
 		<result column="img" property="img" />
 		<result column="price" property="price" />
 		<result column="explan" property="explan" />
+		<result column="category_id" property="categoryId" />
 	</resultMap>
 </mapper>

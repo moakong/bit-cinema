@@ -3,5 +3,30 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="kr.co.bit_cinema.repository.mapper.CartMapper">
+	<!-- 장바구니에 담기 -->
+	<insert id="insertCart" parameterType="Cart">
+		insert into carts (snack_id, member_id, count)
+		values ( #{snackId} , #{memberId}, #{count})
+	</insert>
 	
+	<!-- 보여주기 -->
+	<select id="selectCart" resultMap="cartMap">
+		select *
+		from carts, snacks
+		where carts.snack_id = snacks.snack_id
+	</select>
+	<resultMap type="Cart" id="cartMap">
+		<result column="member_id" property="memberId"/>
+		<result column="snack_id" property="snackId"/>
+		<result column="count" property="count"/>
+		<result column="img" property="img"/>
+		<result column="name" property="name"/>
+		<result column="price" property="price"/>
+	</resultMap>
+	
+	<!-- 지우는거 -->
+	<delete id="deleteCart" parameterType="int">
+		delete from carts
+		where snack_id = #{snack_id}
+	</delete>
 </mapper>
