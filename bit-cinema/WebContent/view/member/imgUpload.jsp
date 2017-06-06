@@ -14,10 +14,10 @@
 	</c:if>
 	
 	<form action="${pageContext.request.contextPath}/member/ImgUpload" method="post" enctype="multipart/form-data">
-			<input type="file" name="attachFile" id="file"/><br>
+			<input type="file" name="attachFile"/><br>
 			<button>선택한 이미지 보기</button>
  	</form>
- 	<button onClick="winClose();">이 이미지로 등록</button>
+ 	<button onclick="winClose();">이 이미지로 등록</button>
 	<script>
 		function winClose(){
 			var id = document.querySelector("#img");

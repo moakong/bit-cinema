@@ -17,7 +17,7 @@ import kr.co.bit_cinema.repository.mapper.MemberMapper;
 import kr.co.bit_cinema.repository.vo.MemberVO;
 
 @WebServlet("/member/Withdraw")
-public class WithdrawServlet extends HttpServlet {
+public class WithdrawServlet extends HttpServlet{
 	private SqlSession sqlSession = null;
 	private MemberMapper mapper = null;
 	
@@ -31,8 +31,11 @@ public class WithdrawServlet extends HttpServlet {
 		
 			HttpSession session = request.getSession();
 			MemberVO user = (MemberVO)session.getAttribute("user");
-//			String memberId = user.getMemberId();
-//			System.out.println(memberId);
+			if(!user.getPass().equals(request.getParameter("pass"))){
+				System.out.println("user pass : " + user.getPass());
+				System.out.println("request pass : " + request.getParameter("pass"));
+				System.out.println("비밀번호가 틀린데... alert을 어떻게하냐..");
+			}
 			
 			try {
 				mapper.withdrawMember(user.getMemberId());

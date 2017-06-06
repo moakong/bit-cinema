@@ -16,7 +16,7 @@
 		<p>아이디와 비밀번호를 입력하고 로그인 버튼을 누르세요.</p>
 		<hr>
 		<p3>${error}</p3>
-		<form action="Login" method="post">
+		<form id="loginForm" action="Login" method="post" onsubmit="return check()">
 			<input type="text" name="id" value="${ id }" /><br>
 			<input type="password" name="pass" /><br>
 			<input id="id_check" type="checkbox" name="id_rem"
@@ -41,6 +41,23 @@
 		<c:import url="/view/include/footer.jsp" />
 	</div>	
 </div>	
+<script>
+	function check(){
+		
+		if(loginForm.id.value == ""){
+			alert("아이디를 입력하세요.");
+			loginForm.id.focus();
+			return false;
+		}
+		else if(loginForm.pass.value == ""){
+			alert("비밀번호를 입력하세요.");
+			loginForm.pass.focus();
+			return false;
+		}
+		else 
+			return true;
+	}
+</script>
 </body>
 </html>
 

@@ -60,6 +60,11 @@
 		 where member_id = #{memberId}
 	</delete>
 	
+	<select id="checkId" parameterType="String" resultType="String">
+		select name
+		  from members
+		 where member_id = #{memberId}
+	</select>
 	
 	<select id="findMemberId" parameterType="Member" resultType="String">
 		select member_id
