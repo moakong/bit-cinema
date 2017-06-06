@@ -34,7 +34,6 @@ public class LoginServlet extends HttpServlet {
 		String id = request.getParameter("id");
 		String pass = request.getParameter("pass");
 		String id_rem = request.getParameter("id_rem");
-		System.out.println(id_rem);
 		
 		if(id_rem != null && id_rem.equals("on")){
 			cookie = new Cookie("id", id);
@@ -58,8 +57,10 @@ public class LoginServlet extends HttpServlet {
 				response.sendRedirect(request.getContextPath() + "/main/Main");
 			}else {
 				request.setAttribute("error", "입력하신 정보가 올바르지 않습니다.");
-				RequestDispatcher rd = request.getRequestDispatcher("LoginForm");
-				rd.forward(request, response);
+//				RequestDispatcher rd = request.getRequestDispatcher("LoginForm");
+//				rd.forward(request, response);
+			
+				response.sendRedirect(request.getContextPath() + "/member/LoginForm");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -19,7 +19,11 @@
 		<form action="Login" method="post">
 			<input type="text" name="id" value="${ id }" /><br>
 			<input type="password" name="pass" /><br>
-			<input id="id_check" type="checkbox" name="id_rem"/>
+			<input id="id_check" type="checkbox" name="id_rem"
+				<c:if test="${ not empty id}">
+					checked="checked"
+				</c:if>
+			/>
 			<label for="id_check">아이디 저장</label><br>
 			<button>로그인</button>
 		</form>

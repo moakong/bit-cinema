@@ -21,11 +21,11 @@ public class LoginFormServlet extends HttpServlet {
 			for(int i = 0; i < cookie.length; i++){
 				if(cookie[i].getName().equals("id")){
 					id = cookie[i].getValue();
-					System.out.println(id);
 				}
 			}
 		}
-		
+		System.out.println(request.getAttribute("error"));
+		request.setAttribute("error", request.getAttribute("error"));
 		request.setAttribute("id", id);
 		
 		RequestDispatcher rd = request.getRequestDispatcher("/view/member/loginForm.jsp");
