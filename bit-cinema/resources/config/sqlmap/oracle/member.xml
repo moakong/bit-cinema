@@ -48,9 +48,8 @@
 		   set pass = #{pass}, 
 			   nickname = #{nickname},
 			   phone = #{phone},
-			   email = #{email}
-			   <!--  ,
-			   profile = #{profile}-->
+			   email = #{email},
+			   profile = #{profile}
 		 where member_id = #{memberId}
 	</update>
 	

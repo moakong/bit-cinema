@@ -38,7 +38,7 @@ public class ModifyInfoServlet extends HttpServlet {
 			String nickname = request.getParameter("nickname");
 			String email = request.getParameter("email");
 			String phone = request.getParameter("phone");
-			//String profile = request.getParameter("profile");
+			String profile = request.getParameter("profile");
 
 			member = new MemberVO();
 			member.setMemberId(user.getMemberId());
@@ -46,10 +46,13 @@ public class ModifyInfoServlet extends HttpServlet {
 			member.setNickname(nickname);
 			member.setPhone(phone);
 			member.setEmail(email);
-			//member.setProfile(profile);
+			member.setProfile(profile);
 			
 			mapper.modifyMember(member);
 			sqlSession.commit();
+			
+			user.setProfile(profile);
+			session.setAttribute("user", user);
 			
 			RequestDispatcher rd = request.getRequestDispatcher("/view/member/modifyInfo.jsp");
 			rd.forward(request, response);

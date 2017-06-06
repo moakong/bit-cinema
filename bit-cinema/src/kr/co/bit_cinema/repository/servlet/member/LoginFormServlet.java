@@ -24,8 +24,9 @@ public class LoginFormServlet extends HttpServlet {
 				}
 			}
 		}
-		System.out.println(request.getAttribute("error"));
-		request.setAttribute("error", request.getAttribute("error"));
+		
+//		System.out.println(request.getAttribute("error"));
+//		request.setAttribute("error", request.getAttribute("error"));
 		request.setAttribute("id", id);
 		
 		RequestDispatcher rd = request.getRequestDispatcher("/view/member/loginForm.jsp");
