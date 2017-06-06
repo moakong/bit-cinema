@@ -22,13 +22,6 @@ public class ImgUploadServlet extends HttpServlet {
 		ServletContext context = request.getServletContext();
 		String uploadPath = context.getRealPath("/img/member");
 
-//		SimpleDateFormat sdf = new SimpleDateFormat("/yyyy/MM/dd");
-//		String datePath = sdf.format(new Date());
-//		System.out.println(datePath);
-//		
-//		uploadPath += datePath;
-//		
-		
 		File f = new File(uploadPath);
 		if(!f.exists()){
 			f.mkdirs();
@@ -46,17 +39,12 @@ public class ImgUploadServlet extends HttpServlet {
 		String sysName = null;
 		while(fNames.hasMoreElements()){
 			String fileName = fNames.nextElement();
-			
 			File file = multi.getFile(fileName);
-			
 			if(file != null){
-//				long size = file.length();
-//				String orgName = multi.getOriginalFileName(fileName);
 				sysName = multi.getFilesystemName(fileName);
 			}
-			
 		}
-		System.out.println(uploadPath+"\\" +sysName);
+		
 		request.setAttribute("img", sysName);
 		RequestDispatcher rd = request.getRequestDispatcher("/view/member/imgUpload.jsp");
 		rd.forward(request, response);

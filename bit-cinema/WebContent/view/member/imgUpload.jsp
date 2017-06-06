@@ -8,7 +8,7 @@
 </head>
 <body>
 	<p>등록할 프로필이미지를 선택해주세요</p>
-	
+	<p>[이미지 보기]를 선택 후 [등록]해주세요</p>
 	<c:if test="${ not empty img }">
 		<img id="img" src="<c:out value="${pageContext.request.contextPath}/img/member/${ img }"/>" width="100" height="100"/>
 	</c:if>

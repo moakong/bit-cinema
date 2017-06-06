@@ -18,7 +18,8 @@
 			<div>
 				<form action="ModifyInfo" method="post">
 					<img id="img" src="${ member.profile }" width="100" height="100"/><br>
-					<button type="button" onclick="uploadProfile().doNotSubmit();" >이미지 변경</button><br>
+					<button type="button" onclick="uploadProfile(1).doNotSubmit();" >이미지 변경</button>
+					<button type="button" onclick="uploadProfile(0).doNotSubmit();" >기본 이미지로 변경</button><br>
 					<input type="hidden" id="profile" name="profile" value="${ member.profile }"/>
 					아이디 <c:out value="${ member.memberId }" /><br> 
 					비밀번호 <input type="password" name="pass" /><br> 
@@ -37,18 +38,25 @@
 		</div>
 	</div>
 	<script>
-		function uploadProfile() {
-			window.open(
-					"${pageContext.request.contextPath}/view/member/imgUpload.jsp", 
-					"프로필 이미지 등록",
-					"width=400, height=300"
-			);
+		function uploadProfile(type) {
+			
+			switch(type){
+			case 0:
+				doResult("/bit-cinema/img/member/basicprofile.jpg");
+				break;
+			case 1:
+				window.open(
+						"${pageContext.request.contextPath}/view/member/imgUpload.jsp", 
+						"프로필 이미지 등록",
+						"width=400, height=300"
+				);
+				break;
+			}
 		}
 
 		function doResult(route) {
 			var img = document.querySelector("#img");
 			var profile = document.querySelector("#profile");
-			//console.log(route);
 			img.setAttribute("src", route);
 			profile.setAttribute("value", route);
 		}
