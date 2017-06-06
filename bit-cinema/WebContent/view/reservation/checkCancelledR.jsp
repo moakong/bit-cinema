@@ -9,19 +9,19 @@
 <title>Insert title here</title>
 </head>
 <body>
+
+
 <div>
 	<div>
 		<c:import url="/view/include/topMenu.jsp" />
 	</div>	
 	
 	<div>
-		<h2>예매 내역</h2>
-		<a href="checkCancelledR">예매 취소 내역</a>
+		<h2>예매 취소 내역</h2>
+		<a href="check">예매 내역</a>
 		<hr><br>
 		<div>
-<%-- 		<c:set var="lastNo" value="0" /> --%>
 		<c:forEach var="rInfo" items="${list}">
-			<c:if test="${rInfo.reservationId != lastNo}" >
 			<p>
 				예매번호 : ${rInfo.reservationId}<br><br>
 				<strong>${rInfo.movieName}</strong><br>
@@ -31,8 +31,6 @@
 				<button onclick="location.href='detailReservation?reservationId=${rInfo.reservationId}'" >상세 내역</button>
 				<hr>
 			</p>
-			<c:set var="lastNo" value="${rInfo.reservationId}" />
-			</c:if>
 		</c:forEach>
 		</div>
 		

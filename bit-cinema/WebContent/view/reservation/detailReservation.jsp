@@ -5,6 +5,11 @@
 <!DOCTYPE html>
 <html>
 <head>
+
+<!-- sweet alert -->
+<script src="../lib/sweetalert.min.js"></script> 
+<link rel="stylesheet" href="../lib/sweetalert.css">
+
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
@@ -14,10 +19,6 @@
 		<c:import url="/view/include/topMenu.jsp" />
 	</div>	
 	
-	<!-- 
-	request.setAttribute("rInfo", r);
-	request.setAttribute("sList", sList);
-	-->
 	<div>
 		<h1>상세 예매 내역</h1>
 		<hr><br>
@@ -32,7 +33,7 @@
 		<br><br>
 		</div>
 		
-		<button onclick="location.href='cancel?reservationId=${rInfo.reservationId}'" >예매 취소</button><br><br>
+		<button onclick="cancelConfirm()" >예매 취소</button><br><br>
 		<button onclick="location.href='check'" >나의 예매내역</button>
 	</div>
 	
@@ -41,5 +42,81 @@
 	</div>	
 </div>
 
+
+	<script type="text/javascript">
+ 		function cancelConfirm(){
+			if (confirm("예매를 취소하시겠습니까?") == true){  
+				alert("예매가 취소되었습니다.")
+				location.href='cancelReservation?reservationId=${rInfo.reservationId}';
+			}else{  
+			    return;
+			}
+		} 
+
+	/* 
+		function cancelConfirm(){
+			var cancel = swal({
+				  title: "Are you sure?",
+				  text: "You will not be able to recover this imaginary file!",
+				  type: "warning",
+				  showCancelButton: true,
+				  confirmButtonColor: "#DD6B55",
+				  confirmButtonText: "Yes, delete it!",
+				  closeOnConfirm: false
+				}) 
+			
+			if (cancel == true){  
+				if((function(){
+					  swal("Deleted!", "Your imaginary file has been deleted.", "success");
+					})() == true){
+					
+				location.href='cancelReservation?reservationId=${rInfo.reservationId}';
+				}
+			}else{  
+			    return;
+			}
+		}
+		 */
+		 
+		 
+		 /* 
+ 		function cancelConfirm(){
+			 var cancel = sweetAlert({
+				  title: "Are you sure?",
+				  text: "You will not be able to recover this imaginary file!",
+				  type: "warning",
+				  showCancelButton: true,
+				  confirmButtonColor: "#DD6B55",
+				  confirmButtonText: "Yes, delete it!",
+				  closeOnConfirm: false
+				})
+		 }
+			if (cancel == true){ 
+				
+				location.href='cancelReservation?reservationId=${rInfo.reservationId}';
+			}else{  
+			    return;
+			}
+		 */	
+		 
+
+	</script>
+
+
+
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

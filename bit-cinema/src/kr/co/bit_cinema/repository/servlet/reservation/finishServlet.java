@@ -60,7 +60,7 @@ public class finishServlet extends HttpServlet {
 				mapper.insertReservedSeat(reservationParam);
 			}
 			
-			//session.commit();///////////////////////////////////////
+			session.commit();// !!!!!!!
 			
 			
 			//방금 넣은 정보 꺼내기

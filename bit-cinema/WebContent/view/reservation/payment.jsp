@@ -23,7 +23,7 @@
 		<h2>결제 방법 선택</h2>
 		<hr>
 		
-		<form action="finish" >
+		<form id="payForm" action="finish" >
 			<input type="hidden" name="schNo" value="${schNo}">
 			<c:forEach var="s" items="${seats}">
 				<input type="hidden" name="seat" value="${s}">
@@ -36,7 +36,8 @@
 			<input type="radio" name="payment" value="mobile" id="5" /><label for="5">휴대폰 소액 결제</label><br>
 			<br><br>
 			<!-- <button type="submit"  >결제하기</button> -->
-			<input type="submit" onclick="return confirm('결제하시겠습니까?')" value="결제하기" >
+			<!-- <input type="submit" onclick="return confirm('결제하시겠습니까?')" value="결제하기" > -->
+			<input type="button" onclick="confirmPay()" value="결제하기" >
 		</form>
 	</div>
 	
@@ -49,6 +50,14 @@
 </body>
 
 <script>
+	function confirmPay(){
+		if (confirm('결제하시겠습니까?') == true){  
+			alert("결제가 완료되었습니다.")
+			document.getElementById("payForm").submit();
+		}else{  
+		    return;
+		}
+	} 
 /* 
 	document.querySelector('button#next').onclick = function(){
 		swal({

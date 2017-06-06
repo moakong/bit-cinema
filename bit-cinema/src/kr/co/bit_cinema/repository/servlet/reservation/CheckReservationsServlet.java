@@ -44,7 +44,11 @@ public class CheckReservationsServlet extends HttpServlet {
 		}
 		
 		
-//		request.setAttribute("sList", sList);
+		for(ReservationVO e : list){
+			System.out.println("예매번호 : " + e.getReservationId())  ;
+		}
+		
+		
 		request.setAttribute("list", list);
 		RequestDispatcher rd = request.getRequestDispatcher("/view/reservation/checkReservation.jsp");
 		rd.forward(request, response);

@@ -30,4 +30,7 @@ public interface ReservationMapper {
 	
 	public List<ReservationVO> checkReservationsById(String memberId) throws Exception;
 	public ReservationVO checkReservationsByNO(int reservationId) throws Exception;
+	public List<ReservationVO> checkCancelledReservations(String memberId) throws Exception;
+	
+	public void cancelReservation(int reservationId) throws Exception;
 }

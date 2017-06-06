@@ -208,7 +208,10 @@
 		    ON SCH.MOVIE_ID = M.MOVIE_ID
 		 INNER JOIN SCREEN SCR
 		    ON SCH.SCREEN_ID = SCR.SCREEN_ID AND SCH.THEATER_ID = SCR.THEATER_ID
+    LEFT OUTER JOIN R_SEATS RS
+            ON R.reservation_id = RS.RESERVATION_ID
 		 WHERE R.MEMBER_ID = #{member_id}
+		   AND RS.SEAT_ID IS NOT NULL
  	 </select>
  	 
  	<select id="checkReservationsByNO" resultMap="reservationMap" parameterType="int" >
@@ -220,8 +223,34 @@
 		    ON SCH.MOVIE_ID = M.MOVIE_ID
 		 INNER JOIN SCREEN SCR
 		    ON SCH.SCREEN_ID = SCR.SCREEN_ID AND SCH.THEATER_ID = SCR.THEATER_ID
-		 WHERE R.RESERVATION_ID = 1
+		 WHERE R.RESERVATION_ID = #{reservationId}
 	</select>
+ 	 
+ 	 <select id="checkCancelledReservations" resultMap="reservationMap" parameterType="string" >
+ 	 	SELECT R.RESERVATION_ID, M.movie_name, R.reg_date, sch.start_date, SCH.start_time, SCH.END_TIME, R.R_COUNT, SCR.SCREEN_NAME
+		  FROM RESERVATIONS R
+		 INNER JOIN SCHEDULE SCH
+		    ON SCH.SCHEDULE_ID = R.SCHEDULE_ID
+		 INNER JOIN MOVIES M
+		    ON SCH.MOVIE_ID = M.MOVIE_ID
+		 INNER JOIN SCREEN SCR
+		    ON SCH.SCREEN_ID = SCR.SCREEN_ID AND SCH.THEATER_ID = SCR.THEATER_ID
+    LEFT OUTER JOIN R_SEATS RS
+            ON R.reservation_id = RS.RESERVATION_ID
+		 WHERE R.MEMBER_ID = #{member_id}
+		   AND RS.SEAT_ID IS NULL
+ 	 </select>
+ 	 
+ 	 
+ 	 
+ 	 
+ 	 
+ 	 <delete id="cancelReservation" parameterType="int" >
+		delete 
+		  from r_seats
+		 where reservation_id = #{reservation_id}
+	</delete>
+ 	 
  	 
 </mapper>
 

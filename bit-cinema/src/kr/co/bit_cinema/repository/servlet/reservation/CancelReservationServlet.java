@@ -1,7 +1,6 @@
 package kr.co.bit_cinema.repository.servlet.reservation;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -14,39 +13,38 @@ import org.apache.ibatis.session.SqlSession;
 
 import common.db.MyAppSqlConfig;
 import kr.co.bit_cinema.repository.mapper.ReservationMapper;
-import kr.co.bit_cinema.repository.vo.reservation.ReservationVO;
 
-@WebServlet("/reservation/detailReservation")
-public class detatilReservationServlet extends HttpServlet {
+@WebServlet("/reservation/cancelReservation")
+public class CancelReservationServlet extends HttpServlet {
 	SqlSession session;
 	ReservationMapper mapper;
 	
-	public detatilReservationServlet() {
+	public CancelReservationServlet() {
 		session = MyAppSqlConfig.getSqlSessionInstance();
 		mapper = session.getMapper(ReservationMapper.class);
 	}
 	
-
+	
+	// 커밋 추가 필요!
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int reservationId = Integer.parseInt(request.getParameter("reservationId"));
 		
-		ReservationVO r = null;
-		List<ReservationVO> sList = null;
 		
 		try {
-			r = mapper.checkReservationsByNO(reservationId);
-			sList = mapper.selectSeatInfo(reservationId);
+			mapper.cancelReservation(reservationId);
+			session.commit();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		
 		
 		
-		request.setAttribute("rInfo", r);
-		request.setAttribute("sList", sList);
-		RequestDispatcher rd = request.getRequestDispatcher("/view/reservation/detailReservation.jsp");
+		
+		RequestDispatcher rd = request.getRequestDispatcher("check");
 		rd.forward(request, response);
+		
+		
 	}
 	
 }

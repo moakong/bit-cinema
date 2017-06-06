@@ -9,44 +9,52 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.session.SqlSession;
 
 import common.db.MyAppSqlConfig;
 import kr.co.bit_cinema.repository.mapper.ReservationMapper;
+import kr.co.bit_cinema.repository.vo.MemberVO;
 import kr.co.bit_cinema.repository.vo.reservation.ReservationVO;
 
-@WebServlet("/reservation/detailReservation")
-public class detatilReservationServlet extends HttpServlet {
+@WebServlet("/reservation/checkCancelledR")
+public class CheckCancelledServlet extends HttpServlet {
 	SqlSession session;
 	ReservationMapper mapper;
 	
-	public detatilReservationServlet() {
+	public CheckCancelledServlet() {
 		session = MyAppSqlConfig.getSqlSessionInstance();
 		mapper = session.getMapper(ReservationMapper.class);
 	}
 	
-
+	
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int reservationId = Integer.parseInt(request.getParameter("reservationId"));
+		HttpSession hSession = request.getSession();
+		MemberVO member = (MemberVO)hSession.getAttribute("user");
+		System.out.println("검색 아이디 : " + member.getMemberId());
 		
-		ReservationVO r = null;
-		List<ReservationVO> sList = null;
+		List<ReservationVO> list = null;
 		
 		try {
-			r = mapper.checkReservationsByNO(reservationId);
-			sList = mapper.selectSeatInfo(reservationId);
+			list = mapper.checkCancelledReservations(member.getMemberId());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		
 		
+		for(ReservationVO e : list){
+			System.out.println("예매번호 : " + e.getReservationId())  ;
+		}
 		
-		request.setAttribute("rInfo", r);
-		request.setAttribute("sList", sList);
-		RequestDispatcher rd = request.getRequestDispatcher("/view/reservation/detailReservation.jsp");
+		
+		request.setAttribute("list", list);
+		RequestDispatcher rd = request.getRequestDispatcher("/view/reservation/checkCancelledR.jsp");
 		rd.forward(request, response);
 	}
+
+	
+	
 	
 }
