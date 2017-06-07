@@ -13,10 +13,6 @@
 		</div>
 		
 		<div>
-			<form action="order" method="post">
-				<h1>사거라</h1>
-				<button>결제</button>
-			</form>
 		</div>
 		
 		<div>

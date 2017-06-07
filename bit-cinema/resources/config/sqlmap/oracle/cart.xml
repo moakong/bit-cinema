@@ -27,6 +27,25 @@
 	<!-- 지우는거 -->
 	<delete id="deleteCart" parameterType="int">
 		delete from carts
-		where snack_id = #{snack_id}
+		where snack_id = #{snackId}
 	</delete>
+	
+	<!-- 장바구니에 있는거는 수량올려주려고 쓰는거 -->
+	<update id="updateCart" parameterType="Cart">
+		update carts
+		set count = #{count}
+		where snack_id = #{snackId}
+	</update>
+	
+	<!-- 값비교하려고 -->
+	<select id="selectOneCart" parameterType="int" resultMap="rMap">
+		select *
+		from carts
+		where snack_id = #{snackId}
+	</select>
+	<resultMap type="Cart" id="rMap">
+		<result column="member_id" property="memberId"/>
+		<result column="snack_id" property="snackId"/>
+		<result column="count" property="count"/>
+	</resultMap>
 </mapper>
