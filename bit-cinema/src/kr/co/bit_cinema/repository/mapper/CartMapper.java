@@ -8,4 +8,6 @@ public interface CartMapper {
 	public void insertCart(CartVO snack) throws Exception;
 	public List<CartVO> selectCart() throws Exception;
 	public int deleteCart(int no) throws Exception;
+	public int updateCart(CartVO snack) throws Exception;
+	public CartVO selectOneCart(int no) throws Exception;
 }
