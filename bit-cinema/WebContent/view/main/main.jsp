@@ -12,13 +12,6 @@
 		<c:import url="/view/include/topMenu.jsp" />
 	</div>	
 	<div>
-		<p>
-			<c:if test="${!empty user}">
-				<img src="<c:out value="${user.profile}"/>" width="50" height="50"/>
-				<a href="${pageContext.request.contextPath}/member/Mypage">
-					<c:out value="${user.name}"/></a>님 환영합니다.
-			</c:if>
-		</p>
 		<div>
 			<a href="${pageContext.request.contextPath}/main/Main?chart=1">박스오피스</a>
 			<a href="${pageContext.request.contextPath}/main/Main?chart=2">예매순</a><br>
