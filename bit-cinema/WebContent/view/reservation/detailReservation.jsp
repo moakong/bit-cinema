@@ -43,65 +43,49 @@
 </div>
 
 
+
+
+
 	<script type="text/javascript">
+	
+		function cancelConfirm() {
+		
+			swal({
+				  title: "예매를 취소하시겠습니까?",
+				  text: "",
+				  type: "warning",
+				  showCancelButton: true,
+				  confirmButtonColor: "#DD6B55",
+				  confirmButtonText: "예매취소",
+				  cancelButtonText: "아니요",
+				  closeOnConfirm: false,
+				  //closeOnCancel: false
+				},
+				function(){
+					 swal({
+			                title: '예매가 취소되었습니다!',
+			                text: '',
+			                type: 'success'
+			            }, function() {
+			            	location.href='cancelReservation?reservationId=${rInfo.reservationId}';
+			            });
+				});
+			
+			
+			
+			}
+		
+	/* 
  		function cancelConfirm(){
-			if (confirm("예매를 취소하시겠습니까?") == true){  
-				alert("예매가 취소되었습니다.")
+			if (confirm("예매를 취소하시겠습니까?") == true){
+				alert("예매가 취소되었습니다.");
 				location.href='cancelReservation?reservationId=${rInfo.reservationId}';
 			}else{  
 			    return;
 			}
 		} 
-
-	/* 
-		function cancelConfirm(){
-			var cancel = swal({
-				  title: "Are you sure?",
-				  text: "You will not be able to recover this imaginary file!",
-				  type: "warning",
-				  showCancelButton: true,
-				  confirmButtonColor: "#DD6B55",
-				  confirmButtonText: "Yes, delete it!",
-				  closeOnConfirm: false
-				}) 
-			
-			if (cancel == true){  
-				if((function(){
-					  swal("Deleted!", "Your imaginary file has been deleted.", "success");
-					})() == true){
-					
-				location.href='cancelReservation?reservationId=${rInfo.reservationId}';
-				}
-			}else{  
-			    return;
-			}
-		}
-		 */
-		 
-		 
-		 /* 
- 		function cancelConfirm(){
-			 var cancel = sweetAlert({
-				  title: "Are you sure?",
-				  text: "You will not be able to recover this imaginary file!",
-				  type: "warning",
-				  showCancelButton: true,
-				  confirmButtonColor: "#DD6B55",
-				  confirmButtonText: "Yes, delete it!",
-				  closeOnConfirm: false
-				})
-		 }
-			if (cancel == true){ 
-				
-				location.href='cancelReservation?reservationId=${rInfo.reservationId}';
-			}else{  
-			    return;
-			}
-		 */	
-		 
-
+ */
 	</script>
-
 
 
 </body>

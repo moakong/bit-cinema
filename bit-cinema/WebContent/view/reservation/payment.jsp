@@ -35,8 +35,7 @@
 			<input type="radio" name="payment" value="payco" id="4" /><label for="4">PAYCO</label><br>
 			<input type="radio" name="payment" value="mobile" id="5" /><label for="5">휴대폰 소액 결제</label><br>
 			<br><br>
-			<!-- <button type="submit"  >결제하기</button> -->
-			<!-- <input type="submit" onclick="return confirm('결제하시겠습니까?')" value="결제하기" > -->
+			
 			<input type="button" onclick="confirmPay()" value="결제하기" >
 		</form>
 	</div>
@@ -50,6 +49,52 @@
 </body>
 
 <script>
+
+
+function confirmPay() {
+	
+	swal({
+		  title: "결제하시겠습니까?",
+		  text: "",
+		  type: "warning",
+		  showCancelButton: true,
+		  //confirmButtonColor: "#DD6B55",
+		  confirmButtonText: "결제하기",
+		  cancelButtonText: "취소",
+		  closeOnConfirm: false,
+		  closeOnCancel: false
+		},
+		function(isConfirm){
+		  if (isConfirm) {
+			  swal({
+				  title: "결제중입니다",
+				  text: "몇 초정도 걸릴 수 있습니다.",
+				  timer: 1500,
+				  showConfirmButton: false
+				  }, function() {
+					  swal({
+		                title: '결제가 완료되었습니다!',
+		                text: '',
+		                type: 'success'
+		            }, function() {
+		            	document.querySelector("#payForm").submit();
+		            })
+		            
+		            }
+				  
+			  );
+			  
+			  
+		  } else {
+		    swal("결제가 취소되었습니다", "", "error");
+		  }
+		});
+	
+	
+	}
+
+
+/* 
 	function confirmPay(){
 		if (confirm('결제하시겠습니까?') == true){  
 			alert("결제가 완료되었습니다.")
@@ -58,28 +103,9 @@
 		    return;
 		}
 	} 
-/* 
-	document.querySelector('button#next').onclick = function(){
-		swal({
-			  title: "Auto close alert!",
-			  text: "I will close in 2 seconds.",
-			  timer: 2000,
-			  showConfirmButton: false
-			});
-		
-		swal("Good job!", "You clicked the button!", "success");
-	};
- */	
- 
- 
- 
- 
-	/* 
-	function myFunction() {
-		
-		confirm("결제를 하시겠습니까?");
-	}
-	 */
+ */
+	
+	
 </script>
 
 </html>
