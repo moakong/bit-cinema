@@ -18,7 +18,9 @@
 			<div>
 				<c:forEach var="snack" items="${list}">
 				<a href ="DetailSnack?snackId=<c:out value='${snack.snackId}'/>">
-					<c:out value="${snack.name}"/></a><br>
+					<img width="200px" height="200px" src="<c:out value="${snack.img}"/>"/><br>
+				</a>	
+					<c:out value="${snack.name}"/><br>
 					<c:out value="${snack.price}"/><br>
 					<hr>
 				</c:forEach>
