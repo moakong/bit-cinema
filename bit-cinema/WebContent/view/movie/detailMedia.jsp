@@ -14,13 +14,18 @@
 	</div>
 		<div>
 			<div>
-				<c:out value="======여기에 영화포스터======" /><br>
+				<a href="<c:out value="${ photo.link }"/>" onclick="window.open(this.href, '_blank'); return false;">
+					<img src="<c:out value="${ photo.route }"/>" width="300px" height="400px"/>
+				</a><br>
 				<c:out value="${ movie.movieName }" /><br>
+				<c:out value="${ movie.engTitle }" /><br>
 				<fmt:formatDate value="${ movie.releaseDate }" pattern="yyyy-MM-dd"/><br>
-				<c:out value="${ movie.genre }" /><br>
+				<c:forEach var="g" items="${ genre }">
+					<c:out value="${ g }" /><br>
+				</c:forEach>
 				<c:out value="${ movie.runtime }" /><br>
 				<c:out value="${ movie.certificate }" /><br>
-				<c:out value="${ movie.storyline }" /><br><br>
+				<c:out value="${ movie.story }" /><br><br>
 				<button onclick="location.href='../reservation/selectArea?movieId=${movie.movieId}'" >예매하기</button>
 			</div>
 				<br><br>
@@ -33,13 +38,14 @@
 			</div>
 			
 			<div>
-				<!-- 여기에 내용 -->
-				<video width="320" height="240" controls>
-  					<source src="http://ent.cdn.videofarm.daum.net/vod/vdf9fMDMxk11KD41KMxV3hG/mp4_1280_720_2M/movie.mp4?px-time=1496637835&px-hash=dc0ea7e742ff38119ffc690bec601f30&px-bps=2761122&px-bufahead=10" type="video/mp4">
-				</video><br>
-				<video width="320" height="240" controls>
-  					<source src="http://movie.daum.net/moviedb/video?id=89871" type="video/mp4">
-				</video>
+				<c:forEach var="video" items="${ videos }">
+					<c:out value="${ video.name }" /><br>
+					<iframe width="320" height="240" src="${ video.route }" frameborder="0" allowfullscreen></iframe><br>
+				</c:forEach>
+				
+				<c:forEach var="p" items="${ photos }">
+					<img width="320" height="240" src="${ p }"/><br>
+				</c:forEach>
 				
 			</div>
 		</div>

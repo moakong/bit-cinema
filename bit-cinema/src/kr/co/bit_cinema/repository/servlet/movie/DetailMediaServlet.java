@@ -14,8 +14,9 @@ import org.apache.ibatis.session.SqlSession;
 
 import common.db.MyAppSqlConfig;
 import kr.co.bit_cinema.repository.mapper.MovieMapper;
-import kr.co.bit_cinema.repository.vo.MediaVO;
 import kr.co.bit_cinema.repository.vo.MovieVO;
+import kr.co.bit_cinema.repository.vo.PhotoVO;
+import kr.co.bit_cinema.repository.vo.VideoVO;
 
 @WebServlet("/movie/DetailMedia")
 public class DetailMediaServlet extends HttpServlet {
@@ -31,15 +32,24 @@ public class DetailMediaServlet extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int id = Integer.parseInt(request.getParameter("id"));
 		MovieVO movie = null;
-		List<MediaVO> medias = null;
+		List<String> genre = null;
+		PhotoVO photo = null;
+		List<VideoVO> videos = null;
+		List<String> photos = null;
 		try {
 			movie = mapper.infoMovie(id);
-			medias = mapper.selectMedia(id);
+			genre = mapper.infoGenre(id);
+			photo = mapper.selectThumbnail(id);
+			videos = mapper.selectVideo(id);
+			photos = mapper.selectPhoto(id);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		request.setAttribute("movie", movie);
-		request.setAttribute("medias", medias);
+		request.setAttribute("genre", genre);
+		request.setAttribute("photo", photo);
+		request.setAttribute("videos", videos);
+		request.setAttribute("photos", photos);
 		
 		RequestDispatcher rd = request.getRequestDispatcher("/view/movie/detailMedia.jsp");
 		rd.forward(request, response);

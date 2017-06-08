@@ -1,15 +1,18 @@
 package kr.co.bit_cinema.repository.vo;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class MovieVO {
 	private int movieId;
 	private String movieName;
+	private String engTitle;
 	private Date releaseDate;
 	private String runtime;
-	private String genre;
 	private String certificate;
-	private String storyline;
+	private String story;
+	//private List<String> genre = new ArrayList<>();
 	
 	public int getMovieId() {
 		return movieId;
@@ -23,6 +26,12 @@ public class MovieVO {
 	public void setMovieName(String movieName) {
 		this.movieName = movieName;
 	}
+	public String getEngTitle() {
+		return engTitle;
+	}
+	public void setEngTitle(String engTitle) {
+		this.engTitle = engTitle;
+	}
 	public Date getReleaseDate() {
 		return releaseDate;
 	}
@@ -35,23 +44,24 @@ public class MovieVO {
 	public void setRuntime(String runtime) {
 		this.runtime = runtime;
 	}
-	public String getGenre() {
-		return genre;
-	}
-	public void setGenre(String genre) {
-		this.genre = genre;
-	}
 	public String getCertificate() {
 		return certificate;
 	}
 	public void setCertificate(String certificate) {
 		this.certificate = certificate;
 	}
-	public String getStoryline() {
-		return storyline;
+	public String getStory() {
+		return story;
 	}
-	public void setStoryline(String storyline) {
-		this.storyline = storyline;
+	public void setStory(String story) {
+		this.story = story;
 	}
-	
+//	public List<String> getGenre() {
+//		return genre;
+//	}
+//	public void setGenre(List<String> genre) {
+//		this.genre = genre;
+//	}
+//		
 }
+

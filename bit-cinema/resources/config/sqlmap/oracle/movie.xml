@@ -3,14 +3,37 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 	
 <mapper namespace="kr.co.bit_cinema.repository.mapper.MovieMapper">
+	
+	<update id="loadMovie" parameterType="Movie">
+		update movies
+		   set eng_title = #{engTitle},
+			   release_date = #{releaseDate}, 
+			   runtime = #{runtime}, 
+			   certificate = #{certificate},
+			   story = #{story},
+			   flag = 1
+		 where movie_id = #{movieId}
+	</update>
+	
+	<insert id="loadGenre" parameterType="Genre">
+		insert into genres(movie_id, genre)
+		values(#{movieId}, #{genre})
+	</insert>
+	
+	<select id="selectTitle" resultType="Movie">
+		select movie_id as movieId, movie_name as movieName
+		  from movies
+		 where flag = 0
+	</select>
+
 	<resultMap id="movieMap" type="Movie">
 		<result column="movie_id" property="movieId"/>
 		<result column="movie_name" property="movieName"/>
+		<result column="eng_title" property="engTitle"/>
 		<result column="release_date" property="releaseDate"/>
 		<result column="runtime" property="runtime"/>
-		<result column="genre" property="genre"/>
 		<result column="certificate" property="certificate"/>
-		<result column="storyline" property="storyline"/>
+		<result column="story" property="story"/>
 	</resultMap>
 
 	
@@ -19,6 +42,13 @@
 		  from movies
 		 where movie_id = #{movieId}		
 	</select>
+	
+	<select id="infoGenre" parameterType="int" resultType="String">
+		select genre
+		  from genres
+		 where movie_id = #{movieId}
+	</select>
+	
 	
 	<resultMap id="orderMovie" type="Movie">
 		<result column="movie_id" property="movieId"/>
@@ -29,7 +59,7 @@
 		select *
 		  from movies, box_order
 		 where movies.MOVIE_ID = box_order.MOVIE_ID
-		 order by box_order.S_NUMBERS desc
+		 order by box_order.audience desc
 	</select>
 	
 	<select id="reserMovie" resultMap="orderMovie">
@@ -64,16 +94,23 @@
 		 order by type desc
 	</select>
 
-	<resultMap type="Media" id="mediaMap">
-		<result column="media_name" property="mediaName"/>
-		<result column="type" property="type"/>
-	</resultMap>
 	
-	<select id="selectMedia" parameterType="int" resultMap="mediaMap">
-		select *
-		  from medias
+	<select id="selectVideo" parameterType="int" resultType="Video">
+		select name, route
+		  from videos
 		 where movie_id = #{movieId}
 	</select>
 	
-	   
+	<select id="selectPhoto" parameterType="int" resultType="String">
+		select route
+		  from photos
+		 where movie_id = #{movieId}
+	</select>  
+	
+	<select id="selectThumbnail" parameterType="int" resultType="Photo">
+		select route, link
+		  from photos
+		 where movie_id = #{movieId} and
+		 	   type = 'thumbnail'
+	</select> 
 </mapper>
