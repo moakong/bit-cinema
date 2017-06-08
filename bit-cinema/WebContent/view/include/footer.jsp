@@ -1,4 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
-<hr>
-<h3>비트씨네마비트씨네마비트씨네머</h3>
+<footer id="footer" class="container-fluid text-center">
+  <p>Copyright © 2011-2017 by Bit Cinema. Inc. All rights reserved</p>
+</footer>
