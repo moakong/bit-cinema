@@ -118,10 +118,6 @@
   
   
   
-  <div>
-  	<a href="${pageContext.request.contextPath}/movie/DetailMovie?id=3">테스트</a>
-  <div>
-  
   
   
 <div class="container text-center">    
@@ -154,21 +150,21 @@
     </div>
     <div class="col-sm-3"> 
         <p><strong>1위</strong></p>
-        <a href="">
+        <a href="${pageContext.request.contextPath}/movie/DetailMovie?id=3">
       <img src="http://i.imgur.com/FCSuDEU.jpg" class="img-responsive" style="width:100%">
 <!--       <img src="../../img/main/boan.jpg" class="img-responsive" style="width:100%"> -->
       <p><strong>보안관</strong></p>  </a>  
     </div>
     <div class="col-sm-3"> 
         <p><strong>2위</strong></p>
-        <a href="">
+        <a href="${pageContext.request.contextPath}/movie/DetailMovie?id=2">
       <img src="http://i.imgur.com/GXqESzT.jpg" class="img-responsive" style="width:100%">
 <!--       <img src="../../img/main/Alien.jpg" class="img-responsive" style="width:100%"> -->
       <p><strong>에일리언:커버넌트</strong></p>   </a>   
     </div>
     <div class="col-sm-3"> 
         <p><strong>3위</strong></p>
-        <a href="">
+        <a href="${pageContext.request.contextPath}/movie/DetailMovie?id=1">
       <img src="http://i.imgur.com/5nDCXsE.jpg" class="img-responsive" style="width:100%">
 <!--       <img src="../../img/main/Guardians.jpg" class="img-responsive" style="width:100%"> -->
       <p><strong>가디언즈 오브 갤럭시</strong></p>    </a>   
