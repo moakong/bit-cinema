@@ -25,12 +25,24 @@
 		values(#{movieId}, #{route}, #{type})
 	</insert>
 	
-	<select id="selectTitle" resultType="Movie">
+	<select id="selectTitle" parameterType="int" resultType="Movie">
 		select movie_id as movieId, movie_name as movieName
 		  from movies
-		 where flag = 0
+		 where flag = #{flag}
 	</select>
 
+	<insert id="insertBox" parameterType="Box">
+		insert into box_order(movie_id, audience, audience_date)
+		values(#{movieId}, #{audience}, #{audienceDate})
+	</insert>
+	
+	<update id="updateBox" parameterType="Box">
+		update box_order
+		   set audience = #{audience},
+		       audience_date = #{audienceDate}
+		 where movie_id = #{movieId}
+	</update>
+	
 	<resultMap id="movieMap" type="Movie">
 		<result column="movie_id" property="movieId"/>
 		<result column="movie_name" property="movieName"/>

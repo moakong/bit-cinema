@@ -6,8 +6,10 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -22,6 +24,7 @@ import com.google.gson.Gson;
 
 import common.db.MyAppSqlConfig;
 import kr.co.bit_cinema.repository.mapper.MovieMapper;
+import kr.co.bit_cinema.repository.vo.BoxVO;
 import kr.co.bit_cinema.repository.vo.GenreVO;
 import kr.co.bit_cinema.repository.vo.MovieVO;
 import kr.co.bit_cinema.repository.vo.PhotoVO;
@@ -39,15 +42,12 @@ public class MovieServlet extends HttpServlet {
 
 	public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
-			List<MovieVO> mTitle = mapper.selectTitle();
-			System.out.println("ㅇㅇ?");
-			System.out.println(mTitle);
+			List<MovieVO> mTitle = mapper.selectTitle(0);
 			for (MovieVO m : mTitle) {
 				String path = "https://apis.daum.net/contents/movie";
 				String mn = URLEncoder.encode(m.getMovieName(), "utf-8");
 				String param = "?apikey=a6340862d94ed20d649c16aeef2ea7f9&&q=" + mn + "&output=json";
 				URL url = new URL(path + param);
-System.out.println(m.getMovieName());
 				InputStream in = url.openStream();
 				InputStreamReader isr = new InputStreamReader(in, "utf-8");
 				BufferedReader br = new BufferedReader(isr);
@@ -85,6 +85,20 @@ System.out.println(m.getMovieName());
 				MovieVO movie = new MovieVO();
 				movie.setMovieId(m.getMovieId());
 				movie.setEngTitle(engTitle.get(0).get(0).getContent());
+				SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd");
+				movie.setReleaseDate(sdf.parse(openInfo.get(0).get(0).getContent()));
+				movie.setCertificate(openInfo.get(0).get(1).getContent());
+				movie.setRuntime(openInfo.get(0).get(2).getContent());
+				movie.setStory(story.get(0).get(0).getContent());
+				PhotoVO photo = new PhotoVO();
+				photo.setMovieId(m.getMovieId());
+				photo.setRoute(thumbnail.get(0).get(0).getContent());
+				photo.setType("thumbnail");
+				BoxVO box = new BoxVO();
+				box.setMovieId(m.getMovieId());
+				box.setAudience(Integer.parseInt(audience.get(0).get(0).getContent()));
+				box.setAudienceDate(sdf.parse(audDate.get(0).get(0).getContent().replaceAll("-", ".")));
+				
 				//List<String> g = new ArrayList<>();
 				for (List<MovieGenre> mgs : genre) {
 					GenreVO g = new GenreVO();
@@ -96,25 +110,59 @@ System.out.println(m.getMovieName());
 					}
 				}
 				//movie.setGenre(g);
-				SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd");
-				movie.setReleaseDate(sdf.parse(openInfo.get(0).get(0).getContent()));
-				movie.setCertificate(openInfo.get(0).get(1).getContent());
-				movie.setRuntime(openInfo.get(0).get(2).getContent());
-				movie.setStory(story.get(0).get(0).getContent());
-				PhotoVO photo = new PhotoVO();
-				photo.setMovieId(m.getMovieId());
-				photo.setRoute(thumbnail.get(0).get(0).getContent());
-				photo.setType("thumbnail");
-				
 				mapper.loadMovie(movie);
 				mapper.loadThumb(photo);
+				mapper.insertBox(box);
 				session.commit();
 			}
 			
-			response.sendRedirect(request.getContextPath() + "/main/Main");
+			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+		
+		try{
+			List<MovieVO> mTitle = mapper.selectTitle(0);
+			
+			for (MovieVO m : mTitle) {
+				String path = "https://apis.daum.net/contents/movie";
+				String mn = URLEncoder.encode(m.getMovieName(), "utf-8");
+				String param = "?apikey=a6340862d94ed20d649c16aeef2ea7f9&&q=" + mn + "&output=json";
+				URL url = new URL(path + param);
+				InputStream in = url.openStream();
+				InputStreamReader isr = new InputStreamReader(in, "utf-8");
+				BufferedReader br = new BufferedReader(isr);
+				StringBuffer sb = new StringBuffer();
+				while (true) {
+					String line = br.readLine();
+					if (line == null)
+						break;
+					sb.append(line);
+				}
+
+				Movie movieGson = new Gson().fromJson(sb.toString(), Movie.class);
+				List<MovieItem> items = movieGson.getChannel().getItem();
+				List<List<Audience>> audience = new ArrayList<>();
+				List<List<AudienceDate>> audDate = new ArrayList<>();
+				List<Audience> t5 = items.get(0).getAudience();
+				List<AudienceDate> t6 = items.get(0).getAudience_date();
+				audience.add(t5);
+				audDate.add(t6);
+				SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd");
+				BoxVO box = new BoxVO();
+				box.setMovieId(m.getMovieId());
+				box.setAudience(Integer.parseInt(audience.get(0).get(0).getContent()));
+				box.setAudienceDate(sdf.parse(audDate.get(0).get(0).getContent().replaceAll("-", ".")));
+				mapper.updateBox(box);
+				session.commit();
+			}
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		
+		response.sendRedirect(request.getContextPath() + "/main/Main");
 	}
+	
 }

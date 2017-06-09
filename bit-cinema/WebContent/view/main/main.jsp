@@ -108,16 +108,7 @@
 					<c:out value="${ movie.movieName }"/></a>
 				</p>
 	</c:forEach>
-       <!-- <p><a href="">1위 보안관</a></p>
-       <p><a href="">2위 에일리언:커버넌트</a></p>
-       <p><a href="">3위 가디언즈 오브 갤럭시 </a></p> -->
-       <p><a href="">4위 노무현입니다</a></p>
-       <p><a href="">5위 대립군</a></p>
-       <p><a href="">6위 악녀</a></p>
-       <p><a href="">7위 겟 아웃</a></p>
-       <p><a href="">8위 박열</a></p>
-       <p><a href="">9위 나의 붉은 고래</a></p>
-       <p><a href="">10위 보스 베이비</a></p> 
+      
       </div>
     </div>
     <div class="col-sm-3"> 
