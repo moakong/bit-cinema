@@ -6,48 +6,22 @@
 <head>
   <title>BIT CINEMA</title>
   <meta charset="utf-8">
-  <!-- 
  
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    -->
   <style>
-  
-    /* Remove the navbar's default margin-bottom and rounded borders */ 
-    /* 
-    .navbar {
-      margin-bottom: 0;
-      border-radius: 0;
-      background-color: black;
-    }
-      .navbar-brand{
-          font-weight: bold;
-          color: white;
-      }
-      
-      #nav-font li a{
-          color: azure;
-      }
-      #brand{
-          color: white;
-      } */
-    /* Add a gray background color and some padding to the footer */
-    /* footer {
-      background-color: black;
-      padding: 10px;
-      color: azure;
-    }
-     
-    
-  .carousel-inner img {
-      width: 100%; 
-      margin: auto;
-      min-height:200px;
-  } */
+	  hr { 
+		  height: 30px; 
+		  border-style: solid; 
+		  border-color: #8c8b8b; 
+		  border-width: 1px 0 0 0; 
+		  border-radius: 20px; 
+	}     
 
-  /* Hide the carousel text when the screen is less than 600 pixels wide */
+	.category{
+		 font-weight: light;
+	}
+
+
+   /* Hide the carousel text when the screen is less than 600 pixels wide */
   @media (max-width: 600px) {
     .carousel-caption {
       display: none; 
@@ -115,15 +89,11 @@
     </a>
 </div>
   
-  <div>
-  	<a href="${pageContext.request.contextPath}/movie/DetailMovie?id=4">테스트</a>
-  </div>
   
   
-  
-  
-<div class="container text-center">    
-  <h3>Moive Ranking</h3><br>
+<div class="container text-center">
+<hr>    
+  <h3 class="category">[ 영화 랭킹 ]</h3><br>
   <div class="row">
     <div class="col-sm-3">
     <div class="btn-group btn-group-sm btn-block">
@@ -177,44 +147,31 @@
 
    
    
-  <div class="container text-center">   
+   <br><br><br>
+  <div class="container text-center">
+   <hr>
+    <h3 class="category">[ 예고편 ]</h3><br>
     <div class="row">
-            <div class="col-sm-3">
-      <div class="well">
-       <p>Some text..</p>
-      </div>
-      <div class="well">
-       <p>Some text..</p>
-      </div>
+    <div class="col-sm-3">
+     <iframe width="280" height="150" src="https://www.youtube.com/embed/5c-dva-4BMs" frameborder="0" allowfullscreen></iframe>
     </div>
     <div class="col-sm-3">
-      <div class="well">
-       <p>Some text..</p>
-      </div>
-      <div class="well">
-       <p>Some text..</p>
-      </div>
+       <iframe width="280" height="150" src="https://www.youtube.com/embed/P7lmmnZ18VQ" frameborder="0" allowfullscreen></iframe>
     </div>
     <div class="col-sm-3">
-      <div class="well">
-       <p>Some text..</p>
-      </div>
-      <div class="well">
-       <p>Some text..</p>
-      </div>
+       <iframe width="280" height="150" src="https://www.youtube.com/embed/SFGlghyeMuQ" frameborder="0" allowfullscreen></iframe>
     </div>
     <div class="col-sm-3">
-      <div class="well">
-       <p>Some text..</p>
-      </div>
-      <div class="well">
-       <p>Some text..</p>
-      </div>
-    </div>
+       <iframe width="280" height="150" src="https://www.youtube.com/embed/RL-qYJFaF7E" frameborder="0" allowfullscreen></iframe>
+    </div>  
     </div>
     </div>
 
 
+
+
+
+	<br><br><br><br><br><br>
 	<div>
 		<c:import url="/view/include/footer.jsp" />
 	</div>

@@ -10,6 +10,14 @@
 <title>비트시네마</title>
 <style>
     /* Remove the navbar's default margin-bottom and rounded borders */ 
+    hr { 
+  height: 30px; 
+  border-style: solid; 
+  border-color: #8c8b8b; 
+  border-width: 1px 0 0 0; 
+  border-radius: 20px; 
+}  
+
     .navbar {
       margin-bottom: 0;
       border-radius: 0;
@@ -49,7 +57,7 @@
 		
       	<c:choose>
 		 	<c:when test="${empty user}">
-	        <li><a href="${pageContext.request.contextPath}/member/LoginForm"><span class="glyphicon glyphicon-log-in"></span>로그인</a></li>
+	        <li><a href="${pageContext.request.contextPath}/member/LoginForm"><span class="glyphicon glyphicon-log-in"></span>&nbsp; 로그인</a></li>
 	      	</c:when> 			
 			<c:otherwise>
 	       	<li><a href="${pageContext.request.contextPath}/member/Logout"><span class="glyphicon glyphicon-log-in"></span>로그아웃</a></li>
