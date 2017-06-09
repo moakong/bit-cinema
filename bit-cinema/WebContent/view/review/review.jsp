@@ -15,35 +15,29 @@
 		</div>
 		<div>
 			<div>
-				<c:out value="======여기에 영화포스터======" />
-				<br>
-				<c:out value="${ movie.movieName }" />
-				<br>
-				<fmt:formatDate value="${ movie.releaseDate }" pattern="yyyy-MM-dd" />
-				<br>
-				<c:out value="${ movie.genre }" />
-				<br>
-				<c:out value="${ movie.runtime }" />
-				<br>
-				<c:out value="${ movie.certificate }" />
-				<br>
-				<c:out value="${ movie.storyline }" />
-				<br>
-				<br>
-				<button
-					onclick="location.href='../reservation/selectArea?movieId=${movie.movieId}'">예매하기</button>
+				<a href="<c:out value="${ photo }"/>" onclick="window.open(this.href, '_blank'); return false;">
+					<img src="<c:out value="${ photo }"/>" width="300px" height="400px"/>
+				</a><br>
+				<c:out value="${ movie.movieName }" /><br>
+				<c:out value="${ movie.engTitle }" /><br>
+				<fmt:formatDate value="${ movie.releaseDate }" pattern="yyyy-MM-dd"/><br>
+				<c:forEach var="g" items="${ genre }">
+					<c:out value="${ g }" /><br>
+				</c:forEach>
+				<c:out value="${ movie.runtime }" /><br>
+				<c:out value="${ movie.certificate }" /><br>
+				<c:out value="${ movie.story }" /><br><br>
+				<button onclick="location.href='../reservation/selectArea?movieId=${movie.movieId}'" >예매하기</button>
 			</div>
-			<br>
-			<br>
+				<br><br>
 			<div>
-				<a
-					href="${pageContext.request.contextPath}/movie/DetailMovie?id=<c:out value="${ movie.movieId }" />">주요정보</a>
-				<a href="${pageContext.request.contextPath}">감독/배우</a> <a
-					href="${pageContext.request.contextPath}">동영상</a> <a
-					href="${pageContext.request.contextPath}">평점</a> <a
-					href="${pageContext.request.contextPath}">리뷰</a>
-			</div><br><br>
-	
+				<a href="${pageContext.request.contextPath}/movie/DetailMovie?id=<c:out value="${ movie.movieId }" />">주요정보</a>
+				<a href="${pageContext.request.contextPath}/movie/DetailCast?id=<c:out value="${ movie.movieId }" />">감독  / 배우</a>
+				<a href="${pageContext.request.contextPath}/movie/DetailMedia?id=<c:out value="${ movie.movieId }" />">동영상 / 포토</a>
+				<a href="${pageContext.request.contextPath}">평점</a>
+				<a href="${pageContext.request.contextPath}/review/Review?id=<c:out value="${ movie.movieId }" />"/>리뷰</a>
+			</div>
+
 			<div>
 				<!-- 여기에 내용 -->
 				<a href="${pageContext.request.contextPath}/writeform?mid=${ movie.movieId }">리뷰쓰기</a>
@@ -68,8 +62,6 @@
 				</c:forEach>
 
 				</table>
-				
-				
 				
 			</div>
 		</div>
