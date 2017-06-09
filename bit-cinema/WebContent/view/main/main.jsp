@@ -134,6 +134,67 @@
     </div>
 
   </div>
+  
+  
+  
+  <div class="container">
+    <button type="button" class="btn btn-default colBtn" data-toggle="collapse" data-target="#demo">
+      <span class="glyphicon glyphicon-collapse-down"></span> 더보기 
+    </button>
+    
+  <div id="demo" class="collapse">
+    <div class="col-sm-2"> 
+        <p><strong>4위</strong></p>
+        <a href="">
+      <img src="http://i.imgur.com/5nDCXsE.jpg" class="img-responsive" style="width:100%">
+      <p><strong>보안관</strong></p>  </a>  
+    </div>
+    <div class="col-sm-2"> 
+        <p><strong>5위</strong></p>
+        <a href="">
+      <img src="http://i.imgur.com/5nDCXsE.jpg" class="img-responsive" style="width:100%">
+      <p><strong>에일리언:커버넌트</strong></p>   </a>   
+    </div>
+    <div class="col-sm-2"> 
+        <p><strong>6위</strong></p>
+        <a href="">
+      <img src="http://i.imgur.com/5nDCXsE.jpg" class="img-responsive" style="width:100%">
+      <p><strong>가디언즈 오브 갤럭시</strong></p>    </a>   
+    </div>
+     <div class="col-sm-2"> 
+        <p><strong>7위</strong></p>
+        <a href="">
+      <img src="http://i.imgur.com/5nDCXsE.jpg" class="img-responsive" style="width:100%">
+      <p><strong>보안관</strong></p>  </a>  
+    </div>
+    <div class="col-sm-2"> 
+        <p><strong>8위</strong></p>
+        <a href="">
+      <img src="http://i.imgur.com/5nDCXsE.jpg" class="img-responsive" style="width:100%">
+      <p><strong>에일리언:커버넌트</strong></p>   </a>   
+    </div>
+    <div class="col-sm-2"> 
+        <p><strong>9위</strong></p>
+        <a href="">
+      <img src="http://i.imgur.com/5nDCXsE.jpg" class="img-responsive" style="width:100%">
+      <p><strong>가디언즈 오브 갤럭시</strong></p>    </a>   
+    </div>
+  </div>
+</div>
+
+<script>
+$(document).ready(function(){
+  $("#demo").on("hide.bs.collapse", function(){
+    $(".colBtn").html('<span class="glyphicon glyphicon-collapse-down"></span> 더보기');
+  });
+  $("#demo").on("show.bs.collapse", function(){
+    $(".colBtn").html('<span class="glyphicon glyphicon-collapse-up"></span> 닫기');
+  });
+});
+</script>
+  
+  
+  
 </div><br>
 
    
