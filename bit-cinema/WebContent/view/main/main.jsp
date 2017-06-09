@@ -4,15 +4,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
   <title>BIT CINEMA</title>
   <meta charset="utf-8">
+  <!-- 
+ 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    -->
   <style>
+  
     /* Remove the navbar's default margin-bottom and rounded borders */ 
+    /* 
     .navbar {
       margin-bottom: 0;
       border-radius: 0;
@@ -28,9 +32,9 @@
       }
       #brand{
           color: white;
-      }
+      } */
     /* Add a gray background color and some padding to the footer */
-    footer {
+    /* footer {
       background-color: black;
       padding: 10px;
       color: azure;
@@ -38,10 +42,10 @@
      
     
   .carousel-inner img {
-      width: 100%; /* Set width to 100% */
+      width: 100%; 
       margin: auto;
       min-height:200px;
-  }
+  } */
 
   /* Hide the carousel text when the screen is less than 600 pixels wide */
   @media (max-width: 600px) {
@@ -72,7 +76,8 @@
     <!-- Wrapper for slides -->
     <div class="carousel-inner" role="listbox">
       <div class="item active">
-        <img src="../../img/main/1-1.jpg" alt="Image">
+        <!-- <img src="http://i.imgur.com/01wULU2.jpg" alt="Image"> -->
+        <img src="/bit-cinema/img/main/1-1.jpg" alt="Image">
         <div class="carousel-caption">
           <h3>불한당</h3>
           <p>범죄조직의 1인자를 노리는 재호와 세상 무서운 것 없는 패기 넘치는 신참 현수는
@@ -81,7 +86,8 @@
       </div>
 
       <div class="item">
-        <img src="../../img/main/army.jpg" alt="Image">
+        <img src="http://i.imgur.com/XaIfdSN.jpg" alt="Image">
+<!--         <img src="../../img/main/army.jpg" alt="Image"> -->
         <div class="carousel-caption">
           <h3>대립군</h3>
           <p>1592년 임진왜란이 발발하자, 선조는 어린 ‘광해’(여진구)에게 조정을 나눈 ‘분조’를 맡기고 의주로 피란한다.  </p>
@@ -89,7 +95,7 @@
       </div>
     
    <div class="item">
-        <img src="../../img/main/2.jpg" alt="Image">
+        <img src="http://i.imgur.com/uQV6Si4.jpg" alt="Image">
         <div class="carousel-caption">
           <h3>캐리비안의 해적: 죽은 자는 말이 없다</h3>
           <p>전설적인 해적 캡틴 ‘잭 스패로우’의 눈 앞에 죽음마저 집어삼킨 바다의 학살자 
@@ -149,19 +155,22 @@
     <div class="col-sm-3"> 
         <p><strong>1위</strong></p>
         <a href="">
-      <img src="../../img/main/boan.jpg" class="img-responsive" style="width:100%">
+      <img src="http://i.imgur.com/FCSuDEU.jpg" class="img-responsive" style="width:100%">
+<!--       <img src="../../img/main/boan.jpg" class="img-responsive" style="width:100%"> -->
       <p><strong>보안관</strong></p>  </a>  
     </div>
     <div class="col-sm-3"> 
         <p><strong>2위</strong></p>
         <a href="">
-      <img src="../../img/main/Alien.jpg" class="img-responsive" style="width:100%">
+      <img src="http://i.imgur.com/GXqESzT.jpg" class="img-responsive" style="width:100%">
+<!--       <img src="../../img/main/Alien.jpg" class="img-responsive" style="width:100%"> -->
       <p><strong>에일리언:커버넌트</strong></p>   </a>   
     </div>
     <div class="col-sm-3"> 
         <p><strong>3위</strong></p>
         <a href="">
-      <img src="../../img/main/Guardians.jpg" class="img-responsive" style="width:100%">
+      <img src="http://i.imgur.com/5nDCXsE.jpg" class="img-responsive" style="width:100%">
+<!--       <img src="../../img/main/Guardians.jpg" class="img-responsive" style="width:100%"> -->
       <p><strong>가디언즈 오브 갤럭시</strong></p>    </a>   
     </div>
 

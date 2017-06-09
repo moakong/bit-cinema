@@ -1,6 +1,34 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<title>비트시네마</title>
+<style>
+    /* Remove the navbar's default margin-bottom and rounded borders */ 
+    .navbar {
+      margin-bottom: 0;
+      border-radius: 0;
+      background-color: black;
+    }
+      .navbar-brand{
+          font-weight: bold;
+          color: white;
+      }
+      
+      #nav-font li a{
+          color: azure;
+      }
+      #brand{
+          color: white;
+      }
+</style>
+      
+</head>
 
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
@@ -32,3 +60,4 @@
   </div>
 </nav>
 
+</html>
