@@ -13,6 +13,7 @@ public interface MovieMapper {
 	public List<MovieVO> selectTitle() throws Exception;
 	public void loadMovie(MovieVO movie) throws Exception;
 	public void loadGenre(GenreVO genre) throws Exception;
+	public void loadThumb(PhotoVO photo) throws Exception;
 	
 	public MovieVO infoMovie(int movieId) throws Exception;
 	public List<String> infoGenre(int movieId) throws Exception;
@@ -22,5 +23,5 @@ public interface MovieMapper {
 	public List<ActorVO> selectActor(int movieId) throws Exception;
 	public List<VideoVO> selectVideo(int movieId) throws Exception;
 	public List<String> selectPhoto(int movieId) throws Exception;
-	public PhotoVO selectThumbnail(int movieId) throws Exception;
+	public String selectThumbnail(int movieId) throws Exception;
 }

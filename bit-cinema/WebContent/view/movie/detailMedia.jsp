@@ -14,8 +14,8 @@
 	</div>
 		<div>
 			<div>
-				<a href="<c:out value="${ photo.link }"/>" onclick="window.open(this.href, '_blank'); return false;">
-					<img src="<c:out value="${ photo.route }"/>" width="300px" height="400px"/>
+				<a href="<c:out value="${ photo }"/>" onclick="window.open(this.href, '_blank'); return false;">
+					<img src="<c:out value="${ photo }"/>" width="300px" height="400px"/>
 				</a><br>
 				<c:out value="${ movie.movieName }" /><br>
 				<c:out value="${ movie.engTitle }" /><br>

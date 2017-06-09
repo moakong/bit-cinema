@@ -33,7 +33,7 @@ public class DetailMediaServlet extends HttpServlet {
 		int id = Integer.parseInt(request.getParameter("id"));
 		MovieVO movie = null;
 		List<String> genre = null;
-		PhotoVO photo = null;
+		String photo = null;
 		List<VideoVO> videos = null;
 		List<String> photos = null;
 		try {

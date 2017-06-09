@@ -20,6 +20,11 @@
 		values(#{movieId}, #{genre})
 	</insert>
 	
+	<insert id="loadThumb" parameterType="Photo">
+		insert into photos(movie_id, route, type)
+		values(#{movieId}, #{route}, #{type})
+	</insert>
+	
 	<select id="selectTitle" resultType="Movie">
 		select movie_id as movieId, movie_name as movieName
 		  from movies
@@ -107,8 +112,8 @@
 		 where movie_id = #{movieId}
 	</select>  
 	
-	<select id="selectThumbnail" parameterType="int" resultType="Photo">
-		select route, link
+	<select id="selectThumbnail" parameterType="int" resultType="String">
+		select route
 		  from photos
 		 where movie_id = #{movieId} and
 		 	   type = 'thumbnail'

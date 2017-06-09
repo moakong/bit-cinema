@@ -115,7 +115,9 @@
     </a>
 </div>
   
-  
+  <div>
+  	<a href="${pageContext.request.contextPath}/movie/DetailMovie?id=4">테스트</a>
+  </div>
   
   
   

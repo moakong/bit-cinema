@@ -35,7 +35,7 @@ public class DetailMovieServlet extends HttpServlet {
 		int id = Integer.parseInt(request.getParameter("id"));
 		MovieVO movie = null;
 		List<String> genre = null;
-		PhotoVO photo = null;
+		String photo = null;
 		List<DirectorVO> directors = null;
 		List<ActorVO> actors = null;
 		try {

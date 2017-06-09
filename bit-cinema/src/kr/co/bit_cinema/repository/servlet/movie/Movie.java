@@ -68,7 +68,7 @@ class AudienceDate {
 
 class Thumbnail {
 	private String content;
-
+	
 	public String getContent() {
 		return content;
 	}
@@ -76,7 +76,7 @@ class Thumbnail {
 	public void setContent(String content) {
 		this.content = content;
 	}
-	
+
 }
 
 class EngTitle {
