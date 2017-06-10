@@ -1,10 +1,8 @@
 package kr.co.bit_cinema.repository.servlet.reservation;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -16,8 +14,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.ibatis.session.SqlSession;
-
-import com.google.gson.Gson;
 
 import common.db.MyAppSqlConfig;
 import kr.co.bit_cinema.repository.mapper.ReservationMapper;
@@ -37,11 +33,11 @@ public class SelectTimeServlet extends HttpServlet {
 	
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// String year = request.getParameter("year") + " / "; // 안넘어옴. 직접 얻자
-		Calendar c = Calendar.getInstance();
-		String date = c.get(Calendar.YEAR) + " / " + request.getParameter("date");
-		System.out.println("date : " + date); // 콘솔 확인용
+		String year = request.getParameter("year") + " / ";
+		String date = year + request.getParameter("date");
+		System.out.println("date : " + date);
 		
+		// 아래 두 개는 아직 넘어오게 처리 안함!
 		int theaterId = Integer.parseInt(request.getParameter("theaterId"));
 		int movieId = Integer.parseInt(request.getParameter("movieId"));
 		
@@ -52,7 +48,7 @@ public class SelectTimeServlet extends HttpServlet {
 		List<SchduleVO> list = null;
 		try {
 			startDate = sdf.parse(date); // 문자형식으로 넘어온 날짜 Date형식으로 형변환
-			System.out.println(startDate); // 콘솔 확인용
+			System.out.println(startDate); 
 			
 			sch.setTheaterId(theaterId);
 			sch.setMovieId(movieId);
@@ -65,28 +61,11 @@ public class SelectTimeServlet extends HttpServlet {
 		
 		
 		
+		request.setAttribute("list", list);
+		RequestDispatcher rd = request.getRequestDispatcher("/view/reservation/selectTime.jsp");
+		rd.forward(request, response);
 		
-		String data = new Gson().toJson(list);
-		System.out.println("!!!스케쥴test!!!\n" + data);// 콘솔 확인용
-
-		response.setCharacterEncoding("UTF-8"); 
-		PrintWriter out = response.getWriter();
-		out.println(data);
-		out.close();
 		
-//		request.setAttribute("list", list);
-//		RequestDispatcher rd = request.getRequestDispatcher("/view/reservation/selectTime.jsp");
-//		rd.forward(request, response);
 	}
 	
 }
-
-
-
-
-
-
-
-
-
-

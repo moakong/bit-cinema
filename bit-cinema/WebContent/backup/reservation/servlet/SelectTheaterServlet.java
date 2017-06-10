@@ -1,7 +1,6 @@
 package kr.co.bit_cinema.repository.servlet.reservation;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -12,8 +11,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.ibatis.session.SqlSession;
-
-import com.google.gson.Gson;
 
 import common.db.MyAppSqlConfig;
 import kr.co.bit_cinema.repository.mapper.ReservationMapper;
@@ -33,8 +30,7 @@ public class SelectTheaterServlet extends HttpServlet {
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// reservation/selectTheater?area=2
-		System.out.println("movieId : " + Integer.parseInt(request.getParameter("movieId"))); // test!!
-		System.out.println("area : " + Integer.parseInt(request.getParameter("area"))); // test!!
+		//System.out.println(Integer.parseInt(request.getParameter("movieId"))); // test!!
 		
 		TheaterVO t = new TheaterVO();
 		t.setLocationId(Integer.parseInt(request.getParameter("area")));
@@ -47,20 +43,19 @@ public class SelectTheaterServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 		
+		// 테스트
+		System.out.println("극장 이름 테스트===");
+		for(TheaterVO tt : list) {
+			System.out.println(tt.getTheaterName());
+		}
 		
 		
+		request.setAttribute("movieId", request.getParameter("movieId"));
+		request.setAttribute("list", list);
+		RequestDispatcher rd = request.getRequestDispatcher("/view/reservation/selectTheater.jsp");
+		rd.forward(request, response);
 		
 		
-		
-		String data = new Gson().toJson(list);
-		System.out.println("!!!극장test!!!");
-		System.out.println(data);// 콘솔 확인용
-
-
-		response.setCharacterEncoding("UTF-8"); 
-		PrintWriter out = response.getWriter();
-		out.println(data); 
-		out.close();
 	}
 	
 	

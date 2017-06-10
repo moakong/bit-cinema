@@ -1,7 +1,6 @@
 package kr.co.bit_cinema.repository.servlet.reservation;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -13,68 +12,45 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.ibatis.session.SqlSession;
 
-import com.google.gson.Gson;
-
 import common.db.MyAppSqlConfig;
 import kr.co.bit_cinema.repository.mapper.ReservationMapper;
 import kr.co.bit_cinema.repository.vo.reservation.TheaterVO;
 
-@WebServlet("/reservation/selectTheater")
-public class SelectTheaterServlet extends HttpServlet {
+@WebServlet("/reservation/selectArea")
+public class SelectAreaServlet extends HttpServlet {
 	
 	SqlSession session;
 	ReservationMapper mapper;
 	
-	public SelectTheaterServlet() {
+	public SelectAreaServlet() {
 		session = MyAppSqlConfig.getSqlSessionInstance();
 		mapper = session.getMapper(ReservationMapper.class);
 	}
-
+	
+	
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// reservation/selectTheater?area=2
-		System.out.println("movieId : " + Integer.parseInt(request.getParameter("movieId"))); // test!!
-		System.out.println("area : " + Integer.parseInt(request.getParameter("area"))); // test!!
-		
-		TheaterVO t = new TheaterVO();
-		t.setLocationId(Integer.parseInt(request.getParameter("area")));
-		t.setMovieId(Integer.parseInt(request.getParameter("movieId")));
-		
+		int movieId = Integer.parseInt(request.getParameter("movieId"));
+				
 		List<TheaterVO> list = null;
+		
 		try {
-			list = mapper.selectTheater(t);
+			list = mapper.selectArea(movieId); 
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		
+		System.out.println("!!!지역test!!!");
+		System.out.println(list);
 		
-		
-		
-		
-		
-		String data = new Gson().toJson(list);
-		System.out.println("!!!극장test!!!");
-		System.out.println(data);// 콘솔 확인용
-
-
-		response.setCharacterEncoding("UTF-8"); 
-		PrintWriter out = response.getWriter();
-		out.println(data); 
-		out.close();
+		request.setAttribute("movieId", movieId);
+		request.setAttribute("list", list);
+		RequestDispatcher rd = request.getRequestDispatcher("/view/reservation/selectArea.jsp");
+		rd.forward(request, response);
 	}
-	
+
 	
 }
-
-
-
-
-
-
-
-
-
-
 
 
 

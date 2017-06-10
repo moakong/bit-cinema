@@ -1,7 +1,6 @@
 package kr.co.bit_cinema.repository.servlet.reservation;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -10,22 +9,21 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.session.SqlSession;
 
-import com.google.gson.Gson;
-
 import common.db.MyAppSqlConfig;
 import kr.co.bit_cinema.repository.mapper.ReservationMapper;
-import kr.co.bit_cinema.repository.vo.reservation.TheaterVO;
+import kr.co.bit_cinema.repository.vo.MemberVO;
+import kr.co.bit_cinema.repository.vo.reservation.ReservationVO;
 
-@WebServlet("/reservation/selectArea")
-public class SelectAreaServlet extends HttpServlet {
-	
+@WebServlet("/reservation/checkCancelledR")
+public class CheckCancelledServlet extends HttpServlet {
 	SqlSession session;
 	ReservationMapper mapper;
 	
-	public SelectAreaServlet() {
+	public CheckCancelledServlet() {
 		session = MyAppSqlConfig.getSqlSessionInstance();
 		mapper = session.getMapper(ReservationMapper.class);
 	}
@@ -33,36 +31,30 @@ public class SelectAreaServlet extends HttpServlet {
 	
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int movieId = Integer.parseInt(request.getParameter("movieId"));
-		System.out.println("movieID : " + movieId); // 확인용
+		HttpSession hSession = request.getSession();
+		MemberVO member = (MemberVO)hSession.getAttribute("user");
+		System.out.println("검색 아이디 : " + member.getMemberId());
 		
-		
-		List<TheaterVO> list = null;
+		List<ReservationVO> list = null;
 		
 		try {
-			list = mapper.selectArea(movieId); 
+			list = mapper.checkCancelledReservations(member.getMemberId());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		
-		String data = new Gson().toJson(list);
-		System.out.println("!!!지역test!!!");
-		System.out.println(data);// 콘솔 확인용
-
-
-		// 안해주면 json내용을 println을 통해웹으로 보낼 때 한글 깨짐
-		response.setCharacterEncoding("UTF-8"); 
-		PrintWriter out = response.getWriter();
-		out.println(data); 
-		out.close();
+		
+		for(ReservationVO e : list){
+			System.out.println("예매번호 : " + e.getReservationId())  ;
+		}
 		
 		
+		request.setAttribute("list", list);
+		RequestDispatcher rd = request.getRequestDispatcher("/view/reservation/checkCancelledR.jsp");
+		rd.forward(request, response);
 	}
 
 	
+	
+	
 }
-
-
-
-
-
