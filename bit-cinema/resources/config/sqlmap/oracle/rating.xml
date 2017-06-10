@@ -1,9 +1,181 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 	
+<!-- mapper : sql 작성 (DAO 데이터 베이스 조작 = mapper)-->
+
+<!-- namespace : 패키지 이름 + 클래스 이름 -->
 <mapper namespace="kr.co.bit_cinema.repository.mapper.RatingMapper">
-<!-- 여기부터 입력! -->
+	<!-- id : 필수 -->
+	<!-- resultType : VO 의 alias -->
 	
-	   
+	
+	<!-- 
+	
+	rating_no, content, reg_date, rating, spoiler, member_id, movie_id
+	
+	
+	 -->
+	 
+	 <!-- 
+	 
+	 public RatingVO selectRatingNo(int no) throws Exception;
+	  -->
+	 
+	
+	
+	 
+	
+	<!-- resultMap 사용 -->
+	<resultMap id="ratingMap" type="Rating">
+		<result column="rating_no" property="ratingNo"/>
+		<result column="content" property="content"/>
+		<result column="reg_date" property="regDate"/>
+		<result column="rating" property="rating"/>
+		<result column="spoiler" property="spoiler"/>
+		<result column="member_id" property="memberId"/>
+		<result column="movie_id" property="movieId"/>
+		<result column="nickname" property="nickname"/>
+		
+	</resultMap>
+	
+	
+	
+	
+
+	<!-- 상세 보기 -->
+	<!--  
+	<select id="selectOneRating" parameterType="int" resultType="Rating">
+	
+	select *
+	from ratings
+	where rating_no = #{rating_no}
+	</select>
+	-->
+	
+	<!--  기본 최신순 -->
+	<!-- 최신순 -->
+	<select id="selectNewRating" parameterType="int" resultMap="ratingMap">
+	
+	select *
+	from ratings
+	where movie_id = #{movieId}
+	order by reg_date desc
+	</select>
+	
+	<!-- 평점순 낮은순 -->
+	<select id="selectLowRating" parameterType="int" resultMap="ratingMap">
+	
+	select *
+	from ratings
+	where movie_id = #{movieId}
+	order by avg(rating) asc
+	</select>
+	
+	<!-- 평점순 높은순 -->
+	<select id="selectHighRating" parameterType="int" resultMap="ratingMap">
+	
+	select *
+	from ratings
+	where movie_id = #{movieId}
+	order by avg(rating) desc
+	</select>
+	
+	<!-- 
+	스포 있음 1
+	스포 없음 0
+	
+	 -->
+	 
+	<!-- 스포있는 것 제외 > 최신순 -->
+	<select id="selectNspoRating" resultMap="ratingMap">
+	
+	select *
+	from ratings
+	where spoiler == 0
+	order by reg_date desc
+	</select>
+	
+	
+	
+	
+	<!-- 
+		rating_no
+		
+	member_id
+	movie_id
+	
+	content
+	rating
+	spoiler 
+	reg_date
+	
+	 -->
+
+<!-- 
+	<insert id="insertRating" parameterType="Rating">
+	
+	INSERT INTO ratings (
+		rating_no, content, reg_date, rating, spoiler, member_id, movie_id)
+	values (
+		s_ratings_rating_no.nextval, #{content}, sysdate, #{rating}, #{spoiler}, #{memberId}, #{movieId})
+	</insert>
+	 -->
+	
+	<!--  
+	<insert id="insertRating" parameterType="Rating">
+	
+	
+	INSERT INTO ratings (
+		rating_no, content, reg_date, rating, spoiler, member_id, movie_id)
+	values (
+		#{ratingNo}, #{content}, sysdate, #{rating}, #{spoiler}, #{memberId}, #{movieId})
+	SELECT member_id 
+	FROM members, ratings 
+	WHERE members.member_id = ratings.member_id
+	</insert>
+	-->
+	
+	
+	<select id="selectRatingByNo" parameterType="int" resultMap="ratingMap">
+	
+	select *
+	from ratings
+	where rating_no = #{ratingNo}
+	</select>
+	
+	
+	<insert id="insertRating" parameterType="Rating">
+	
+	insert into ratings(rating_no, content, reg_date, rating, spoiler, member_id, movie_id, nickname)
+	values (#{ratingNo}, #{content}, sysdate, #{rating}, #{spoiler}, #{memberId}, #{movieId}, #{nickname})
+	</insert>
+    
+     
+     
+    <update id="updateRating" parameterType="Rating">
+    update ratings
+       set content = #{content}, rating = #{rating}
+     where rating_no = #{ratingNo}
+    
+    </update>
+    
+    <delete id="deleteRating" parameterType="int">
+    
+    delete 
+      from ratings
+     where rating_no = #{ratingNo} 
+    
+    </delete>
+    
+   <!--  
+    <select id="userChk" resultMap="ratingMap">
+	
+	select *
+	from ratings
+	order by reg_date desc
+	</select>
+    -->
+    
+    
 </mapper>

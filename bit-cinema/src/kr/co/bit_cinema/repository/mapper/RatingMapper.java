@@ -1,5 +1,20 @@
 package kr.co.bit_cinema.repository.mapper;
 
-public class RatingMapper {
+import java.util.List;
+import kr.co.bit_cinema.repository.vo.RatingVO;
+
+
+
+public interface RatingMapper {
+	
+	public List<RatingVO> selectNewRating(int id) throws Exception;
+	public List<RatingVO> selectLowRating(int id) throws Exception;
+	public List<RatingVO> selectHighRating(int id) throws Exception;
+	
+	public List<RatingVO> selectRatingByNo(int no) throws Exception;
+	
+	public void insertRating(RatingVO ratingVO) throws Exception;
+	public void updateRating(RatingVO ratingVO) throws Exception;
+	public void deleteRating(int no) throws Exception;
 
 }
