@@ -9,20 +9,23 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <title>비트시네마</title>
 <style>
+	    hr { 
+	  height: 30px; 
+	  border-style: solid; 
+	  border-color: #8c8b8b; 
+	  border-width: 1px 0 0 0; 
+	  border-radius: 20px; 
+	}  
+	
     /* Remove the navbar's default margin-bottom and rounded borders */ 
-    hr { 
-  height: 30px; 
-  border-style: solid; 
-  border-color: #8c8b8b; 
-  border-width: 1px 0 0 0; 
-  border-radius: 20px; 
-}  
-
     .navbar {
       margin-bottom: 0;
       border-radius: 0;
       background-color: black;
     }
+    
+    body { padding-top: 50px; }
+    
       .navbar-brand{
           font-weight: bold;
           color: white;
@@ -34,6 +37,7 @@
       #brand{
           color: white;
       }
+      
 </style>
       
 </head>
