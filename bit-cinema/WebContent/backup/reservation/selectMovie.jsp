@@ -19,113 +19,59 @@
 	input:checked + label {
 	    background: ;
 	}
-	
-	
- 	.container{
-          padding-top: 50px;
-          padding-bottom: 100px;
-      }
-    /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
-    .row.content {height: 450px}
-    
-    /* Set gray background color and 100% height */
-    .sidenav {
-      padding-top: 10px;
-      background-color: ;
-      height: 100%;
-    }
 
-    
-    
-    /* On small screens, set height to 'auto' for sidenav and grid */
-    @media screen and (max-width: 767px) {
-      .sidenav {
-        height: auto;
-        padding: 15px;
-      }
-      .row.content {height:auto;} 
-    }
-      
-    
-    
-      
 </style>
 </head>
 <body>
-
-
+<div>
 	<div>
 		<c:import url="/view/include/topMenu.jsp" />
 	</div>	
 
-
-
-
-
-
-<div class="container">    
-  <div class="row content" >
-   
-   
-   
-    <div class="col-sm-3 sidenav well">
-      <h3>영화 </h3>
-		 <div class="btn-group btn-group-sm btn-block">
-	  		<button type="button" class="btn btn-default col-sm-5" onclick="location.href='selectMovie?order=name'">이름순</button>
-	  		<button type="button" class="btn btn-default col-sm-5" onclick="location.href='selectMovie?order=reservation'">예매순</button><br><br>
-		</div>
+	<div>
+		<h2>영화 선택</h2>
+		<hr>
 		
+		<a href="selectMovie?order=name">이름순</a> 
+		<a href="selectMovie?order=reservation">예매순</a> <br><br>
 		
 		<form id="selectMovie">
 			<c:forEach var="movie" items="${list}">
 			<input type="radio" name="movieId" value="${movie.movieId}" id="${movie.movieId}" /><label for="${movie.movieId}">${movie.movieName}</label><br>
 			</c:forEach>
 		</form>
-    </div>
-    
-    
-    
-    <div class="col-sm-2 sidenav well">
-	    <div id="selectArea"> 
-	    </div>
-	    
-	     <div id="selectTheater">
-   		 </div>
-    </div>
-    
-    
-    
-    
-    <div class="col-sm-2 sidenav well" id="selectDate">
-    </div>
-    
-    
-    
-    
-    <div class="col-sm-3 sidenav well" id="selectTime">
-    </div>
-    
-    
-    
-    
-    
-    <div class="col-sm-2 sidenav well" id="selectPeople">
-    </div>
-    
-    
-    </div>
-</div>
-    
-    
-    
-    
-    
+	</div>
+
+
+
+	<div id="selectArea"></div>
+
+
+	<div id="selectTheater"></div>
+
+
+	<div id="selectDate"></div>
+
+
+	<div id="selectTime"></div>
+
+
+	<div id="selectPeople"></div>
+
+
+	<div id="selectSeat"></div>
+
+
+
+	
 	<div>
 		<c:import url="/view/include/footer.jsp" />
 	</div>	
-    
-    
-    
+</div>
+
+
+
+
 	<script type="text/javascript">
 	var movieId;
 	var theaterId;
@@ -137,7 +83,7 @@
 			movieId = $("#selectMovie input[name='movieId']:checked").val();
 			//console.log("movieId : ", movieId); // test
 			
-			$("#selectArea").html("<h3>지역</h3><form id='selectAreaForm' ></form>");
+			$("#selectArea").html("<h2>지역 선택</h2><hr><form id='selectAreaForm' ></form>");
 			
 			var params = $("#selectMovie").serialize();
 			//console.log("params : ", params); // test
@@ -171,7 +117,7 @@
 		//console.log("areaId : ", areaId); // test
 		//console.log("movieId : ", movieId); // test
 		
-		$("#selectTheater").html("<hr><h3>극장</h3><form id='selectTheaterForm' ></form>");
+		$("#selectTheater").html("<h2>극장 선택</h2><hr><form id='selectTheaterForm' ></form>");
 		
 //		var params = $("#selectAreaForm").serialize(); // 왜 안되지?
 		var params = "area=" + areaId;
@@ -206,7 +152,7 @@
 		theaterId = $("#selectTheaterForm input[name='theaterId']:checked").val();
 		//console.log("theaterId : ", theaterId); // test
 		
-		$("#selectDate").html("<h3>날짜</h3><form id='selectDateForm' ></form>");
+		$("#selectDate").html("<h2>날짜 선택</h2><hr><form id='selectDateForm' ></form>");
 		
 		//var params = "theaterId=" + theaterId + "&movieId=" + movieId;
 		//console.log("params : ", params); // test
@@ -237,7 +183,7 @@
 		date = $("#selectDateForm input[name='date']:checked").val();
 		//console.log("date : ", date); // test
 		
-		$("#selectTime").html("<h3>시간</h3><form id='selectTimeForm' ></form>");
+		$("#selectTime").html("<h2>시간 선택</h2><hr><form id='selectTimeForm' ></form>");
 		
 		var params = "theaterId=" + theaterId + "&movieId=" + movieId + "&date=" + date;
 		//console.log("params : ", params); // test
@@ -274,16 +220,16 @@
 		schId = $("#selectTimeForm input[name='time']:checked").val();
 		console.log("schId : ", schId); // test
 		
-		$("#selectPeople").html("<h3>인원</h3><form id='selectPeopleForm' action='selectSeat' ></form>");
+		$("#selectPeople").html("<h2>인원 선택</h2><hr><form id='selectPeopleForm' action='selectSeat' ></form>");
 		
 
 		var output = "";
-		for(var i = 1; i < 11; i++){
+		for(var i = 0; i < 10; i++){
 			output += '<input type="radio" name="people" value="' + i + '" id="' + i + '" /><label for="' + i + '">' + i + '</label><br>';						
 		}
 		
 		output += '<input type="hidden" name="schNo" value="' + schId + '" >';
-		output += '<br><br><button class="btn btn-primary">좌석 선택</button>';
+		output += "<br><br><button>좌석 선택</button>";
 		$("#selectPeopleForm").html(output);
 		
 	});
