@@ -1,6 +1,7 @@
 package kr.co.bit_cinema.repository.servlet.member;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -13,7 +14,6 @@ import org.apache.ibatis.session.SqlSession;
 
 import common.db.MyAppSqlConfig;
 import kr.co.bit_cinema.repository.mapper.MemberMapper;
-import kr.co.bit_cinema.repository.vo.MemberVO;
 
 @WebServlet("/member/IdCheck")
 public class IdCheckServlet extends HttpServlet {
@@ -28,26 +28,20 @@ public class IdCheckServlet extends HttpServlet {
 	
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		response.setContentType("text/html; charset=utf-8");
 		String id = request.getParameter("id");
-		boolean idch;
+
 		try{
 			String name = mapper.checkId(id);
 			
+			PrintWriter out = response.getWriter();
 			if(name != null){
-				request.setAttribute("msg", "이미 사용중인 아이디입니다.");
-				id = "";
-				idch = false;
+				out.println("이미 사용중인 아이디입니다.");
 			}else{
-				request.setAttribute("msg", "사용가능한 아이디입니다.");
-				idch = true;
+				out.println("사용 가능한 아이디입니다.");
 			}
 			
-			request.setAttribute("id", id);
-			request.setAttribute("idch", idch);
-			
-			RequestDispatcher rd = request.getRequestDispatcher("/view/member/idCheck.jsp");
-			rd.forward(request, response);
-		
+			out.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

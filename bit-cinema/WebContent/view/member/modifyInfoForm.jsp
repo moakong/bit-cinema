@@ -16,14 +16,17 @@
 				<c:import url="/view/include/mypageMenu.jsp" />
 			</div>
 			<div>
-				<form id="modifyForm" action="ModifyInfo" method="post" onsubmit="return check()">
+				<form id="modifyForm" name="modify" action="ModifyInfo" method="post" onsubmit="return check()">
 					<img id="img" src="${ member.profile }" width="100" height="100"/><br>
 					<button type="button" onclick="uploadProfile(1).doNotSubmit();" >이미지 변경</button>
 					<button type="button" onclick="uploadProfile(0).doNotSubmit();" >기본 이미지로 변경</button><br>
 					<input type="hidden" id="profile" name="profile" value="${ member.profile }"/>
 					아이디 <c:out value="${ member.memberId }" /><br> 
-					비밀번호 <input type="password" name="pass" /><br> 
-					비밀번호 확인 <input type="password" name="pass2" /><br> 
+					영문자와 숫자조합으로 8~12글자를 입력하세요.<br>
+					비밀번호  <input type="password" id="pass" name="pass" maxlength="12" onkeydown="patternCheck();"/>
+					<div id="checkPass"></div>
+					비밀번호 확인 <input type="password" id="pass2" name="pass2" maxlength="12" onkeyup="checkPass();"/>
+					<div id="checkPassMsg"></div>
 					이름 <c:out value="${ member.name }" /><br> 
 					별명 <input type="text" name="nickname" value="${ member.nickname }" /><br> 
 					이메일 <input type="text" name="email" value="${ member.email }" /></br>
@@ -38,6 +41,54 @@
 		</div>
 	</div>
 	<script>
+		var passFirst = false;
+		var passKeyword = '';
+		var loopSendPass = false;
+		
+		function patternCheck(){
+			if(passFirst == false){
+				setTimeout("sendPass();", 100);
+				loopSendPass = true;
+			}
+			passFirst = true;
+		}
+		
+		
+		function sendPass(){
+			if (loopSendPass == false) return;	  
+			var keyword = document.modify.pass.value;
+			if (keyword != passKeyword) {
+				passKeyword = keyword;
+			   
+			   	if (keyword != '') {
+			   		$.ajax({
+						url : "${pageContext.request.contextPath}/member/PwdCheck",
+						type : "POST",
+						data : "pass=" + keyword,
+						success : function(data){
+// 							$("#checkPass"). style = "color:blue";
+							$("#checkPass").html(data);
+						}
+					});
+			   	} else {
+			   	}
+			}
+			setTimeout("sendPass();", 100);
+		}
+		
+		function checkPass(){
+			var pw1 = document.modify.pass.value;
+			var pw2 = document.modify.pass2.value;
+			if(pw1!=pw2){
+// 				$("#checkPassMsg").style = "color:red";
+				$("#checkPassMsg").html("비밀번호가 일치하지 않습니다."); 		
+			}else{
+// 				$("#checkPassMsg").style = "color:blue";
+				$("#checkPassMsg").html("비밀번호가 일치합니다."); 
+			}
+	 
+		}
+	
 		function withdraw(form){
 			if(form.pass.value == ""){
 				alert("비밀번호를 입력하세요");

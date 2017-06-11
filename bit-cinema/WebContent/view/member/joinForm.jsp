@@ -5,6 +5,7 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<title>Insert title here</title>
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 	</head>
 	<body>
 	<div>
@@ -12,12 +13,14 @@
 			<c:import url="/view/include/topMenu.jsp" />
 		</div>	
 		<div>
-			<form id="joinForm" action="Join" method="post" onsubmit="return check()">
-				아이디  <input id="id" type="text" name="id"/>
-				<input type="button" onclick="overlapCheck(this.form);" value="중복확인"/><br>
-				<input type="hidden" id="idch" value=""/>
-				비밀번호  <input type="password" name="pass" /><br>
-				비밀번호 확인 <input type="password" name="pass2"/><br>
+			<form id="joinForm" name="join" action="Join" method="post" onsubmit="return check()">
+				아이디  <input id="id" type="text" name="id" onkeydown="checkId();" />
+				<div id="checkIdMsg"></div>
+				영문자와 숫자조합으로 8~12글자를 입력하세요.<br>
+				비밀번호  <input type="password" id="pass" name="pass" maxlength="12" onkeydown="patternCheck();"/>
+				<div id="checkPass"></div>
+				비밀번호 확인 <input type="password" id="pass2" name="pass2" maxlength="12" onkeyup="checkPass();"/>
+				<div id="checkPassMsg"></div>
 				이름  <input type="text" name="name"/><br>
 				별명 <input type="text" name="nickname"/><br>
 				이메일  <input type="text" name="email"/><br>
@@ -31,25 +34,88 @@
 	</div>
 	
 	<script>
-	function overlapCheck(form){
-		if(form.id.value == ""){
-			alert("아이디를 입력하세요.");
-			form.id.focus();
-			return false;
+	var idFirst = false;
+	var passFirst = false;
+	var idKeyword = '';
+	var passKeyword = '';
+	var loopSendId = false;
+	var loopSendPass = false;
+	function checkId(){
+		if(idFirst == false){
+			setTimeout("sendId();", 100);
+			loopSendId = true;
 		}
-		window.open(
-			"${pageContext.request.contextPath}/member/IdCheck?id=" + form.id.value, 
-			"아이디 중복확인",
-			"width=400, height=300"
-		);
+		idFirst = true;
 	}
 	
-	function doResult(idValue, flag){
-		var id = document.querySelector("#id");
-		id.value = idValue;
-		
-		var idch = document.querySelector("#idch");
-		idch.setAttribute("value", flag);
+	function sendId(){
+		if (loopSendId == false) return;	  
+		var keyword = document.join.id.value;
+		if (keyword != idKeyword) {
+			idKeyword = keyword;
+		   
+		   	if (keyword != '') {
+		   		$.ajax({
+					url : "${pageContext.request.contextPath}/member/IdCheck",
+					type : "POST",
+					data : "id=" + keyword,
+					success : function(data){
+// 						if(data.indexOf("가능") != -1)
+// 							$("#checkIdMsg"). style = "color:blue";
+// 						else 
+// 							$("#checkIdMsg").style = "color:red";
+						$("#checkIdMsg").html(data);
+					}
+				});
+		   	} else {
+		   	}
+		}
+		setTimeout("sendId();", 100);		
+	}
+	
+	
+	function patternCheck(){
+		if(passFirst == false){
+			setTimeout("sendPass();", 100);
+			loopSendPass = true;
+		}
+		passFirst = true;
+	}
+	
+	
+	function sendPass(){
+		if (loopSendPass == false) return;	  
+		var keyword = document.join.pass.value;
+		if (keyword != passKeyword) {
+			passKeyword = keyword;
+		   
+		   	if (keyword != '') {
+		   		$.ajax({
+					url : "${pageContext.request.contextPath}/member/PwdCheck",
+					type : "POST",
+					data : "pass=" + keyword,
+					success : function(data){
+// 						$("#checkPass"). style = "color:blue";
+						$("#checkPass").html(data);
+					}
+				});
+		   	} else {
+		   	}
+		}
+		setTimeout("sendPass();", 100);
+	}
+	
+	function checkPass(){
+		var pw1 = document.join.pass.value;
+		var pw2 = document.join.pass2.value;
+		if(pw1!=pw2){
+// 			$("#checkPassMsg").style = "color:red";
+			$("#checkPassMsg").html("비밀번호가 일치하지 않습니다."); 		
+		}else{
+// 			$("#checkPassMsg").style = "color:blue";
+			$("#checkPassMsg").html("비밀번호가 일치합니다."); 
+		}
+ 
 	}
 	
 	function check(){
@@ -58,8 +124,10 @@
 			joinForm.id.focus();
 			return false;
 		}
-		else if(joinForm.idch.value != 1){
-			alert("아이디 중복확인을 해주세요.");
+		else if($("#checkIdMsg").html().eaqul("이미 사용중인 아이디입니다.")){
+			alert("아이디를 다시 입력해주세요.");
+			joinForm.id.value = "";
+			joinForm.id.focus();
 			return false;
 		}
 		else if(joinForm.pass.value == ""){
