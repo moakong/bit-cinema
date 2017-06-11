@@ -30,10 +30,12 @@ public class ListCartServlet extends HttpServlet {
 
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
+		HttpSession session = request.getSession();
+		MemberVO member = (MemberVO)session.getAttribute("user");
+		
 		List<CartVO> list = null;
 		try {
-			list = mapper.selectCart();
+			list = mapper.selectCart(member.getMemberId());
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

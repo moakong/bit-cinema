@@ -1,6 +1,7 @@
 package kr.co.bit_cinema.repository.servlet.order;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -15,44 +16,54 @@ import org.apache.ibatis.session.SqlSession;
 
 import common.db.MyAppSqlConfig;
 import kr.co.bit_cinema.repository.mapper.OrderMapper;
+import kr.co.bit_cinema.repository.vo.CartToOrderVO;
+import kr.co.bit_cinema.repository.vo.CartVO;
 import kr.co.bit_cinema.repository.vo.MemberVO;
-import kr.co.bit_cinema.repository.vo.OrderVO;
 
-@WebServlet("/order/ListOrder")
-public class ListOrderServlet extends HttpServlet {
+@WebServlet("/order/PaySnack")
+public class PaySnackServlet extends HttpServlet {
+
 	private SqlSession sqlSession = null;
 	private OrderMapper mapper = null;
 
-	public ListOrderServlet() {
+	public PaySnackServlet() {
 		sqlSession = MyAppSqlConfig.getSqlSessionInstance();
 		mapper = sqlSession.getMapper(OrderMapper.class);
 	}
-
+	
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+	
 		HttpSession session = request.getSession();
 		MemberVO member = (MemberVO)session.getAttribute("user");
-		
-		List<OrderVO> list = null;
+		List<CartToOrderVO> list = new ArrayList<>();
+		int totalCount = 0;
 		try {
-				list = mapper.listOrder(member.getMemberId());
-//			SnackVO snack = null;
-//			int sn = Integer.parseInt(request.getParameter("snackId"));
-//			int count = Integer.parseInt(request.getParameter("count"));
-//			snack = smapper.detailSnack(sn);
-//			request.setAttribute("price", snack.getPrice()*count);
-//			request.setAttribute("count", count);
-//			request.setAttribute("snack", snack);
+			CartVO cart = new CartVO();
+			cart.setMemberId(member.getMemberId());
+			String[] carts = request.getParameterValues("checkCart");
+			for (String s : carts) {
+				int sId = Integer.parseInt(s);
+				cart.setSnackId(sId);
+				list.add(mapper.selectCart(cart));
+			}
+			for(int i = 0; i < list.size(); i++){
+				int amount = list.get(i).getPrice() * list.get(i).getCount();
+				list.get(i).setAmount(amount);
+				totalCount += amount;
+			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
+		request.setAttribute("cartList", list);
+		request.setAttribute("totalCount", totalCount);
 		
-		request.setAttribute("orderList", list);
-		
-		RequestDispatcher rd = request.getRequestDispatcher("/view/order/listOrder.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("/view/order/payment.jsp");
 		rd.forward(request, response);
+
 	}
+
 }

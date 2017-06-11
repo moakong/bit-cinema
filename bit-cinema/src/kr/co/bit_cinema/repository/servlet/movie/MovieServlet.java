@@ -24,10 +24,10 @@ import com.google.gson.Gson;
 
 import common.db.MyAppSqlConfig;
 import kr.co.bit_cinema.repository.mapper.MovieMapper;
-import kr.co.bit_cinema.repository.vo.BoxVO;
-import kr.co.bit_cinema.repository.vo.GenreVO;
-import kr.co.bit_cinema.repository.vo.MovieVO;
-import kr.co.bit_cinema.repository.vo.PhotoVO;
+import kr.co.bit_cinema.repository.vo.movie.BoxVO;
+import kr.co.bit_cinema.repository.vo.movie.GenreVO;
+import kr.co.bit_cinema.repository.vo.movie.MovieVO;
+import kr.co.bit_cinema.repository.vo.movie.PhotoVO;
 
 @WebServlet("/movie/LoadMovie")
 public class MovieServlet extends HttpServlet {

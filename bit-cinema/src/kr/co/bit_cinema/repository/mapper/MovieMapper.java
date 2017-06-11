@@ -2,13 +2,13 @@ package kr.co.bit_cinema.repository.mapper;
 
 import java.util.List;
 
-import kr.co.bit_cinema.repository.vo.ActorVO;
-import kr.co.bit_cinema.repository.vo.BoxVO;
-import kr.co.bit_cinema.repository.vo.DirectorVO;
-import kr.co.bit_cinema.repository.vo.GenreVO;
-import kr.co.bit_cinema.repository.vo.MovieVO;
-import kr.co.bit_cinema.repository.vo.PhotoVO;
-import kr.co.bit_cinema.repository.vo.VideoVO;
+import kr.co.bit_cinema.repository.vo.movie.ActorVO;
+import kr.co.bit_cinema.repository.vo.movie.BoxVO;
+import kr.co.bit_cinema.repository.vo.movie.DirectorVO;
+import kr.co.bit_cinema.repository.vo.movie.GenreVO;
+import kr.co.bit_cinema.repository.vo.movie.MovieVO;
+import kr.co.bit_cinema.repository.vo.movie.PhotoVO;
+import kr.co.bit_cinema.repository.vo.movie.VideoVO;
 
 public interface MovieMapper {
 	public List<MovieVO> selectTitle(int flag) throws Exception;

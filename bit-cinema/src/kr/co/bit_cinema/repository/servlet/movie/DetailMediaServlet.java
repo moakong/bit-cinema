@@ -14,9 +14,9 @@ import org.apache.ibatis.session.SqlSession;
 
 import common.db.MyAppSqlConfig;
 import kr.co.bit_cinema.repository.mapper.MovieMapper;
-import kr.co.bit_cinema.repository.vo.MovieVO;
-import kr.co.bit_cinema.repository.vo.PhotoVO;
-import kr.co.bit_cinema.repository.vo.VideoVO;
+import kr.co.bit_cinema.repository.vo.movie.MovieVO;
+import kr.co.bit_cinema.repository.vo.movie.PhotoVO;
+import kr.co.bit_cinema.repository.vo.movie.VideoVO;
 
 @WebServlet("/movie/DetailMedia")
 public class DetailMediaServlet extends HttpServlet {

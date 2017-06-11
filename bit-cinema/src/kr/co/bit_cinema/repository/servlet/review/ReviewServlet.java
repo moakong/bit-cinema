@@ -15,8 +15,8 @@ import org.apache.ibatis.session.SqlSession;
 import common.db.MyAppSqlConfig;
 import kr.co.bit_cinema.repository.mapper.MovieMapper;
 import kr.co.bit_cinema.repository.mapper.ReviewMapper;
-import kr.co.bit_cinema.repository.vo.MovieVO;
 import kr.co.bit_cinema.repository.vo.ReviewVO;
+import kr.co.bit_cinema.repository.vo.movie.MovieVO;
 @WebServlet("/review/Review")
 public class ReviewServlet extends HttpServlet{
 	SqlSession session ;

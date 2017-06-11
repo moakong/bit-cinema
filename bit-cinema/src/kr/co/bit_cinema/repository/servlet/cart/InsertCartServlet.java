@@ -32,14 +32,21 @@ public class InsertCartServlet extends HttpServlet {
 
 			String sId = request.getParameter("snackId");
 			
-			CartVO curCart = null;
 			// 장바구니에 넣기 버튼으로 넘어 온 거
 			if (sId != null) {
 				int snackId = Integer.parseInt(sId);
 				int count = Integer.parseInt(request.getParameter("count"));
 				
+				HttpSession session = request.getSession();
+				MemberVO member = (MemberVO)session.getAttribute("user");
+				
+				CartVO param = new CartVO();
+				param.setMemberId(member.getMemberId());
+				param.setSnackId(snackId);
+				
+				CartVO curCart = null;
 				try {
-					curCart = mapper.selectOneCart(snackId);
+					curCart = mapper.selectOneCart(param);
 					// 장바구니에 상품이 있으니 update
 					if (curCart != null){
 						curCart.setCount(curCart.getCount() + count);
@@ -50,8 +57,6 @@ public class InsertCartServlet extends HttpServlet {
 					else {
 						CartVO cart = new CartVO();
 						
-						HttpSession session = request.getSession();
-						MemberVO member = (MemberVO)session.getAttribute("user");
 						cart.setMemberId(member.getMemberId());
 						cart.setSnackId(snackId);
 						cart.setCount(count);
@@ -66,7 +71,6 @@ public class InsertCartServlet extends HttpServlet {
 			}
 			
 			String go = request.getParameter("gocart");
-			System.out.println(go);
 			if (go.equals("go")){
 				RequestDispatcher rd = request.getRequestDispatcher("ListCart");
 				rd.forward(request, response);

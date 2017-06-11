@@ -3,47 +3,36 @@ package kr.co.bit_cinema.repository.vo;
 import java.sql.Date;
 
 public class OrderVO {	
-	private String name;
-	private String img;
-	private int orderId;
-	private String snackId;
-	private Date limitDate;
-	private int count;
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
-	}
-	public int getOrderId() {
+	private String orderId;
+	private String memberId;
+	private Date orderDate;
+	private int amount;
+	
+	
+	public String getOrderId() {
 		return orderId;
 	}
-	public void setOrderId(int orderId) {
+	public void setOrderId(String orderId) {
 		this.orderId = orderId;
 	}
-	public String getSnackId() {
-		return snackId;
+	public String getMemberId() {
+		return memberId;
 	}
-	public void setSnackId(String snackId) {
-		this.snackId = snackId;
+	public void setMemberId(String memberId) {
+		this.memberId = memberId;
 	}
-	public Date getLimitDate() {
-		return limitDate;
+	public Date getOrderDate() {
+		return orderDate;
 	}
-	public void setLimitDate(Date limitDate) {
-		this.limitDate = limitDate;
+	public void setOrderDate(Date orderDate) {
+		this.orderDate = orderDate;
 	}
-	public int getCount() {
-		return count;
+	public int getAmount() {
+		return amount;
 	}
-	public void setCount(int count) {
-		this.count = count;
+	public void setAmount(int amount) {
+		this.amount = amount;
 	}
-	public String getImg() {
-		return img;
-	}
-	public void setImg(String img) {
-		this.img = img;
-	}
+
 	
 }

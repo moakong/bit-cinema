@@ -20,24 +20,38 @@
 	</div>	
 
 	<div>
-		<h2>결제 방법 선택</h2>
-		<hr>
+		<div>
+			<c:import url="/view/include/mypageMenu.jsp" />
+		</div>
+		<div>
+			<form id="payForm" action="InsertOrder" method="post">
+				전체 상품명 수량 단가 가격<br>
+				<c:forEach var="cart" items="${cartList}">
+					<input type="hidden" name="snackId" value="${cart.snackId}"/>
+					<a href="${pageContext.request.contextPath}/snack/DetailSnack?snackId=<c:out value="${cart.snackId}"/>">
+						<img width="50px" height="50px" src="<c:out value="${cart.img}"/>"/></a>
+					<c:out value="${cart.name}" />
+					<c:out value="${cart.price}" />						
+					<c:out value="${cart.count}" />
+					<c:out value="${cart.amount}" />
+					<br>
+				</c:forEach>
+				<hr>
+				<h3>총 주문 금액 : <input type="" readonly name="totalCount" value="${ totalCount }" /></h3>
+				<br><br>
+				결제 방법 선택
+				<hr>
+				<input type="radio" name="payment" value="account" id="1" /><label for="1">계좌이체</label><br>
+				<input type="radio" name="payment" value="credit" id="2" /><label for="2">신용/체크카드</label><br>
+				<input type="radio" name="payment" value="kakao" id="3" /><label for="3">Kakao Pay</label><br>
+				<input type="radio" name="payment" value="payco" id="4" /><label for="4">PAYCO</label><br>
+				<input type="radio" name="payment" value="mobile" id="5" /><label for="5">휴대폰 소액 결제</label><br>
+				<br><br>
+				
+				<input type="button" onclick="confirmPay()" value="결제하기" >
+			</form>
+		</div>
 		
-		<form id="payForm" action="finish" >
-			<input type="hidden" name="schNo" value="${schNo}">
-			<c:forEach var="s" items="${seats}">
-				<input type="hidden" name="seat" value="${s}">
-			</c:forEach>
-			
-			<input type="radio" name="payment" value="account" id="1" /><label for="1">계좌이체</label><br>
-			<input type="radio" name="payment" value="credit" id="2" /><label for="2">신용/체크카드</label><br>
-			<input type="radio" name="payment" value="kakao" id="3" /><label for="3">Kakao Pay</label><br>
-			<input type="radio" name="payment" value="payco" id="4" /><label for="4">PAYCO</label><br>
-			<input type="radio" name="payment" value="mobile" id="5" /><label for="5">휴대폰 소액 결제</label><br>
-			<br><br>
-			
-			<input type="button" onclick="confirmPay()" value="결제하기" >
-		</form>
 	</div>
 	
 	<div>
@@ -51,7 +65,7 @@
 <script>
 
 
-function confirmPay() {
+/* function confirmPay() {
 	
 	swal({
 		  title: "결제하시겠습니까?",
@@ -91,10 +105,9 @@ function confirmPay() {
 		});
 	
 	
-	}
+	} */
 
 
-/* 
 	function confirmPay(){
 		if (confirm('결제하시겠습니까?') == true){  
 			alert("결제가 완료되었습니다.")
@@ -103,7 +116,7 @@ function confirmPay() {
 		    return;
 		}
 	} 
- */
+ 
 	
 	
 </script>

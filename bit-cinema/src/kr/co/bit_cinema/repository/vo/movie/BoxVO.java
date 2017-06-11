@@ -1,4 +1,4 @@
-package kr.co.bit_cinema.repository.vo;
+package kr.co.bit_cinema.repository.vo.movie;
 
 import java.util.Date;
 

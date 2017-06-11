@@ -29,8 +29,8 @@ public class DetailOrderServlet extends HttpServlet{
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		List<OrderVO> list = null;
 		try {
-			list = mapper.OrderSelect();
-			System.out.println(list);
+//			list = mapper.OrderSelect();
+//			System.out.println(list);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

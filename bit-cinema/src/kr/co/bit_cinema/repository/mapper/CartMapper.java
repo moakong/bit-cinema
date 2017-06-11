@@ -7,9 +7,8 @@ import kr.co.bit_cinema.repository.vo.SnackVO;
 
 public interface CartMapper {
 	public void insertCart(CartVO snack) throws Exception;
-	public List<CartVO> selectCart() throws Exception;
-	public CartVO selectOneCart(int no) throws Exception;
+	public List<CartVO> selectCart(String memberId) throws Exception;
+	public CartVO selectOneCart(CartVO snack) throws Exception;
 	public int updateCart(CartVO snack) throws Exception;
-	public int deleteCart(int no) throws Exception;
-	public CartVO selectOrder(int no) throws Exception;
+	public int deleteCart(CartVO snack) throws Exception;
 }

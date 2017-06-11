@@ -1,4 +1,4 @@
-package kr.co.bit_cinema.repository.vo;
+package kr.co.bit_cinema.repository.vo.movie;
 
 public class VideoVO {
 	private int movieId;

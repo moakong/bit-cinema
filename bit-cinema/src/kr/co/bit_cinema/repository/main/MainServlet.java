@@ -14,7 +14,7 @@ import org.apache.ibatis.session.SqlSession;
 
 import common.db.MyAppSqlConfig;
 import kr.co.bit_cinema.repository.mapper.MovieMapper;
-import kr.co.bit_cinema.repository.vo.MovieVO;
+import kr.co.bit_cinema.repository.vo.movie.MovieVO;
 
 @WebServlet("/main/Main")
 public class MainServlet extends HttpServlet {

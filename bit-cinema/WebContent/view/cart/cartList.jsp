@@ -49,7 +49,7 @@ function changeChk() {
 }
 
 function buy() {
-			document.cart.action = "${pageContext.request.contextPath}/order/ListOrder";
+			document.cart.action = "${pageContext.request.contextPath}/order/PaySnack";
 			document.cart.submit(); 					
 }
 </script>
