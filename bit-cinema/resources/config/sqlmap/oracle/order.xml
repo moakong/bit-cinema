@@ -3,6 +3,17 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="kr.co.bit_cinema.repository.mapper.OrderMapper">
-
-	
+	<select id="OrderSelect" resultMap="orderMap">
+		select *
+		from orders_detail, snacks 
+		where orders_detail.snack_id = snacks.snack_id
+	</select>
+	<resultMap type="Order" id="orderMap">
+		<result column="name" property="name"/>
+		<result column="order_id" property="orderId"/>
+		<result column="img" property="img"/>
+		<result column="snack_id" property="snackId"/>
+		<result column="count" property="count"/>
+		<result column="limit_date" property="limitDate"/>
+	</resultMap>
 </mapper>

@@ -9,7 +9,7 @@
 		<a href="${pageContext.request.contextPath}/cart/ListCart">스토어 장바구니</a>
 	</li>
 	<li>
-		<a href="${pageContext.request.contextPath}/order/ListOrder">스토어 구매내역</a>
+		<a href="${pageContext.request.contextPath}/order/detailOrder">스토어 구매내역</a>
 	</li>
 	<li>
 		<a href="${pageContext.request.contextPath}/member/ModifyInfoForm">개인정보변경</a>

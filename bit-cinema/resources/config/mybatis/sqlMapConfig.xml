@@ -22,6 +22,7 @@
 		<typeAlias alias="Snack" type="kr.co.bit_cinema.repository.vo.SnackVO" /> 	
 		<typeAlias alias="Seat" type="kr.co.bit_cinema.repository.vo.reservation.SeatVO" /> 	
 		<typeAlias alias="Reservation" type="kr.co.bit_cinema.repository.vo.reservation.ReservationVO" /> 	
+		<typeAlias alias="Order" type="kr.co.bit_cinema.repository.vo.OrderVO" /> 	
 	</typeAliases>
 	
 	<environments default="development">
@@ -46,5 +47,6 @@
 		<mapper resource="config/sqlmap/oracle/cart.xml"/>
 		<mapper resource="config/sqlmap/oracle/member.xml"/>
 		<mapper resource="config/sqlmap/oracle/reservation.xml"/>
+		<mapper resource="config/sqlmap/oracle/order.xml"/>
 	</mappers>
 </configuration>

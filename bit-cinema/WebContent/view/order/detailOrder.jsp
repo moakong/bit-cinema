@@ -14,7 +14,14 @@
 		
 		<div>
 		</div>
-		
+			<c:forEach var="order" items="${list}">
+				<img width="100px" height="100px" src="<c:out value="${order.img}"/>"/>
+				<c:out value="${order.name}"/>
+				<c:out value="${order.count}"/>개
+				<c:out value="${order.limitDate}"/>
+				<input type="button" value="환불하기"/>
+				
+			</c:forEach>		
 		<div>
 			<c:import url="/view/include/footer.jsp" />
 		</div>

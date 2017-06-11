@@ -48,4 +48,12 @@
 		<result column="snack_id" property="snackId"/>
 		<result column="count" property="count"/>
 	</resultMap>
+	
+	<!-- 주문내역에서 -->
+	<select id="selectOrder" parameterType="int" resultMap="cartMap">
+		select *
+		from carts, snacks
+		where carts.snack_id = snacks.snack_id 
+			and carts.snack_id = #{snackId}
+	</select>
 </mapper>
