@@ -24,6 +24,7 @@ public interface MovieMapper {
 	public List<MovieVO> reserMovie() throws Exception;
 	public List<DirectorVO> selectDirector(int movieId) throws Exception;
 	public List<ActorVO> selectActor(int movieId) throws Exception;
+	public List<ActorVO> selectLeadActor(int movieId) throws Exception;
 	public List<VideoVO> selectVideo(int movieId) throws Exception;
 	public List<String> selectPhoto(int movieId) throws Exception;
 	public String selectThumbnail(int movieId) throws Exception;

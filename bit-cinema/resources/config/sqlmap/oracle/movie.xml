@@ -111,6 +111,12 @@
 		 order by type desc
 	</select>
 
+	<select id="selectLeadActor" parameterType="int" resultMap="actorMap">
+		select *
+		  from casts
+		 where movie_id = #{movieId}
+		 		and type = '주연'
+	</select>
 	
 	<select id="selectVideo" parameterType="int" resultType="Video">
 		select name, route

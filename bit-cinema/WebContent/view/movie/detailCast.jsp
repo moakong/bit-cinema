@@ -40,7 +40,7 @@
 			<div>
 				<h2>감독</h2>
 				<c:forEach var="director" items="${ directors }">
-					<c:out value="======프로필이미지======" /><br>
+					<img width="180" height="240" src="${ director.profile }"/><br>
 					감독 <br>
 					<c:out value="${ director.directorName }" /><br>
 				</c:forEach>
@@ -48,7 +48,7 @@
 				
 				<h2>배우</h2>
 				<c:forEach var="actor" items="${ actors }">
-					<img width="320" height="240" src="http://t1.search.daumcdn.net/thumb/R438x0.q85/?fname=http%3A%2F%2Fcfile79.uf.daum.net%2Fimage%2F273B565051A55DDB2E41A6"/><br>
+					<img width="180" height="240" src="${ actor.profile }"/><br>
 					<c:out value="${ actor.type }" /><br>
 					<c:out value="${ actor.castName }" /><br>
 					<c:out value="${ actor.actorName }" /><br>

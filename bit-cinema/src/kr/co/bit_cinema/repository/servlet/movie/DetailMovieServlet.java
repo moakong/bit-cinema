@@ -43,7 +43,7 @@ public class DetailMovieServlet extends HttpServlet {
 			genre = mapper.infoGenre(id);
 			photo = mapper.selectThumbnail(id);
 			directors = mapper.selectDirector(id);
-			actors = mapper.selectActor(id);
+			actors = mapper.selectLeadActor(id);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

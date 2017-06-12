@@ -44,7 +44,7 @@
 				</c:forEach>
 				
 				<c:forEach var="p" items="${ photos }">
-					<img width="320" height="240" src="${ p }"/><br>
+					<img width="180" height="240" src="${ p }"/><br><br>
 				</c:forEach>
 				
 			</div>
