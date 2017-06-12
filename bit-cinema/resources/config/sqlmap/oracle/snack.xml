@@ -21,10 +21,14 @@
 
 	<!-- 베스트스낵 -->
 	<select id="bestSnack" resultMap="listMap">
-		select * 
+		select * from (select ss.snack_id, img, name, price
 		from snack_sales ss, snacks s
 		where ss.snack_id = s.snack_id
-		order by ss.sales_total desc
+		order by ss.sales_total desc) where rownum between 1 and 5 
+		<!-- select * 
+		from snack_sales ss, snacks s
+		where ss.snack_id = s.snack_id
+		order by ss.sales_total desc -->
 	</select>
 
 
