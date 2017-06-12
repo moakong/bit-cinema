@@ -9,6 +9,8 @@ public interface ReviewMapper {
 	public List<ReviewVO> listReview(int id) throws Exception;
 	public ReviewVO detailReview(int id) throws Exception;
 	public void insertReview(ReviewVO vo) throws Exception;
+	public void deleteReview(int no) throws Exception;
+	public void updateReview(ReviewVO vo) throws Exception;
 
 	
 }

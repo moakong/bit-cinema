@@ -37,6 +37,8 @@
 		</table>
 
 <a href="${pageContext.request.contextPath}/review/Review?id=${review.movieId}">되돌아가기</a>
+<a href="${pageContext.request.contextPath}/review/delete?no=${review.reviewNo}&id=${review.movieId}">삭제하기</a>
+<a href="${pageContext.request.contextPath}/review/updateform?no=${review.reviewNo}&id=${review.movieId}">수정하기</a>
 
 </body>
 </html>

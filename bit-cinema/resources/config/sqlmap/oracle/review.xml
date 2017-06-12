@@ -37,13 +37,21 @@
 	
 	<insert id="insertReview" parameterType="Review"  >
 	insert into reviews(REVIEW_NO,TITLE,CONTENT,SPOILER,READ_COUNT,RECOM_COUNT,MEMBER_ID,MOVIE_ID)
-	values(s_reviews_no.nextval,#{title},#{content},#{spoiler},0,0,#{memberId},#{movieId})
+	values(S_REVIEW_NO.nextval,#{title},#{content},#{spoiler},0,0,#{memberId},#{movieId})
 	
 	</insert>
 		
-	
+	<delete id="deleteReview" parameterType="int">
+	delete from REVIEWS
+	where REVIEW_NO = #{no}
+	</delete>
     
-	
+	<update id="updateReview" parameterType="Review">
+	update REVIEWS
+	set title = #{title},
+		content = #{content}
+	where REVIEW_NO = #{reviewNo}
+	</update>
 	
 	   
 </mapper>
