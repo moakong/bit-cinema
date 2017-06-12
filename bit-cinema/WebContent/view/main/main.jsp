@@ -93,91 +93,54 @@
   
 <div class="container text-center">
 <hr>    
-  <h3 class="category">[ 영화 랭킹 ]</h3><br>
-  <div class="row">
-    <div class="col-sm-3">
-    <div class="btn-group btn-group-sm btn-block">
-  <button type="button" class="btn btn-default col-sm-5" onclick="location.href='${pageContext.request.contextPath}/main/Main?chart=1'">박스오피스</button>
-  <button type="button" class="btn btn-default col-sm-5" onclick="location.href='${pageContext.request.contextPath}/main/Main?chart=2'">예매순</button><br><br>
-</div>
-     
-      <div class="well" style="text-align:left">
-      <c:forEach var="movie" varStatus="status" items="${ chartMovie }">
-				<p><c:out value="${ status.index +1 }위" />
-				<a href="${pageContext.request.contextPath}/movie/DetailMovie?id=<c:out value="${ movie.movieId }"/>">
-					<c:out value="${ movie.movieName }"/></a>
-				</p>
-	</c:forEach>
-      
-      </div>
-    </div>
-    <div class="col-sm-3"> 
-        <p><strong>1위</strong></p>
-        <a href="${pageContext.request.contextPath}/movie/DetailMovie?id=3">
-      <img src="http://i.imgur.com/FCSuDEU.jpg" class="img-responsive" style="width:100%">
-      <p><strong>보안관</strong></p>  </a>  
-    </div>
-    <div class="col-sm-3"> 
-        <p><strong>2위</strong></p>
-        <a href="${pageContext.request.contextPath}/movie/DetailMovie?id=2">
-      <img src="http://i.imgur.com/GXqESzT.jpg" class="img-responsive" style="width:100%">
-      <p><strong>에일리언:커버넌트</strong></p>   </a>   
-    </div>
-    <div class="col-sm-3"> 
-        <p><strong>3위</strong></p>
-        <a href="${pageContext.request.contextPath}/movie/DetailMovie?id=1">
-      <img src="http://i.imgur.com/5nDCXsE.jpg" class="img-responsive" style="width:100%">
-      <p><strong>가디언즈 오브 갤럭시</strong></p>    </a>   
-    </div>
-
-  </div>
-  
-  
-  
-  <div class="container">
-    <button type="button" class="btn btn-default colBtn" data-toggle="collapse" data-target="#demo">
-      <span class="glyphicon glyphicon-collapse-down"></span> 더보기 
-    </button>
+<h3 class="category">[ 영화 랭킹 ]</h3><br>
+	<div class="row">
+		<div class="col-sm-3">
+			<div class="btn-group btn-group-sm btn-block">
+				<button type="button" class="btn btn-default col-sm-5" onclick="location.href='${pageContext.request.contextPath}/main/Main?chart=1'">박스오피스</button>
+				<button type="button" class="btn btn-default col-sm-5" onclick="location.href='${pageContext.request.contextPath}/main/Main?chart=2'">예매순</button><br><br>
+			</div>
+	     
+	      	<div class="well" style="text-align:left">
+	      		<c:forEach var="movie" varStatus="status" items="${ chartMovie }">
+					<p><c:out value="${ status.index +1 }위" />
+					<a href="${pageContext.request.contextPath}/movie/DetailMovie?id=<c:out value="${ movie.movieId }"/>">
+						<c:out value="${ movie.movieName }"/></a>
+					</p>
+				</c:forEach>
+	      	</div>
+	    </div>
     
-  <div id="demo" class="collapse">
-    <div class="col-sm-2"> 
-        <p><strong>4위</strong></p>
-        <a href="">
-      <img src="http://i.imgur.com/5nDCXsE.jpg" class="img-responsive" style="width:100%">
-      <p><strong>보안관</strong></p>  </a>  
-    </div>
-    <div class="col-sm-2"> 
-        <p><strong>5위</strong></p>
-        <a href="">
-      <img src="http://i.imgur.com/5nDCXsE.jpg" class="img-responsive" style="width:100%">
-      <p><strong>에일리언:커버넌트</strong></p>   </a>   
-    </div>
-    <div class="col-sm-2"> 
-        <p><strong>6위</strong></p>
-        <a href="">
-      <img src="http://i.imgur.com/5nDCXsE.jpg" class="img-responsive" style="width:100%">
-      <p><strong>가디언즈 오브 갤럭시</strong></p>    </a>   
-    </div>
-     <div class="col-sm-2"> 
-        <p><strong>7위</strong></p>
-        <a href="">
-      <img src="http://i.imgur.com/5nDCXsE.jpg" class="img-responsive" style="width:100%">
-      <p><strong>보안관</strong></p>  </a>  
-    </div>
-    <div class="col-sm-2"> 
-        <p><strong>8위</strong></p>
-        <a href="">
-      <img src="http://i.imgur.com/5nDCXsE.jpg" class="img-responsive" style="width:100%">
-      <p><strong>에일리언:커버넌트</strong></p>   </a>   
-    </div>
-    <div class="col-sm-2"> 
-        <p><strong>9위</strong></p>
-        <a href="">
-      <img src="http://i.imgur.com/5nDCXsE.jpg" class="img-responsive" style="width:100%">
-      <p><strong>가디언즈 오브 갤럭시</strong></p>    </a>   
-    </div>
-  </div>
-</div>
+    
+    	<c:forEach var="i" begin="0" end="2">
+	    <div class="col-sm-3"> 
+	    	<p><strong>${i+1}위</strong></p>
+			<a href="${pageContext.request.contextPath}/movie/DetailMovie?id=<c:out value="${ chartMovie[i].movieId }"/>">
+			<img src="${ thumbnail[i] }" class="img-responsive" style="width:100%">
+			<p><strong><c:out value="${ chartMovie[i].movieName }"/></strong></p>  </a> 
+	    </div>
+		</c:forEach>
+  	</div>
+  
+  
+  
+	<div class="container">
+		<button type="button" class="btn btn-default colBtn" data-toggle="collapse" data-target="#demo">
+		<span class="glyphicon glyphicon-collapse-down"></span> 더보기 
+		</button>
+    
+		<div id="demo" class="collapse">
+		<c:forEach var="i" begin="3" end="9">
+			<div class="col-sm-2"> 
+  				<p><strong>${i+1}위</strong></p>
+  				<a href="${pageContext.request.contextPath}/movie/DetailMovie?id=<c:out value="${ chartMovie[i].movieId }"/>">
+  				<img src="${ thumbnail[i] }" class="img-responsive" style="width:100%">
+  				<p><strong><c:out value="${ chartMovie[i].movieName }"/></strong></p>  </a>  
+			</div>
+		</c:forEach>
+		</div>
+	</div>
+
 
 <script>
 $(document).ready(function(){

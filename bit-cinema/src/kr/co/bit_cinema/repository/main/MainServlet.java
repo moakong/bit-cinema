@@ -1,6 +1,7 @@
 package kr.co.bit_cinema.repository.main;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -37,17 +38,24 @@ public class MainServlet extends HttpServlet {
 		
 		List<MovieVO> chartMovie = null;
 		
+		List<String> thumbnail = new ArrayList<>();
 		try {
 			if(chart == 1){
 				chartMovie = mapper.boxMovie();
 			}else {
 				chartMovie = mapper.reserMovie();
 			}
+			
+			for(MovieVO m : chartMovie){
+				int id = m.getMovieId();
+				thumbnail.add(mapper.selectThumbnail(id));
+			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		request.setAttribute("chartMovie", chartMovie);
+		request.setAttribute("thumbnail", thumbnail);
 		
 		RequestDispatcher rd = request.getRequestDispatcher("/view/main/main.jsp");
 		rd.forward(request, response);

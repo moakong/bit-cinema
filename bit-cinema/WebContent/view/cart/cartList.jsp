@@ -19,7 +19,7 @@
 			<input type="checkbox" id="all" name="all" value="all"onclick="changeChk()" /><label for="all" onclick="changeChk()"> 전체선택</label><br>
 				전체 상품명 수량 단가 가격<br>
 				<form action="DeleteCart" method="post" name="cart">
-					<c:forEach var="cart" items="${list}">
+					<c:forEach var="cart" items="${list}" >
 						<input type="checkbox" name="checkCart" value="${cart.snackId}" id="1"/>
 						<a href="${pageContext.request.contextPath}/snack/DetailSnack?snackId=<c:out value="${cart.snackId}"/>">
 							<img width="50px" height="50px" src="<c:out value="${cart.img}"/>"/></a>
