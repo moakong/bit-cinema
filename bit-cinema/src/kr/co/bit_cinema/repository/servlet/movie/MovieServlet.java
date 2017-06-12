@@ -124,7 +124,7 @@ public class MovieServlet extends HttpServlet {
 		
 		
 		try{
-			List<MovieVO> mTitle = mapper.selectTitle(0);
+			List<MovieVO> mTitle = mapper.selectTitle(1);
 			
 			for (MovieVO m : mTitle) {
 				String path = "https://apis.daum.net/contents/movie";
@@ -141,7 +141,6 @@ public class MovieServlet extends HttpServlet {
 						break;
 					sb.append(line);
 				}
-
 				Movie movieGson = new Gson().fromJson(sb.toString(), Movie.class);
 				List<MovieItem> items = movieGson.getChannel().getItem();
 				List<List<Audience>> audience = new ArrayList<>();
