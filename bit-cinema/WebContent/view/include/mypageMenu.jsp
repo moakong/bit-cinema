@@ -3,7 +3,7 @@
 
 <ul>
 	<li>
-		<a href="">예매내역</a>
+		<a href="${pageContext.request.contextPath}/reservation/check">예매내역</a>
 	</li>
 	<li>
 		<a href="${pageContext.request.contextPath}/cart/ListCart">스토어 장바구니</a>

@@ -30,11 +30,11 @@ public class DetailOrderServlet extends HttpServlet{
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		String orderId = request.getParameter("orderId");
-		List<OrderDetailVO> list = null;
-		
+		List<OrderVO> list = null;
+		List<OrderDetailVO> dList = null;
 		try {
-			
-			list = mapper.detailOrder(orderId);
+			//list = mapper.listOrder(member.getMemberId());
+			dList = mapper.detailOrder(orderId);
 			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

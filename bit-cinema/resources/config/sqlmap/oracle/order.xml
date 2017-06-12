@@ -14,6 +14,7 @@
 		select * 
 		  from orders
 		 where member_id = #{memberId}
+		 order by order_date desc
 	</select>
 	
 	<resultMap type="OrderDetail" id="orderdetailMap">

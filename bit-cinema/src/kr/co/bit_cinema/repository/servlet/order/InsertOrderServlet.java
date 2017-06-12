@@ -70,6 +70,7 @@ public class InsertOrderServlet extends HttpServlet{
 				int amount = c.getPrice() * c.getCount();
 				detail.setAmount(amount);
 				mapper.insertOrderDetail(detail);
+				cartMapper.deleteCart(cart);
 			}
 			sqlSession.commit();
 		} catch (Exception e) {

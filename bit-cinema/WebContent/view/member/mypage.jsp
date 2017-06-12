@@ -19,7 +19,7 @@
 			<p>마이페이지 메인화면입니다</p>
 		</div>
 		<div>
-			<p><a href="../reservation/check">내가 예매한 영화</a></p>
+			<p>내가 예매한 영화</p>
 		</div>
 		<div>
 			<p>내가 쓴 평점</p>
