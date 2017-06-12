@@ -61,8 +61,4 @@ public class OrderDetailVO {
 	public void setLimitDate(Date limitDate) {
 		this.limitDate = limitDate;
 	}
-	
-	
-	
-	
 }

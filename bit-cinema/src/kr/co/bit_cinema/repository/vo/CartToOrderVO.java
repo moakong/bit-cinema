@@ -45,6 +45,4 @@ public class CartToOrderVO {
 	public void setImg(String img) {
 		this.img = img;
 	}
-	
-	
 }

@@ -30,7 +30,7 @@
 						</label>
 						<br>
 					</c:forEach>
-					<button type="submit">삭제</button>
+					<input type="submit" onclick="return confirm('삭제하시겠습니까?')" value="삭제"/>	
 					<button type="submit" onclick="buy()">구매</button>
 				</form>
 			</div>

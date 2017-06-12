@@ -11,7 +11,7 @@ public interface OrderMapper {
 	public List<OrderVO> listOrder(String memberId) throws Exception;
 	public List<OrderDetailVO> detailOrder(String orderId) throws Exception;
 	public CartToOrderVO selectCart(CartVO cart) throws Exception;
-
+	public OrderVO orderSelect(String memberId) throws Exception;
 	public void insertOrder(OrderVO order) throws Exception;
 	public void insertOrderDetail(OrderDetailVO oDetail) throws Exception;
 }
