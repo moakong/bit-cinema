@@ -6,6 +6,7 @@
 	
 	<resultMap type="Order" id="orderMap">
 		<result column="order_id" property="orderId"/>
+		<result column="amount" property="amount" />
 		<result column="order_date" property="orderDate"/>
 	</resultMap>
 
@@ -15,8 +16,21 @@
 		 where member_id = #{memberId}
 	</select>
 	
-	<select id="detailOrder" resultMap="orderMap">
+	<resultMap type="OrderDetail" id="orderdetailMap">
+		<result column="snack_id" property="snackId"/>
+		<result column="name" property="name" />
+		<result column="count" property="count"/> 
+		<result column="price" property="price"/> 
+		<result column="amount" property="amount"/> 
+		<result column="img" property="img" />
+		<result column="limit_date" property="limitDate"/> 
+	</resultMap>
 	
+	<select id="detailOrder" parameterType="String" resultMap="orderdetailMap">
+		select *
+		  from orders_detail, snacks
+		 where order_id = #{orderId} and
+		 	   orders_detail.snack_id = snacks.snack_id
 	</select>
 	
 	<insert id="insertOrder" parameterType="Order">
@@ -25,8 +39,8 @@
 	</insert>
 	
 	<insert id="insertOrderDetail" parameterType="OrderDetail">
-		insert into orders_detail(order_id, snack_id, count, price)
-		values(#{orderId}, #{snackId}, #{count}, #{price})
+		insert into orders_detail(order_id, snack_id, count, amount)
+		values(#{orderId}, #{snackId}, #{count}, #{amount})
 	</insert>
 	
 	<resultMap type="CartToOrder" id="ctoMap">

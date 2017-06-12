@@ -60,10 +60,10 @@
 					type : "POST",
 					data : "id=" + keyword,
 					success : function(data){
-// 						if(data.indexOf("가능") != -1)
-// 							$("#checkIdMsg"). style = "color:blue";
-// 						else 
-// 							$("#checkIdMsg").style = "color:red";
+						if(data.indexOf("가능") != -1)
+							$("#checkIdMsg").style = "color:blue;";
+						else 
+							$("#checkIdMsg").style = "color:red;";
 						$("#checkIdMsg").html(data);
 					}
 				});
@@ -95,7 +95,7 @@
 					type : "POST",
 					data : "pass=" + keyword,
 					success : function(data){
-// 						$("#checkPass"). style = "color:blue";
+						$("#checkPass"). style = "color:blue;";
 						$("#checkPass").html(data);
 					}
 				});

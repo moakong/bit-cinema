@@ -5,8 +5,11 @@ import java.util.Date;
 public class OrderDetailVO {
 	private String orderId;
 	private int snackId;
+	private String name;
 	private int count;
 	private int price;
+	private int amount;
+	private String img;
 	private Date limitDate;
 	
 	
@@ -22,6 +25,12 @@ public class OrderDetailVO {
 	public void setSnackId(int snackId) {
 		this.snackId = snackId;
 	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
 	public int getCount() {
 		return count;
 	}
@@ -34,12 +43,26 @@ public class OrderDetailVO {
 	public void setPrice(int price) {
 		this.price = price;
 	}
+	public int getAmount() {
+		return amount;
+	}
+	public void setAmount(int amount) {
+		this.amount = amount;
+	}
+	public String getImg() {
+		return img;
+	}
+	public void setImg(String img) {
+		this.img = img;
+	}
 	public Date getLimitDate() {
 		return limitDate;
 	}
 	public void setLimitDate(Date limitDate) {
 		this.limitDate = limitDate;
 	}
+	
+	
 	
 	
 }

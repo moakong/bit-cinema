@@ -50,7 +50,7 @@
    	   <c:if test="${!empty user}">
 			<img src="<c:out value="${user.profile}"/>" width="50" height="50"/>
 			<a href="${pageContext.request.contextPath}/member/Mypage">
-				<c:out value="${user.name}"/></a>님 환영합니다.
+				<c:out value="${user.name}"/></a>
 		</c:if>
 		
       	<c:choose>

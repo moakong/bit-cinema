@@ -15,6 +15,7 @@ import javax.servlet.http.HttpSession;
 import org.apache.ibatis.session.SqlSession;
 
 import common.db.MyAppSqlConfig;
+import kr.co.bit_cinema.repository.mapper.CartMapper;
 import kr.co.bit_cinema.repository.mapper.OrderMapper;
 import kr.co.bit_cinema.repository.vo.CartToOrderVO;
 import kr.co.bit_cinema.repository.vo.CartVO;
@@ -27,10 +28,12 @@ public class InsertOrderServlet extends HttpServlet{
 
 	private SqlSession sqlSession = null;
 	private OrderMapper mapper = null;
+	private CartMapper cartMapper = null;
 
 	public InsertOrderServlet() {
 		sqlSession = MyAppSqlConfig.getSqlSessionInstance();
 		mapper = sqlSession.getMapper(OrderMapper.class);
+		cartMapper = sqlSession.getMapper(CartMapper.class);
 	}
 	
 	@Override
@@ -64,8 +67,8 @@ public class InsertOrderServlet extends HttpServlet{
 				detail.setSnackId(id);
 				CartToOrderVO c = mapper.selectCart(cart);
 				detail.setCount(c.getCount());
-				int price = c.getPrice() * c.getCount();
-				detail.setPrice(price);
+				int amount = c.getPrice() * c.getCount();
+				detail.setAmount(amount);
 				mapper.insertOrderDetail(detail);
 			}
 			sqlSession.commit();

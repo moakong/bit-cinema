@@ -24,9 +24,9 @@
 					아이디 <c:out value="${ member.memberId }" /><br> 
 					영문자와 숫자조합으로 8~12글자를 입력하세요.<br>
 					비밀번호  <input type="password" id="pass" name="pass" maxlength="12" onkeydown="patternCheck();"/>
-					<div id="checkPass"></div>
+					<div id="checkPass" style=""></div>
 					비밀번호 확인 <input type="password" id="pass2" name="pass2" maxlength="12" onkeyup="checkPass();"/>
-					<div id="checkPassMsg"></div>
+					<div id="checkPassMsg" style=""></div>
 					이름 <c:out value="${ member.name }" /><br> 
 					별명 <input type="text" name="nickname" value="${ member.nickname }" /><br> 
 					이메일 <input type="text" name="email" value="${ member.email }" /></br>
@@ -66,7 +66,7 @@
 						type : "POST",
 						data : "pass=" + keyword,
 						success : function(data){
-// 							$("#checkPass"). style = "color:blue";
+							$("#checkPass").style = "color:blue;";
 							$("#checkPass").html(data);
 						}
 					});
@@ -80,10 +80,10 @@
 			var pw1 = document.modify.pass.value;
 			var pw2 = document.modify.pass2.value;
 			if(pw1!=pw2){
-// 				$("#checkPassMsg").style = "color:red";
+				$("#checkPassMsg").style = "color:red;";
 				$("#checkPassMsg").html("비밀번호가 일치하지 않습니다."); 		
 			}else{
-// 				$("#checkPassMsg").style = "color:blue";
+				$("#checkPassMsg").style = "color:blue;";
 				$("#checkPassMsg").html("비밀번호가 일치합니다."); 
 			}
 	 

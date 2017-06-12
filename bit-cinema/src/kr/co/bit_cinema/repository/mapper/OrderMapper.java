@@ -9,7 +9,7 @@ import kr.co.bit_cinema.repository.vo.OrderVO;
 
 public interface OrderMapper {
 	public List<OrderVO> listOrder(String memberId) throws Exception;
-	public OrderVO detailOrder() throws Exception;
+	public List<OrderDetailVO> detailOrder(String orderId) throws Exception;
 	public CartToOrderVO selectCart(CartVO cart) throws Exception;
 
 	public void insertOrder(OrderVO order) throws Exception;

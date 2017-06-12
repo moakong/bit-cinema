@@ -18,9 +18,12 @@
 			</div>
 			<div>
 				주문번호 주문날짜<br>
-				<c:forEach var="order" items="${orderList}">
-					<c:out value="${order.orderId}"/>
-					<c:out value="${order.orderDate}"/>
+				<c:forEach var="i" begin="0" end="${ orderList.size() - 1 }" >
+					<c:out value="${orderList[i].orderId}"/>
+					<img src="${img[i]}" width="50" height="50"/>
+					<a href="${pageContext.request.contextPath}/order/DetailOrder?orderId=${orderList[i].orderId}">
+					<c:out value="${title[i]}"/></a>
+					<c:out value="${orderList[i].orderDate}"/>
 					<%-- <a href="${pageContext.request.contextPath}/order/DetailOrder?id=<c:out value="${cart.snackId}"/>">
 						<img width="50px" height="50px" src="<c:out value="${cart.img}"/>"/></a>
 					<c:out value="${cart.price}" />						

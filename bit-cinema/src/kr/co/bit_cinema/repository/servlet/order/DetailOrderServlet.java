@@ -14,6 +14,7 @@ import org.apache.ibatis.session.SqlSession;
 
 import common.db.MyAppSqlConfig;
 import kr.co.bit_cinema.repository.mapper.OrderMapper;
+import kr.co.bit_cinema.repository.vo.OrderDetailVO;
 import kr.co.bit_cinema.repository.vo.OrderVO;
 
 @WebServlet("/order/detailOrder")
@@ -27,10 +28,14 @@ public class DetailOrderServlet extends HttpServlet{
 	}
 	
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		List<OrderVO> list = null;
+
+		String orderId = request.getParameter("orderId");
+		List<OrderDetailVO> list = null;
+		
 		try {
-//			list = mapper.OrderSelect();
-//			System.out.println(list);
+			
+			list = mapper.detailOrder(orderId);
+			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
