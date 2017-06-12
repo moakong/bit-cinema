@@ -173,11 +173,11 @@
 		
 		$("#selectTheater").html("<hr><h3>극장</h3><form id='selectTheaterForm' ></form>");
 		
-//		var params = $("#selectAreaForm").serialize(); // 왜 안되지?
-		var params = "area=" + areaId;
-		//console.log("전 params : ", params); // test
+		var params = $("#selectAreaForm").serialize(); // 왜 안되지?
+		//var params = "area=" + areaId;
+		console.log("전 params : ", params); // test
 		params += "&movieId=" + movieId
-		//console.log("후 params : ", params); // test
+		console.log("후 params : ", params); // test
 
 		$.ajax({ 
 			url: "selectTheater",

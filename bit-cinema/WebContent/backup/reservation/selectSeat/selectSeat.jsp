@@ -7,60 +7,78 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
-<style>
-    	html{
-    	font-size: auto;
-    	}
-    	
-       .reservation{
-           display: flex !important;
-           align-items: center !important;
-           justify-content: center !important;
-           margin: 30px;
-       }
-       
-       
-        *, *:before, *:after {
+<style type="text/css">
+	/* 전체 가로 크기 + 사이드 선 */
+    .theater {
+      margin: 20px auto !important;
+      max-width: 300px !important;
+        
+      border-right: 5px solid #d8d8d8 !important;
+      border-left: 5px solid #d8d8d8 !important;
+    }
+
+
+    /* 전체 가로 크기 안으로 버튼 넣기*/
+    *, *:before, *:after {
       box-sizing: border-box !important;
     }
 
-       /*줄바꿈??*/
+
+
+ 
+
+    /*리스트 스타일 지우기*/
+    ol {
+      list-style: none !important;
+      padding: 0 !important;
+      margin: 0 !important;
+    }
+
+
+
+    /*줄바꿈??*/
     .seats {
       display: flex !important;
       flex-direction: row !important;
       flex-wrap: nowrap !important;
-      justify-content: center !important;
+      justify-content: flex-start !important;
     }
-       
-       .theater {
-           width: 300px !important;
-           border-right: 5px solid #d8d8d8 !important;
-          border-left: 5px solid #d8d8d8 !important;
-           
-       }
-       
-           /* 체크버튼 없애기*/
-    input[type=checkbox] {
+
+
+
+
+    /* 체크버튼 없애기*/
+    .seat input[type=checkbox] {
       position: absolute !important;
       opacity: 0 !important;
     }
-       
-       
-          /*라벨 크기 조정*/
-    label {
+
+
+
+
+
+
+    /*라벨 크기 조정*/
+    .seat {
       display: flex !important;
       flex: 0 0 14.28571428571429% !important;
       padding: 5px !important;
       position: relative !important;
     }
 
-       
-       /* 기본 바튼 상태*/
-    label {
-      
+
+    /* 세번째 좌석 옆에 비우기*/
+    .seat:nth-child(3) {
+      margin-right: 13% !important;
+    }
+
+
+
+    /* 기본 바튼 상태*/
+    .seat label {
       display: block !important;
       position: relative !important;
-      width: 10px !important;
+      width: 100% !important;
       text-align: center !important;
       font-size: 14px !important;
       font-weight: bold !important;
@@ -73,7 +91,7 @@
     }
 
 
-    label:before {
+    .seat label:before {
       content: "" !important;
       position: absolute !important;
       width: 75% !important;
@@ -87,34 +105,44 @@
 
 
 
-    label:hover {
+    .seat label:hover {
       cursor: pointer !important;
       box-shadow: 0 0 0px 2px #5C6AFF !important;
     }
-       
-       
-       
-       
-       /* 체크된 상태*/
-    input[type=checkbox]:checked + label {
+
+
+
+
+
+
+
+     /* 체크된 상태*/
+    .seat input[type=checkbox]:checked + label {
       background: #F42536 !important;
       -webkit-animation-name: rubberBand !important;
       animation-name: rubberBand !important;
       animation-duration: 300ms !important;
       animation-fill-mode: both !important;
     }
-       
-       
-       
-       
-     /* disabled박스*/
-    input[type=checkbox]:disabled + label {
+
+
+
+
+
+
+
+
+
+
+
+    /* disabled박스*/
+    .seat input[type=checkbox]:disabled + label {
       background: #dddddd !important;
       text-indent: -9999px !important;
       overflow: hidden !important;
     }
 
-    input[type=checkbox]:disabled + label:after {
+    .seat input[type=checkbox]:disabled + label:after {
       content: "X" !important;
       text-indent: 0 !important;
       position: absolute !important;
@@ -123,15 +151,17 @@
       transform: translate(-50%, 0%) !important;
     }
 
-    input[type=checkbox]:disabled + label:hover {
+    .seat input[type=checkbox]:disabled + label:hover {
       box-shadow: none !important;
       cursor: not-allowed !important;
     }
-       
-       
-       
-       
-       
+
+
+
+        
+        
+        
+
     /*애니메이션*/
     @-webkit-keyframes rubberBand {
       0% {
@@ -197,85 +227,82 @@
       -webkit-animation-name: rubberBand;
       animation-name: rubberBand;
     }
-       
-     
-     #btn{
-     	margin-bottom: 100px;
-     }  
-</style>  
+        
+    </style>
+</style>
 
 
 </head>
 
 <body>
+
 	<div>
-		<c:import url="/view/include/topMenu.jsp" />
-	</div>	
-	
+		<div>
+			<c:import url="/view/include/topMenu.jsp" />
+		</div>	
+	<div>
+		<h2>좌석 선택</h2>
+		<hr>
 		
-		
-		
-	<div class="reservation">
-		
-		<form name="mForm" action="payment">
-		
-		
+		<form action="payment">
 			<input type="hidden" name="schNo" value="${schNo}" />
 			<input type="hidden" name="people" value="${people}" />
 			
 			
+			
 			<div class="theater">
-				<c:forEach var="seat" items="${all}">
-					<c:if test="${seat.c == 1}">
-						<div class="seats">
-					</c:if>
-					
-			          <input class="seat" type="checkbox" name="seat" id="${seat.seatId}" value="${seat.seatId}" onclick="CountChecked(this)"/>
-			          <label for="${seat.seatId}">${seat.c}&#${seat.r + 64}</label>
-				        
-					<c:if test="${seat.c == seat.totalC}">
-						</div> <br>
-					</c:if>
-				</c:forEach>
+			
+			<c:forEach var="seat" items="${all}">
+				<c:if test="${seat.c == 1}">
+					<ol class="seats">
+				</c:if>
 				
-					
+					<li class="seat">
+			          <input type="checkbox" name="seat" id="${seat.seatId}" value="${seat.seatId}" onclick="CountChecked(this)"/>
+			          <label for="${seat.seatId}">${seat.c} &#${seat.r + 64}</label>
+			        </li>
+			        
+				<c:if test="${seat.c} == ${seat.totalC}">
+					</ol>
+				</c:if>
+			</c:forEach>
+			
+				<br><br>
+				<button>다음</button>
 			</div>
 			
 			
-		
+			
+			
+			<%-- 
+			<c:forEach var="i" begin="1" end="${all[0].totalC}">
+				&nbsp; &nbsp;${i} <!-- 열 번호 출력 -->
+			</c:forEach>
+			
+			<c:forEach var="seat" items="${all}">
+				<c:if test="${seat.c == 1}">
+				<br>&#${seat.r + 64}; <!-- 행 알파벳 출력 -->
+				</c:if>
+				
+				<input type="checkbox" name="seat" id="${seat.seatId}" 
+				value="${seat.seatId}" onclick="CountChecked(this)" /><label for="${seat.seatId}"></label>
+			</c:forEach>
+				<br><br>
+				<button>다음</button>
+			 --%>
+			
 		</form>
 	</div>
 	
-	
-	
-	
-	<div class="container text-center">
-		<button id="btn" class="btn btn-primary center-block" onclick="submit();">다음</button>
-	</div>
-	
-	
-	
-	
-	
-	
-	
 	<div>
 		<c:import url="/view/include/footer.jsp" />
-	</div>
-	
+	</div>	
+</div>
 
 </body>
-	
-	
+
 <script type="text/javascript">
-	
-	function submit() {
-		var f= document.mForm;
-		f.submit();
-	}
 
-
-	
 	/* 이미 예약된 좌석 비활성화 하기 */
  	<c:forEach var="seat" items="${reserved}">
 		document.getElementById("${seat.seatId}").disabled = 'true';

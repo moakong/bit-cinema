@@ -105,6 +105,9 @@
 	</resultMap>
 	
 	
+	
+	
+	<!--  --><!--  -->
 	<select id="selectAllSeat" resultMap="seatMap" parameterType="int">
 		SELECT S.SEAT_ID, S.R, S.C, S.TURN, SCR.TOTAL_R, SCR.TOTAL_C
 		  FROM SCHEDULE SCH
@@ -114,7 +117,7 @@
 		    ON SCR.SCREEN_ID = S.SCREEN_ID AND SCR.THEATER_ID = S.THEATER_ID AND SCH.TURN = S.TURN
 		 WHERE SCH.SCHEDULE_ID = #{scheduleId}  
 	 </select>
-	   
+	   <!--  --><!--  -->
 	   
 	<select id="selectReservedSeat" resultMap="seatMap" parameterType="int">
 	    SELECT S.SEAT_ID

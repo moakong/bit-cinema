@@ -1,23 +1,11 @@
-<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-
-<style>
-    	html{
-    	font-size: auto;
-    	}
-    	
-       .reservation{
-           display: flex !important;
-           align-items: center !important;
-           justify-content: center !important;
-           margin: 30px;
-       }
+   <style>
+    
+   body{
+       display: flex;
+       align-items: center;
+       justify-content: center;
+   }
        
        
         *, *:before, *:after {
@@ -29,13 +17,13 @@
       display: flex !important;
       flex-direction: row !important;
       flex-wrap: nowrap !important;
-      justify-content: center !important;
+      justify-content: center;
     }
        
        .theater {
-           width: 300px !important;
-           border-right: 5px solid #d8d8d8 !important;
-          border-left: 5px solid #d8d8d8 !important;
+           width: 300px;
+           border-right: 5px solid #d8d8d8 ;
+          border-left: 5px solid #d8d8d8 ;
            
        }
        
@@ -198,119 +186,104 @@
       animation-name: rubberBand;
     }
        
-     
-     #btn{
-     	margin-bottom: 100px;
-     }  
-</style>  
-
-
-</head>
-
+       
+</style>         
 <body>
-	<div>
-		<c:import url="/view/include/topMenu.jsp" />
-	</div>	
-	
-		
-		
-		
-	<div class="reservation">
-		
-		<form name="mForm" action="payment">
-		
-		
-			<input type="hidden" name="schNo" value="${schNo}" />
-			<input type="hidden" name="people" value="${people}" />
-			
-			
-			<div class="theater">
-				<c:forEach var="seat" items="${all}">
-					<c:if test="${seat.c == 1}">
-						<div class="seats">
-					</c:if>
-					
-			          <input class="seat" type="checkbox" name="seat" id="${seat.seatId}" value="${seat.seatId}" onclick="CountChecked(this)"/>
-			          <label for="${seat.seatId}">${seat.c}&#${seat.r + 64}</label>
-				        
-					<c:if test="${seat.c == seat.totalC}">
-						</div> <br>
-					</c:if>
-				</c:forEach>
+    
+<div class="theater">
+    <div class="seats">
+
+
+        <input class="seat" type="checkbox" disabled name="seat" id="1" 
+        value="1" onclick="CountChecked(this)" /><label for="1">1</label>
+
+
+
+        <input type="checkbox" disabled name="seat" id="2" 
+        value="2" onclick="CountChecked(this)" /><label for="2">2</label>
+
+
+
+        <input type="checkbox" name="seat" id="3" 
+        value="3" onclick="CountChecked(this)" /><label for="3">3</label>
+
+
+
+        <input type="checkbox" name="seat" id="4" 
+        value="4" onclick="CountChecked(this)" /><label for="4">4</label>
+
+
+
+        <input type="checkbox" name="seat" id="5" 
+        value="5" onclick="CountChecked(this)" /><label for="5">5</label>
+      
+    </div>
+
+        <br>
+
+
+
+
+
+        <div class="seats">
+        <input type="checkbox" name="seat" id="151" 
+        value="151" onclick="CountChecked(this)" /><label for="151">151</label>
+
+
+
+        <input type="checkbox" name="seat" id="152" 
+        value="152" onclick="CountChecked(this)" /><label for="152">152</label>
+
+
+
+        <input type="checkbox" name="seat" id="153" 
+        value="153" onclick="CountChecked(this)" /><label for="153">153</label>
+
+
+
+        <input type="checkbox" name="seat" id="154" 
+        value="154" onclick="CountChecked(this)" /><label for="154">154</label>
+
+
+
+        <input type="checkbox" name="seat" id="155" 
+        value="155" onclick="CountChecked(this)" /><label for="155">155</label>
+    </div>
 				
-					
-			</div>
-			
-			
-		
-		</form>
-	</div>
-	
-	
-	
-	
-	<div class="container text-center">
-		<button id="btn" class="btn btn-primary center-block" onclick="submit();">다음</button>
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div>
-		<c:import url="/view/include/footer.jsp" />
-	</div>
-	
+        <br>
+				
 
+
+
+
+    <div class="seats">
+
+        <input type="checkbox" name="seat" id="156" 
+        value="156" onclick="CountChecked(this)" /><label for="156">156</label>
+
+
+
+        <input type="checkbox" name="seat" id="157" 
+        value="157" onclick="CountChecked(this)" /><label for="157">157</label>
+
+
+
+        <input type="checkbox" name="seat" id="158" 
+        value="158" onclick="CountChecked(this)" /><label for="158">158</label>
+
+
+
+        <input type="checkbox" name="seat" id="159" 
+        value="159" onclick="CountChecked(this)" /><label for="159">159</label>
+
+
+
+        <input type="checkbox" name="seat" id="160" 
+        value="160" onclick="CountChecked(this)" /><label for="160">160</label>
+    </div>
+    
+    
+    
+    
+    </div>
 </body>
-	
-	
-<script type="text/javascript">
-	
-	function submit() {
-		var f= document.mForm;
-		f.submit();
-	}
-
-
-	
-	/* 이미 예약된 좌석 비활성화 하기 */
- 	<c:forEach var="seat" items="${reserved}">
-		document.getElementById("${seat.seatId}").disabled = 'true';
-	</c:forEach> 
-
- 
- 
- 	/* 선택개수 제한하기 */
-	var maxChecked = ${people};   //선택가능한 체크박스 갯수
-	var totalChecked = 0; // 설정 끝
-
-	function CountChecked(field) {
-		if (field.checked)
-			totalChecked += 1;
-		else
-			totalChecked -= 1;
-
-		if (totalChecked > maxChecked) {
-			alert (maxChecked+"개의 자리를 모두 선택하셨습니다.");
-		field.checked = false;
-		totalChecked -= 1;
-		}
-	}
-</script>
- 
-</html>
-
-
-			<%-- ${(char)(seat.r + 64)} --%>  <!-- 형변환 안됨 -->
-			<!-- 검색 : jsp convert int to char -->
-			<!-- 참고 : https://unicode-table.com/en/#0043 -->
-
-
-
-
-
-
-

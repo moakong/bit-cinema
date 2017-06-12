@@ -19,7 +19,9 @@
 		<c:import url="/view/include/topMenu.jsp" />
 	</div>	
 
-	<div>
+
+<div class="container text-center">
+	<div class="well">
 		<h2>결제 방법 선택</h2>
 		<hr>
 		
@@ -36,9 +38,14 @@
 			<input type="radio" name="payment" value="mobile" id="5" /><label for="5">휴대폰 소액 결제</label><br>
 			<br><br>
 			
-			<input type="button" onclick="confirmPay()" value="결제하기" >
+			<!-- <input type="button" onclick="confirmPay()" value="결제하기" > -->
+			<button type="button" class="btn btn-primary" onclick="confirmPay()">결제하기</button>
 		</form>
 	</div>
+	
+</div>	
+	
+	
 	
 	<div>
 		<c:import url="/view/include/footer.jsp" />

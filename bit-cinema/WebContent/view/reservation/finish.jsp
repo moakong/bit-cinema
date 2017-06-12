@@ -14,8 +14,10 @@
 	<div>
 		<c:import url="/view/include/topMenu.jsp" />
 	</div>	
-	
-	<div>
+
+
+<div class="container text-center">
+	<div class="well">
 		<h1>예매 완료</h1>
 		<hr><br>
 		<div>
@@ -29,10 +31,12 @@
 		<br><br>
 		</div>
 		
-		<button onclick="location.href='${pageContext.request.contextPath}'" >확인</button>
-	
+		<button class="btn btn-primary" onclick="location.href='${pageContext.request.contextPath}'" >메인페이지로 돌아가기</button>
 	</div>
-	
+</div>
+
+
+
 	<div>
 		<c:import url="/view/include/footer.jsp" />
 	</div>	

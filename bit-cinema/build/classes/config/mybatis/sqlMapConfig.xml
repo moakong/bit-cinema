@@ -7,22 +7,23 @@
 	<typeAliases>
 		<typeAlias alias="Schdule" type="kr.co.bit_cinema.repository.vo.reservation.SchduleVO" /> 
 		<typeAlias alias="Theater" type="kr.co.bit_cinema.repository.vo.reservation.TheaterVO" /> 
+		<typeAlias alias="Seat" type="kr.co.bit_cinema.repository.vo.reservation.SeatVO" /> 	
+		<typeAlias alias="Reservation" type="kr.co.bit_cinema.repository.vo.reservation.ReservationVO" /> 	
 		<typeAlias alias="Member" type="kr.co.bit_cinema.repository.vo.MemberVO" /> 
-		<typeAlias alias="Snack" type="kr.co.bit_cinema.repository.vo.SnackVO" /> 	
-		<typeAlias alias="Cart" type="kr.co.bit_cinema.repository.vo.CartVO" /> 	
-		<typeAlias alias="Movie" type="kr.co.bit_cinema.repository.vo.MovieVO" /> 	
-		<typeAlias alias="Genre" type="kr.co.bit_cinema.repository.vo.GenreVO" /> 	
-		<typeAlias alias="Director" type="kr.co.bit_cinema.repository.vo.DirectorVO" /> 	
-		<typeAlias alias="Actor" type="kr.co.bit_cinema.repository.vo.ActorVO" /> 	
-		<typeAlias alias="Video" type="kr.co.bit_cinema.repository.vo.VideoVO" /> 	
-		<typeAlias alias="Photo" type="kr.co.bit_cinema.repository.vo.PhotoVO" /> 	
-		<typeAlias alias="Box" type="kr.co.bit_cinema.repository.vo.BoxVO" /> 	
+		<typeAlias alias="Movie" type="kr.co.bit_cinema.repository.vo.movie.MovieVO" /> 	
+		<typeAlias alias="Genre" type="kr.co.bit_cinema.repository.vo.movie.GenreVO" /> 	
+		<typeAlias alias="Director" type="kr.co.bit_cinema.repository.vo.movie.DirectorVO" /> 	
+		<typeAlias alias="Actor" type="kr.co.bit_cinema.repository.vo.movie.ActorVO" /> 	
+		<typeAlias alias="Video" type="kr.co.bit_cinema.repository.vo.movie.VideoVO" /> 	
+		<typeAlias alias="Photo" type="kr.co.bit_cinema.repository.vo.movie.PhotoVO" /> 	
+		<typeAlias alias="Box" type="kr.co.bit_cinema.repository.vo.movie.BoxVO" /> 	
 		<typeAlias alias="Rating" type="kr.co.bit_cinema.repository.vo.RatingVO" /> 	
 		<typeAlias alias="Review" type="kr.co.bit_cinema.repository.vo.ReviewVO" /> 	
 		<typeAlias alias="Snack" type="kr.co.bit_cinema.repository.vo.SnackVO" /> 	
-		<typeAlias alias="Seat" type="kr.co.bit_cinema.repository.vo.reservation.SeatVO" /> 	
-		<typeAlias alias="Reservation" type="kr.co.bit_cinema.repository.vo.reservation.ReservationVO" /> 	
+		<typeAlias alias="Cart" type="kr.co.bit_cinema.repository.vo.CartVO" /> 	
 		<typeAlias alias="Order" type="kr.co.bit_cinema.repository.vo.OrderVO" /> 	
+		<typeAlias alias="OrderDetail" type="kr.co.bit_cinema.repository.vo.OrderDetailVO" /> 	
+		<typeAlias alias="CartToOrder" type="kr.co.bit_cinema.repository.vo.CartToOrderVO" /> 	
 	</typeAliases>
 	
 	<environments default="development">

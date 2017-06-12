@@ -19,7 +19,9 @@
 		<c:import url="/view/include/topMenu.jsp" />
 	</div>	
 	
-	<div>
+	
+	<div class="container text-center">
+	<div class="well">
 		<h1>상세 예매 내역</h1>
 		<hr><br>
 		<div>
@@ -33,9 +35,12 @@
 		<br><br>
 		</div>
 		
-		<button onclick="cancelConfirm()" >예매 취소</button><br><br>
-		<button onclick="location.href='check'" >나의 예매내역</button>
+		<button class="btn btn-danger" onclick="cancelConfirm()" >예매 취소</button><br><br>
+		<button class="btn btn-default" onclick="location.href='check'" >나의 예매내역</button>
 	</div>
+	</div>
+	
+	
 	
 	<div>
 		<c:import url="/view/include/footer.jsp" />
