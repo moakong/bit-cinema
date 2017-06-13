@@ -81,11 +81,11 @@ margin: 5px;
 							
 							<div>
 							
-								<span id="retitle"><a href="${pageContext.request.contextPath}/review/Detail?reviewNo=${review.reviewNo}"> <c:out value="${review.title }"/></a></span>
+								<span id="retitle"><a href="${pageContext.request.contextPath}/review/Detail?reviewNo=${review.reviewNo}&mmid=${review.memberId }"> <c:out value="${review.title }"/></a></span>
 								<span><c:out value="${review.memberId }"></c:out></span>
 								<span><fmt:formatDate value="${review.regDate }" pattern="yyyy-MM-dd" /></span>
 								추천<span><c:out value="${review.recomCount }"></c:out></span>
-								<div id="recontent"><a href="${pageContext.request.contextPath}/review/Detail?reviewNo=${review.reviewNo}"><c:out value="${review.content }"></c:out></a></div>
+								<div id="recontent"><a href="${pageContext.request.contextPath}/review/Detail?reviewNo=${review.reviewNo}&mmid=${review.memberId }"><c:out value="${review.content }"></c:out></a></div>
 							</div>	
 					</c:forEach>
 					</div>

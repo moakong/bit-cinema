@@ -34,6 +34,11 @@ public class Detail extends HttpServlet{
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
 		int id = Integer.parseInt(request.getParameter("reviewNo"));
+		String mmid = request.getParameter("mmid");
+		
+		request.setAttribute("mmid", mmid);
+		
+		System.out.println(mmid);
 		
 		ReviewVO review = new ReviewVO();
 		try {
