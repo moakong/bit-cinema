@@ -15,6 +15,7 @@ public interface MovieMapper {
 	public void loadMovie(MovieVO movie) throws Exception;
 	public void loadGenre(GenreVO genre) throws Exception;
 	public void loadThumb(PhotoVO photo) throws Exception;
+	public void loadPhoto(PhotoVO photo) throws Exception;
 	public void insertBox(BoxVO box) throws Exception;
 	public void updateBox(BoxVO box) throws Exception;
 	

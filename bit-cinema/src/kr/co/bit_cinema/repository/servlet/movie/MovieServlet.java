@@ -61,6 +61,7 @@ public class MovieServlet extends HttpServlet {
 
 				Movie movieGson = new Gson().fromJson(sb.toString(), Movie.class);
 				List<MovieItem> items = movieGson.getChannel().getItem();
+				List<List<Title>> title = new ArrayList<>();
 				List<List<EngTitle>> engTitle = new ArrayList<>();
 				List<List<OpenInfo>> openInfo = new ArrayList<>();
 				List<List<MovieGenre>> genre = new ArrayList<>();
@@ -68,22 +69,37 @@ public class MovieServlet extends HttpServlet {
 				List<List<Audience>> audience = new ArrayList<>();
 				List<List<AudienceDate>> audDate = new ArrayList<>();
 				List<List<Thumbnail>> thumbnail = new ArrayList<>();
+//				List<Photo2> photo2 = new ArrayList<>();
+//				List<Photo3> photo3 = new ArrayList<>();
+//				List<Photo4> photo4 = new ArrayList<>();
+//				List<Photo5> photo5 = new ArrayList<>();
 				List<MovieGenre> t1 = items.get(0).getGenre();
 				List<OpenInfo> t2 = items.get(0).getOpen_info();
+				List<Title> t33 = items.get(0).getTitle();
 				List<EngTitle> t3 = items.get(0).getEng_title();
 				List<Story> t4 = items.get(0).getStory();
 				List<Audience> t5 = items.get(0).getAudience();
 				List<AudienceDate> t6 = items.get(0).getAudience_date();
 				List<Thumbnail> t7 = items.get(0).getThumbnail();
+				Photo2 photo2 = items.get(0).getPhoto2();
+				Photo3 photo3 = items.get(0).getPhoto3();
+				Photo4 photo4 = items.get(0).getPhoto4();
+				Photo5 photo5 = items.get(0).getPhoto5();
 				genre.add(t1);
 				openInfo.add(t2);
+				title.add(t33);
 				engTitle.add(t3);
 				story.add(t4);
 				audience.add(t5);
 				audDate.add(t6);
 				thumbnail.add(t7);
+//				photo2.add(p2);
+//				photo3.add(p3);
+//				photo4.add(p4);
+//				photo5.add(p5);
 				MovieVO movie = new MovieVO();
 				movie.setMovieId(m.getMovieId());
+				movie.setMovieName(title.get(0).get(0).getContent());
 				movie.setEngTitle(engTitle.get(0).get(0).getContent());
 				SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd");
 				movie.setReleaseDate(sdf.parse(openInfo.get(0).get(0).getContent()));
@@ -92,6 +108,14 @@ public class MovieServlet extends HttpServlet {
 				movie.setStory(story.get(0).get(0).getContent());
 				PhotoVO photo = new PhotoVO();
 				photo.setMovieId(m.getMovieId());
+				photo.setRoute(photo2.getContent());
+				mapper.loadPhoto(photo);
+				photo.setRoute(photo3.getContent());
+				mapper.loadPhoto(photo);
+				photo.setRoute(photo4.getContent());
+				mapper.loadPhoto(photo);
+				photo.setRoute(photo5.getContent());
+				mapper.loadPhoto(photo);
 				photo.setRoute(thumbnail.get(0).get(0).getContent());
 				photo.setType("thumbnail");
 				BoxVO box = new BoxVO();
@@ -108,8 +132,8 @@ public class MovieServlet extends HttpServlet {
 						g.setGenre(mg.getContent());
 						mapper.loadGenre(g);
 					}
+					//movie.setGenre(g);
 				}
-				//movie.setGenre(g);
 				mapper.loadMovie(movie);
 				mapper.loadThumb(photo);
 				mapper.insertBox(box);

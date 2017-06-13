@@ -91,7 +91,66 @@ class EngTitle {
 	}
 	
 }
+class Photo2 {
+	private String content;
 
+	public String getContent() {
+		return content;
+	}
+
+	public void setContent(String content) {
+		this.content = content;
+	}
+	
+}
+class Photo3 {
+	private String content;
+	
+	public String getContent() {
+		return content;
+	}
+	
+	public void setContent(String content) {
+		this.content = content;
+	}
+	
+}
+class Photo4 {
+	private String content;
+	
+	public String getContent() {
+		return content;
+	}
+	
+	public void setContent(String content) {
+		this.content = content;
+	}
+	
+}
+class Photo5 {
+	private String content;
+	
+	public String getContent() {
+		return content;
+	}
+	
+	public void setContent(String content) {
+		this.content = content;
+	}
+	
+}
+class Title{
+	private String content;
+
+	public String getContent() {
+		return content;
+	}
+
+	public void setContent(String content) {
+		this.content = content;
+	}
+
+}
 class MovieItem{
 	private List<MovieGenre> genre;
 //	private List<Actor> actor;
@@ -100,15 +159,23 @@ class MovieItem{
 //	private List<Director> director;
 	private List<Thumbnail> thumbnail;
 	private List<EngTitle> eng_title;
+	private List<Title> title;
 	private List<Audience> audience;
 //	private List<VideoInfo> video_info;
 //	private List<video> video;
-//	private List<Photo2> photo2;
-//	private List<Photo3> photo3;
-//	private List<Photo4> photo4;
-//	private List<Photo5> photo5;
+	private Photo2 photo2;
+	private Photo3 photo3;
+	private Photo4 photo4;
+	private Photo5 photo5;
 	private List<AudienceDate> audience_date;
 	
+	
+	public List<Title> getTitle() {
+		return title;
+	}
+	public void setTitle(List<Title> title) {
+		this.title = title;
+	}
 	public List<MovieGenre> getGenre() {
 		return genre;
 	}
@@ -150,6 +217,30 @@ class MovieItem{
 	}
 	public void setAudience_date(List<AudienceDate> audience_date) {
 		this.audience_date = audience_date;
+	}
+	public Photo2 getPhoto2() {
+		return photo2;
+	}
+	public void setPhoto2(Photo2 photo2) {
+		this.photo2 = photo2;
+	}
+	public Photo3 getPhoto3() {
+		return photo3;
+	}
+	public void setPhoto3(Photo3 photo3) {
+		this.photo3 = photo3;
+	}
+	public Photo4 getPhoto4() {
+		return photo4;
+	}
+	public void setPhoto4(Photo4 photo4) {
+		this.photo4 = photo4;
+	}
+	public Photo5 getPhoto5() {
+		return photo5;
+	}
+	public void setPhoto5(Photo5 photo5) {
+		this.photo5 = photo5;
 	}
 
 	

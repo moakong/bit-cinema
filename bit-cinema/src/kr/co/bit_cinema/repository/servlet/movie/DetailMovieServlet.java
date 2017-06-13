@@ -38,18 +38,21 @@ public class DetailMovieServlet extends HttpServlet {
 		String photo = null;
 		List<DirectorVO> directors = null;
 		List<ActorVO> actors = null;
+		List<String> photos = null;
 		try {
 			movie = mapper.infoMovie(id);
 			genre = mapper.infoGenre(id);
 			photo = mapper.selectThumbnail(id);
 			directors = mapper.selectDirector(id);
 			actors = mapper.selectLeadActor(id);
+			photos = mapper.selectPhoto(id);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		request.setAttribute("movie", movie);
 		request.setAttribute("genre", genre);
 		request.setAttribute("photo", photo);
+		request.setAttribute("photos", photos);
 		request.setAttribute("directors", directors);
 		request.setAttribute("actors", actors);
 
