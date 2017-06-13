@@ -14,4 +14,6 @@ public interface OrderMapper {
 	public OrderVO orderSelect(String memberId) throws Exception;
 	public void insertOrder(OrderVO order) throws Exception;
 	public void insertOrderDetail(OrderDetailVO oDetail) throws Exception;
+	public void deleteOrder(String orderId) throws Exception;
+	public void deleteOrderDetail(String orderId) throws Exception;
 }

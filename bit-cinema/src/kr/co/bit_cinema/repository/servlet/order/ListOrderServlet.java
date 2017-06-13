@@ -62,6 +62,7 @@ public class ListOrderServlet extends HttpServlet {
 		
 		
 		request.setAttribute("orderList", list);
+		System.out.println(list);
 		request.setAttribute("title", title);
 		request.setAttribute("img", img);
 		

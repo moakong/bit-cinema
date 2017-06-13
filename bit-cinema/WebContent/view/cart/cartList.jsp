@@ -18,12 +18,12 @@
 			<div>
 			<input type="checkbox" id="all" name="all" value="all"onclick="changeChk()" /><label for="all" onclick="changeChk()"> 전체선택</label><br>
 				전체 상품명 수량 단가 가격<br>
-				<form action="DeleteCart" method="post" name="cart">
-					<c:forEach var="cart" items="${list}" >
-						<input type="checkbox" name="checkCart" value="${cart.snackId}" id="1"/>
+				<form action="DeleteCart" method="post" name="cart" >
+					<c:forEach var="cart" items="${list}" varStatus="s">
+						<input type="checkbox" name="checkCart" value="${cart.snackId}" id="${s.index}"/>
 						<a href="${pageContext.request.contextPath}/snack/DetailSnack?snackId=<c:out value="${cart.snackId}"/>">
 							<img width="50px" height="50px" src="<c:out value="${cart.img}"/>"/></a>
-						<label for="1">
+						<label for="${s.index}">
 						<c:out value="${cart.name}" />
 						<c:out value="${cart.price}" />						
 						<c:out value="${cart.count}" />
@@ -33,10 +33,10 @@
 					<input type="submit" onclick="return confirm('삭제하시겠습니까?')" value="삭제"/>	
 					<button type="submit" onclick="buy()">구매</button>
 				</form>
-			</div>
-		</div>
 		<div>
 			<c:import url="/view/include/footer.jsp" />
+		</div>
+			</div>
 		</div>
 	</div>
 <script>

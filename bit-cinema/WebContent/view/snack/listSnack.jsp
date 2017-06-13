@@ -5,30 +5,57 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style type="text/css">
+li { list-style: none;}
+ul.a > li {
+	float: left;
+	margin-right: 30px; 
+	background: #FDF5DC;
+	text-align: right;
+	font-size: 24px;
+}
+u1.a > li:HOVER {
+	background: skyblue;
+}
+
+</style>
 </head>
 <body>
-	<div>
 		<div>
 			<c:import url="/view/include/topMenu.jsp" />
 		</div>
+		
+		
+		
+	<div>
+		
+		
 		<div>
 			<div>
 				<c:import url="/view/include/snackMenu.jsp"/>
 			</div>
 			<div>
+			<ul class="a">
 				<c:forEach var="snack" items="${list}">
+				<li>
 				<a href ="DetailSnack?snackId=<c:out value='${snack.snackId}'/>">
 					<img width="200px" height="200px" src="<c:out value="${snack.img}"/>"/><br>
 				</a>	
 					<c:out value="${snack.name}"/><br>
 					<c:out value="${snack.price}"/><br>
-					<hr>
+				</li>
 				</c:forEach>
+			</ul>
 			</div>
 		</div>
+		
+		
+		
+	</div>
+	
+	
 		<div>
 			<c:import url="/view/include/footer.jsp" />
 		</div>
-	</div>
 </body>
 </html>
