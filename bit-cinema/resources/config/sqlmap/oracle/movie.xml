@@ -83,6 +83,7 @@
 		  from movies, box_order 
 		 where movies.movie_id = box_order.movie_id and 
 		 		to_date(release_date)+ 30 > sysdate
+		 		 and sysdate > movies.RELEASE_DATE  
 	</select>
 	
 	<resultMap type="Box" id="boxMap">
