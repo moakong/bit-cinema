@@ -6,6 +6,7 @@
 <head>
 <meta charset=UTF-8>
 <title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 </head>
 <body>
 		
@@ -39,12 +40,19 @@
 
 
 <c:if test="${user.memberId eq mmid}">
-<a href="${pageContext.request.contextPath}/review/delete?no=${review.reviewNo}&id=${review.movieId}">삭제하기</a>
+<a id="del" href="${pageContext.request.contextPath}/review/delete?no=${review.reviewNo}&id=${review.movieId}">삭제하기</a>
 <a href="${pageContext.request.contextPath}/review/updateform?no=${review.reviewNo}&id=${review.movieId}">수정하기</a>
 </c:if>
 
 
+<script>
+	$("#del").on("click",  function(){
+		alert("삭제 하시겠습니까?");
+	});
 
+
+
+</script>
 
 </body>
 </html>
