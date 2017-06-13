@@ -8,19 +8,41 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import org.apache.ibatis.session.SqlSession;
+
+import common.db.MyAppSqlConfig;
+import kr.co.bit_cinema.repository.mapper.MovieMapper;
+import kr.co.bit_cinema.repository.mapper.ReviewMapper;
+import kr.co.bit_cinema.repository.vo.ReviewVO;
 @WebServlet("/review/updateform")
 public class Updateform extends HttpServlet{
-
+	SqlSession sqlsession ;
+	ReviewMapper mapper;
+	MovieMapper mapperMovie;
+	public Updateform(){
+		sqlsession = MyAppSqlConfig.getSqlSessionInstance();
+		mapper = sqlsession.getMapper(ReviewMapper.class); 
+		mapperMovie = sqlsession.getMapper(MovieMapper.class); 
+	}
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String no = request.getParameter("no");
+		int reviewNo = Integer.parseInt(request.getParameter("no"));
 		String id = request.getParameter("id");
 		
-		request.setAttribute("no", no);
+		request.setAttribute("reviewNo", reviewNo);
 		request.setAttribute("id", id);
 		
+		ReviewVO review = new ReviewVO();
 		
+		try {
+			review = mapper.detailReview(reviewNo);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			new ServletException(e);
+		}
 		
+		request.setAttribute("review", review);
 		
 		RequestDispatcher rd = request.getRequestDispatcher("/view/review/updateform.jsp");
 		rd.forward(request, response);

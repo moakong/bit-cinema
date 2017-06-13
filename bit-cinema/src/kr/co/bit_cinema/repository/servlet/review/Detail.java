@@ -33,7 +33,7 @@ public class Detail extends HttpServlet{
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
-		int id = Integer.parseInt(request.getParameter("reviewNo"));
+		int reviewNo = Integer.parseInt(request.getParameter("reviewNo"));
 		String mmid = request.getParameter("mmid");
 		
 		request.setAttribute("mmid", mmid);
@@ -42,7 +42,7 @@ public class Detail extends HttpServlet{
 		
 		ReviewVO review = new ReviewVO();
 		try {
-			review = mapper.detailReview(id);
+			review = mapper.detailReview(reviewNo);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			new ServletException(e);
