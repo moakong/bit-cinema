@@ -105,7 +105,7 @@
 	     
 	      	<div class="well" style="text-align:left">
 	      		<%-- <c:forEach var="movie" varStatus="status" items="${ chartMovie }"> --%>
-	      		<c:forEach var="i" begin="3" end="${ chartMovie.size()-1 }">
+	      		<c:forEach var="i" begin="0" end="9">
 					<p><c:out value="${ i+1 }위" />
 					<a href="${pageContext.request.contextPath}/movie/DetailMovie?id=<c:out value="${ chartMovie[i].movieId }"/>">
 						<c:out value="${ chartMovie[i].movieName }"/></a>
@@ -134,7 +134,7 @@
     
 		<div id="demo" class="collapse">
 		<c:forEach var="i" begin="3" end="${ chartMovie.size()-1 }">
-			<div class="col-sm-3"> 
+			<div class="col-sm-1"> 
   				<p><strong>${i+1}위</strong></p>
   				<a href="${pageContext.request.contextPath}/movie/DetailMovie?id=<c:out value="${ chartMovie[i].movieId }"/>">
   				<img src="${ thumbnail[i] }" class="img-responsive" style="width:100%">
