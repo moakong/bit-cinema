@@ -7,6 +7,39 @@
 <head>
 <meta charset=UTF-8>
 <title>Insert title here</title>
+<style >
+
+#revieww{
+	margin: 20px;
+}
+
+#recontent{
+display: inline-block;
+ width: 600px;
+  white-space: nowrap;
+   overflow: hidden;
+    text-overflow: ellipsis;
+    
+     /* 여러 줄 자르기 추가 스타일 */ 
+     white-space: normal;
+      line-height: 1.2;
+       height: 2.3em;
+       text-align: left;
+        word-wrap: break-word;
+        display: -webkit-box;
+         -webkit-line-clamp: 2;
+          -webkit-box-orient: vertical;
+margin: 5px;
+
+		
+}
+#retitle{
+	font-size: 20px;
+	color: lime;
+}
+
+
+</style>
 </head>
 <body>
 	<div>
@@ -38,30 +71,25 @@
 				<a href="${pageContext.request.contextPath}/review/Review?id=<c:out value="${ movie.movieId }" />"/>리뷰</a>
 			</div>
 
-			<div>
+			<div id="revieww">
 				<!-- 여기에 내용 -->
-				<a href="${pageContext.request.contextPath}/writeform?mid=${ movie.movieId }">리뷰쓰기</a>
-				<table>
-					<tr>
-						<th>번호</th>
-						<th>제목</th>
-						<th>글쓴이</th>
-						<th>등록일</th>
-						<th>추천수</th>
-						<th>내용</th>
-					</tr>
+				<a href="${pageContext.request.contextPath}/writeform?mid=${ movie.movieId }">리뷰쓰기</a><br><br>
+				
+					<div id="reviewlist">
+					
 					<c:forEach var="review" items="${list }">
-							<tr>
-								<td><c:out value="${review.reviewNo }"/></td>
-								<td><a href="${pageContext.request.contextPath}/review/Detail?reviewNo=${review.reviewNo}"> <c:out value="${review.title }"/></a></td>
-								<td><c:out value="${review.memberId }"></c:out></td>
-								<td><fmt:formatDate value="${review.regDate }" pattern="yyyy-MM-dd" /></td>
-								<td><c:out value="${review.recomCount }"></c:out></td>
-								<td><c:out value="${review.content }"></c:out></td>
-							</tr>	
-				</c:forEach>
-
-				</table>
+							
+							<div>
+							
+								<span id="retitle"><a href="${pageContext.request.contextPath}/review/Detail?reviewNo=${review.reviewNo}"> <c:out value="${review.title }"/></a></span>
+								<span><c:out value="${review.memberId }"></c:out></span>
+								<span><fmt:formatDate value="${review.regDate }" pattern="yyyy-MM-dd" /></span>
+								추천<span><c:out value="${review.recomCount }"></c:out></span>
+								<div id="recontent"><a href="${pageContext.request.contextPath}/review/Detail?reviewNo=${review.reviewNo}"><c:out value="${review.content }"></c:out></a></div>
+							</div>	
+					</c:forEach>
+					</div>
+				
 				
 			</div>
 		</div>
