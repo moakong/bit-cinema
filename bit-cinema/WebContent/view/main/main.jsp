@@ -20,13 +20,14 @@
 		 font-weight: light;
 	}
 
-
+/* max-width: @screen-sm-max*/
    /* Hide the carousel text when the screen is less than 600 pixels wide */
-  @media (max-width: 600px) {
+  @media (max-width: 600px ) {
     .carousel-caption {
       display: none; 
     }
   }
+  
   </style>
 </head>
 <body>
@@ -103,10 +104,11 @@
 			</div>
 	     
 	      	<div class="well" style="text-align:left">
-	      		<c:forEach var="movie" varStatus="status" items="${ chartMovie }">
-					<p><c:out value="${ status.index +1 }위" />
-					<a href="${pageContext.request.contextPath}/movie/DetailMovie?id=<c:out value="${ movie.movieId }"/>">
-						<c:out value="${ movie.movieName }"/></a>
+	      		<%-- <c:forEach var="movie" varStatus="status" items="${ chartMovie }"> --%>
+	      		<c:forEach var="i" begin="3" end="${ chartMovie.size()-1 }">
+					<p><c:out value="${ i+1 }위" />
+					<a href="${pageContext.request.contextPath}/movie/DetailMovie?id=<c:out value="${ chartMovie[i].movieId }"/>">
+						<c:out value="${ chartMovie[i].movieName }"/></a>
 					</p>
 				</c:forEach>
 	      	</div>
@@ -125,14 +127,14 @@
   
   
   
-	<div class="container">
+	<div class="row">
 		<button type="button" class="btn btn-default colBtn" data-toggle="collapse" data-target="#demo">
 		<span class="glyphicon glyphicon-collapse-down"></span> 더보기 
 		</button>
     
 		<div id="demo" class="collapse">
-		<c:forEach var="i" begin="3" end="9">
-			<div class="col-sm-2"> 
+		<c:forEach var="i" begin="3" end="${ chartMovie.size()-1 }">
+			<div class="col-sm-3"> 
   				<p><strong>${i+1}위</strong></p>
   				<a href="${pageContext.request.contextPath}/movie/DetailMovie?id=<c:out value="${ chartMovie[i].movieId }"/>">
   				<img src="${ thumbnail[i] }" class="img-responsive" style="width:100%">
@@ -141,21 +143,6 @@
 		</c:forEach>
 		</div>
 	</div>
-
-
-<script>
-$(document).ready(function(){
-  $("#demo").on("hide.bs.collapse", function(){
-    $(".colBtn").html('<span class="glyphicon glyphicon-collapse-down"></span> 더보기');
-  });
-  $("#demo").on("show.bs.collapse", function(){
-    $(".colBtn").html('<span class="glyphicon glyphicon-collapse-up"></span> 닫기');
-  });
-});
-</script>
-  
-  
-  
 </div><br>
 
    
@@ -189,5 +176,15 @@ $(document).ready(function(){
 		<c:import url="/view/include/footer.jsp" />
 	</div>
 
+<script>
+$(document).ready(function(){
+  $("#demo").on("hide.bs.collapse", function(){
+    $(".colBtn").html('<span class="glyphicon glyphicon-collapse-down"></span> 더보기');
+  });
+  $("#demo").on("show.bs.collapse", function(){
+    $(".colBtn").html('<span class="glyphicon glyphicon-collapse-up"></span> 닫기');
+  });
+});
+</script>
 </body>
 </html>
