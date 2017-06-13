@@ -73,10 +73,26 @@
 	</resultMap>
 	
 	<select id="boxMovie" resultMap="orderMovie">
-		select *
+		select * 
+		  from movies, box_order 
+		 where movies.movie_id = box_order.movie_id and 
+		 		to_date(release_date)+ 30 > sysdate
+		<!-- select *
 		  from movies, box_order
 		 where movies.MOVIE_ID = box_order.MOVIE_ID
-		 order by box_order.audience desc
+		 order by box_order.audience desc -->
+	</select>
+	
+	<resultMap type="Box" id="boxMap">
+		<result column="movie_id" property="movieId"/>
+		<result column="audience" property="audience"/>
+		<result column="audience_date" property="audienceDate"/>
+	</resultMap>
+	
+	<select id="selectBox" parameterType="int" resultMap="boxMap">
+		select * 
+		  from box_order
+		 where movie_id = #{movieId}
 	</select>
 	
 	<select id="reserMovie" resultMap="orderMovie">
@@ -84,6 +100,14 @@
 		  from movies, reser_order
 		 where movies.MOVIE_ID = reser_order.MOVIE_ID
 		 order by reser_order.R_NUMBERS desc
+	</select>
+	
+	
+	
+	<select id="searchMovie" resultMap="movieMap">
+		select * 
+		  from movies 
+		 where movie_name like '%'||#{name}||'%'
 	</select>
 	
 	<resultMap type="Director" id="directorMap">
@@ -136,4 +160,5 @@
 		 where movie_id = #{movieId} and
 		 	   type = 'thumbnail'
 	</select> 
+	
 </mapper>

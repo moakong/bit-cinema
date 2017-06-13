@@ -1,12 +1,13 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
 <!DOCTYPE html>
 <html>
 <head>
-  <title>BIT CINEMA</title>
-  <meta charset="utf-8">
- 
+<meta charset=UTF-8">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<title>Insert title here</title>
   <style>
 	  hr { 
 		  height: 30px; 
@@ -87,7 +88,7 @@
       <span class="sr-only">Next</span>
     </a>
 </div>
-  
+
   <br>
   <div style="text-align: center">
   	<form action="${pageContext.request.contextPath}/movie/SearchMovie" method="post">
@@ -96,100 +97,38 @@
   	</form>
   </div>
   <br>
+
+  <div class="container">
+  <hr>    
+  <div class="row">
+  		<c:choose>
+  		<c:when test="${empty list }">
+  			찾는 결과가 없습니다ㅠㅠ
+  		</c:when>
+  		<c:otherwise>
+  			<c:forEach var="movie" items="${ list }" varStatus="s">
+		  		<div class="col-sm-3"> 
+  	
+  				<a href="${pageContext.request.contextPath}/movie/DetailMovie?id=<c:out value="${ movie.movieId }"/>">
+  					<img src="${ photo[s.index] }" class="img-responsive" style="width:100%" >
+  					<c:out value="${ movie.movieName }"/><br>
+  					<c:out value="누적관객 ${ box[s.index].audience } 명"/><br>
+  				</a>
+		 		 </div>
+  			</c:forEach>
+  		</c:otherwise>
+  		</c:choose>
+  </div>
+  </div> 
   
-  
-<div class="container text-center">
-<hr>    
-<h3 class="category">[ 영화 랭킹 ]</h3><br>
-	<div class="row">
-		<div class="col-sm-3">
-			<div class="btn-group btn-group-sm btn-block">
-				<button type="button" class="btn btn-default col-sm-5" onclick="location.href='${pageContext.request.contextPath}/main/Main?chart=1'">박스오피스</button>
-				<button type="button" class="btn btn-default col-sm-5" onclick="location.href='${pageContext.request.contextPath}/main/Main?chart=2'">예매순</button><br><br>
-			</div>
-	     
-	      	<div class="well" style="text-align:left">
-	      		<%-- <c:forEach var="movie" varStatus="status" items="${ chartMovie }"> --%>
-	      		<c:forEach var="i" begin="0" end="9">
-					<p><c:out value="${ i+1 }위" />
-					<a href="${pageContext.request.contextPath}/movie/DetailMovie?id=<c:out value="${ chartMovie[i].movieId }"/>">
-						<c:out value="${ chartMovie[i].movieName }"/></a>
-					</p>
-				</c:forEach>
-	      	</div>
-	    </div>
-    
-    
-    	<c:forEach var="i" begin="0" end="2">
-	    <div class="col-sm-3"> 
-	    	<p><strong>${i+1}위</strong></p>
-			<a href="${pageContext.request.contextPath}/movie/DetailMovie?id=<c:out value="${ chartMovie[i].movieId }"/>">
-			<img src="${ thumbnail[i] }" class="img-responsive" style="width:100%">
-			<p><strong><c:out value="${ chartMovie[i].movieName }"/></strong></p>  </a> 
-	    </div>
-		</c:forEach>
-  	</div>
-  
-  
-  
-		<button type="button" class="btn btn-default colBtn" data-toggle="collapse" data-target="#demo">
-		<span class="glyphicon glyphicon-collapse-down"></span> 더보기 
-		</button>
-    
-		<div id="demo" class="collapse">
-		
-			<c:set var="cnt" value="0" />
-		<c:forEach var="i" begin="3" end="${ chartMovie.size()-1 }">
-			<c:if test="${cnt == 0}">
-				<div class="row">
-			</c:if>
-				<div class="col-sm-2"> 
-	  				<p><strong>${i+1}위</strong></p>
-	  				<a href="${pageContext.request.contextPath}/movie/DetailMovie?id=<c:out value="${ chartMovie[i].movieId }"/>">
-	  				<img src="${ thumbnail[i] }" class="img-responsive" style="width:100%">
-	  				<p><strong><c:out value="${ chartMovie[i].movieName }"/></strong></p>  </a>  
-				</div>
-			<c:set var="cnt" value="${cnt+1}"/>
-			<c:if test="${cnt == 6 }">
-				</div>
-				<c:set var="cnt" value="0"/>
-			</c:if>
-		</c:forEach>
-		</div>
-<br>
 
-   
-   
-   <br><br><br>
-  <div class="container text-center">
-   <hr>
-    <h3 class="category">[ 예고편 ]</h3><br>
-    <div class="row">
-    <div class="col-sm-3">
-     <iframe width="280" height="150" src="https://www.youtube.com/embed/5c-dva-4BMs" frameborder="0" allowfullscreen></iframe>
-    </div>
-    <div class="col-sm-3">
-       <iframe width="280" height="150" src="https://www.youtube.com/embed/P7lmmnZ18VQ" frameborder="0" allowfullscreen></iframe>
-    </div>
-    <div class="col-sm-3">
-       <iframe width="280" height="150" src="https://www.youtube.com/embed/SFGlghyeMuQ" frameborder="0" allowfullscreen></iframe>
-    </div>
-    <div class="col-sm-3">
-       <iframe width="280" height="150" src="https://www.youtube.com/embed/RL-qYJFaF7E" frameborder="0" allowfullscreen></iframe>
-    </div>  
-    </div>
-    </div>
-
-
-
-
-
-	<br><br><br><br><br><br>
+<br><br><br>
+ 
 	<div>
 		<c:import url="/view/include/footer.jsp" />
 	</div>
 
-<script>
+<!-- <script>
 $(document).ready(function(){
   $("#demo").on("hide.bs.collapse", function(){
     $(".colBtn").html('<span class="glyphicon glyphicon-collapse-down"></span> 더보기');
@@ -198,6 +137,6 @@ $(document).ready(function(){
     $(".colBtn").html('<span class="glyphicon glyphicon-collapse-up"></span> 닫기');
   });
 });
-</script>
+</script> -->
 </body>
 </html>

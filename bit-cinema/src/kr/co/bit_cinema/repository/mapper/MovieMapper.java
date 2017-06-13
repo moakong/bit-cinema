@@ -22,6 +22,8 @@ public interface MovieMapper {
 	public List<String> infoGenre(int movieId) throws Exception;
 	public List<MovieVO> boxMovie() throws Exception;
 	public List<MovieVO> reserMovie() throws Exception;
+	public BoxVO selectBox(int movieId) throws Exception;
+	public List<MovieVO> searchMovie(String name) throws Exception;
 	public List<DirectorVO> selectDirector(int movieId) throws Exception;
 	public List<ActorVO> selectActor(int movieId) throws Exception;
 	public List<ActorVO> selectLeadActor(int movieId) throws Exception;
