@@ -21,6 +21,7 @@ public class paymentServlet extends HttpServlet{
 		
 		
 		
+		request.setAttribute("people", request.getParameter("people"));
 		request.setAttribute("seats", request.getParameterValues("seat")); // 배열도 바로 넣을 수 있나? ㅇㅇ
 		request.setAttribute("schNo", request.getParameter("schNo"));
 		RequestDispatcher rd = request.getRequestDispatcher("/view/reservation/payment.jsp");

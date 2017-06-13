@@ -12,14 +12,12 @@
 	    visibility:hidden;
 	}
 	 */
-	
-	 
 	label {
 	    cursor: pointer;
 	}
 	
 	input:checked + label {
-	    background: yellow;
+	    background: ;
 	}
 	
 	
@@ -80,7 +78,7 @@
 		
 		<form id="selectMovie">
 			<c:forEach var="movie" items="${list}">
-			<input type="radio" name="movieId" value="${movie.movieId}" id="m${movie.movieId}" /><label for="m${movie.movieId}">${movie.movieName}</label><br>
+			<input type="radio" name="movieId" value="${movie.movieId}" id="${movie.movieId}" /><label for="${movie.movieId}">${movie.movieName}</label><br>
 			</c:forEach>
 		</form>
     </div>
@@ -115,23 +113,7 @@
     </div>
     
     
-    
-    
-    
-    
-    
-    
-  		  </div>
-  		  
-  		  
-	<div class="container text-center" id="submitBtn">
-	</div>
-	  		  
-	<!--     <div id="submitBtn">
-	    </div> -->
-	    
-	    
-	    
+    </div>
 </div>
     
     
@@ -168,7 +150,7 @@
 					var output = "";
 					for(var i = 0; i < data.length; i++){
 						var m = data[i];
-						output += "<input type='radio' name='area' value='" + m.locationId + "' id='l" + m.locationId + "' /><label for='l" + m.locationId + "'>" + m.locationName + "</label><br>";						
+						output += "<input type='radio' name='area' value='" + m.locationId + "' id='" + m.locationId + "' /><label for='" + m.locationId + "'>" + m.locationName + "</label><br>";						
 						//console.log("m.locationId : ", m.locationId);						
 						//console.log("m.locationName : ", m.locationName);						
 					}
@@ -207,7 +189,7 @@
 					var m = data[i];
 					
 					//output += "<input type='radio' name='area' value='" + m.locationId + "' id='" + m.locationId + "' /><label for='" + m.locationId + "'>" + m.locationName + "</label><br>";						
-					output += '<input type="radio" name="theaterId" value="' + m.theaterId + '" id="t' + m.theaterId + '" /><label for="t' + m.theaterId + '">' + m.theaterName + '</label><br>';						
+					output += '<input type="radio" name="theaterId" value="' + m.theaterId + '" id="' + m.theaterId + '" /><label for="' + m.theaterId + '">' + m.theaterName + '</label><br>';						
 					
 					// console.log("m.locationName : ", m.locationName);						
 				}
@@ -237,7 +219,7 @@
 				var output = "";
 				for(var i = 0; i < data.length; i++){
 					var m = data[i];
-					output += '<input type="radio" name="date" value="' + m + '" id="d' + m + '" /><label for="d' + m + '">' + m + '</label><br>';						
+					output += '<input type="radio" name="date" value="' + m + '" id="' + m + '" /><label for="' + m + '">' + m + '</label><br>';						
 					
 					//console.log("날짜: ", m); // 확인용					
 				}
@@ -268,7 +250,7 @@
 				var output = "";
 				for(var i = 0; i < data.length; i++){
 					var m = data[i];
-					output += '<input type="radio" name="time" value="' + m.scheduleId + '" id="time' + m.scheduleId + '" /><label for="time' + m.scheduleId + '">' + m.screenName + ' : ' + m.startTime + ' ~ ' + m.endTime + '</label><br>';						
+					output += '<input type="radio" name="time" value="' + m.scheduleId + '" id="' + m.scheduleId + '" /><label for="' + m.scheduleId + '">' + m.screenName + ' : ' + m.startTime + ' ~ ' + m.endTime + '</label><br>';						
 					
 					//console.log("스케쥴 ID: ", m.scheduleId); // 확인용					
 				}
@@ -297,33 +279,16 @@
 
 		var output = "";
 		for(var i = 1; i < 11; i++){
-			output += '<input type="radio" name="people" value="' + i + '" id="r' + i + '" /><label for="r' + i + '">' + i + '</label><br>';						
+			output += '<input type="radio" name="people" value="' + i + '" id="' + i + '" /><label for="' + i + '">' + i + '</label><br>';						
 		}
 		
 		output += '<input type="hidden" name="schNo" value="' + schId + '" >';
-		//output += '<br><br><button class="btn btn-primary">좌석 선택</button>';
+		output += '<br><br><button class="btn btn-primary">좌석 선택</button>';
 		$("#selectPeopleForm").html(output);
 		
 	});
 	
 	
-	
-	
-	
-	
-	//http://localhost:8000/bit-cinema/reservation/selectSeat?people=2&schNo=1
-	$("#selectPeople").on("click", function(e) {
-		$("#submitBtn").html('<button class="btn btn-primary" onclick="submit();">좌석 선택</button>');
-	});
-	
-	
-	
-	
-	
-	function submit() {
-		var f= $("#selectPeopleForm");
-		f.submit();
-	}
 	
 	</script>
 	

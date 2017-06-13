@@ -31,7 +31,7 @@
 				비트시네마 ${rInfo.screenName}<br>
 				<fmt:formatDate value="${rInfo.startDate}" pattern="yyyy-MM-dd" /><br>
 				${rInfo.startTime} ~ ${rInfo.endTime}<br>
-				<button class="btn btn-default" onclick="location.href='detailReservation?reservationId=${rInfo.reservationId}'" >상세 내역</button>
+				<%-- <button class="btn btn-default" onclick="location.href='detailReservation?reservationId=${rInfo.reservationId}'" >상세 내역</button> --%>
 				<hr>
 			</p>
 		</c:forEach>

@@ -127,22 +127,30 @@
   
   
   
-	<div class="row">
 		<button type="button" class="btn btn-default colBtn" data-toggle="collapse" data-target="#demo">
 		<span class="glyphicon glyphicon-collapse-down"></span> 더보기 
 		</button>
     
 		<div id="demo" class="collapse">
+		
+			<c:set var="cnt" value="0" />
 		<c:forEach var="i" begin="3" end="${ chartMovie.size()-1 }">
-			<div class="col-sm-1"> 
-  				<p><strong>${i+1}위</strong></p>
-  				<a href="${pageContext.request.contextPath}/movie/DetailMovie?id=<c:out value="${ chartMovie[i].movieId }"/>">
-  				<img src="${ thumbnail[i] }" class="img-responsive" style="width:100%">
-  				<p><strong><c:out value="${ chartMovie[i].movieName }"/></strong></p>  </a>  
-			</div>
+			<c:if test="${cnt == 0}">
+				<div class="row">
+			</c:if>
+				<div class="col-sm-2"> 
+	  				<p><strong>${i+1}위</strong></p>
+	  				<a href="${pageContext.request.contextPath}/movie/DetailMovie?id=<c:out value="${ chartMovie[i].movieId }"/>">
+	  				<img src="${ thumbnail[i] }" class="img-responsive" style="width:100%">
+	  				<p><strong><c:out value="${ chartMovie[i].movieName }"/></strong></p>  </a>  
+				</div>
+			<c:set var="cnt" value="${cnt+1}"/>
+			<c:if test="${cnt == 6 }">
+				</div>
+				<c:set var="cnt" value="0"/>
+			</c:if>
 		</c:forEach>
 		</div>
-	</div>
 </div><br>
 
    

@@ -11,6 +11,14 @@
 
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
+<style type="text/css">
+.container{
+          padding-top: 50px;
+          padding-bottom: 100px;
+      }
+</style>
+
 </head>
 <body>
 
@@ -19,11 +27,15 @@
 		<c:import url="/view/include/topMenu.jsp" />
 	</div>	
 
-
 <div class="container text-center">
 	<div class="well">
 		<h2>결제 방법 선택</h2>
 		<hr>
+		
+		<div class="well">
+			<h3>성인 ${people}명<br>
+			${people * 9000}원</h3>
+		</div>
 		
 		<form id="payForm" action="finish" >
 			<input type="hidden" name="schNo" value="${schNo}">
