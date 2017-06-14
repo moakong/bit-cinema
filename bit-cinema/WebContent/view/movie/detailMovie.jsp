@@ -53,7 +53,7 @@
 <%--     	<c:if test="${i.index ne 0}"> --%>
 <!--     	<div class="item"> -->
 <%--      	</c:if> --%>
-       		<img src="${photos[i]}" alt="Image">
+       		<img src="${photos[i]}" height="500px"/>
      	</div>
 		</c:forEach>
    </div>

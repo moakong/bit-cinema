@@ -89,7 +89,7 @@
 </div>
   
   <br>
-  <div style="text-align: center">
+  <div style="text-align: center;">
   	<form action="${pageContext.request.contextPath}/movie/SearchMovie" method="post">
   	<input type="text" name="name"/>
   	<button>찾기</button>
@@ -104,8 +104,10 @@
 	<div class="row">
 		<div class="col-sm-3">
 			<div class="btn-group btn-group-sm btn-block">
-				<button type="button" class="btn btn-default col-sm-5" onclick="location.href='${pageContext.request.contextPath}/main/Main?chart=1'">박스오피스</button>
-				<button type="button" class="btn btn-default col-sm-5" onclick="location.href='${pageContext.request.contextPath}/main/Main?chart=2'">예매순</button><br><br>
+<%-- 				<button type="button" id="chartBox" class="btn btn-default col-sm-5" onclick="location.href='${pageContext.request.contextPath}/main/Main?chart=1'">박스오피스</button> --%>
+<%-- 				<button type="button" id="chartRsv" class="btn btn-default col-sm-5" onclick="location.href='${pageContext.request.contextPath}/main/Main?chart=2'">예매순</button><br><br> --%>
+				<button type="button" id="chartBox" class="btn btn-default col-sm-5" >박스오피스</button>
+				<button type="button" id="chartRsv" class="btn btn-default col-sm-5" >예매순</button><br><br>
 			</div>
 	     
 	      	<div class="well" style="text-align:left">
@@ -121,12 +123,12 @@
     
     
     	<c:forEach var="i" begin="0" end="2">
-	    <div class="col-sm-3"> 
-	    	<p><strong>${i+1}위</strong></p>
-			<a href="${pageContext.request.contextPath}/movie/DetailMovie?id=<c:out value="${ chartMovie[i].movieId }"/>">
-			<img src="${ thumbnail[i] }" class="img-responsive" style="width:100%">
-			<p><strong><c:out value="${ chartMovie[i].movieName }"/></strong></p>  </a> 
-	    </div>
+		    <div class="col-sm-3"> 
+		    	<p><strong>${i+1}위</strong></p>
+				<a href="${pageContext.request.contextPath}/movie/DetailMovie?id=<c:out value="${ chartMovie[i].movieId }"/>">
+				<img src="${ thumbnail[i] }" class="img-responsive" style="width:100%">
+				<p><strong><c:out value="${ chartMovie[i].movieName }"/></strong></p>  </a> 
+		    </div>
 		</c:forEach>
   	</div>
   
@@ -136,26 +138,27 @@
 		<span class="glyphicon glyphicon-collapse-down"></span> 더보기 
 		</button>
     
-		<div id="demo" class="collapse">
+	<div id="demo" class="collapse">
 		
-			<c:set var="cnt" value="0" />
+		<c:set var="cnt" value="0" />
 		<c:forEach var="i" begin="3" end="${ chartMovie.size()-1 }">
 			<c:if test="${cnt == 0}">
 				<div class="row">
 			</c:if>
-				<div class="col-sm-2"> 
-	  				<p><strong>${i+1}위</strong></p>
-	  				<a href="${pageContext.request.contextPath}/movie/DetailMovie?id=<c:out value="${ chartMovie[i].movieId }"/>">
-	  				<img src="${ thumbnail[i] }" class="img-responsive" style="width:100%">
-	  				<p><strong><c:out value="${ chartMovie[i].movieName }"/></strong></p>  </a>  
-				</div>
+			<div class="col-sm-2"> 
+  				<p><strong>${i+1}위</strong></p>
+  				<a href="${pageContext.request.contextPath}/movie/DetailMovie?id=<c:out value="${ chartMovie[i].movieId }"/>">
+  				<img src="${ thumbnail[i] }" class="img-responsive" style="width:100%">
+  				<p><strong><c:out value="${ chartMovie[i].movieName }"/></strong></p>  </a>  
+			</div>
 			<c:set var="cnt" value="${cnt+1}"/>
 			<c:if test="${cnt == 6 }">
 				</div>
 				<c:set var="cnt" value="0"/>
 			</c:if>
 		</c:forEach>
-		</div>
+	</div>
+</div>	
 <br>
 
    
@@ -197,6 +200,57 @@ $(document).ready(function(){
   $("#demo").on("show.bs.collapse", function(){
     $(".colBtn").html('<span class="glyphicon glyphicon-collapse-up"></span> 닫기');
   });
+});
+
+$("#chartBox").on("click", function(){
+	$.ajax({
+		url : "${pageContext.request.contextPath}/movie/ChartMovie",
+		type : "POST",
+		data : "chart=1",
+		success : function(data){
+			var movies = JSON.parse(data);
+			var html = "";
+			var length = movies.length;
+			if(movies.length > 10)
+				length = 10;
+			for (var i = 0; i < length; i++) {
+				var m = movies[i];
+				html += "<p>" + (i+1) + "위";
+				html += "<a href='${pageContext.request.contextPath}/movie/DetailMovie?id='"+ m.id +"'>";
+				html += m.name +"</a></p>";			
+			}
+			$(".well").html(html);
+		}
+	});
+// 	<c:forEach var="i" begin="0" end="9">
+// 	<p><c:out value="${ i+1 }위" />
+// 	<a href="${pageContext.request.contextPath}/movie/DetailMovie?id=<c:out value="${ chartMovie[i].movieId }"/>">
+// 		<c:out value="${ chartMovie[i].movieName }"/></a>
+// 	</p>
+// </c:forEach>
+});
+
+$("#chartRsv").on("click", function(){
+	$.ajax({
+		url : "${pageContext.request.contextPath}/movie/ChartMovie",
+		type : "POST",
+		data : "chart=2",
+		success : function(data){
+			console.log("?why? "+data);
+			var movies = JSON.parse(data);
+			var html = "";
+			var length = movies.length;
+			if(movies.length > 10)
+				length = 10;
+			for (var i = 0; i < length; i++) {
+				var m = movies[i];
+				html += "<p>" + (i+1) + "위";
+				html += "<a href='${pageContext.request.contextPath}/movie/DetailMovie?id='"+ m.id +"'>";
+				html += m.name +"</a></p>";			
+			}
+			$(".well").html(html);
+		}
+	});
 });
 </script>
 </body>
