@@ -36,12 +36,7 @@
 		<result column="member_id" property="memberId"/>
 		<result column="movie_id" property="movieId"/>
 		<result column="nickname" property="nickname"/>
-		
 	</resultMap>
-	
-	
-	
-	
 
 	<!-- 상세 보기 -->
 	<!--  
@@ -53,14 +48,25 @@
 	</select>
 	-->
 	
+	<!--  nickname select -->
+	
+	<select id="selectNickname" parameterType="string" resultType="string">
+	
+	select nickname
+	from members
+	where member_id = #{memberId}
+	
+	</select>
+	
+	
 	<!--  기본 최신순 -->
 	<!-- 최신순 -->
 	<select id="selectNewRating" parameterType="int" resultMap="ratingMap">
-	
-	select *
-	from ratings
-	where movie_id = #{movieId}
-	order by reg_date desc
+	select a.*, 
+	       (select nickname from members where member_id = a.member_id) nickname 
+	  from ratings a
+	 where a.movie_id = #{movieId}
+	 order by a.reg_date desc
 	</select>
 	
 	<!-- 평점순 낮은순 -->
@@ -147,15 +153,15 @@
 	
 	<insert id="insertRating" parameterType="Rating">
 	
-	insert into ratings(rating_no, content, reg_date, rating, spoiler, member_id, movie_id, nickname)
-	values (#{ratingNo}, #{content}, sysdate, #{rating}, #{spoiler}, #{memberId}, #{movieId}, #{nickname})
+	insert into ratings(rating_no, content, reg_date, rating, spoiler, member_id, movie_id)
+	values (s_rating_no.nextval, #{content}, sysdate, #{rating}, #{spoiler}, #{memberId}, #{movieId})
 	</insert>
     
      
      
     <update id="updateRating" parameterType="Rating">
     update ratings
-       set content = #{content}, rating = #{rating}
+       set content = #{content}, rating = #{rating}, spoiler = #{spoiler}
      where rating_no = #{ratingNo}
     
     </update>

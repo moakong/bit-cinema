@@ -16,5 +16,8 @@ public interface RatingMapper {
 	public void insertRating(RatingVO ratingVO) throws Exception;
 	public void updateRating(RatingVO ratingVO) throws Exception;
 	public void deleteRating(int no) throws Exception;
+	
+	
+	public String selectNickname(String memberId) throws Exception;
 
 }
