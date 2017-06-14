@@ -95,6 +95,7 @@ function confirmPay() {
 		                title: '결제가 완료되었습니다!',
 		                text: '',
 		                type: 'success'
+		                
 		            }, function() {
 		            	document.querySelector("#payForm").submit();
 		            })

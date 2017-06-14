@@ -198,6 +198,12 @@
       animation-name: rubberBand;
     }
        
+       
+       
+       
+       
+       
+       
      
      #btn{
      	margin-bottom: 100px;

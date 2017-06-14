@@ -12,66 +12,221 @@
 	    visibility:hidden;
 	}
 	 */
+	
+	 
 	label {
 	    cursor: pointer;
 	}
 	
-	input:checked + label {
-	    background: ;
-	}
+	/* 클릭한 내용 하이라이트! */
+	/* input:checked + label {
+	    background: yellow;
+	} */
+	
+	
+ 	.container{
+          padding-top: 50px;
+          padding-bottom: 100px;
+      }
+    /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+    .row.content {height: 450px}
+    
+    /* Set gray background color and 100% height */
+    .sidenav {
+      padding-top: 10px;
+      background-color: ;
+      height: 100%;
+    }
+
+    
+    
+    /* On small screens, set height to 'auto' for sidenav and grid */
+    @media screen and (max-width: 767px) {
+      .sidenav {
+        height: auto;
+        padding: 15px;
+      }
+      .row.content {height:auto;} 
+    }
+      
+    
+    
+    
+    
+    
+    
+      .selection {
+	clear: both;
+}
+
+label {
+  width: 260px;
+  border-radius: 3px;
+  border: 1px solid #D1D3D4
+}
+
+/* hide input */
+input.radio:empty {
+	margin-left: -9999px;
+}
+
+/* style label */
+input.radio:empty ~ label {
+	background-color: white;
+	position: relative;
+	float: left;
+	line-height: 1.8em;
+	text-indent: 3.25em;
+	margin-top: -1em;
+	cursor: pointer;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+input.radio:empty ~ label:before {
+	position: absolute;
+	display: block;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	content: '';
+	width: 2.5em;
+	background: #D1D3D4;
+	border-radius: 3px 0 0 3px;
+}
+
+/* toggle hover */
+input.radio:hover:not(:checked) ~ label:before {
+	/* transition: 0.7s; */
+	content:'\2714';
+	text-indent: .9em;
+	color: #C2C2C2;
+}
+
+input.radio:hover:not(:checked) ~ label {
+	transition: 0.7s;
+	color: dodgerblue;
+}
+
+/* toggle on */
+input.radio:checked ~ label:before {
+	transition: 0.7s;
+	content:'\2714';
+	text-indent: .9em;
+	color:black;
+	background-color: deepskyblue;
+}
+
+input.radio:checked ~ label {
+	/* transition: 0.2s; */
+	color: dodgerblue;
+}
+
+/* radio focus */
+input.radio:focus ~ label:before {
+	box-shadow: 0 0 0 3px #999;
+}
+
+
+
 
 </style>
 </head>
 <body>
-<div>
+
+
 	<div>
 		<c:import url="/view/include/topMenu.jsp" />
 	</div>	
 
-	<div>
-		<h2>영화 선택</h2>
-		<hr>
+
+
+
+
+
+<div class="container">    
+  <div class="row content" >
+   
+   
+   
+    <div class="col-sm-3 sidenav well">
+      <h3>영화 </h3>
+		 <div class="btn-group btn-group-sm btn-block">
+	  		<button type="button" class="btn btn-default col-sm-5" onclick="location.href='selectMovie?order=name'">이름순</button>
+	  		<button type="button" class="btn btn-default col-sm-5" onclick="location.href='selectMovie?order=reservation'">예매순</button><br><br>
+		</div>
 		
-		<a href="selectMovie?order=name">이름순</a> 
-		<a href="selectMovie?order=reservation">예매순</a> <br><br>
 		
 		<form id="selectMovie">
 			<c:forEach var="movie" items="${list}">
-			<input type="radio" name="movieId" value="${movie.movieId}" id="${movie.movieId}" /><label for="${movie.movieId}">${movie.movieName}</label><br>
+			<div class="selection">
+			<input class="radio" type="radio" name="movieId" value="${movie.movieId}" id="m${movie.movieId}" /><label for="m${movie.movieId}">${movie.movieName}</label><br>
+			</div>
 			</c:forEach>
 		</form>
+    </div>
+    
+    
+    
+    <div class="col-sm-2 sidenav well">
+	    <div id="selectArea"> 
+	    </div>
+	    
+	     <div id="selectTheater">
+   		 </div>
+    </div>
+    
+    
+    
+    
+    <div class="col-sm-2 sidenav well" id="selectDate">
+    </div>
+    
+    
+    
+    
+    <div class="col-sm-3 sidenav well" id="selectTime">
+    </div>
+    
+    
+    
+    
+    
+    <div class="col-sm-2 sidenav well" id="selectPeople">
+    </div>
+    
+    
+    
+    
+    
+    
+    
+    
+  		  </div>
+  		  
+  		  
+	<div class="container text-center" id="submitBtn">
 	</div>
-
-
-
-	<div id="selectArea"></div>
-
-
-	<div id="selectTheater"></div>
-
-
-	<div id="selectDate"></div>
-
-
-	<div id="selectTime"></div>
-
-
-	<div id="selectPeople"></div>
-
-
-	<div id="selectSeat"></div>
-
-
-
-	
+	  		  
+	<!--     <div id="submitBtn">
+	    </div> -->
+	    
+	    
+	    
+</div>
+    
+    
+    
+    
+    
 	<div>
 		<c:import url="/view/include/footer.jsp" />
 	</div>	
-</div>
-
-
-
-
+    
+    
+    
 	<script type="text/javascript">
 	var movieId;
 	var theaterId;
@@ -83,7 +238,7 @@
 			movieId = $("#selectMovie input[name='movieId']:checked").val();
 			//console.log("movieId : ", movieId); // test
 			
-			$("#selectArea").html("<h2>지역 선택</h2><hr><form id='selectAreaForm' ></form>");
+			$("#selectArea").html("<h3>지역</h3><form id='selectAreaForm' ></form>");
 			
 			var params = $("#selectMovie").serialize();
 			//console.log("params : ", params); // test
@@ -96,7 +251,7 @@
 					var output = "";
 					for(var i = 0; i < data.length; i++){
 						var m = data[i];
-						output += "<input type='radio' name='area' value='" + m.locationId + "' id='" + m.locationId + "' /><label for='" + m.locationId + "'>" + m.locationName + "</label><br>";						
+						output += "<div class='selection'><input class='radio' type='radio' name='area' value='" + m.locationId + "' id='l" + m.locationId + "' /><label for='l" + m.locationId + "'>" + m.locationName + "</label></div>";						
 						//console.log("m.locationId : ", m.locationId);						
 						//console.log("m.locationName : ", m.locationName);						
 					}
@@ -117,13 +272,13 @@
 		//console.log("areaId : ", areaId); // test
 		//console.log("movieId : ", movieId); // test
 		
-		$("#selectTheater").html("<h2>극장 선택</h2><hr><form id='selectTheaterForm' ></form>");
+		$("#selectTheater").html("<hr><h3>극장</h3><form id='selectTheaterForm' ></form>");
 		
-//		var params = $("#selectAreaForm").serialize(); // 왜 안되지?
-		var params = "area=" + areaId;
-		//console.log("전 params : ", params); // test
+		var params = $("#selectAreaForm").serialize(); // 왜 안되지?
+		//var params = "area=" + areaId;
+		console.log("전 params : ", params); // test
 		params += "&movieId=" + movieId
-		//console.log("후 params : ", params); // test
+		console.log("후 params : ", params); // test
 
 		$.ajax({ 
 			url: "selectTheater",
@@ -135,7 +290,7 @@
 					var m = data[i];
 					
 					//output += "<input type='radio' name='area' value='" + m.locationId + "' id='" + m.locationId + "' /><label for='" + m.locationId + "'>" + m.locationName + "</label><br>";						
-					output += '<input type="radio" name="theaterId" value="' + m.theaterId + '" id="' + m.theaterId + '" /><label for="' + m.theaterId + '">' + m.theaterName + '</label><br>';						
+					output += '<div class="selection"><input class="radio" type="radio" name="theaterId" value="' + m.theaterId + '" id="t' + m.theaterId + '" /><label for="t' + m.theaterId + '">' + m.theaterName + '</label></div>';						
 					
 					// console.log("m.locationName : ", m.locationName);						
 				}
@@ -152,7 +307,7 @@
 		theaterId = $("#selectTheaterForm input[name='theaterId']:checked").val();
 		//console.log("theaterId : ", theaterId); // test
 		
-		$("#selectDate").html("<h2>날짜 선택</h2><hr><form id='selectDateForm' ></form>");
+		$("#selectDate").html("<h3>날짜</h3><form id='selectDateForm' ></form>");
 		
 		//var params = "theaterId=" + theaterId + "&movieId=" + movieId;
 		//console.log("params : ", params); // test
@@ -165,7 +320,7 @@
 				var output = "";
 				for(var i = 0; i < data.length; i++){
 					var m = data[i];
-					output += '<input type="radio" name="date" value="' + m + '" id="' + m + '" /><label for="' + m + '">' + m + '</label><br>';						
+					output += '<div class="selection"><input class="radio" type="radio" name="date" value="' + m + '" id="d' + m + '" /><label for="d' + m + '">' + m + '</label></div>';						
 					
 					//console.log("날짜: ", m); // 확인용					
 				}
@@ -183,7 +338,7 @@
 		date = $("#selectDateForm input[name='date']:checked").val();
 		//console.log("date : ", date); // test
 		
-		$("#selectTime").html("<h2>시간 선택</h2><hr><form id='selectTimeForm' ></form>");
+		$("#selectTime").html("<h3>시간</h3><form id='selectTimeForm' ></form>");
 		
 		var params = "theaterId=" + theaterId + "&movieId=" + movieId + "&date=" + date;
 		//console.log("params : ", params); // test
@@ -196,7 +351,7 @@
 				var output = "";
 				for(var i = 0; i < data.length; i++){
 					var m = data[i];
-					output += '<input type="radio" name="time" value="' + m.scheduleId + '" id="' + m.scheduleId + '" /><label for="' + m.scheduleId + '">' + m.screenName + ' : ' + m.startTime + ' ~ ' + m.endTime + '</label><br>';						
+					output += '<div class="selection"><input class="radio" type="radio" name="time" value="' + m.scheduleId + '" id="time' + m.scheduleId + '" /><label for="time' + m.scheduleId + '">' + m.screenName + ' : ' + m.startTime + ' ~ ' + m.endTime + '</label></div>';						
 					
 					//console.log("스케쥴 ID: ", m.scheduleId); // 확인용					
 				}
@@ -220,21 +375,38 @@
 		schId = $("#selectTimeForm input[name='time']:checked").val();
 		console.log("schId : ", schId); // test
 		
-		$("#selectPeople").html("<h2>인원 선택</h2><hr><form id='selectPeopleForm' action='selectSeat' ></form>");
+		$("#selectPeople").html("<h3>인원</h3><form id='selectPeopleForm' action='selectSeat' ></form>");
 		
 
 		var output = "";
-		for(var i = 0; i < 10; i++){
-			output += '<input type="radio" name="people" value="' + i + '" id="' + i + '" /><label for="' + i + '">' + i + '</label><br>';						
+		for(var i = 1; i < 11; i++){
+			output += '<div class="selection"><input class="radio" type="radio" name="people" value="' + i + '" id="r' + i + '" /><label for="r' + i + '">' + i + '</label></div>';						
 		}
 		
 		output += '<input type="hidden" name="schNo" value="' + schId + '" >';
-		output += "<br><br><button>좌석 선택</button>";
+		//output += '<br><br><button class="btn btn-primary">좌석 선택</button>';
 		$("#selectPeopleForm").html(output);
 		
 	});
 	
 	
+	
+	
+	
+	
+	//http://localhost:8000/bit-cinema/reservation/selectSeat?people=2&schNo=1
+	$("#selectPeople").on("click", function(e) {
+		$("#submitBtn").html('<button class="btn btn-primary" onclick="submit();">좌석 선택</button>');
+	});
+	
+	
+	
+	
+	
+	function submit() {
+		var f= $("#selectPeopleForm");
+		f.submit();
+	}
 	
 	</script>
 	

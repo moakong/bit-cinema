@@ -111,18 +111,13 @@
   
 <div class="container text-center">
   <br>
-  <form action="${pageContext.request.contextPath}/movie/SearchMovie" method="post">
-   <div class="input-group right-block" > 
-    <div class="col-sm-3" >
-<!--     <label for="ex2">col-xs-3</label> -->
-    <input type="text" name="name"  type="text" class="form-control" placeholder="Search">
-  </div>
-    <div class="input-group-btn">
-      <button class="btn btn-default" type="submit">
-        <i class="glyphicon glyphicon-search"></i>
-      </button>
-    </div>
-   </div>
+  <form class="form-inline text-right" action="${pageContext.request.contextPath}/movie/SearchMovie" method="post">
+
+		  <div class="form-group">
+		    <input type="text" class="form-control" id="exampleInputName2" placeholder="영화를 검색하세요.">
+		  </div>
+		 
+		  <button type="submit" class="btn btn-default"><i class="glyphicon glyphicon-search"></i></button>
   </form>
   <br>
 <hr>    

@@ -18,9 +18,10 @@
 	    cursor: pointer;
 	}
 	
-	input:checked + label {
+	/* 클릭한 내용 하이라이트! */
+	/* input:checked + label {
 	    background: yellow;
-	}
+	} */
 	
 	
  	.container{
@@ -50,7 +51,163 @@
       
     
     
-      
+    
+    
+    
+    
+      .selection {
+	clear: both;
+}
+
+label {
+  width: 260px;
+  border-radius: 3px;
+  border: 1px solid #D1D3D4
+}
+
+/* hide input */
+input.radio:empty {
+	margin-left: -9999px;
+}
+
+/* style label */
+input.radio:empty ~ label {
+	background-color: white;
+	position: relative;
+	float: left;
+	line-height: 1.8em;
+	text-indent: 3.25em;
+	margin-top: -1em;
+	cursor: pointer;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+input.radio:empty ~ label:before {
+	position: absolute;
+	display: block;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	content: '';
+	width: 2.5em;
+	background: #D1D3D4;
+	border-radius: 3px 0 0 3px;
+}
+
+/* toggle hover */
+input.radio:hover:not(:checked) ~ label:before {
+	/* transition: 0.7s; */
+	content:'\2714';
+	text-indent: .9em;
+	color: #C2C2C2;
+}
+
+input.radio:hover:not(:checked) ~ label {
+	transition: 0.7s;
+	color: dodgerblue;
+}
+
+/* toggle on */
+input.radio:checked ~ label:before {
+	transition: 0.7s;
+	content:'\2714';
+	text-indent: .9em;
+	color:black;
+	background-color: deepskyblue;
+}
+
+input.radio:checked ~ label {
+	/* transition: 0.2s; */
+	-webkit-animation-name: rubberBand !important;
+      animation-name: rubberBand !important;
+      animation-duration: 300ms !important;
+      animation-fill-mode: both !important;
+	color: dodgerblue;
+}
+
+/* radio focus */
+input.radio:focus ~ label:before {
+	box-shadow: 0 0 0 3px #999;
+}
+
+
+
+
+
+
+
+
+
+ /*애니메이션*/
+    @-webkit-keyframes rubberBand {
+      0% {
+        -webkit-transform: scale3d(1, 1, 1);
+        transform: scale3d(1, 1, 1);
+      }
+      30% {
+        -webkit-transform: scale3d(1.25, 0.75, 1);
+        transform: scale3d(1.25, 0.75, 1);
+      }
+      40% {
+        -webkit-transform: scale3d(0.75, 1.25, 1);
+        transform: scale3d(0.75, 1.25, 1);
+      }
+      50% {
+        -webkit-transform: scale3d(1.15, 0.85, 1);
+        transform: scale3d(1.15, 0.85, 1);
+      }
+      65% {
+        -webkit-transform: scale3d(0.95, 1.05, 1);
+        transform: scale3d(0.95, 1.05, 1);
+      }
+      75% {
+        -webkit-transform: scale3d(1.05, 0.95, 1);
+        transform: scale3d(1.05, 0.95, 1);
+      }
+      100% {
+        -webkit-transform: scale3d(1, 1, 1);
+        transform: scale3d(1, 1, 1);
+      }
+    }
+    @keyframes rubberBand {
+      0% {
+        -webkit-transform: scale3d(1, 1, 1);
+        transform: scale3d(1, 1, 1);
+      }
+      30% {
+        -webkit-transform: scale3d(1.25, 0.75, 1);
+        transform: scale3d(1.25, 0.75, 1);
+      }
+      40% {
+        -webkit-transform: scale3d(0.75, 1.25, 1);
+        transform: scale3d(0.75, 1.25, 1);
+      }
+      50% {
+        -webkit-transform: scale3d(1.15, 0.85, 1);
+        transform: scale3d(1.15, 0.85, 1);
+      }
+      65% {
+        -webkit-transform: scale3d(0.95, 1.05, 1);
+        transform: scale3d(0.95, 1.05, 1);
+      }
+      75% {
+        -webkit-transform: scale3d(1.05, 0.95, 1);
+        transform: scale3d(1.05, 0.95, 1);
+      }
+      100% {
+        -webkit-transform: scale3d(1, 1, 1);
+        transform: scale3d(1, 1, 1);
+      }
+    }
+    
+    
+    .well {
+        background-color: ghostwhite !important;
+        box-shadow: 3px 3px 5px 1px #9b9ea0 !important;
+    }
 </style>
 </head>
 <body>
@@ -80,7 +237,9 @@
 		
 		<form id="selectMovie">
 			<c:forEach var="movie" items="${list}">
-			<input type="radio" name="movieId" value="${movie.movieId}" id="m${movie.movieId}" /><label for="m${movie.movieId}">${movie.movieName}</label><br>
+			<div class="selection">
+			<input class="radio" type="radio" name="movieId" value="${movie.movieId}" id="m${movie.movieId}" /><label for="m${movie.movieId}">${movie.movieName}</label><br>
+			</div>
 			</c:forEach>
 		</form>
     </div>
@@ -168,7 +327,7 @@
 					var output = "";
 					for(var i = 0; i < data.length; i++){
 						var m = data[i];
-						output += "<input type='radio' name='area' value='" + m.locationId + "' id='l" + m.locationId + "' /><label for='l" + m.locationId + "'>" + m.locationName + "</label><br>";						
+						output += "<div class='selection'><input class='radio' type='radio' name='area' value='" + m.locationId + "' id='l" + m.locationId + "' /><label for='l" + m.locationId + "'>" + m.locationName + "</label></div>";						
 						//console.log("m.locationId : ", m.locationId);						
 						//console.log("m.locationName : ", m.locationName);						
 					}
@@ -207,7 +366,7 @@
 					var m = data[i];
 					
 					//output += "<input type='radio' name='area' value='" + m.locationId + "' id='" + m.locationId + "' /><label for='" + m.locationId + "'>" + m.locationName + "</label><br>";						
-					output += '<input type="radio" name="theaterId" value="' + m.theaterId + '" id="t' + m.theaterId + '" /><label for="t' + m.theaterId + '">' + m.theaterName + '</label><br>';						
+					output += '<div class="selection"><input class="radio" type="radio" name="theaterId" value="' + m.theaterId + '" id="t' + m.theaterId + '" /><label for="t' + m.theaterId + '">' + m.theaterName + '</label></div>';						
 					
 					// console.log("m.locationName : ", m.locationName);						
 				}
@@ -237,7 +396,7 @@
 				var output = "";
 				for(var i = 0; i < data.length; i++){
 					var m = data[i];
-					output += '<input type="radio" name="date" value="' + m + '" id="d' + m + '" /><label for="d' + m + '">' + m + '</label><br>';						
+					output += '<div class="selection"><input class="radio" type="radio" name="date" value="' + m + '" id="d' + m + '" /><label for="d' + m + '">' + m + '</label></div>';						
 					
 					//console.log("날짜: ", m); // 확인용					
 				}
@@ -268,7 +427,7 @@
 				var output = "";
 				for(var i = 0; i < data.length; i++){
 					var m = data[i];
-					output += '<input type="radio" name="time" value="' + m.scheduleId + '" id="time' + m.scheduleId + '" /><label for="time' + m.scheduleId + '">' + m.screenName + ' : ' + m.startTime + ' ~ ' + m.endTime + '</label><br>';						
+					output += '<div class="selection"><input class="radio" type="radio" name="time" value="' + m.scheduleId + '" id="time' + m.scheduleId + '" /><label for="time' + m.scheduleId + '">' + m.screenName + ' : ' + m.startTime + ' ~ ' + m.endTime + '</label></div>';						
 					
 					//console.log("스케쥴 ID: ", m.scheduleId); // 확인용					
 				}
@@ -297,7 +456,7 @@
 
 		var output = "";
 		for(var i = 1; i < 11; i++){
-			output += '<input type="radio" name="people" value="' + i + '" id="r' + i + '" /><label for="r' + i + '">' + i + '</label><br>';						
+			output += '<div class="selection"><input class="radio" type="radio" name="people" value="' + i + '" id="r' + i + '" /><label for="r' + i + '">' + i + '</label></div>';						
 		}
 		
 		output += '<input type="hidden" name="schNo" value="' + schId + '" >';

@@ -72,7 +72,6 @@ input.radio:empty {
 
 /* style label */
 input.radio:empty ~ label {
-	background-color: white;
 	position: relative;
 	float: left;
 	line-height: 1.8em;
@@ -99,20 +98,17 @@ input.radio:empty ~ label:before {
 
 /* toggle hover */
 input.radio:hover:not(:checked) ~ label:before {
-	/* transition: 0.7s; */
 	content:'\2714';
 	text-indent: .9em;
 	color: #C2C2C2;
 }
 
 input.radio:hover:not(:checked) ~ label {
-	transition: 0.7s;
-	color: dodgerblue;
+	color: #888;
 }
 
 /* toggle on */
 input.radio:checked ~ label:before {
-	transition: 0.7s;
 	content:'\2714';
 	text-indent: .9em;
 	color:black;
@@ -120,12 +116,7 @@ input.radio:checked ~ label:before {
 }
 
 input.radio:checked ~ label {
-	/* transition: 0.2s; */
-	-webkit-animation-name: rubberBand !important;
-      animation-name: rubberBand !important;
-      animation-duration: 300ms !important;
-      animation-fill-mode: both !important;
-	color: dodgerblue;
+	color: #777;
 }
 
 /* radio focus */
@@ -136,78 +127,6 @@ input.radio:focus ~ label:before {
 
 
 
-
-
-
-
-
- /*애니메이션*/
-    @-webkit-keyframes rubberBand {
-      0% {
-        -webkit-transform: scale3d(1, 1, 1);
-        transform: scale3d(1, 1, 1);
-      }
-      30% {
-        -webkit-transform: scale3d(1.25, 0.75, 1);
-        transform: scale3d(1.25, 0.75, 1);
-      }
-      40% {
-        -webkit-transform: scale3d(0.75, 1.25, 1);
-        transform: scale3d(0.75, 1.25, 1);
-      }
-      50% {
-        -webkit-transform: scale3d(1.15, 0.85, 1);
-        transform: scale3d(1.15, 0.85, 1);
-      }
-      65% {
-        -webkit-transform: scale3d(0.95, 1.05, 1);
-        transform: scale3d(0.95, 1.05, 1);
-      }
-      75% {
-        -webkit-transform: scale3d(1.05, 0.95, 1);
-        transform: scale3d(1.05, 0.95, 1);
-      }
-      100% {
-        -webkit-transform: scale3d(1, 1, 1);
-        transform: scale3d(1, 1, 1);
-      }
-    }
-    @keyframes rubberBand {
-      0% {
-        -webkit-transform: scale3d(1, 1, 1);
-        transform: scale3d(1, 1, 1);
-      }
-      30% {
-        -webkit-transform: scale3d(1.25, 0.75, 1);
-        transform: scale3d(1.25, 0.75, 1);
-      }
-      40% {
-        -webkit-transform: scale3d(0.75, 1.25, 1);
-        transform: scale3d(0.75, 1.25, 1);
-      }
-      50% {
-        -webkit-transform: scale3d(1.15, 0.85, 1);
-        transform: scale3d(1.15, 0.85, 1);
-      }
-      65% {
-        -webkit-transform: scale3d(0.95, 1.05, 1);
-        transform: scale3d(0.95, 1.05, 1);
-      }
-      75% {
-        -webkit-transform: scale3d(1.05, 0.95, 1);
-        transform: scale3d(1.05, 0.95, 1);
-      }
-      100% {
-        -webkit-transform: scale3d(1, 1, 1);
-        transform: scale3d(1, 1, 1);
-      }
-    }
-    
-    
-    .well {
-        background-color: ghostwhite !important;
-        box-shadow: 3px 3px 5px 1px #9b9ea0 !important;
-    }
 </style>
 </head>
 <body>
@@ -246,28 +165,31 @@ input.radio:focus ~ label:before {
     
     
     
-
-    <div id="select2"> 
-    </div>
+    <div class="col-sm-2 sidenav well">
+	    <div id="selectArea"> 
+	    </div>
 	    
-	
-    
-    
-    
-    <div id="selectDate">
+	     <div id="selectTheater">
+   		 </div>
     </div>
     
     
     
     
-    <div id="selectTime">
+    <div class="col-sm-2 sidenav well" id="selectDate">
+    </div>
+    
+    
+    
+    
+    <div class="col-sm-3 sidenav well" id="selectTime">
     </div>
     
     
     
     
     
-    <div id="selectPeople">
+    <div class="col-sm-2 sidenav well" id="selectPeople">
     </div>
     
     
@@ -311,7 +233,6 @@ input.radio:focus ~ label:before {
 			movieId = $("#selectMovie input[name='movieId']:checked").val();
 			//console.log("movieId : ", movieId); // test
 			
-			$("#select2").html('<div class="col-sm-2 sidenav well" style="height:450px;">  <div id="selectArea" ></div>  <div id="selectTheater" ></div>  </div>');
 			$("#selectArea").html("<h3>지역</h3><form id='selectAreaForm' ></form>");
 			
 			var params = $("#selectMovie").serialize();
@@ -377,11 +298,11 @@ input.radio:focus ~ label:before {
 	
 	
 	
-	$("#select2").on("click", "#selectArea", function(e) {
+	$("#selectTheater").on("click", function(e) {
 		theaterId = $("#selectTheaterForm input[name='theaterId']:checked").val();
 		//console.log("theaterId : ", theaterId); // test
 		
-		$("#selectDate").html("<div class='col-sm-2 sidenav well' style='height:450px;'><h3>날짜</h3><form id='selectDateForm' ></form></div>");
+		$("#selectDate").html("<h3>날짜</h3><form id='selectDateForm' ></form>");
 		
 		//var params = "theaterId=" + theaterId + "&movieId=" + movieId;
 		//console.log("params : ", params); // test
@@ -412,7 +333,7 @@ input.radio:focus ~ label:before {
 		date = $("#selectDateForm input[name='date']:checked").val();
 		//console.log("date : ", date); // test
 		
-		$("#selectTime").html("<div class='col-sm-3 sidenav well' style='height:450px;'><h3>시간</h3><form id='selectTimeForm' ></form><div>");
+		$("#selectTime").html("<h3>시간</h3><form id='selectTimeForm' ></form>");
 		
 		var params = "theaterId=" + theaterId + "&movieId=" + movieId + "&date=" + date;
 		//console.log("params : ", params); // test
@@ -449,7 +370,7 @@ input.radio:focus ~ label:before {
 		schId = $("#selectTimeForm input[name='time']:checked").val();
 		console.log("schId : ", schId); // test
 		
-		$("#selectPeople").html("<div class='col-sm-2 sidenav well' style='height:450px;'><h3>인원</h3><form id='selectPeopleForm' action='selectSeat' ></form></div>");
+		$("#selectPeople").html("<h3>인원</h3><form id='selectPeopleForm' action='selectSeat' ></form>");
 		
 
 		var output = "";

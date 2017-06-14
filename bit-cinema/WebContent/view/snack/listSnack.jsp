@@ -34,18 +34,17 @@ u1.a > li:HOVER {
 			<div>
 				<c:import url="/view/include/snackMenu.jsp"/>
 			</div>
-			<div>
-			<ul class="a">
+			<div class="row">
+			<!-- <ul class="a"> -->
 				<c:forEach var="snack" items="${list}">
-				<li>
+				<div class="col-sm-3">
 				<a href ="DetailSnack?snackId=<c:out value='${snack.snackId}'/>">
 					<img width="200px" height="200px" src="<c:out value="${snack.img}"/>"/><br>
 				</a>	
 					<c:out value="${snack.name}"/><br>
 					<c:out value="${snack.price}"/><br>
-				</li>
+					</div>
 				</c:forEach>
-			</ul>
 			</div>
 		</div>
 		
