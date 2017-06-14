@@ -32,12 +32,12 @@
 </style>
 </head>
 <body>
-<div class="container">
+<div >
 	<div>
 		<c:import url="/view/include/topMenu.jsp" />
 	</div>
 	
-	
+<div class="container">	
 <div id="myCarousel" class="carousel slide" data-ride="carousel">
 	<!-- Indicators -->
 	<ol class="carousel-indicators">
@@ -64,12 +64,6 @@
     	<div class="item">
     	</c:otherwise>
     	</c:choose>
-<%--     	<c:if test="${i.index eq 0}"> --%>
-<!--     	<div class="item active"> -->
-<%--      	</c:if> --%>
-<%--     	<c:if test="${i.index ne 0}"> --%>
-<!--     	<div class="item"> -->
-<%--      	</c:if> --%>
        		<img src="${photos[i]}" class="item-img"/>
      	</div>
 		</c:forEach>
@@ -93,7 +87,6 @@
 	<div>
 		<div>
 			<a href="<c:out value="${ photo }"/>" onclick="window.open(this.href, '_blank'); return false;">
-<!-- 				<img src="cinqueterre.jpg" class="img-thumbnail" alt="Cinque Terre" width="304" height="236"> -->
 				<img class="img-thumbnail" src="<c:out value="${ photo }"/>" width="300px" height="400px"/>
 			</a><br>
 			<c:out value="${ movie.movieName }" /><br>
@@ -107,20 +100,10 @@
 			<c:out value="${ movie.story }" /><br><br>
 			
 			<button type="button" onclick="location.href='../reservation/selectArea?movieId=${movie.movieId}'" class="btn btn-primary">예매하기</button>
-<%-- 			<button onclick="location.href='../reservation/selectArea?movieId=${movie.movieId}'" >예매하기</button> --%>
 		</div>
 			<br><br>
 			
 			
-			
-			
-<!-- 		<div class="movie-contain"> -->
-<!-- 		<ul class="movie-menu"> -->
-<%-- 			<li><a href="${pageContext.request.contextPath}/movie/DetailMovie?id=<c:out value="${ movie.movieId }" />">주요정보</a></li> --%>
-<%-- 			<li><a href="${pageContext.request.contextPath}/movie/DetailCast?id=<c:out value="${ movie.movieId }" />">감독  / 배우</a></li> --%>
-<%-- 			<li><a href="${pageContext.request.contextPath}/movie/DetailMedia?id=<c:out value="${ movie.movieId }" />">동영상 / 포토</a></li> --%>
-<!-- 		</ul> -->
-<!-- 		</div> -->
 		
 		<div class="btn-group btn-group-justified" >
 		  <a href="${pageContext.request.contextPath}/movie/DetailMovie?id=<c:out value="${ movie.movieId }" />" class="btn btn-primary">주요정보</a>
@@ -151,7 +134,8 @@
 			</c:forEach>
 		</div>
 	</div>
-	
+
+</div>
 	<div>
 		<c:import url="/view/include/footer.jsp" />
 	</div>	

@@ -5,33 +5,123 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<title>Insert title here</title>
-	<script src="../js/library.js"></script>
+	<!-- <script src="../view/js/library.js"></script>
+ -->
+
 	</head>
 	<body>
 	<div>
 		<div>
 			<c:import url="/view/include/topMenu.jsp" />
 		</div>	
-		<div>
-			<form id="joinForm" name="join" action="Join" method="post" onsubmit="return check()">
-				아이디  <input id="id" type="text" name="id" onkeydown="checkId();" />
-				<input id="idCh" type="hidden" value="0"/>
+		
+		
+<div class="container">
+	<div class="row">
+		<!-- < <h2>Create Your Simple Registration Form</h2>  -->
+        
+        <form class="form-horizontal" id="joinForm" name="join" action="Join" method="post" onsubmit="return check();">
+		<fieldset>
+<!-- 
+			Form Name
+		<legend>Register Here</legend>  -->
+
+<!-- Text input-->
+	<div class="form-group">
+  			<label class="col-md-4 control-label" for="textinput">Id</label>  
+  			<div class="col-md-4">
+  				<input id="id" name="id" onkeydown="checkId();" placeholder="Insert your Id" class="form-control input-md" type="text"/>
+<!--   				<span class="help-block"></span>   -->
+		<input id="idCh" type="hidden" value="0"/>
 				<div id="checkIdMsg"></div>
-				영문자와 숫자조합으로 8~12글자를 입력하세요.<br>
-				비밀번호  <input type="password" id="pass" name="pass" maxlength="12" onkeydown="patternCheck();"/>
-				<input id="pwdCh" type="hidden" value="0"/>
+  			</div>
+	</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="textinput"></label>  
+  <div class="col-md-4">
+ <span> 영문자와 숫자조합으로 8~12글자를 입력하세요.</span>
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="textinput">Password</label>  
+  <div class="col-md-4">
+  <input id="pass" name="pass" maxlength="12" onkeydown="patternCheck();" placeholder="Insert your Password" class="form-control input-md" type="password"/>
+<!--   <span class="help-block"></span>   -->
+<input id="pwdCh" type="hidden" value="0"/>
 				<div id="checkPass"></div>
-				비밀번호 확인 <input type="password" id="pass2" name="pass2" maxlength="12" onkeyup="checkPass();"/>
-				<div id="checkPassMsg"></div>
-				이름  <input type="text" name="name"/><br>
-				별명 <input type="text" name="nickname"/><br>
-				이메일  <input type="text" id="email" name="email"/><br>
-				<input id="emailCh"	type="hidden" value="0" />
-				휴대전화 <input type="text" id="phone" name="phone" maxlength="11"/><br>
-				<input id="phoneCh" type="hidden" value="0"/>
-				<button>회원가입</button>
-			</form>
-		</div>	
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="textinput">Confirm Password</label>  
+  <div class="col-md-4">
+  <input id="pass2" name="pass2" maxlength="12" onkeyup="checkPass();" placeholder="Confirm your Password" class="form-control input-md" type="password" />
+  <span class="help-block"></span>  
+  <div id="checkPassMsg"></div>
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="textinput">Name</label>  
+  <div class="col-md-4">
+  <input name="name" placeholder="Insert your Name" class="form-control input-md" type="text"/>
+   <span class="help-block"></span>
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="textinput">Nickname</label>  
+  <div class="col-md-4">
+  <input name="nickname" placeholder="Insert your Nickname" class="form-control input-md" type="text"/>
+	<span class="help-block"></span> 
+  </div>
+</div>
+
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="textinput">Email</label>  
+  <div class="col-md-4">
+  <input id="email" name="email" placeholder="Insert your Email" class="form-control input-md" type="text"/>
+<span class="help-block"></span>
+<input id="emailCh"	type="hidden" value="0" />
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="textinput">Phone</label>  
+  <div class="col-md-4">
+  <input id="phone" name="phone" maxlength="11" placeholder="Insert your Phone" class="form-control input-md" type="text"/>
+<input id="phoneCh" type="hidden" value="0"/>
+<span class="help-block"></span>   
+  </div>
+</div>
+
+
+<!-- Button -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="singlebutton"> </label>
+  <div class="col-md-4">
+    <button class="btn btn-primary btn-block">Submit</button>
+  </div>
+</div>
+
+</fieldset>
+</form>
+  
+	</div>
+</div>
+		
+
+
 		<div>
 			<c:import url="/view/include/footer.jsp" />
 		</div>	
@@ -46,7 +136,7 @@
 	var loopSendPass = false;
 	function checkId(){
 		if(idFirst == false){
-			setTimeout("sendId();", 100);
+			setTimeout("sendId();", 1000);
 			loopSendId = true;
 		}
 		idFirst = true;
@@ -54,7 +144,7 @@
 	
 	function sendId(){
 		if (loopSendId == false) return;	  
-		var keyword = document.join.id.value;
+		var keyword = joinForm.id.value;
 		if (keyword != idKeyword) {
 			idKeyword = keyword;
 		   
@@ -68,14 +158,14 @@
 							document.getElementById("checkIdMsg").style.color = "blue";
 // 							document.getElementById("idCh").value = 1;
  							$("#idCh").val(1);
-							console.log(document.join.idCh.value);
+							//console.log(document.join.idCh.value);
 // 							$("#").val(1);
 						}
 						else {
 							document.getElementById("checkIdMsg").style.color = "red";
 // 							document.getElementById("idCh").value = 0;
  							$("#idCh").val(0);
-							console.log(document.join.idCh.value);
+							//console.log(document.join.idCh.value);
 // 							$("#idCh").val(0);
 						}
 						$("#checkIdMsg").html(data);
@@ -85,13 +175,14 @@
 		   	} else {
 		   	}
 		}
-		setTimeout("sendId();", 100);		
+		console.log("?");
+		setTimeout("sendId();", 1000);		
 	}
 	
 
 	function patternCheck(){
 		if(passFirst == false){
-			setTimeout("sendPass();", 100);
+			setTimeout("sendPass();", 1000);
 			loopSendPass = true;
 		}
 		passFirst = true;
@@ -125,7 +216,7 @@
 		   	} else {
 		   	}
 		}
-		setTimeout("sendPass();", 100);
+		setTimeout("sendPass();", 1000);
 	}
 	
 	function checkPass(){

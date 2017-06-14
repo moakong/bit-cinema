@@ -10,6 +10,13 @@
 <!--  <script type="text/javascript" src="${pageContext.request.contextPath}/style/rating.js"></script>-->
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style>
+.img-thumbnail {
+		position: relative;
+		top: -200px;
+		left: 50px;
+	}
+</style>
 </head>
 <body>
 
@@ -19,13 +26,54 @@
 		<c:import url="/view/include/topMenu.jsp" />
 	</div>
 	
-	
+<div class="container">	
+<div id="myCarousel" class="carousel slide" data-ride="carousel">
+	<!-- Indicators -->
+	<ol class="carousel-indicators">
+		<c:forEach var="i" begin="0" end="${photos.size()-1}">
+    	<c:choose>
+    	<c:when test="${i eq 0}">
+    	<li data-target="#myCarousel" data-slide-to="${i}" class="active"></li>
+    	</c:when>
+    	<c:otherwise>
+    	<li data-target="#myCarousel" data-slide-to="${i}"></li>
+    	</c:otherwise>
+    	</c:choose>
+		</c:forEach>
+	</ol>
+
+	<!-- Wrapper for slides -->
+	<div class="carousel-inner" role="listbox">
+		<c:forEach var="i" begin="0" end="${photos.size()-1}">
+    	<c:choose>
+    	<c:when test="${i eq 0}">
+    	<div class="item active">
+    	</c:when>
+    	<c:otherwise>
+    	<div class="item">
+    	</c:otherwise>
+    	</c:choose>
+       		<img src="${photos[i]}" class="item-img"/>
+     	</div>
+		</c:forEach>
+   </div>
+
+    <!-- Left and right controls -->
+    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+      <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+</div>	
 	
 	
 		<div>
 			<div>
 				<a href="<c:out value="${ photo }"/>" onclick="window.open(this.href, '_blank'); return false;">
-					<img src="<c:out value="${ photo }"/>" width="300px" height="400px"/>
+					<img class="img-thumbnail" src="<c:out value="${ photo }"/>" width="300px" height="400px"/>
 				</a><br>
 				<c:out value="${ movie.movieName }" /><br>
 				<c:out value="${ movie.engTitle }" /><br>
@@ -36,35 +84,18 @@
 				<c:out value="${ movie.runtime }" /><br>
 				<c:out value="${ movie.certificate }" /><br>
 				<c:out value="${ movie.story }" /><br><br>
-				<button onclick="location.href='../reservation/selectArea?movieId=${movie.movieId}'" >예매하기</button>
+				<button type="button" onclick="location.href='../reservation/selectArea?movieId=${movie.movieId}'" class="btn btn-primary">예매하기</button>
 			</div>
 				<br><br>
-			<div>
-				<a href="${pageContext.request.contextPath}/movie/DetailMovie?id=<c:out value="${ movie.movieId }" />">주요정보</a>
-				<a href="${pageContext.request.contextPath}/movie/DetailCast?id=<c:out value="${ movie.movieId }" />">감독  / 배우</a>
-				<a href="${pageContext.request.contextPath}/movie/DetailMedia?id=<c:out value="${ movie.movieId }" />">동영상 / 포토</a>
-				<a href='${pageContext.request.contextPath}/rating/Rating?id=<c:out value="${ movie.movieId }" />'>평점</a>
-				<a href="${pageContext.request.contextPath}/review/Review?id=<c:out value="${ movie.movieId }" />">리뷰</a>
-			</div>
+			<div class="btn-group btn-group-justified" >
+		  <a href="${pageContext.request.contextPath}/movie/DetailMovie?id=<c:out value="${ movie.movieId }" />" class="btn btn-primary">주요정보</a>
+		  <a href="${pageContext.request.contextPath}/movie/DetailCast?id=<c:out value="${ movie.movieId }" />" class="btn btn-primary">감독  / 배우</a>
+		  <a href="${pageContext.request.contextPath}/movie/DetailMedia?id=<c:out value="${ movie.movieId }" />" class="btn btn-primary">동영상 / 포토</a>
+		  <a href="${pageContext.request.contextPath}/rating/Rating?id=<c:out value="${ movie.movieId }" />" class="btn btn-primary">평점</a>
+		  <a href="${pageContext.request.contextPath}/review/Review?id=<c:out value="${ movie.movieId }"/>" class="btn btn-primary">리뷰</a>
+		</div>	
+		<br><br>
 			
-			<div>
-				<h2>감독</h2>
-				<c:forEach var="director" items="${ directors }">
-					<c:out value="======프로필이미지======" /><br>
-					감독 <br>
-					<c:out value="${ director.directorName }" /><br>
-				</c:forEach>
-				<hr>
-				
-				<h2>배우</h2>
-				<a href="${pageContext.request.contextPath}/movie/DetailCast?id=<c:out value="${ movie.movieId }" />">> 더보기</a><br>
-				<c:forEach var="actor" items="${ actors }">
-					<img width="320" height="240" src="http://t1.search.daumcdn.net/thumb/R438x0.q85/?fname=http%3A%2F%2Fcfile79.uf.daum.net%2Fimage%2F273B565051A55DDB2E41A6"/><br>
-					<c:out value="${ actor.type }" /><br>
-					<c:out value="${ actor.castName }" /><br>
-					<c:out value="${ actor.actorName }" /><br>
-				</c:forEach>
-			</div>
 		</div>
 		
 		<!-- 평점 쓰기 -->
@@ -209,7 +240,7 @@
 </form> 
 	</div>	 
 	</div>		
-		
+		</div>
 		 	
 
 	<div>

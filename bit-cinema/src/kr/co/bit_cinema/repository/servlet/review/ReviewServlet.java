@@ -35,17 +35,20 @@ public class ReviewServlet extends HttpServlet{
 		List<ReviewVO> list = null;
 		List<String> genre = null;
 		String photo = null;
+		List<String> photos = null;
 		try {
 			movie = mapperMovie.infoMovie(id);
 			genre = mapperMovie.infoGenre(id);
 			photo = mapperMovie.selectThumbnail(id);
 			list = mapper.listReview(id);
+			photos = mapperMovie.selectPhoto(id);
 		} catch (Exception e) {
 			new ServletException(e);
 		}
 		request.setAttribute("movie", movie);
 		request.setAttribute("genre", genre);
 		request.setAttribute("photo", photo);
+		request.setAttribute("photos", photos);
 		request.setAttribute("list", list);
 		
 		RequestDispatcher rd = request.getRequestDispatcher("/view/review/review.jsp");

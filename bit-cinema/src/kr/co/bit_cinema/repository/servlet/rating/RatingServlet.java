@@ -23,6 +23,8 @@ import kr.co.bit_cinema.repository.vo.MemberVO;
 
 import kr.co.bit_cinema.repository.vo.RatingVO;
 import kr.co.bit_cinema.repository.vo.ReviewVO;
+import kr.co.bit_cinema.repository.vo.movie.ActorVO;
+import kr.co.bit_cinema.repository.vo.movie.DirectorVO;
 import kr.co.bit_cinema.repository.vo.movie.MovieVO;
 
 @WebServlet("/rating/Rating")
@@ -44,28 +46,35 @@ public class RatingServlet extends HttpServlet {
 	public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int mId = Integer.parseInt(request.getParameter("id"));
 		// String ratingNo = request.getParameter("ratingNo");
+		String ratingNo = request.getParameter("ratingNo");
 
+		List<RatingVO> listRating = null;
+		MovieVO movie = null;
+		List<String> genre = null;
+		String photo = null;
+		List<String> photos = null;
 		try {
 			// List<RatingVO> listRating = ratingMapper.selectNewRating();
-			MovieVO movie = movieMapper.infoMovie(mId);
-			request.setAttribute("movie", movie);
+			movie = movieMapper.infoMovie(mId);
+			genre = movieMapper.infoGenre(mId);
+			photo = movieMapper.selectThumbnail(mId);
+			photos = movieMapper.selectPhoto(mId);
 
 			
-			String ratingNo = request.getParameter("ratingNo");
 			if (ratingNo != null) {
 				request.setAttribute("ratingNo", ratingNo);			
 			}
 			
-			
-			
-			
-			List<RatingVO> listRating = ratingMapper.selectNewRating(mId);
+			listRating = ratingMapper.selectNewRating(mId);
 
 			// System.out.println("ratingNo = " + ratingNo);
 			// request.setAttribute("ratingNo", ratingNo);
 
 			request.setAttribute("listRating", listRating);
-
+			request.setAttribute("movie", movie);
+			request.setAttribute("genre", genre);
+			request.setAttribute("photo", photo);
+			request.setAttribute("photos", photos);
 			
 			RequestDispatcher rd = request.getRequestDispatcher("/view/rating/rating.jsp");
 			rd.forward(request, response);

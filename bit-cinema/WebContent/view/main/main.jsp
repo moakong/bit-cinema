@@ -114,7 +114,7 @@
   <form class="form-inline text-right" action="${pageContext.request.contextPath}/movie/SearchMovie" method="post">
 
 		  <div class="form-group">
-		    <input type="text" class="form-control" id="exampleInputName2" placeholder="영화를 검색하세요.">
+		    <input type="text" class="form-control" name="name" placeholder="영화를 검색하세요.">
 		  </div>
 		 
 		  <button type="submit" class="btn btn-default"><i class="glyphicon glyphicon-search"></i></button>
