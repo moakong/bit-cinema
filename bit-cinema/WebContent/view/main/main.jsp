@@ -20,6 +20,16 @@
 		 font-weight: light;
 	}
 
+	.center-block {
+		display: block;
+		margin-left: auto;
+		margin-right: auto;
+	}
+	.container {
+		.center-block();
+		width: 1000px;
+	}
+	
 /* max-width: @screen-sm-max*/
    /* Hide the carousel text when the screen is less than 600 pixels wide */
   @media (max-width: 600px ) {
@@ -27,7 +37,6 @@
       display: none; 
     }
   }
-  
   </style>
 </head>
 <body>
@@ -88,17 +97,34 @@
     </a>
 </div>
   
-  <br>
+ <%--  <br>
   <div style="text-align: center;">
   	<form action="${pageContext.request.contextPath}/movie/SearchMovie" method="post">
   	<input type="text" name="name"/>
   	<button>찾기</button>
   	</form>
   </div>
-  <br>
+  <br> --%>
+   
+  
   
   
 <div class="container text-center">
+  <br>
+  <form action="${pageContext.request.contextPath}/movie/SearchMovie" method="post">
+   <div class="input-group right-block" > 
+    <div class="col-sm-3" >
+<!--     <label for="ex2">col-xs-3</label> -->
+    <input type="text" name="name"  type="text" class="form-control" placeholder="Search">
+  </div>
+    <div class="input-group-btn">
+      <button class="btn btn-default" type="submit">
+        <i class="glyphicon glyphicon-search"></i>
+      </button>
+    </div>
+   </div>
+  </form>
+  <br>
 <hr>    
 <h3 class="category">[ 영화 랭킹 ]</h3><br>
 	<div class="row">
@@ -113,8 +139,9 @@
 	      	<div class="well" style="text-align:left">
 	      		<%-- <c:forEach var="movie" varStatus="status" items="${ chartMovie }"> --%>
 	      		<c:forEach var="i" begin="0" end="9">
-					<p><c:out value="${ i+1 }위" />
-					<a href="${pageContext.request.contextPath}/movie/DetailMovie?id=<c:out value="${ chartMovie[i].movieId }"/>">
+					<p style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;">
+					<c:out value="${ i+1 }위" />
+					<a href="${pageContext.request.contextPath}/movie/DetailMovie?id=<c:out value="${ chartMovie[i].movieId }"/>" >
 						<c:out value="${ chartMovie[i].movieName }"/></a>
 					</p>
 				</c:forEach>
@@ -215,7 +242,7 @@ $("#chartBox").on("click", function(){
 				length = 10;
 			for (var i = 0; i < length; i++) {
 				var m = movies[i];
-				html += "<p>" + (i+1) + "위";
+				html += "<p style='white-space: nowrap;overflow: hidden;text-overflow: ellipsis;''>" + (i+1) + "위";
 				html += "<a href='${pageContext.request.contextPath}/movie/DetailMovie?id='"+ m.id +"'>";
 				html += m.name +"</a></p>";			
 			}
@@ -244,7 +271,7 @@ $("#chartRsv").on("click", function(){
 				length = 10;
 			for (var i = 0; i < length; i++) {
 				var m = movies[i];
-				html += "<p>" + (i+1) + "위";
+				html += "<p style='white-space: nowrap;overflow: hidden;text-overflow: ellipsis;'>" + (i+1) + "위";
 				html += "<a href='${pageContext.request.contextPath}/movie/DetailMovie?id='"+ m.id +"'>";
 				html += m.name +"</a></p>";			
 			}
