@@ -13,12 +13,6 @@
           padding-top: 50px;
           padding-bottom: 100px;
       }
-      
-      .well {
-    	border: 1px solid black !important;
-        background-color: white !important;
-        box-shadow: 3px 3px 5px 1px #9b9ea0 !important;
-    }
 </style>
 
 </head>
@@ -30,7 +24,7 @@
 	</div>	
 
 
-<div class="container text-center" style="width:600px">
+<div class="container text-center">
 	<div class="well">
 		<h1>예매 완료</h1>
 		<hr><br>

@@ -209,7 +209,6 @@ input.radio:focus ~ label:before {
         background-color: white !important;
         box-shadow: 3px 3px 5px 1px #9b9ea0 !important;
     }
-    
 </style>
 </head>
 <body>

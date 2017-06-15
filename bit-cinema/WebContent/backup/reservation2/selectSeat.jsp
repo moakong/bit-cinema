@@ -65,18 +65,17 @@
     }
 
        
-      /* 기본 버튼 상태*/
+       /* 기본 바튼 상태*/
     label {
-      margin: -9px 0.2px !important;
+      
       display: block !important;
       position: relative !important;
       width: 10px !important;
       text-align: center !important;
       font-size: 14px !important;
       font-weight: bold !important;
-      /*line-height: 1.5rem !important;*/
-      /*padding: 4px 0 !important;*/
-      padding: 7px 0 !important;
+      line-height: 1.5rem !important;
+      padding: 4px 0 !important;
       background: #bada55 !important;
       border-radius: 5px !important;
       animation-duration: 300ms !important;
