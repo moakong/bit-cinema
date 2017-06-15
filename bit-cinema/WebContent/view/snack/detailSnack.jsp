@@ -64,6 +64,9 @@
 						상품설명 &nbsp; &nbsp;
 						<c:out value="${snack.explan}" /><br>
 						</div>
+						<input type="hidden" name="price" value="${snack.price}">
+						<input type="hidden" name="name" value="${snack.name}">
+						<input type="hidden" name="img" value="${snack.img}">
 						<input type="hidden" name="snackId" value="${snack.snackId}">
 						<input type="hidden" id="gocart" name="gocart" value="">				
 						<div id="buy">유효기간 구매후 30일</div>
@@ -81,7 +84,7 @@
 <script>
 	function doAction() {
 		var f = document.m;
-		f.action = "../order/ListOrder";
+		f.action = "../order/PayOneSnack";
 		f.submit();
 	}
 	function cart() {
