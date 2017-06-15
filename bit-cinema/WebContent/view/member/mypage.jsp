@@ -11,7 +11,7 @@
 	<div>
 		<c:import url="/view/include/topMenu.jsp" />
 	</div>	
-	<div>
+	<div class="container">
 		<div>
 			<c:import url="/view/include/mypageMenu.jsp" />
 		</div>
@@ -28,6 +28,7 @@
 			<p>내가 쓴 리뷰</p>
 		</div>
 	</div>	
+	
 	<div>
 		<c:import url="/view/include/footer.jsp" />
 	</div>	

@@ -25,10 +25,10 @@
 		margin-left: auto;
 		margin-right: auto;
 	}
-	.container {
+/* 	.container {
 		.center-block();
 		width: 1000px;
-	}
+	} */
 	
 /* max-width: @screen-sm-max*/
    /* Hide the carousel text when the screen is less than 600 pixels wide */
@@ -135,8 +135,8 @@
 	      		<%-- <c:forEach var="movie" varStatus="status" items="${ chartMovie }"> --%>
 	      		<c:forEach var="i" begin="0" end="9">
 					<p style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;">
-					<c:out value="${ i+1 }위" />
-					<a href="${pageContext.request.contextPath}/movie/DetailMovie?id=<c:out value="${ chartMovie[i].movieId }"/>" >
+					<span><c:out value="${ i+1 }위" /></span>
+					<a href="${pageContext.request.contextPath}/movie/DetailMovie?id=<c:out value="${ chartMovie[i].movieId }"/>" data-toggle="tooltip" data-placement="bottom" title="${ chartMovie[i].movieName }">
 						<c:out value="${ chartMovie[i].movieName }"/></a>
 					</p>
 				</c:forEach>
@@ -215,6 +215,8 @@
 	</div>
 
 <script>
+
+
 $(document).ready(function(){
   $("#demo").on("hide.bs.collapse", function(){
     $(".colBtn").html('<span class="glyphicon glyphicon-collapse-down"></span> 더보기');
@@ -238,7 +240,8 @@ $("#chartBox").on("click", function(){
 			for (var i = 0; i < length; i++) {
 				var m = movies[i];
 				html += "<p style='white-space: nowrap;overflow: hidden;text-overflow: ellipsis;''>" + (i+1) + "위";
-				html += "<a href='${pageContext.request.contextPath}/movie/DetailMovie?id='"+ m.id +"'>";
+				html += "<a href='${pageContext.request.contextPath}/movie/DetailMovie?id="+ m.id +"' ";
+				html += "data-toggle='tooltip' data-placement='bottom' title='" + m.name + "'>";
 				html += m.name +"</a></p>";			
 			}
 			$(".well").html(html);
@@ -267,12 +270,17 @@ $("#chartRsv").on("click", function(){
 			for (var i = 0; i < length; i++) {
 				var m = movies[i];
 				html += "<p style='white-space: nowrap;overflow: hidden;text-overflow: ellipsis;'>" + (i+1) + "위";
-				html += "<a href='${pageContext.request.contextPath}/movie/DetailMovie?id='"+ m.id +"'>";
+				html += "<a href='${pageContext.request.contextPath}/movie/DetailMovie?id="+ m.id +"' ";
+				html += "data-toggle='tooltip' data-placement='bottom' title='" + m.name + "'>";
 				html += m.name +"</a></p>";			
 			}
 			$(".well").html(html);
 		}
 	});
+});
+
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();   
 });
 </script>
 </body>

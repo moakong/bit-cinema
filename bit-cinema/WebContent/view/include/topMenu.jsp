@@ -48,9 +48,9 @@
       </ul>
       <ul class="nav navbar-nav navbar-right">
    	   <c:if test="${!empty user}">
-			<img src="<c:out value="${user.profile}"/>" width="50" height="50"/>
-			<a href="${pageContext.request.contextPath}/member/Mypage">
-				<c:out value="${user.name}"/></a>
+			<li><img src="<c:out value="${user.profile}"/>" class="img-circle" width="50" height="50"/></li>
+			<li><a href="${pageContext.request.contextPath}/member/Mypage">
+				<c:out value="${user.name}"/></a></li>
 		</c:if>
 		
       	<c:choose>
@@ -58,7 +58,7 @@
 	        <li><a href="${pageContext.request.contextPath}/member/LoginForm"><span class="glyphicon glyphicon-log-in"></span>&nbsp; 로그인</a></li>
 	      	</c:when> 			
 			<c:otherwise>
-	       	<li><a href="${pageContext.request.contextPath}/member/Logout"><span class="glyphicon glyphicon-log-in"></span>로그아웃</a></li>
+	       	<li><a href="${pageContext.request.contextPath}/member/Logout"><span class="glyphicon glyphicon-log-in"></span>&nbsp;로그아웃</a></li>
 			</c:otherwise>
 	 	</c:choose>
       </ul>

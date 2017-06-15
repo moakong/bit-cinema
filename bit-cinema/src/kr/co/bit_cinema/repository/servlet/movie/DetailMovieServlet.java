@@ -15,9 +15,9 @@ import org.apache.ibatis.session.SqlSession;
 import common.db.MyAppSqlConfig;
 import kr.co.bit_cinema.repository.mapper.MovieMapper;
 import kr.co.bit_cinema.repository.vo.movie.ActorVO;
+import kr.co.bit_cinema.repository.vo.movie.BoxVO;
 import kr.co.bit_cinema.repository.vo.movie.DirectorVO;
 import kr.co.bit_cinema.repository.vo.movie.MovieVO;
-import kr.co.bit_cinema.repository.vo.movie.PhotoVO;
 
 @WebServlet("/movie/DetailMovie")
 public class DetailMovieServlet extends HttpServlet {
@@ -39,6 +39,7 @@ public class DetailMovieServlet extends HttpServlet {
 		List<DirectorVO> directors = null;
 		List<ActorVO> actors = null;
 		List<String> photos = null;
+		BoxVO box = null;
 		try {
 			movie = mapper.infoMovie(id);
 			genre = mapper.infoGenre(id);
@@ -46,6 +47,7 @@ public class DetailMovieServlet extends HttpServlet {
 			directors = mapper.selectDirector(id);
 			actors = mapper.selectLeadActor(id);
 			photos = mapper.selectPhoto(id);
+			box = mapper.selectBox(id);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -55,6 +57,7 @@ public class DetailMovieServlet extends HttpServlet {
 		request.setAttribute("photos", photos);
 		request.setAttribute("directors", directors);
 		request.setAttribute("actors", actors);
+		request.setAttribute("box", box);
 
 		RequestDispatcher rd = request.getRequestDispatcher("/view/movie/detailMovie.jsp");
 		rd.forward(request, response);
