@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<div>
+	<div class="container">
 		<div>
 			<c:import url="/view/include/topMenu.jsp" />
 		</div>
@@ -38,10 +38,10 @@
 		</form>
 		</div>
 		
+	</div>
 		<div>
 			<c:import url="/view/include/footer.jsp" />
 		</div>
-	</div>
 	<script>
 	function list() {
 		document.order.action ="../order/ListOrder";

@@ -32,10 +32,11 @@ public class ListCartServlet extends HttpServlet {
 			throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		MemberVO member = (MemberVO)session.getAttribute("user");
-		
+		System.out.println(member);
 		List<CartVO> list = null;
 		try {
 			list = mapper.selectCart(member.getMemberId());
+			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

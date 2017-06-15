@@ -31,7 +31,6 @@ public class InsertCartServlet extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 			String sId = request.getParameter("snackId");
-			
 			// 장바구니에 넣기 버튼으로 넘어 온 거
 			if (sId != null) {
 				int snackId = Integer.parseInt(sId);

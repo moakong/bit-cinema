@@ -14,7 +14,7 @@
 </head>
 <body>
 
-<div>
+<div class="container">
 	<div>
 		<c:import url="/view/include/topMenu.jsp" />
 	</div>	
@@ -54,10 +54,10 @@
 		
 	</div>
 	
+</div>
 	<div>
 		<c:import url="/view/include/footer.jsp" />
 	</div>	
-</div>
 
 
 </body>
