@@ -22,6 +22,13 @@
 	#amount {
 		font-size: 15px;
 	}
+	.ho {
+		border: none;
+	}
+	.n {
+		border:none;
+		text-align: right;
+	}
 </style>
 </head>
 <body>
@@ -49,7 +56,9 @@
 					<input type="hidden" name="count" value="<c:out value="${cto.count}" />"/>
 					<c:out value="${cto.count}" />개
 					&nbsp;&nbsp;&nbsp;
-					<c:out value="${cto.amount}" />원
+					<input class="n" type="text" value="
+					<c:out value="${cto.amount}" />"/>원
+
 					
 					</div>
 			</c:if>
@@ -64,7 +73,8 @@
 					<c:out value="${cart.price}" />원					
 					<c:out value="${cart.count}" />개
 					&nbsp;&nbsp;&nbsp;
-					<c:out value="${cart.amount}" />원
+					<input class="n" type="text" value="
+					<c:out value="${cto.amount}" />"/>원
 					
 					</div>
 					<br>

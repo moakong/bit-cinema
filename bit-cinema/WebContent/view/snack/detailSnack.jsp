@@ -8,6 +8,7 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 <style>
 	#name {
 		text-align: left;
@@ -30,6 +31,9 @@
 		display:block;
 		padding: 5px;
 		margin-bottom: 5px;
+	}
+	.list {
+		text-align: right;
 	}
 </style>
 </head>
@@ -60,19 +64,27 @@
 							<option value="3">3</option>
 						</select>개<br>
 						</div>
-						<div id="explan">
-						상품설명 &nbsp; &nbsp;
-						<c:out value="${snack.explan}" /><br>
-						</div>
 						<input type="hidden" name="price" value="${snack.price}">
 						<input type="hidden" name="name" value="${snack.name}">
 						<input type="hidden" name="img" value="${snack.img}">
 						<input type="hidden" name="snackId" value="${snack.snackId}">
 						<input type="hidden" id="gocart" name="gocart" value="">				
 						<div id="buy">유효기간 구매후 30일</div>
-						 <button type="submit" onclick="cart();"class="btn-danger">장바구니</button>
+						<table>
+						<tr>
+						<td>
+						 <button type="submit" onclick="cart();">장바구니</button>
+						</td>
+						<td>
+						<button onclick="doAction()" type="button">바로구매</button>			 
+						</td>
+						</tr>
+						<tr>
+						<td colspan="2" class="list">
 						<button  class="" type="button" onclick="location.href='${pageContext.request.contextPath}/snack/ListSnack?category=<c:out value="${snack.categoryId}"/>'">목록</button>
-						<button onclick="doAction()" type="button" >구매</button>			 
+						</td>
+						</tr>
+						</table>
 					</div>
 				</div>
 			</form>

@@ -24,6 +24,7 @@
 		<typeAlias alias="Order" type="kr.co.bit_cinema.repository.vo.OrderVO" /> 	
 		<typeAlias alias="OrderDetail" type="kr.co.bit_cinema.repository.vo.OrderDetailVO" /> 	
 		<typeAlias alias="CartToOrder" type="kr.co.bit_cinema.repository.vo.CartToOrderVO" /> 	
+		<typeAlias alias="ReviewFile" type="kr.co.bit_cinema.repository.vo.ReviewFileVO" /> 	
 	</typeAliases>
 	
 	<environments default="development">

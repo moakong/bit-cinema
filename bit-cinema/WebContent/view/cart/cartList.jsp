@@ -34,6 +34,7 @@
 #ck {
 	width: 50px;
 	text-align: center;
+	font-size: 10px;	
 }
 
 .list {
@@ -56,6 +57,9 @@ table {
 	text-align: center;
 	font-size: 15px;
 }
+.bt {
+	border-top: 1px solid black;
+}
 </style>
 </head>
 <body>
@@ -64,19 +68,20 @@ table {
 		<c:import url="/view/include/topMenu.jsp" />
 	</div>
 	<div class="container">
+		<div class="row">
 		<div>
 			<c:import url="/view/include/mypageMenu.jsp" />
 		</div>
 		<div class="row">
-			<div>
+		
+			<div  class="center-block" style="width: 800px; height: 500px; margin-right: 300px;">
 				<table>
-					<tr>
-						<th colspan="5"><input type="checkbox" id="all" name="all"
-							value="all" onclick="changeChk()" /> <label for="all"
-							onclick="changeChk()">전체선택</label><br></th>
-					</tr>
 					<tr class="a">
-						<th id="ck">선택</th>
+						<th id="ck">
+						<input type="checkbox" id="all" name="all"
+							value="all" onclick="changeChk()" /> <label for="all"
+							onclick="changeChk()">전체</label><br>
+						</th>
 						<th id="name">상품명</th>
 						<th id="count">수량</th>
 						<th id="price">단가</th>
@@ -110,7 +115,7 @@ table {
 									</tr>
 									<br>
 								</c:forEach>
-								<tr>
+								<tr class="bt">
 									<td colspan="4"><input type="submit"
 										onclick="return confirm('삭제하시겠습니까?')" value="삭제" /></td>
 									<td id="bt"><button type="submit" onclick="buy()">구매</button></td>
@@ -119,6 +124,7 @@ table {
 				</form>
 				</c:otherwise>
 				</c:choose>
+			</div>
 			</div>
 		</div>
 	</div>
