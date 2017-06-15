@@ -86,5 +86,10 @@
 	where REVIEW_NO = #{reviewNo}
 	</select>
 
+	<delete id="deleteFile" parameterType="int">
+	delete from review_file
+	where REVIEW_NO = #{no}
+	</delete>
+	
 
 </mapper>

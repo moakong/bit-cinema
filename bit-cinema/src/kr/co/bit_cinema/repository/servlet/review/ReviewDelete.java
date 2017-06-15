@@ -34,6 +34,7 @@ public class ReviewDelete extends HttpServlet{
 	
 		try {
 			mapper.deleteReview(no);
+			mapper.deleteFile(no);
 			session.commit();
 			response.sendRedirect("/bit-cinema/review/Review?id="+id);
 			

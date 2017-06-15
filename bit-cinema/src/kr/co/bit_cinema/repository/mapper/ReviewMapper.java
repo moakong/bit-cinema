@@ -17,6 +17,7 @@ public interface ReviewMapper {
 	public void insertFile(ReviewFileVO vo) throws Exception;
 	public ReviewFileVO detailFile(int reviewNo) throws Exception;
 	public List<ReviewFileVO> listFile(int id) throws Exception;
+	public void deleteFile(int no) throws Exception;
 	
 	
 	
