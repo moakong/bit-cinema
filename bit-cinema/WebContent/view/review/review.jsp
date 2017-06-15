@@ -8,6 +8,10 @@
 <meta charset=UTF-8>
 <title>Insert title here</title>
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
+<script src="../lib/sweetalert.min.js"></script> 
+<link rel="stylesheet" href="../lib/sweetalert.css">
+
 <style >
 .img-thumbnail {
 		position: relative;
@@ -125,7 +129,9 @@ margin: 5px;
 
 			<div id="revieww">
 				<!-- 여기에 내용 -->
-				<a id="returnuser" href="${pageContext.request.contextPath}/writeform?mid=${ movie.movieId }">리뷰쓰기</a><br><br>
+<%-- 				<a id="returnuser" href="${pageContext.request.contextPath}/writeform?mid=${ movie.movieId }">리뷰쓰기</a> --%>
+				
+				<button type="button" id="buttonn">리뷰쓰기</button><br><br>
 				
 					<div id="reviewlist">
 					
@@ -161,13 +167,34 @@ margin: 5px;
 // 			return false;
 // 		}
 // 	});
-
 var userr = '${user}';
 console.log("userr", userr);
-$("#returnuser").on("click", function(){
+// $("#returnuser").on("click", function(){
+// 	if (!userr) {
+// 		alert("로그인 해주세요");
+// // 		document.location.href="${pageContext.request.contextPath}/member/LoginForm";
+// 		return false;
+// 	}
+// });
+
+$("#buttonn").on("click", function(){
 	if (!userr) {
-		alert("로그인 해주세요");
-		return false;
+		
+		swal({
+			  title: " 로그인 하세요 "
+			},
+			function(){
+				location.href="${pageContext.request.contextPath}/member/LoginForm";
+			});
+
+// 		swal("Here's a message!", function(){
+// 			location.href="${pageContext.request.contextPath}/member/LoginForm";
+// 		});
+// 		alert( "로그인 해주세요" );
+		
+	}
+	else{
+		location.href="${pageContext.request.contextPath}/writeform?mid=${ movie.movieId }"
 	}
 });
 </script>

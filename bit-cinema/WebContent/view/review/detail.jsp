@@ -6,6 +6,8 @@
 <head>
 <meta charset=UTF-8>
 <title>Insert title here</title>
+<script src="../lib/sweetalert.min.js"></script> 
+<link rel="stylesheet" href="../lib/sweetalert.css">
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 </head>
 <body>
@@ -49,6 +51,24 @@
 
 
 	$("#del").on("click",  function(){
+		
+		swal({
+			  title: "삭제 하시겠습니까?",
+			  text: "You  file!",
+			  type: "warning",
+			  showCancelButton: true,
+			  confirmButtonColor: "#DD6B55",
+			  confirmButtonText: " 정말!?",
+			  closeOnConfirm: false
+			},
+			function(){
+			  swal("그냥 효과요 ", "ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ", "success");
+			});
+		
+		
+		
+		
+		
 		var result = confirm("삭제 하시겠습니까?");
 		if (result){
 			

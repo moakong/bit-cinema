@@ -9,7 +9,7 @@
 <body>
  리뷰작성이 완료되었습니다.
 
-
+죽은 jsp !! 
 
 	<a href="${pageContext.request.contextPath}/review/Review?id=<c:out value="${ mid }" />"/>리뷰 돌아가기</a>
 </body>

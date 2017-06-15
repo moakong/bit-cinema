@@ -55,8 +55,7 @@ public class Update extends HttpServlet{
 		}
 		
 		
-		
-		RequestDispatcher rd = request.getRequestDispatcher("/view/review/update.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("/review/Review?id="+mid);
 		rd.forward(request, response);
 	}
 

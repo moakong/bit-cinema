@@ -8,6 +8,7 @@
 <body>
 수정 완료
 
+죽은 jsp !!! 
 <a href="${pageContext.request.contextPath}/review/Review?id=${ mid }"/>리뷰 돌아가기</a>
 
 </body>

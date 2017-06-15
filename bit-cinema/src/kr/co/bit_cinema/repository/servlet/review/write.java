@@ -60,8 +60,7 @@ public class write extends HttpServlet{
 		}
 		request.setAttribute("mid",mid);
 		
-		RequestDispatcher rd = request.getRequestDispatcher("view/review/write.jsp");
-		
+		RequestDispatcher rd = request.getRequestDispatcher("/review/Review?id="+mid);
 		rd.forward(request, response);
 	
 	}
