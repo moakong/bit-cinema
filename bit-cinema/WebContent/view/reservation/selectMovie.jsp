@@ -62,7 +62,11 @@
 label {
   width: 260px;
   border-radius: 3px;
-  border: 1px solid #D1D3D4
+  border: 1px solid #D1D3D4;
+  
+  white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 /* hide input */
@@ -208,6 +212,7 @@ input.radio:focus ~ label:before {
     	border: 1px solid black !important;
         background-color: white !important;
         box-shadow: 3px 3px 5px 1px #9b9ea0 !important;
+        overflow: auto;
     }
     
 </style>
@@ -303,6 +308,11 @@ input.radio:focus ~ label:before {
     
     
 	<script type="text/javascript">
+	$(document).ready(function(){
+	    $('[data-toggle="tooltip"]').tooltip(); 
+	});
+	
+	
 	var movieId;
 	var theaterId;
 	var date;
@@ -427,7 +437,9 @@ input.radio:focus ~ label:before {
 				var output = "";
 				for(var i = 0; i < data.length; i++){
 					var m = data[i];
-					output += '<div class="selection"><input class="radio" type="radio" name="time" value="' + m.scheduleId + '" id="time' + m.scheduleId + '" /><label for="time' + m.scheduleId + '">' + m.screenName + ' : ' + m.startTime + ' ~ ' + m.endTime + '</label></div>';						
+					//output += '<div class="selection"><input class="radio" type="radio" name="time" value="' + m.scheduleId + '" id="time' + m.scheduleId + '" /><label for="time' + m.scheduleId + '">' + m.screenName + ' : ' + m.startTime + ' ~ ' + m.endTime + '</label></div>';						
+					output += '<div class="selection"><input class="radio" type="radio" name="time" value="' + m.scheduleId + '" id="time' + m.scheduleId + '" /><label for="time' + m.scheduleId + '" data-toggle="tooltip" title="' + m.turn + '회차">' + m.screenName + ' : ' + m.startTime + ' ~ ' + m.endTime + '</label></div>';						
+					//output += '<div class="selection"><input class="radio" type="radio" name="time" value="' + m.scheduleId + '" id="time' + m.scheduleId + '" /><label for="time' + m.scheduleId + '" data-toggle="tooltip" title="' + m.endTime + '">' + m.screenName + ' : ' + m.startTime + + ' (' + m.turn+ '회차)' + '</label></div>';						
 					
 					//console.log("스케쥴 ID: ", m.scheduleId); // 확인용					
 				}

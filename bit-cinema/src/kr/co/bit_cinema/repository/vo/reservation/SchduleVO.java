@@ -13,9 +13,17 @@ public class SchduleVO {
 	private int rNumbers;
 	private int theaterId;
 	private String screenName;
+	private int turn;
 	
 	
 	
+	
+	public int getTurn() {
+		return turn;
+	}
+	public void setTurn(int turn) {
+		this.turn = turn;
+	}
 	public String getScreenName() {
 		return screenName;
 	}

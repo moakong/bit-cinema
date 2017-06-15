@@ -44,8 +44,8 @@
        
        .theater {
            width: 300px !important;
-           border-right: 5px solid #d8d8d8 !important;
-          border-left: 5px solid #d8d8d8 !important;
+          /*  border-right: 5px solid #d8d8d8 !important;
+          border-left: 5px solid #d8d8d8 !important; */
            
        }
        
@@ -83,7 +83,11 @@
       animation-fill-mode: both !important;
     }
 
-
+	label:nth-child(5n) {
+          margin-right: 40px !important;
+        }
+	
+	
     label:before {
       content: "" !important;
       position: absolute !important;
@@ -237,7 +241,18 @@
 			<input type="hidden" name="people" value="${people}" />
 			
 			
-			
+			<style>
+                #scr {
+                    background-color: black;
+                    color: white;
+                    border: 1px solid black;
+                    margin-top: -50px;
+                    margin-bottom: 50px;
+                    margin-left: -20px;
+                    width: 300px;
+                }
+            </style>
+			<h4 id="scr">SCREEN</h4>
 			
 			<div class="theater">
 				<c:forEach var="seat" items="${all}">

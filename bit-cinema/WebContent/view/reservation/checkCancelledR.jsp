@@ -6,7 +6,18 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+
+<style type="text/css">
+.well {
+    	border: 1px solid gray !important;
+        background-color: white !important;
+        box-shadow: 3px 3px 5px 1px #9b9ea0 !important;
+       
+        width: 700px;
+        margin-left: 100px;
+    }
+
+</style>
 </head>
 <body>
 
@@ -16,24 +27,36 @@
 		<c:import url="/view/include/topMenu.jsp" />
 	</div>	
 	
-	<div class="container text-center">
-	<div class="well">
-		<h2>예매 취소 내역</h2>
+	<div class="container">
+	
+		<h1>예매 취소 내역</h1>
 		
+		<p class="text-right">
 		<button class="btn btn-default" onclick="location.href='check'" >예매 내역</button>
+		</p>
 		<!-- <a href="check">예매 내역</a> -->
-		<hr><br>
+		<hr style="border-top: 3px double #8c8b8b;"><br>
 		<div>
+		
 		<c:forEach var="rInfo" items="${list}">
-			<p>
-				예매번호 : ${rInfo.reservationId}<br><br>
-				<strong>${rInfo.movieName}</strong><br>
-				비트시네마 ${rInfo.screenName}<br>
-				<fmt:formatDate value="${rInfo.startDate}" pattern="yyyy-MM-dd" /><br>
-				${rInfo.startTime} ~ ${rInfo.endTime}<br>
-				<%-- <button class="btn btn-default" onclick="location.href='detailReservation?reservationId=${rInfo.reservationId}'" >상세 내역</button> --%>
-				<hr>
-			</p>
+			<div class="well">
+				<div class="row">
+					<div class="col-sm-4">
+					<strong>예매번호 : ${rInfo.reservationId}</strong><br>
+					<fmt:formatDate value="${rInfo.regDate}" pattern="yyyy-MM-dd" /><br>
+					<fmt:formatDate value="${rInfo.regDate}" pattern="HH:mm:ss" />
+					</div>
+					
+					<div class="col-sm-4">
+					<strong>${rInfo.movieName}</strong><br>
+					비트시네마 ${rInfo.screenName}<br>
+					<fmt:formatDate value="${rInfo.startDate}" pattern="yyyy-MM-dd" /><br>
+					${rInfo.startTime} ~ ${rInfo.endTime}<br>
+					</div>
+					
+					<%-- <button class="btn btn-default" onclick="location.href='detailReservation?reservationId=${rInfo.reservationId}'" >상세 내역</button> --%>
+				</div>
+			</div>
 		</c:forEach>
 		</div>
 		

@@ -12,9 +12,6 @@
     	border: 1px solid gray !important;
         background-color: white !important;
         box-shadow: 3px 3px 5px 1px #9b9ea0 !important;
-       
-        width: 700px;
-        margin-left: 100px;
     }
 
 </style>
@@ -53,31 +50,20 @@
 		<div>
 			<style>
                 .well{
-                   
+                    width: 700px;
+                    margin-left: 100px;
                 }
             </style>
 <%-- 		<c:set var="lastNo" value="0" /> --%>
 		<c:forEach var="rInfo" items="${list}">
 			<c:if test="${rInfo.reservationId != lastNo}" >
 			<div class="well">
-				<div class="row">
-					<div class="col-sm-4">
-					<strong>예매번호 : ${rInfo.reservationId}</strong><br>
-					<fmt:formatDate value="${rInfo.regDate}" pattern="yyyy-MM-dd" /><br>
-					<fmt:formatDate value="${rInfo.regDate}" pattern="HH:mm:ss" />
-					</div>
-					
-					<div class="col-sm-4">
-					<strong>${rInfo.movieName}</strong><br>
-					비트시네마 ${rInfo.screenName}<br>
-					<fmt:formatDate value="${rInfo.startDate}" pattern="yyyy-MM-dd" /><br>
-					${rInfo.startTime} ~ ${rInfo.endTime}<br>
-					</div>
-					
-					<div class="text-right" style="margin-right:30px;">
-					<button class="btn btn-default" onclick="location.href='detailReservation?reservationId=${rInfo.reservationId}'" >상세 내역</button>
-					</div>
-				</div>
+				예매번호 : ${rInfo.reservationId}<br><br>
+				<strong>${rInfo.movieName}</strong><br>
+				비트시네마 ${rInfo.screenName}<br>
+				<fmt:formatDate value="${rInfo.startDate}" pattern="yyyy-MM-dd" /><br>
+				${rInfo.startTime} ~ ${rInfo.endTime}<br>
+				<button class="btn btn-default" onclick="location.href='detailReservation?reservationId=${rInfo.reservationId}'" >상세 내역</button>
 			</div>
 			<c:set var="lastNo" value="${rInfo.reservationId}" />
 			</c:if>

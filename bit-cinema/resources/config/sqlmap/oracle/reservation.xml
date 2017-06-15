@@ -16,6 +16,7 @@
 		<result column="r_numbers" property="rNumbers"/>
 		<result column="theater_id" property="theaterId"/>
 		<result column="screen_name" property="screenName"/>
+		<result column="turn" property="turn"/>
 	</resultMap>
 	
 	<select id="selectMovieOrderByName" resultMap="schduleMap">
@@ -79,10 +80,10 @@
 	
 	
 	<select id="selectTime" resultMap="schduleMap" parameterType="Schdule">
-		SELECT SCH.SCHEDULE_ID, SCR.SCREEN_NAME, SCH.START_TIME, SCH.END_TIME
+		SELECT SCH.SCHEDULE_ID, sch.turn, SCR.SCREEN_NAME, SCH.START_TIME, SCH.END_TIME
 		  FROM SCHEDULE SCH
 		 INNER JOIN SCREEN SCR
-		    ON SCH.SCREEN_ID = SCR.SCREEN_ID
+		    ON SCH.SCREEN_ID = SCR.SCREEN_ID and SCH.THEATER_ID = SCR.THEATER_ID
 	     WHERE SCH.MOVIE_ID = #{movieId}
 		   AND SCR.THEATER_ID = #{theaterId}
 		   AND SCH.START_DATE = #{startDate}
@@ -149,6 +150,7 @@
 		<result  column="end_time" property="endTime" />
 		<result  column="r" property="r" />
 		<result  column="c" property="c" />
+		<result  column="reg_date" property="regDate" />
 	</resultMap>
 	
 	

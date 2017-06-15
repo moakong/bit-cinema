@@ -17,9 +17,17 @@ public class ReservationVO {
 	private int r;
 	private int c;
 	
+	private Date regDate;
 	
 	
-	
+
+	public Date getRegDate() {
+		return regDate;
+	}
+
+	public void setRegDate(Date regDate) {
+		this.regDate = regDate;
+	}
 
 	public String getMovieName() {
 		return movieName;

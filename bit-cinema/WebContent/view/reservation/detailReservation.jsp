@@ -11,7 +11,19 @@
 <link rel="stylesheet" href="../lib/sweetalert.css">
 
 <meta charset="UTF-8">
-<title>Insert title here</title>
+
+<style type="text/css">
+.well {
+    	border: 1px solid gray !important;
+        background-color: white !important;
+        box-shadow: 3px 3px 5px 1px #9b9ea0 !important;
+       
+        width: 700px;
+        margin-left: 100px;
+        margin-top: 50px;
+    }
+
+</style>
 </head>
 <body>
 <div>
@@ -23,7 +35,7 @@
 	<div class="container text-center">
 	<div class="well">
 		<h1>상세 예매 내역</h1>
-		<hr><br>
+		<hr style="border-top: 3px double #8c8b8b;"><br>
 		<div>
 		<strong>${rInfo.movieName}</strong><br>
 		비트시네마 ${rInfo.screenName}<br>
