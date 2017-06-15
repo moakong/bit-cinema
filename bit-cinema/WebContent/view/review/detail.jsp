@@ -56,7 +56,7 @@
 		// 그 이외의 경우
 		else{
 			console.log("이후 없음");
-			return;
+			return false;
 		}
 	});
 
