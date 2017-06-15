@@ -15,6 +15,7 @@ import org.apache.ibatis.session.SqlSession;
 import common.db.MyAppSqlConfig;
 import kr.co.bit_cinema.repository.mapper.MovieMapper;
 import kr.co.bit_cinema.repository.mapper.ReviewMapper;
+import kr.co.bit_cinema.repository.vo.ReviewFileVO;
 import kr.co.bit_cinema.repository.vo.ReviewVO;
 
 @WebServlet("/review/Detail")
@@ -39,16 +40,31 @@ public class Detail extends HttpServlet{
 		request.setAttribute("mmid", mmid);
 		
 		System.out.println(mmid);
+		System.out.println(reviewNo);
 		
 		ReviewVO review = new ReviewVO();
+		
+		
+		ReviewFileVO file = new ReviewFileVO();
 		try {
+			//글내용
 			review = mapper.detailReview(reviewNo);
+			request.setAttribute("review", review);
+			
+			//파일
+			if(file != null){
+				
+			file = mapper.detailFile(reviewNo);
+			request.setAttribute("file", file);
+			}
+			
+			
+			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			new ServletException(e);
 		}
 		
-		request.setAttribute("review", review);
 		
 		RequestDispatcher rd = request.getRequestDispatcher("/view/review/detail.jsp");
 		

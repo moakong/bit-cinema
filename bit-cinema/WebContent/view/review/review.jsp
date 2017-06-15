@@ -155,6 +155,7 @@ margin: 5px;
 		<div>
 			<c:import url="/view/include/footer.jsp" />
 		</div>
+	
 	</div>
 
 <script >

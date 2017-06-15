@@ -11,6 +11,11 @@
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 </head>
 <body>
+
+		<div>
+			<c:import url="/view/include/topMenu.jsp" />
+		</div>
+		<div>
 		
 		<table>
 				<tr>
@@ -37,7 +42,19 @@
 					<th>등록일</th>
 					<td><fmt:formatDate value="${review.regDate }" pattern="yyyy-MM-dd"/>	</td>
 				</tr>
+				<tr>
+					<th>첨부파일</th>
+					<td> </td>
+				</tr>
 		</table>
+		<c:if test="${!empty file }">
+		<img width="400px" height="400px"  src="${pageContext.request.contextPath}/download?path=${file.filePath}&sName=${file.sysName}">
+		</c:if>
+		</div>
+		
+		
+		
+		
 <a href="${pageContext.request.contextPath}/review/Review?id=${review.movieId}">되돌아가기</a>
 
 
@@ -45,6 +62,12 @@
 <a id="del" href="${pageContext.request.contextPath}/review/delete?no=${review.reviewNo}&id=${review.movieId}">삭제하기</a>
 <a href="${pageContext.request.contextPath}/review/updateform?no=${review.reviewNo}&id=${review.movieId}">수정하기</a>
 </c:if>
+
+
+		<div>
+			<c:import url="/view/include/footer.jsp" />
+		</div>
+
 
 
 <script>
