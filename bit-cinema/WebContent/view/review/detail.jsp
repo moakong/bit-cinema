@@ -46,8 +46,18 @@
 
 
 <script>
+
+
 	$("#del").on("click",  function(){
-		alert("삭제 하시겠습니까?");
+		var result = confirm("삭제 하시겠습니까?");
+		if (result){
+			
+		}
+		// 그 이외의 경우
+		else{
+			console.log("이후 없음");
+			return;
+		}
 	});
 
 
@@ -56,3 +66,6 @@
 
 </body>
 </html>
+
+
+

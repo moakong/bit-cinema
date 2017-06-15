@@ -7,6 +7,7 @@
 <head>
 <meta charset=UTF-8>
 <title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <style >
 .img-thumbnail {
 		position: relative;
@@ -124,7 +125,7 @@ margin: 5px;
 
 			<div id="revieww">
 				<!-- 여기에 내용 -->
-				<a href="${pageContext.request.contextPath}/writeform?mid=${ movie.movieId }">리뷰쓰기</a><br><br>
+				<a id="returnuser" href="${pageContext.request.contextPath}/writeform?mid=${ movie.movieId }">리뷰쓰기</a><br><br>
 				
 					<div id="reviewlist">
 					
@@ -150,7 +151,26 @@ margin: 5px;
 		</div>
 	</div>
 
+<script >
 
+// 	var userId = '${user.memberId}';
+// 	console.log("userId", userId);
+// 	$("#returnuser").on("click", function(){
+// 		if (!userId) {
+// 			alert("로그인 해주세요");
+// 			return false;
+// 		}
+// 	});
+
+var userr = '${user}';
+console.log("userr", userr);
+$("#returnuser").on("click", function(){
+	if (!userr) {
+		alert("로그인 해주세요");
+		return false;
+	}
+});
+</script>
 
 </body>
 </html>
