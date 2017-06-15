@@ -15,47 +15,36 @@ import common.db.MyAppSqlConfig;
 import kr.co.bit_cinema.repository.mapper.MovieMapper;
 import kr.co.bit_cinema.repository.mapper.ReviewMapper;
 import kr.co.bit_cinema.repository.vo.ReviewVO;
-@WebServlet("/review/update")
-public class Update extends HttpServlet{
-
+@WebServlet("/review/updateform")
+public class ReviewUpdateform extends HttpServlet{
 	SqlSession sqlsession ;
 	ReviewMapper mapper;
 	MovieMapper mapperMovie;
-	public Update(){
+	public ReviewUpdateform(){
 		sqlsession = MyAppSqlConfig.getSqlSessionInstance();
 		mapper = sqlsession.getMapper(ReviewMapper.class); 
 		mapperMovie = sqlsession.getMapper(MovieMapper.class); 
 	}
-
-	
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int REVIEW_NO = Integer.parseInt(request.getParameter("no"));
-		String mid = request.getParameter("id");
-		String title = request.getParameter("title");
-		String content = request.getParameter("content");
+		int reviewNo = Integer.parseInt(request.getParameter("no"));
+		String id = request.getParameter("id");
 		
-		request.setAttribute("mid", mid);
+		request.setAttribute("reviewNo", reviewNo);
+		request.setAttribute("id", id);
 		
-		
-		ReviewVO vo = new ReviewVO();
-		vo.setContent(content);
-		vo.setTitle(title);
-		vo.setReviewNo(REVIEW_NO);
-		
-		System.out.println(title);
-		System.out.println(content);
+		ReviewVO review = new ReviewVO();
 		
 		try {
-			mapper.updateReview(vo);
-			sqlsession.commit();
-			
+			review = mapper.detailReview(reviewNo);
 		} catch (Exception e) {
+			// TODO Auto-generated catch block
 			new ServletException(e);
 		}
 		
+		request.setAttribute("review", review);
 		
-		RequestDispatcher rd = request.getRequestDispatcher("/review/Review?id="+mid);
+		RequestDispatcher rd = request.getRequestDispatcher("/view/review/updateform.jsp");
 		rd.forward(request, response);
 	}
 

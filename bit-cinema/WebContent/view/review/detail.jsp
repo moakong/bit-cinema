@@ -47,8 +47,10 @@
 					<td> </td>
 				</tr>
 		</table>
-		<c:if test="${!empty file }">
+		<c:if test="${!empty files }">
+		<c:forEach var="file" items="${files}">
 		<img width="400px" height="400px"  src="${pageContext.request.contextPath}/download?path=${file.filePath}&sName=${file.sysName}">
+		</c:forEach>
 		</c:if>
 		</div>
 		

@@ -20,6 +20,7 @@
 	스포일러<input type="radio" name="spo" value="1" >있음
 	<input type="radio" name="spo" value="0" checked="checked">없음<br>
 	첨부파일<input type="file" name="f">
+	첨부파일<input type="file" name="f1">
 	<button>글작성</button>
 </form>		
 

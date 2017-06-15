@@ -16,12 +16,12 @@ import kr.co.bit_cinema.repository.mapper.MovieMapper;
 import kr.co.bit_cinema.repository.mapper.ReviewMapper;
 
 @WebServlet("/review/delete")
-public class Delete extends HttpServlet{
+public class ReviewDelete extends HttpServlet{
 	SqlSession session ;
 	ReviewMapper mapper;
 	MovieMapper mapperMovie;
 	
-	public Delete(){
+	public ReviewDelete(){
 		session = MyAppSqlConfig.getSqlSessionInstance();
 		mapper = session.getMapper(ReviewMapper.class); 
 		mapperMovie = session.getMapper(MovieMapper.class); 

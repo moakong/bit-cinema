@@ -78,7 +78,12 @@
 	select *
 	from review_file
 	where REVIEW_NO = #{reviewNo}
+	</select>
 	
+	<select id="listFile" resultMap="ReviewFileMap" parameterType="int">
+	select *
+	from review_file
+	where REVIEW_NO = #{reviewNo}
 	</select>
 
 

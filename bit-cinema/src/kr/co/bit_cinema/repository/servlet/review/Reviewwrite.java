@@ -28,12 +28,12 @@ import kr.co.bit_cinema.repository.vo.ReviewFileVO;
 import kr.co.bit_cinema.repository.vo.ReviewVO;
 
 @WebServlet("/write")
-public class write extends HttpServlet{
+public class Reviewwrite extends HttpServlet{
 	
 	SqlSession sqlsession ;
 	ReviewMapper mapper;
 	MovieMapper mapperMovie;
-	public write(){
+	public Reviewwrite(){
 		sqlsession = MyAppSqlConfig.getSqlSessionInstance();
 		mapper = sqlsession.getMapper(ReviewMapper.class); 
 		mapperMovie = sqlsession.getMapper(MovieMapper.class); 

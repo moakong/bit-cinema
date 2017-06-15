@@ -1,6 +1,7 @@
 package kr.co.bit_cinema.repository.servlet.review;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.jws.WebService;
 import javax.servlet.RequestDispatcher;
@@ -9,6 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.swing.plaf.synth.SynthSeparatorUI;
 
 import org.apache.ibatis.session.SqlSession;
 
@@ -19,12 +21,12 @@ import kr.co.bit_cinema.repository.vo.ReviewFileVO;
 import kr.co.bit_cinema.repository.vo.ReviewVO;
 
 @WebServlet("/review/Detail")
-public class Detail extends HttpServlet{
+public class ReviewDetail extends HttpServlet{
 	SqlSession session ;
 	ReviewMapper mapper;
 	MovieMapper mapperMovie;
 	
-	public Detail(){
+	public ReviewDetail(){
 		session = MyAppSqlConfig.getSqlSessionInstance();
 		mapper = session.getMapper(ReviewMapper.class); 
 		mapperMovie = session.getMapper(MovieMapper.class); 
@@ -39,12 +41,10 @@ public class Detail extends HttpServlet{
 		
 		request.setAttribute("mmid", mmid);
 		
-		System.out.println(mmid);
-		System.out.println(reviewNo);
 		
 		ReviewVO review = new ReviewVO();
 		
-		
+		List<ReviewFileVO> files = null;
 		ReviewFileVO file = new ReviewFileVO();
 		try {
 			//글내용
@@ -52,11 +52,11 @@ public class Detail extends HttpServlet{
 			request.setAttribute("review", review);
 			
 			//파일
-			if(file != null){
+			
 				
-			file = mapper.detailFile(reviewNo);
-			request.setAttribute("file", file);
-			}
+			files = mapper.listFile(reviewNo);
+			request.setAttribute("files", files);
+			System.out.println("files"+files);
 			
 			
 			
