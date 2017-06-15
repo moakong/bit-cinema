@@ -11,6 +11,18 @@
 
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style>
+	#n {
+		margin-bottom: 5px;
+	}
+	#text {
+		border: none;
+		text-align: right;
+	}
+	#amount {
+		font-size: 15px;
+	}
+</style>
 </head>
 <body>
 
@@ -23,21 +35,25 @@
 		<div>
 			<c:import url="/view/include/mypageMenu.jsp" />
 		</div>
-		<div>
+		<div class="row">
 			<form id="payForm" action="InsertOrder" method="post">
-				전체 상품명 수량 단가 가격<br>
+			<h1> 주문</h1>
 				<c:forEach var="cart" items="${cartList}">
 					<input type="hidden" name="snackId" value="${cart.snackId}"/>
 					<a href="${pageContext.request.contextPath}/snack/DetailSnack?snackId=<c:out value="${cart.snackId}"/>">
-						<img width="50px" height="50px" src="<c:out value="${cart.img}"/>"/></a>
+					<div id="n">
+						<img width="100px" height="100px" src="<c:out value="${cart.img}"/>"/></a>
 					<c:out value="${cart.name}" />
-					<c:out value="${cart.price}" />						
-					<c:out value="${cart.count}" />
-					<c:out value="${cart.amount}" />
+					<c:out value="${cart.price}" />원					
+					<c:out value="${cart.count}" />개
+					&nbsp;&nbsp;&nbsp;
+					<c:out value="${cart.amount}" />원
+					
+					</div>
 					<br>
 				</c:forEach>
 				<hr>
-				<h3>총 주문 금액 : <input type="" readonly name="totalCount" value="${ totalCount }" /></h3>
+				<h3>총 주문 금액 :<input id="text" type="text" readonly name="totalCount" value="${ totalCount }" />원</h3>
 				<br><br>
 				결제 방법 선택
 				<hr>
