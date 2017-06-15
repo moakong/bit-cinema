@@ -7,15 +7,17 @@
 <title>Insert title here</title>
 </head>
 <body>
+
+<div>
+		<c:import url="/view/include/topMenu.jsp" />
+	</div>	
 	<div class="container">
 		<div>
-			<c:import url="/view/include/topMenu.jsp" />
+			<c:import url="/view/include/mypageMenu.jsp" />
 		</div>
+
 		
 		<div>
-			<div>
-				<c:import url="/view/include/mypageMenu.jsp" />
-			</div>
 			<div>
 				주문번호  상품명 주문날짜<br>
 				<c:choose>

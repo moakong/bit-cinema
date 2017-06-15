@@ -16,6 +16,10 @@
 	
 	
 	<div class="container text-center">
+		<div>
+			<c:import url="/view/include/mypageMenu.jsp" />
+		</div>
+	
 	<div class="well">
 		<h2>예매 내역</h2>
 		<!-- <a href="checkCancelledR">예매 취소 내역</a> -->

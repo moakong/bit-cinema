@@ -35,7 +35,7 @@
 	text-align: center;
 }
 .list {
-	margin-bottom: 5px;
+	/* margin-bottom: 5px; */
 }
 #tt {
 	text-align: right;
@@ -49,12 +49,15 @@ table {
 </style>
 </head>
 <body>
+
+<div>
+		<c:import url="/view/include/topMenu.jsp" />
+	</div>	
 	<div class="container">
 		<div>
-			<c:import url="/view/include/topMenu.jsp" />
+			<c:import url="/view/include/mypageMenu.jsp" />
 		</div>
 		<div class="row">
-			<c:import url="/view/include/mypageMenu.jsp" />
 			<div>
 				<table>
 					<tr>

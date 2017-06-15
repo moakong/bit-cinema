@@ -26,7 +26,7 @@
 /*   top: 0px; */
 /*    left: 220px; */
    width: 220px; 
-      min-height: 100%;
+      min-height: 800px;
 /*   margin-left: -220px; */
   border: none;
   border-radius: 0;
