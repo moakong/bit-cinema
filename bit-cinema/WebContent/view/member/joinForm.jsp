@@ -136,7 +136,7 @@
 	var loopSendPass = false;
 	function checkId(){
 		if(idFirst == false){
-			setTimeout("sendId();", 1000);
+			setTimeout("sendId();", 500);
 			loopSendId = true;
 		}
 		idFirst = true;
@@ -176,13 +176,13 @@
 		   	}
 		}
 		console.log("?");
-		setTimeout("sendId();", 1000);		
+		setTimeout("sendId();", 500);		
 	}
 	
 
 	function patternCheck(){
 		if(passFirst == false){
-			setTimeout("sendPass();", 1000);
+			setTimeout("sendPass();", 500);
 			loopSendPass = true;
 		}
 		passFirst = true;
@@ -216,7 +216,7 @@
 		   	} else {
 		   	}
 		}
-		setTimeout("sendPass();", 1000);
+		setTimeout("sendPass();", 500);
 	}
 	
 	function checkPass(){

@@ -12,7 +12,7 @@
 		<div>
 			<c:import url="/view/include/topMenu.jsp" />
 		</div>
-		<div>
+		<div class="container">
 			<div>
 				<c:import url="/view/include/mypageMenu.jsp" />
 			</div>
@@ -51,7 +51,7 @@
 		
 		function patternCheck(){
 			if(passFirst == false){
-				setTimeout("sendPass();", 100);
+				setTimeout("sendPass();", 500);
 				loopSendPass = true;
 			}
 			passFirst = true;
@@ -84,7 +84,7 @@
 			   	} else {
 			   	}
 			}
-			setTimeout("sendPass();", 100);
+			setTimeout("sendPass();", 500);
 		}
 		
 		function checkPass(){

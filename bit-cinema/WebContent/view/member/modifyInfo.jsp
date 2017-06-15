@@ -11,7 +11,7 @@
 	<div>
 		<c:import url="/view/include/topMenu.jsp" />
 	</div>	
-	<div>
+	<div class="container">
 		<div>
 			<c:import url="/view/include/mypageMenu.jsp" />
 		</div>

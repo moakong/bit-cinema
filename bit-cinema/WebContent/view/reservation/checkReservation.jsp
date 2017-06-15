@@ -15,10 +15,11 @@
 	</div>	
 	
 	
-	<div class="container text-center">
+	<div class="container">
 		<div>
 			<c:import url="/view/include/mypageMenu.jsp" />
 		</div>
+	<div class="container text-center">
 	
 	<div class="well">
 		<h2>예매 내역</h2>
@@ -48,7 +49,7 @@
 	</div>	
 	
 	
-	
+	</div>
 	</div>
 	
 	<div>
@@ -57,9 +58,7 @@
 </div>
 
 
-<div>
-	
-</div>
+
 
 </body>
 </html>
