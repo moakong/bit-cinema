@@ -17,11 +17,13 @@ import org.apache.ibatis.session.SqlSession;
 import common.db.MyAppSqlConfig;
 import kr.co.bit_cinema.repository.mapper.CartMapper;
 import kr.co.bit_cinema.repository.mapper.OrderMapper;
+import kr.co.bit_cinema.repository.mapper.SnackMapper;
 import kr.co.bit_cinema.repository.vo.CartToOrderVO;
 import kr.co.bit_cinema.repository.vo.CartVO;
 import kr.co.bit_cinema.repository.vo.MemberVO;
 import kr.co.bit_cinema.repository.vo.OrderDetailVO;
 import kr.co.bit_cinema.repository.vo.OrderVO;
+import kr.co.bit_cinema.repository.vo.SnackVO;
 
 @WebServlet("/order/InsertOrder")
 public class InsertOrderServlet extends HttpServlet{
@@ -29,11 +31,13 @@ public class InsertOrderServlet extends HttpServlet{
 	private SqlSession sqlSession = null;
 	private OrderMapper mapper = null;
 	private CartMapper cartMapper = null;
+	private SnackMapper snackMapper = null;
 
 	public InsertOrderServlet() {
 		sqlSession = MyAppSqlConfig.getSqlSessionInstance();
 		mapper = sqlSession.getMapper(OrderMapper.class);
 		cartMapper = sqlSession.getMapper(CartMapper.class);
+		snackMapper = sqlSession.getMapper(SnackMapper.class);
 	}
 	
 	@Override
@@ -45,8 +49,10 @@ public class InsertOrderServlet extends HttpServlet{
 		
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddhhmmss");
 		String orderId = sdf.format(new Date());
-		
+		String flag = request.getParameter("flag");
 		try {
+			
+			if(flag.equals("0")){
 			String[] sId = request.getParameterValues("snackId");
 			int totalCount = Integer.parseInt(request.getParameter("totalCount"));
 			OrderVO order = new OrderVO();
@@ -73,6 +79,34 @@ public class InsertOrderServlet extends HttpServlet{
 				cartMapper.deleteCart(cart);
 			}
 			sqlSession.commit();
+			
+			}else {
+				String sId = request.getParameter("snackId");
+				int count = Integer.parseInt(request.getParameter("count"));
+				int totalCount = Integer.parseInt(request.getParameter("totalCount"));
+				OrderVO order = new OrderVO();
+				order.setOrderId(orderId);
+				order.setMemberId(member.getMemberId());
+				order.setAmount(totalCount);
+				
+				mapper.insertOrder(order);
+				
+				OrderDetailVO detail = new OrderDetailVO();
+				detail.setOrderId(orderId);
+				int id = Integer.parseInt(sId);
+				detail.setSnackId(id);
+				detail.setCount(count);
+				SnackVO s = snackMapper.detailSnack(id);
+				int amount = s.getPrice() * count;
+				detail.setAmount(amount);
+				mapper.insertOrderDetail(detail);
+				
+				sqlSession.commit();
+			}
+			
+			
+			
+			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

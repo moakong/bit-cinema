@@ -38,6 +38,23 @@
 		<div class="row">
 			<form id="payForm" action="InsertOrder" method="post">
 			<h1> 주문</h1>
+			<c:if test="${!empty cto}">
+			<input type="hidden" name="flag" value="1"/>
+			<input type="hidden" name="snackId" value="${cto.snackId}"/>
+					<a href="${pageContext.request.contextPath}/snack/DetailSnack?snackId=<c:out value="${cto.snackId}"/>">
+					<div id="n">
+						<img width="100px" height="100px" src="<c:out value="${cto.img}"/>"/></a>
+					<c:out value="${cto.name}" />
+					<c:out value="${cto.price}" />원					
+					<input type="hidden" name="count" value="<c:out value="${cto.count}" />"/>
+					<c:out value="${cto.count}" />개
+					&nbsp;&nbsp;&nbsp;
+					<c:out value="${cto.amount}" />원
+					
+					</div>
+			</c:if>
+			<c:if test="${!empty cartList}">
+			<input type="hidden" name="flag" value="0"/>
 				<c:forEach var="cart" items="${cartList}">
 					<input type="hidden" name="snackId" value="${cart.snackId}"/>
 					<a href="${pageContext.request.contextPath}/snack/DetailSnack?snackId=<c:out value="${cart.snackId}"/>">
@@ -52,6 +69,7 @@
 					</div>
 					<br>
 				</c:forEach>
+			</c:if>
 				<hr>
 				<h3>총 주문 금액 :<input id="text" type="text" readonly name="totalCount" value="${ totalCount }" />원</h3>
 				<br><br>
