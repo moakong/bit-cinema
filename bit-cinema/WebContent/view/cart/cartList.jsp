@@ -116,9 +116,9 @@ table {
 									<br>
 								</c:forEach>
 								<tr class="bt">
-									<td colspan="4"><input type="submit"
+									<td colspan="4"><input type="submit" class="btn btn-default"
 										onclick="return confirm('삭제하시겠습니까?')" value="삭제" /></td>
-									<td id="bt"><button type="submit" onclick="buy()">구매</button></td>
+									<td id="bt"><button class="btn btn-default" type="submit" onclick="buy()">구매</button></td>
 								</tr>
 				</table>
 				</form>

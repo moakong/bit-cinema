@@ -6,6 +6,8 @@
 <style>
 	.btn {
 		background-color: #cdc197 !important;
+		border-radius: 1px solid blakc !important;
+		color: black !important;
 	}
 	.btn-group{
 		margin-top : 30px;
