@@ -12,7 +12,6 @@ tr>th {
 }
 
 table {
-	margin-top: 100px;
 	padding: 5px;
 	width: 600px;
 }
@@ -65,10 +64,22 @@ table {
 #c8 {
 	margin-top: 30px;
 }
+	td.yes {
+    padding-top: 10px;
+}
+
+tbody tr td {
+    padding-top: 10px;
+}
+
+#a2, #a1 {
+    padding-bottom: 10px;
+}
+
 </style>
 </head>
 <body>
-	<div class="container">
+	<div>
 		<div>
 			<c:import url="/view/include/topMenu.jsp" />
 		</div>
@@ -76,8 +87,10 @@ table {
 			<div>
 				<c:import url="/view/include/mypageMenu.jsp" />
 			</div>
-		<div>
-
+		<div class="container">
+		<h1>상세내역</h1>
+       <br>
+		<hr style="border-top: 3px double #8c8b8b;"><br>
 			<form action="${pageContext.request.contextPath}/order/DeleteOrder"
 				method="post" name="order">
 
@@ -113,10 +126,10 @@ table {
 							</td>
 						</tr>
 						<input type="hidden" value="${order.orderId}" name="orderId" />
-						<td colspan="2"><input type="submit"
+						<td colspan="2"><input type="submit" class="btn btn-default"
 							onclick="return confirm('구매를 취소하시겠습니까?')" value="환불하기" /></td>
 						<td colspan="1" class="yes">
-							<button type="button" onclick="list();">확인</button>
+						<button class="btn btn-default" type="button" onclick="list();">확인</button>
 						</td>
 					</table>
 				</div>

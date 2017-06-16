@@ -10,7 +10,6 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 <style>
-	
 #a1,#a2, #hot {
     padding-bottom: 5px;
 }
@@ -60,6 +59,8 @@ button.btn.btn-default {
 			<c:import url="/view/include/topMenu.jsp" />
 		</div>
 		<div>
+			<h1>상세정보</h1>
+			<hr style="border-top: 3px double #8c8b8b;"><br>
 			<form name="m" action="${pageContext.request.contextPath}/cart/InsertCart" method="post">
 				<div class="row">
 					<div class="col-sm-5">
@@ -102,9 +103,12 @@ button.btn.btn-default {
 						</td>
 						</tr>
 						</table>
+						
 					</div>
 				</div>
 			</form>
+						<hr style="border-top: 3px double #8c8b8b;"><br>
+						<c:import url="/view/include/explan.jsp" />
 		</div>
 	</div>
 		<div>

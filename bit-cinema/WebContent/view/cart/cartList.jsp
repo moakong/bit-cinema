@@ -37,17 +37,8 @@
 	font-size: 10px;	
 }
 
-.list {
-	/* margin-bottom: 5px; */
-	
-}
-
 #tt {
 	text-align: right;
-}
-
-table {
-	margin-left: 30px;
 }
 
 #bt {
@@ -60,8 +51,16 @@ table {
 .bt {
 	border-top: 1px solid black;
 }
-div.center-block table {
-    margin-top: 100px;
+
+tr.a > th {
+	padding-bottom: 5px;
+}
+
+td.no {
+    padding-top: 20px;
+}
+tr.bt td {
+    padding-top: 10px;
 }
 
 </style>
@@ -75,10 +74,13 @@ div.center-block table {
 			<c:import url="/view/include/mypageMenu.jsp" />
 		</div>
 	<div class="container">
+		<h1>장바구니</h1>
+       <br>
+		<hr style="border-top: 3px double #8c8b8b;"><br>
 		<div class="row">
 		<div class="row">
 		
-			<div  class="center-block" style="width: 800px; height: 500px; margin-right: 300px;">
+			<div >
 				<table>
 					<tr class="a">
 						<th id="ck">
@@ -99,25 +101,23 @@ div.center-block table {
 						</table>
 						</c:when>
 						<c:otherwise>
-							<form action="DeleteCart" method="post" name="cart">
 								<c:forEach var="cart" items="${list}" varStatus="s">
-									<tr class="list">
+						<tr class="list">
+							<form action="DeleteCart" method="post" name="cart">
 										<td id="ck"><input type="checkbox" name="checkCart"
 											value="${cart.snackId}" id="${s.index}" /></td>
+										
 										<td><a
 											href="${pageContext.request.contextPath}/snack/DetailSnack?snackId=<c:out value="${cart.snackId}"/>">
 												<img width="50px" height="50px"
 												src="<c:out value="${cart.img}"/>" />
 										</a> <c:out value="${cart.name}" /></td>
-										<label for="${s.index}">
 											<td id="tt"><c:out value="${cart.price}" />원</td>
 											<td id="tt"><c:out value="${cart.count}" />개</td>
 											<td id="tt">총&nbsp;<c:out
 													value="${cart.price * cart.count}" />원
 										</td>
-										</label>
-									</tr>
-									<br>
+						</tr>
 								</c:forEach>
 								<tr class="bt">
 									<td colspan="4"><input type="submit" class="btn btn-default"
@@ -128,6 +128,7 @@ div.center-block table {
 				</form>
 				</c:otherwise>
 				</c:choose>
+				<hr>
 			</div>
 			</div>
 		</div>

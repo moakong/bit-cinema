@@ -7,7 +7,6 @@
 <title>Insert title here</title>
 <style>
 	table{
-		margin-top: 100px;
 		width: 600px;
 	}
 	tr > th{
@@ -34,6 +33,9 @@
 
 		
 		<div>
+		<h1>구매내역</h1>
+       <br>
+		<hr style="border-top: 3px double #8c8b8b;"><br>
 			<div>
 				<table>
 				<tr class="head">
