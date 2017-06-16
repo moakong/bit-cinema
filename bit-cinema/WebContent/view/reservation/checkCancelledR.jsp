@@ -14,7 +14,8 @@
         box-shadow: 3px 3px 5px 1px #9b9ea0 !important;
        
         width: 700px;
-        margin-left: 100px;
+        height: 120px;
+        margin: auto;
     }
 
 </style>
@@ -27,6 +28,9 @@
 		<c:import url="/view/include/topMenu.jsp" />
 	</div>	
 	
+	<div>
+		<c:import url="/view/include/mypageMenu.jsp" />
+	</div>
 	<div class="container">
 	
 		<h1>예매 취소 내역</h1>

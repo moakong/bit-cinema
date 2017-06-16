@@ -14,7 +14,8 @@
         box-shadow: 3px 3px 5px 1px #9b9ea0 !important;
        
         width: 700px;
-        margin-left: 100px;
+        height: 120px;
+        margin: auto;
     }
 
 </style>
@@ -30,10 +31,10 @@
 	
 <div>
 	
-<%-- 	<div class="container">
+<%-- 	<div class="container"> --%>
 		<div>
 			<c:import url="/view/include/mypageMenu.jsp" />
-		</div>--%>
+		</div>
 	<%--<div class="container text-center"> --%>
 	
 	
@@ -45,17 +46,13 @@
 		<!-- <a href="checkCancelledR">예매 취소 내역</a> -->
 	        <p class="text-right">
 		        <button class="btn btn-default text-center" onclick="location.href='checkCancelledR'" >예매 취소 내역</button>
-             </p> 
+            </p> 
        
 		<hr style="border-top: 3px double #8c8b8b;"><br>
 		
 		
 		<div>
-			<style>
-                .well{
-                   
-                }
-            </style>
+			
 <%-- 		<c:set var="lastNo" value="0" /> --%>
 		<c:forEach var="rInfo" items="${list}">
 			<c:if test="${rInfo.reservationId != lastNo}" >
@@ -96,7 +93,7 @@
 		<c:import url="/view/include/footer.jsp" />
 	</div>
 		
-</div>
+
 
 
 
