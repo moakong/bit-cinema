@@ -29,7 +29,7 @@
 		<input type="radio" name="spo" value="0" checked="checked">없음<br>
 	<textarea class="form-control" rows="20" id="comment" name="content" placeholder="내용을 입력하세요">${review.content}</textarea>
 	
-		<center><button>수정 하기</button></center>
+		<center><button class="btn btn-primary">수정 하기</button></center>
 	</form>
 </div>
 		<div>

@@ -43,7 +43,8 @@ button{
 		<input type="radio" name="spo" value="0" checked="checked">없음<br>
 <!-- 		<textarea id="content" cols="100" rows="20" name="content" placeholder="내용을 입력하세요"></textarea><br> -->
 		<textarea class="form-control" rows="20" id="comment" name="content" placeholder="내용을 입력하세요"></textarea>
-		 <center><button  class="btn btn-primary">글작성</button>	</center>
+		 <center><button  class="btn btn-primary">글작성</button>	
+		 <button id="return" type="button"  class="btn btn-primary">되돌아가기</button>	</center>
 	</form>		
  </div>
 
@@ -52,7 +53,9 @@ button{
 		</div>
 
 <script >
-
+$("#return").on("click",  function(){
+	location.href="${pageContext.request.contextPath}/review/Review?id=${mid}";
+});
 
 
 </script>
