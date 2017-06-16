@@ -11,6 +11,9 @@
 		margin-left: 30px;
 		margin-bottom: 30px;
 	}
+	div.col-sm-2 {
+    	text-align: center;
+	}
 </style>
 </head>
 <body>

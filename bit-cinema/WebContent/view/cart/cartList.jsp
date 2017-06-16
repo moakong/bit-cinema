@@ -60,6 +60,10 @@ table {
 .bt {
 	border-top: 1px solid black;
 }
+div.center-block table {
+    margin-top: 100px;
+}
+
 </style>
 </head>
 <body>
@@ -90,7 +94,7 @@ table {
 					<c:choose>
 						<c:when test="${list.size() == 0}">
 							<tr>
-								<td colspan="4" class="no">장바구니에 담긴 상품이 없습니다.</td>
+								<td colspan="5" class="no">장바구니에 담긴 상품이 없습니다.</td>
 							</tr>
 						</table>
 						</c:when>

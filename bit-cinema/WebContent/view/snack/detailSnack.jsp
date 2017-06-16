@@ -10,6 +10,11 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 <style>
+	
+#a1,#a2, #hot {
+    padding-bottom: 5px;
+}
+	
 	#name {
 		text-align: left;
 		font-size: 35px;
@@ -34,6 +39,19 @@
 	.list {
 		text-align: right;
 	}
+	div.col-sm-5 img {
+    margin-left: 150px;
+}
+
+div.a.col-sm-5 {
+    margin-left: 150px;
+}
+button.btn.btn-default {
+    padding-left: 20px;
+    padding-right: 20px;
+    margin: 5px;
+}
+	
 </style>
 </head>
 <body>
@@ -80,7 +98,7 @@
 						</tr>
 						<tr>
 						<td colspan="2" class="list">
-						<button  class="btn btn-default" type="button" onclick="location.href='${pageContext.request.contextPath}/snack/ListSnack?category=<c:out value="${snack.categoryId}"/>'">목록</button>
+						<button id="bt1" class="btn btn-default" type="button" onclick="location.href='${pageContext.request.contextPath}/snack/ListSnack?category=<c:out value="${snack.categoryId}"/>'">목록</button>
 						</td>
 						</tr>
 						</table>

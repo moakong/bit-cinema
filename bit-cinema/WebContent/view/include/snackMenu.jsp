@@ -9,6 +9,10 @@
 		border-radius: 1px solid blakc !important;
 		color: black !important;
 	}
+	a.btn.btn-primary {
+    border-style: solid;
+    border-color: #000000;
+	}
 	.btn-group{
 		margin-top : 30px;
 		margin-left: 30px;
