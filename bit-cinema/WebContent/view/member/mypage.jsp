@@ -11,6 +11,14 @@
 .star{
 display: inline;
 }
+tabel,tr,td {
+border: 1px solid black;
+}
+tr, td {
+height: 20px;
+margin: 10px;
+padding: 20px;
+}
 </style>
 </head>
 <body>
@@ -43,17 +51,21 @@ display: inline;
 			<h3>내가 쓴 평점</h3>
 		<div>
 			<div class="well" style="min-height:150px;">
-			
+			<table>
 			<c:forEach var="r" items="${ratings}" varStatus="v">
 			<div class="row" style="width:100%; height:50px;">
-			<div class="col-sm-10">
-				<c:out value="${ratingMovie[v.index].movieName}"/>
-				<div class='star starability-result' data-rating='${r.rating}' aria-describedby='rated-element'></div>
-				<c:out value="${r.content}"/>
-				<fmt:formatDate value="${r.regDate}" pattern="yyyy-MM-dd" />
-			</div>
-			</div>
+			
+			<tr>
+<!--  			<div class="col-sm-10"> -->
+				<td><c:out value="${ratingMovie[v.index].movieName}"/></td>
+				<td style="width:200px;"><div class='star starability-result' data-rating='${r.rating}' aria-describedby='rated-element'></div></td>
+				<td><c:out value="${r.content}"/></td>
+				<td><fmt:formatDate value="${r.regDate}" pattern="yyyy-MM-dd" /></td>
+<!-- 				</div> -->
+			</tr>
+ 			</div>
 			</c:forEach>
+			</table>
 			</div>
 			<br>
 		</div>

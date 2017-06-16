@@ -30,6 +30,9 @@
 	<div>
 		<c:import url="/view/include/topMenu.jsp" />
 	</div>	
+			<div>
+			<c:import url="/view/include/mypageMenu.jsp" />
+		</div>
 	
 	
 	<div class="container text-center">

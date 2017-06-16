@@ -49,7 +49,7 @@ public class JoinServlet extends HttpServlet{
 			mapper.joinMember(member);
 			session.commit();
 			
-			RequestDispatcher rd = request.getRequestDispatcher("/view/member/join.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("/main/Main");
 			rd.forward(request, response);
 		
 		} catch (Exception e) {

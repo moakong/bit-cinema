@@ -29,7 +29,7 @@ border-right: 0.5px solid black;
 
 }
 
-.side-bar > li > a { 
+ .side-bar > li > a {  
   color: #eee; 
   color: black; 
    width: 220px; 
@@ -44,10 +44,15 @@ border-right: 0.5px solid black;
 	margin-bottom: 30px;
 	margin-left: 20px;
 }
-ul.nav > span {
+ul.nav  span {
 	font-weight: bold;
 	font-size: 20px;
 }
+ s {
+	text-decoration: none !important;
+	width:20px;
+	border-bottom-style: 2px solid black;
+} 
 
 
 
@@ -68,8 +73,14 @@ ul.nav > span {
 
    <div id="sidebar">
       <ul class="nav navbar-nav side-bar">
+      
+      	<ul class="nav navbar-nav side-bar"><span class="s"><a class="s" href="${pageContext.request.contextPath}/member/Mypage" >MY PAGE</a></span>
+      	<li>&nbsp;</li>
+      	<li>&nbsp;</li>
+      	</ul>
 <!--       	<li class="side-bar"><span> </span></li> -->
 <%--       	<li class="side-cbar tmargin"><img src="<c:out value="${user.profile}"/>" id="mp" class="img-circle" width="150px" height="150px"/></li> --%>
+       
         <ul class="nav navbar-nav side-bar"><span>나의 예매내역</span>
         <li class="side-bar tmargin"><a href="${pageContext.request.contextPath}/reservation/check" ><span class="glyphicon glyphicon-list">&nbsp;</span>예매내역</a></li>
         <li class="side-bar tmargin"><a href="${pageContext.request.contextPath}/reservation/checkCancelledR" ><span class="glyphicon glyphicon-remove">&nbsp;</span>예매취소내역</a></li>
