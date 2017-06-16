@@ -7,6 +7,7 @@
 	.btn {
 		border-radius: 1px solid blakc !important;
 		background-color: skyblue !important;
+		margin : 0 auto  !important;
 	}
 	
 	.btn-group{

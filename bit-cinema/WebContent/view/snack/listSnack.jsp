@@ -14,6 +14,9 @@
 	div.col-sm-2 {
     	text-align: center;
 	}
+	div.row {
+		
+	}
 </style>
 </head>
 <body>
@@ -38,8 +41,10 @@
 				<a href ="DetailSnack?snackId=<c:out value='${snack.snackId}'/>">
 					<img width="200px" height="200px" src="<c:out value="${snack.img}"/>"/><br>
 				</a>	
+				<strong>
 					<c:out value="${snack.name}"/><br>
 					<c:out value="${snack.price}"/><br>
+				</strong>
 				</div>
 				</c:forEach>
 		
