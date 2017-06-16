@@ -48,9 +48,9 @@
       </ul>
       <ul class="nav navbar-nav navbar-right">
    	   <c:if test="${!empty user}">
-			<li><img src="<c:out value="${user.profile}"/>" class="img-circle" width="50" height="50"/></li>
+			<li><img src="<c:out value="${user.profile}"/>" class="img-circle" width="40" height="40" style="margin:5px;"/></li>
 			<li><a href="${pageContext.request.contextPath}/member/Mypage">
-				<c:out value="${user.name}"/></a></li>
+				<span style="font-weight: bold;font-size: 18px;"><c:out value="${user.name}"/></span></a></li>
 		</c:if>
 		
       	<c:choose>

@@ -1,6 +1,7 @@
 package kr.co.bit_cinema.repository.servlet.member;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -29,6 +30,7 @@ public class FindIdServlet extends HttpServlet {
 	
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		response.setContentType("text/html; charset=utf-8");
 		String name = request.getParameter("name");
 		String email = request.getParameter("email");
 		
@@ -37,18 +39,17 @@ public class FindIdServlet extends HttpServlet {
 		param.setEmail(email);
 		
 		String id = null;
+		PrintWriter out = response.getWriter();
 		try {
 			id = mapper.findMemberId(param);
 			
 			if (id != null) {
-				request.setAttribute("id", id);
-				RequestDispatcher rd = request.getRequestDispatcher("/view/member/findId.jsp");
-				rd.forward(request, response);
+				out.println(id);
 			}else {
-				request.setAttribute("error", "입력하신 정보를 찾을 수 없습니다.");
-				RequestDispatcher rd = request.getRequestDispatcher("FindIdForm");
-				rd.forward(request, response);
+				out.println("입력하신 정보를 찾을 수 없습니다.");
 			}
+			
+			out.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

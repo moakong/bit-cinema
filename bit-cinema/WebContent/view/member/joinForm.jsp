@@ -3,6 +3,9 @@
 <!DOCTYPE html>
 <html>
 	<head>
+	<!-- sweet alert -->
+<script src="../lib/sweetalert.min.js"></script> 
+<link rel="stylesheet" href="../lib/sweetalert.css">
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<title>Insert title here</title>
 	<!-- <script src="../view/js/library.js"></script>
@@ -15,8 +18,9 @@
 			<c:import url="/view/include/topMenu.jsp" />
 		</div>	
 		
-		
+		<br><br><br>
 <div class="container">
+		
 	<div class="row">
 		<!-- < <h2>Create Your Simple Registration Form</h2>  -->
         
@@ -110,7 +114,7 @@
 <div class="form-group">
   <label class="col-md-4 control-label" for="singlebutton"> </label>
   <div class="col-md-4">
-    <button class="btn btn-primary btn-block">Submit</button>
+    <button class="btn btn-primary btn-block" style="background-color: rgb(104, 145, 162);">Submit</button>
   </div>
 </div>
 
@@ -120,7 +124,7 @@
 	</div>
 </div>
 		
-
+<br><br><br>
 
 		<div>
 			<c:import url="/view/include/footer.jsp" />
@@ -279,52 +283,52 @@
 			return false;
 		}
 		else if(joinForm.pass.value == ""){
-			alert("비밀번호를 입력하세요.");
+			sweetAlert("Oops!", "비밀번호를 입력하세요", "error");
 			joinForm.pass.focus();
 			return false;
 		}
 		else if(joinForm.pwdCh.value == 0){
-			alert("비밀번호 형식에 맞춰 다시 입력해주세요");
+			sweetAlert("Oops!", "비밀번호 형식에 맞춰 다시 입력해주세요", "error");
 			joinForm.pass.value = "";
 			joinForm.pass2.value = "";
 			joinForm.pass.focus();
 			return false;
 		}
 		else if(joinForm.pass.value != joinForm.pass2.value){
-			alert("비밀번호가 일치하지 않습니다.");
+			sweetAlert("Oops!", "비밀번호가 일치하지 않습니다.", "error");
 			joinForm.pass.value = "";
 			joinForm.pass2.value = "";
 			joinForm.pass.focus();
 			return false;
 		}
 		else if(joinForm.name.value == ""){
-			alert("이름을 입력하세요.");
+			sweetAlert("Oops!", "이름을 입력하세요.", "error");
 			joinForm.name.focus();
 			return false;
 		}
 		else if(joinForm.nickname.value == ""){
-			alert("별명을 입력하세요.");
+			sweetAlert("Oops!", "별명을 입력하세요.", "error");
 			joinForm.nickname.focus();
 			return false;
 		}
 		else if(joinForm.email.value == ""){
-			alert("이메일을 입력하세요.");
+			sweetAlert("Oops!", "이메일을 입력하세요.", "error");
 			joinForm.email.focus();
 			return false;
 		}
 		else if(joinForm.emailCh.value == 0){
-			alert("이메일 형식이 맞지않습니다.");
+			sweetAlert("Oops!", "이메일 형식이 맞지않습니다.", "error");
 			joinForm.email.value = "";
 			joinForm.email.focus();
 			return false;
 		}
 		else if(joinForm.phone.value == ""){
-			alert("휴대전화를 입력하세요.");
+			sweetAlert("Oops!", "휴대전화를 입력하세요.", "error");
 			joinForm.phone.focus();
 			return false;
 		}
 		else if(joinForm.phoneCh.value == 0){
-			alert("휴대전화가 올바르지 않습니다.");
+			sweetAlert("Oops!", "휴대전화가 올바르지 않습니다.", "error");
 			joinForm.phone.value = "";
 			joinForm.phone.focus();
 			return false;

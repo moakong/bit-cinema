@@ -5,6 +5,7 @@ footer {
       background-color: black;
       padding: 10px;
       color: azure;
+      position: relative;
     }
      
     

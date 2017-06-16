@@ -1,6 +1,7 @@
 package kr.co.bit_cinema.repository.servlet.member;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -28,29 +29,32 @@ public class FindPassServlet extends HttpServlet {
 	
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		response.setContentType("text/html; charset=utf-8");
 		String name = request.getParameter("name");
-		String id = request.getParameter("id");
+		String id = request.getParameter("passId");
 		String email = request.getParameter("email");
-	
+	System.out.println(name);
+	System.out.println(id);
+	System.out.println(email);
 		MemberVO param = new MemberVO();
 		param.setName(name);
 		param.setMemberId(id);
 		param.setEmail(email);
 		
 		String pass = null;
+		PrintWriter out = response.getWriter();
 		try {
 			pass = mapper.findMemberPass(param);
-			
+			System.out.println(pass);
 			if (pass != null) {
 				pass = convert(pass);
-				request.setAttribute("pass", pass);
-				RequestDispatcher rd = request.getRequestDispatcher("/view/member/findPass.jsp");
-				rd.forward(request, response);
+				out.println(pass);
 			}else {
-				request.setAttribute("error", "입력하신 정보를 찾을 수 없습니다.");
-				RequestDispatcher rd = request.getRequestDispatcher("FindPassForm");
-				rd.forward(request, response);
+				out.println("입력하신 정보를 찾을 수 없습니다.");
 			}
+			
+			out.close();
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

@@ -161,8 +161,8 @@
             <p id="profile-name" class="profile-name-card"></p>
             <form id="loginForm" action="Login" method="post" onsubmit="return check()" class="form-signin">
                 <span id="reauth-email" class="reauth-email"></span>
-                <input type="text" name="id" id="inputId" class="form-control" value="${ id }" required autofocus>
-                <input type="password" name="pass" id="inputPassword" class="form-control" placeholder="Password" required>
+                <input type="text" name="id" id="inputId" class="form-control" value="${ id }" autofocus>
+                <input type="password" name="pass" id="inputPassword" class="form-control" placeholder="Password">
                 <input id="id_check" type="checkbox" name="id_rem"
 				<c:if test="${ not empty id}">
 					checked="checked"
@@ -171,11 +171,11 @@
                 <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Sign in</button>
             </form>
             
-            <a href="${pageContext.request.contextPath}/member/FindIdForm" class="forgot-password">
-                Forgot the id?
-            </a><br>
+<%--             <a href="${pageContext.request.contextPath}/member/FindIdForm" class="forgot-password"> --%>
+<!--                 Forgot the id or password? -->
+<!--             </a><br> -->
             <a href="${pageContext.request.contextPath}/member/FindPassForm" class="forgot-password">
-                Forgot the password?
+                Forgot the id or password?
             </a>
         </div>
         <div style="text-align:center">
@@ -185,7 +185,7 @@
         </div>
         <br>
     </div>
-	
+	<br><br>
 	<div>
 		<c:import url="/view/include/footer.jsp" />
 	</div>	

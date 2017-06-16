@@ -3,48 +3,164 @@
 <!DOCTYPE html>
 <html>
 <head>
+<!-- sweet alert -->
+<script src="../lib/sweetalert.min.js"></script> 
+<link rel="stylesheet" href="../lib/sweetalert.css">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <script src="../js/library.js"></script>
+
 </head>
 <body>
 	<div>
 		<div>
 			<c:import url="/view/include/topMenu.jsp" />
 		</div>
-		<div class="container">
-			<div>
-				<c:import url="/view/include/mypageMenu.jsp" />
-			</div>
-			<div>
-				<form id="modifyForm" name="modify" action="ModifyInfo" method="post" onsubmit="return check()">
-					<img id="img" src="${ member.profile }" width="100" height="100"/><br>
-					<button type="button" onclick="uploadProfile(1).doNotSubmit();" >이미지 변경</button>
-					<button type="button" onclick="uploadProfile(0).doNotSubmit();" >기본 이미지로 변경</button><br>
-					<input type="hidden" id="profile" name="profile" value="${ member.profile }"/>
-					아이디 <c:out value="${ member.memberId }" /><br> 
-					영문자와 숫자조합으로 8~12글자를 입력하세요.<br>
-					비밀번호  <input type="password" id="pass" name="pass" maxlength="12" onkeydown="patternCheck();"/>
-					<input id="pwdCh" type="hidden" value="0"/>
-					<div id="checkPass" style=""></div>
-					비밀번호 확인 <input type="password" id="pass2" name="pass2" maxlength="12" onkeyup="checkPass();"/>
-					<div id="checkPassMsg" style=""></div>
-					이름 <c:out value="${ member.name }" /><br> 
-					별명 <input type="text" name="nickname" value="${ member.nickname }" /><br> 
-					이메일 <input type="text" id="email" name="email" value="${ member.email }" /></br>
-					<input id="emailCh"	type="hidden" value="1" />
-					휴대전화 <input type="text" id="phone" name="phone" value="${ member.phone }" maxlength="11"/><br>
-					<input id="phoneCh" type="hidden" value="1"/>
-					<button>수정</button>
-					<input type="button" onclick="withdraw(this.form);" value="회원탈퇴"/>
-				</form>
-			</div>
+		
+		
+<div class="container">
+<div>
+			<c:import url="/view/include/mypageMenu.jsp" />
 		</div>
+
+		
+		<br><br>
+		
+		
+	<div class="col-md-6" >
+		<!-- < <h2>Create Your Simple Registration Form</h2>  -->
+        
+        <form class="form-horizontal" id="modifyForm" name="modify" action="ModifyInfo" method="post" onsubmit="return check();">
+		<fieldset>
+<!-- 
+			Form Name
+		<legend>Register Here</legend>  -->
+
+<!-- Text input-->
+	<div class="form-group">
+	<input type="hidden" id="profile" name="profile" value="${ member.profile }"/>
+  			<label class="col-md-4 control-label" for="textinput">Id</label>  
+  			<div class="col-md-7">
+  			<label class="control-label"><c:out value="${ member.memberId }" /></label>  
+  		
+<!--   				<input id="id" name="id" onkeydown="checkId();" placeholder="Insert your Id" class="form-control input-md" type="text"/> -->
+<!--   				<span class="help-block"></span>   -->
+<!-- 		<input id="idCh" type="hidden" value="0"/> -->
+<!-- 				<div id="checkIdMsg"></div> -->
+  			</div>
+	</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="textinput"></label>  
+  <div class="col-md-8">
+ <span> 영문자와 숫자조합으로 8~12글자를 입력하세요.</span>
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="textinput">Password</label>  
+  <div class="col-md-7">
+  <input id="pass" name="pass" maxlength="12" onkeydown="patternCheck();" placeholder="Insert your Password" class="form-control input-md" type="password"/>
+<!--   <span class="help-block"></span>   -->
+<input id="pwdCh" type="hidden" value="0"/>
+				<div id="checkPass"></div>
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="textinput">Confirm Password</label>  
+  <div class="col-md-7">
+  <input id="pass2" name="pass2" maxlength="12" onkeyup="checkPass();" placeholder="Confirm your Password" class="form-control input-md" type="password" />
+  <span class="help-block"></span>  
+  <div id="checkPassMsg"></div>
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="textinput">Name</label>  
+  <div class="col-md-7">
+  <label class="control-label"><c:out value="${ member.name }" /></label>
+   <span class="help-block"></span>
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="textinput">Nickname</label>  
+  <div class="col-md-7">
+  <input name="nickname" value="${ member.nickname }" class="form-control input-md" type="text"/>
+	<span class="help-block"></span> 
+  </div>
+</div>
+
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="textinput">Email</label>  
+  <div class="col-md-7">
+  <input id="email" name="email" value="${ member.email }" class="form-control input-md" type="text"/>
+<span class="help-block"></span>
+<input id="emailCh"	type="hidden" value="1" />
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="textinput">Phone</label>  
+  <div class="col-md-7">
+  <input id="phone" name="phone" maxlength="11" value="${ member.phone }" class="form-control input-md" type="text"/>
+<input id="phoneCh" type="hidden" value="1"/>
+<span class="help-block"></span>   
+  </div>
+</div>
+
+
+<!-- Button -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="singlebutton"> </label>
+  <div class="col-md-7">
+    <button class="btn btn-primary center-block" style="width:50%;">변경</button>
+<!--     <input type="button" class="btn btn-primary right-block" onclick="withdraw(this.form);" value="회원탈퇴"/> -->
+   </div>
+</div>
+
+</fieldset>
+</form>
+  
+	</div>
+	
+	
+	<div class="col-md-3">
+					<div class="col-md-8">
+	<span class="help-block"></span> <img id="img" src="${ member.profile }" width="140" height="150"/><br>
+<!-- 					</div> -->
+					<div class="col-md-12"> 
+					<span class="help-block"></span>   
+					<button type="button" class="btn btn-primary"  onclick="uploadProfile(1).doNotSubmit();" >이미지 변경</button>
+					<span class="help-block"></span>   
+					<button type="button" class="btn btn-primary"  onclick="uploadProfile(0).doNotSubmit();" >기본 이미지</button><br>
+					</div> 
+	</div>
+	</div>
+	
+</div>
+
+		
+		
+		
+		
+		
 		<div>
 			<c:import url="/view/include/footer.jsp" />
 		</div>
 	</div>
 	<script>
+	
+	
 		var passFirst = false;
 		var passKeyword = '';
 		var loopSendPass = false;
@@ -100,31 +216,7 @@
 	 
 		}
 	
-		function withdraw(form){
-			if(form.pass.value == ""){
-				alert("비밀번호를 입력하세요");
-				form.pass.focus();
-				return false;
-			}		
-			else if(form.pwdCh.value == "0"){
-				alert("비밀번호 형식에 맞춰 다시 입력해주세요");
-				form.pass.value = "";
-				form.pass2.value = "";
-				form.pass.focus();
-				return false;
-			}
-			else if(/*form.pass.value != ||*/form.pass.value != form.pass2.value){
-				alert("비밀번호가 일치하지 않습니다.");
-				form.pass.value = "";
-				form.pass2.value = "";
-				form.pass.focus();
-				return false;
-			}
-			var result = confirm("회원탈퇴를 계속 진행하시겠습니까?");
-			if(result){
-				location.href="${pageContext.request.contextPath}/member/Withdraw"
-			} 
-		}
+		
 		
 		function uploadProfile(type) {
 			
@@ -184,47 +276,48 @@
 		
 		function check(){
 			if(modifyForm.pass.value == ""){
-				alert("비밀번호를 입력하세요");
+				sweetAlert("Oops!", "비밀번호를 입력하세요.", "error");
 				modifyForm.pass.focus();
 				return false;
 			}
 			else if(modifyForm.pwdCh.value == 0){
-				alert("비밀번호 형식에 맞춰 다시 입력해주세요");
+				sweetAlert("Oops!", "비밀번호 형식에 맞춰 다시 입력해주세요.", "error");
 				modifyForm.pass.value = "";
 				modifyForm.pass2.value = "";
 				modifyForm.pass.focus();
 				return false;
 			}
 			else if(modifyForm.pass.value != modifyForm.pass2.value){
-				alert("비밀번호가 일치하지 않습니다.");
+				sweetAlert("Oops!", "비밀번호가 일치하지 않습니다.", "error");
 				modifyForm.pass.value = "";
 				modifyForm.pass2.value = "";
 				modifyForm.pass.focus();
 				return false;
 			}
 			else if(modifyForm.nickname.value == ""){
-				alert("별명을 입력하세요.");
+				sweetAlert("Oops!", "별명을 입력하세요.", "error");
 				modifyForm.nickname.focus();
 				return false;
 			}
 			else if(modifyForm.email.value == ""){
+				sweetAlert("Oops!", "이메일을 입력하세요.", "error");
 				alert("이메일을 입력하세요.");
 				modifyForm.email.focus();
 				return false;
 			}
 			else if(modifyForm.emailCh.value == 0){
-				alert("이메일 형식이 맞지않습니다.");
+				sweetAlert("Oops!", "이메일 형식이 맞지않습니다.", "error");
 				modifyForm.email.value = "";
 				modifyForm.email.focus();
 				return false;
 			}
 			else if(modifyForm.phone.value == ""){
-				alert("휴대전화를 입력하세요.");
+				sweetAlert("Oops!", "휴대전화를 입력하세요.", "error");
 				modifyForm.phone.focus();
 				return false;
 			}
 			else if(modifyForm.phoneCh.value == 0){
-				alert("휴대전화가 올바르지 않습니다.");
+				sweetAlert("Oops!", "휴대전화가 올바르지 않습니다.", "error");
 				modifyForm.phone.value = "";
 				modifyForm.phone.focus();
 				return false;
