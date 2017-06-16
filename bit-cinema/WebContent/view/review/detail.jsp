@@ -15,6 +15,8 @@
 		<div>
 			<c:import url="/view/include/topMenu.jsp" />
 		</div>
+	<div class="container">
+		
 		<div>
 		
 		<table>
@@ -56,16 +58,18 @@
 		
 		
 		
-		
-<a href="${pageContext.request.contextPath}/review/Review?id=${review.movieId}">되돌아가기</a>
-
+	<center>
+<%-- <a href="${pageContext.request.contextPath}/review/Review?id=${review.movieId}">되돌아가기</a> --%>
+<button id="return" type="button" >되돌아가기</button>
 
 <c:if test="${user.memberId eq mmid}">
-<a id="del" href="${pageContext.request.contextPath}/review/delete?no=${review.reviewNo}&id=${review.movieId}">삭제하기</a>
-<a href="${pageContext.request.contextPath}/review/updateform?no=${review.reviewNo}&id=${review.movieId}">수정하기</a>
+<%-- <a id="del" href="${pageContext.request.contextPath}/review/delete?no=${review.reviewNo}&id=${review.movieId}">삭제하기</a> --%>
+<button id="del" type="button" >삭제 하기</button>
+<%-- <a href="${pageContext.request.contextPath}/review/updateform?no=${review.reviewNo}&id=${review.movieId}">수정하기</a> --%>
+<button id="update" type="button" >수정 하기</button>
 </c:if>
-
-
+</center>
+</div>
 		<div>
 			<c:import url="/view/include/footer.jsp" />
 		</div>
@@ -73,6 +77,13 @@
 
 
 <script>
+$("#return").on("click",  function(){
+	location.href="${pageContext.request.contextPath}/review/Review?id=${review.movieId}";
+});
+
+$("#update").on("click",  function(){
+	location.href="${pageContext.request.contextPath}/review/updateform?no=${review.reviewNo}&id=${review.movieId}";
+});
 
 
 	$("#del").on("click",  function(){
@@ -83,26 +94,26 @@
 			  type: "warning",
 			  showCancelButton: true,
 			  confirmButtonColor: "#DD6B55",
-			  confirmButtonText: " 정말!?",
+			  confirmButtonText: " 삭제하기",
 			  closeOnConfirm: false
 			},
 			function(){
-			  swal("그냥 효과요 ", "ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ", "success");
+			  location.href="${pageContext.request.contextPath}/review/delete?no=${review.reviewNo}&id=${review.movieId}"
 			});
 		
 		
 		
 		
 		
-		var result = confirm("삭제 하시겠습니까?");
-		if (result){
+// 		var result = confirm("삭제 하시겠습니까?");
+// 		if (result){
 			
-		}
-		// 그 이외의 경우
-		else{
-			console.log("이후 없음");
-			return false;
-		}
+// 		}
+// 		// 그 이외의 경우
+// 		else{
+// 			console.log("이후 없음");
+// 			return false;
+// 		}
 	});
 
 
