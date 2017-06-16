@@ -134,7 +134,7 @@
 					 	(<fmt:formatDate value="${box.audienceDate}" pattern="yy.MM.dd"/> 기준) <br>
 					</div>
 					<div class="col-sm-4">					 	
-					 	<div class='starability-result' data-rating='4.5' aria-describedby='rated-element'></div>
+					 	<div class='starability-result' data-rating='4' aria-describedby='rated-element'></div>
 					 	<h3 style="margin-left:33px; margin-top:10px;">8.5 / 10<h3>
 					 	<button style="margin-left:33px; " type="button" onclick="location.href='${pageContext.request.contextPath}/reservation/selectMovie'" class="btn btn-info">예매하기</button>
 <%-- 					 	<button style="margin-left:33px; margin-top:-20px;" type="button" onclick="location.href='../reservation/selectArea?movieId=${movie.movieId}'" class="btn btn-default">예매하기</button> --%>
