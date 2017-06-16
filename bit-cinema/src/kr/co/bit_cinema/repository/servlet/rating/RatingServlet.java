@@ -24,6 +24,7 @@ import kr.co.bit_cinema.repository.vo.MemberVO;
 import kr.co.bit_cinema.repository.vo.RatingVO;
 import kr.co.bit_cinema.repository.vo.ReviewVO;
 import kr.co.bit_cinema.repository.vo.movie.ActorVO;
+import kr.co.bit_cinema.repository.vo.movie.BoxVO;
 import kr.co.bit_cinema.repository.vo.movie.DirectorVO;
 import kr.co.bit_cinema.repository.vo.movie.MovieVO;
 
@@ -34,6 +35,7 @@ public class RatingServlet extends HttpServlet {
 	private MovieMapper movieMapper = null;
 	private RatingMapper ratingMapper = null;
 	//private MemberMapper memberMapper = null;
+	
 	
 	public RatingServlet() {
 		session = MyAppSqlConfig.getSqlSessionInstance();
@@ -55,13 +57,14 @@ public class RatingServlet extends HttpServlet {
 		List<String> genre = null;
 		String photo = null;
 		List<String> photos = null;
+		BoxVO box = null;
 		try {
 			// List<RatingVO> listRating = ratingMapper.selectNewRating();
 			movie = movieMapper.infoMovie(mId);
 			genre = movieMapper.infoGenre(mId);
 			photo = movieMapper.selectThumbnail(mId);
 			photos = movieMapper.selectPhoto(mId);
-
+			box = movieMapper.selectBox(mId);
 		
 			if (ratingNo != null) {
 				request.setAttribute("ratingNo", ratingNo);		
@@ -99,6 +102,7 @@ public class RatingServlet extends HttpServlet {
 			request.setAttribute("genre", genre);
 			request.setAttribute("photo", photo);
 			request.setAttribute("photos", photos);
+			request.setAttribute("box", box);
 			
 			RequestDispatcher rd = request.getRequestDispatcher("/view/rating/rating.jsp");
 			rd.forward(request, response);

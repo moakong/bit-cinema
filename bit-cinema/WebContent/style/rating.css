@@ -94,10 +94,10 @@ ul.breadcrumb li a:hover {
     text-decoration: underline;
 }
 
-li:first-child {
+div.rating li:first-child {
     padding-top: 25px;
 }
-li{
+div.rating li{
     position: relative;
     float: none;
    
@@ -107,19 +107,19 @@ li{
 
 
 
-ul, ol, li {
+div.rating ul, div.rating ol, div.rating li {
     margin: 0;
    
 }
-li {
+div.rating li {
     display: list-item;
  
 }
 
-ul, ol, menu {
+div.rating ul, div.rating ol, div.rating menu {
     list-style: none;
 }
-ul, menu, dir {
+div.rating ul, div.rating menu, div.rating dir {
     display: block;
 }
 

@@ -11,10 +11,10 @@
 	<div>
 		<c:import url="/view/include/topMenu.jsp" />
 	</div>	
-	<div class="container">
 		<div>
 			<c:import url="/view/include/mypageMenu.jsp" />
 		</div>
+	<div class="container">
 		<div>
 			<p>마이페이지 메인화면입니다</p>
 		</div>
