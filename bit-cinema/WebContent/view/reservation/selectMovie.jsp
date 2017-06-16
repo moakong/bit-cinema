@@ -51,10 +51,6 @@
       
     
     
-    
-    
-    
-    
       .selection {
 	clear: both;
 }
