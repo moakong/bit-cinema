@@ -174,7 +174,6 @@
 			
 			<h2>스틸컷</h2><br>
 			<c:set var="cnt" value="0" />
-			<c:set var="totalCnt" value="0" />
 			<c:forEach var="p" items="${ photos }">
 				<c:if test="${cnt == 0}">
 					<div class="row">
@@ -185,12 +184,7 @@
 				</div>
 				
 				<c:set var="cnt" value="${cnt+1}"/>
-				<c:set var="totalCnt" value="${totalCnt+1}"/>
 				<c:if test="${cnt == 3 }">
-					</div><br><br>
-					<c:set var="cnt" value="0"/>
-				</c:if>
-				<c:if test="${photos.size() /3 != 0 && totalCnt == photos.size()}">
 					</div><br><br>
 					<c:set var="cnt" value="0"/>
 				</c:if>

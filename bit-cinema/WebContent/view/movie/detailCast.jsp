@@ -58,56 +58,65 @@
 </style>
 </head>
 <body>
-<div>
+
+
+
 	<div>
 		<c:import url="/view/include/topMenu.jsp" />
 	</div>
 	
-<div class="well container">
 	
-<div id="myCarousel" class="carousel slide" data-ride="carousel">
-	<!-- Indicators -->
-	<ol class="carousel-indicators">
-		<c:forEach var="i" begin="0" end="${photos.size()-1}">
-    	<c:choose>
-    	<c:when test="${i eq 0}">
-    	<li data-target="#myCarousel" data-slide-to="${i}" class="active"></li>
-    	</c:when>
-    	<c:otherwise>
-    	<li data-target="#myCarousel" data-slide-to="${i}"></li>
-    	</c:otherwise>
-    	</c:choose>
-		</c:forEach>
-	</ol>
-
-	<!-- Wrapper for slides -->
-	<div class="carousel-inner" role="listbox">
-		<c:forEach var="i" begin="0" end="${photos.size()-1}">
-    	<c:choose>
-    	<c:when test="${i eq 0}">
-    	<div class="item active">
-    	</c:when>
-    	<c:otherwise>
-    	<div class="item">
-    	</c:otherwise>
-    	</c:choose>
-       		<img src="${photos[i]}" class="item-img"/>
-     	</div>
-		</c:forEach>
-   </div>
-
-    <!-- Left and right controls -->
-    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-      <span class="sr-only">Previous</span>
-    </a>
-    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-      <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-      <span class="sr-only">Next</span>
-    </a>
+	
+	
+	
+<div class="well container">
+	<div id="myCarousel" class="carousel slide" data-ride="carousel">
+		<!-- Indicators -->
+		<ol class="carousel-indicators">
+			<c:forEach var="i" begin="0" end="${photos.size()-1}">
+	    	<c:choose>
+	    	<c:when test="${i eq 0}">
+	    	<li data-target="#myCarousel" data-slide-to="${i}" class="active"></li>
+	    	</c:when>
+	    	<c:otherwise>
+	    	<li data-target="#myCarousel" data-slide-to="${i}"></li>
+	    	</c:otherwise>
+	    	</c:choose>
+			</c:forEach>
+		</ol>
+	
+		<!-- Wrapper for slides -->
+		<div class="carousel-inner" role="listbox">
+			<c:forEach var="i" begin="0" end="${photos.size()-1}">
+	    	<c:choose>
+	    	<c:when test="${i eq 0}">
+	    	<div class="item active">
+	    	</c:when>
+	    	<c:otherwise>
+	    	<div class="item">
+	    	</c:otherwise>
+	    	</c:choose>
+	       		<img src="${photos[i]}" class="item-img"/>
+	   	</div>
+			</c:forEach>
+	</div>
+	
+	    <!-- Left and right controls -->
+	    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+	      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+	      <span class="sr-only">Previous</span>
+	    </a>
+	    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+	      <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+	      <span class="sr-only">Next</span>
+	    </a>
 </div>
 
-		<div>
+
+
+
+
+<div>
 		<div class="img-thumbnail">
 			<a href="<c:out value="${ photo }"/>" onclick="window.open(this.href, '_blank'); return false;">
 				<img src="<c:out value="${ photo }"/>" width="300px" height="400px"/></a>
@@ -159,30 +168,48 @@
 			
 			
 			<div>
-				<h2>감독</h2>
-				
-				
+				<h2>감독</h2><br>
+				<div class="row">
 				<c:forEach var="director" items="${ directors }">
-					<img width="180" height="240" src="${ director.profile }"/><br>
-					감독 <br>
-					<c:out value="${ director.directorName }" /><br>
+					<div class="col-sm-3" style="text-align: center;">
+						<img width="160" height="240" src="${ director.profile }"/><br>
+						<strong style="font-size:17px"><c:out value="${ director.directorName }" /></strong><br>
+					</div>
 				</c:forEach>
+				</div><br><br><br>
 				<hr>
 				
-				<h2>배우</h2>
+				<h2>배우</h2><br>
+				<c:set var="cnt" value="0" />
 				<c:forEach var="actor" items="${ actors }">
-					<img width="180" height="240" src="${ actor.profile }"/><br>
-					<c:out value="${ actor.type }" /><br>
-					<c:out value="${ actor.castName }" /><br>
-					<c:out value="${ actor.actorName }" /><br>
+					<c:if test="${cnt == 0}">
+						<div class="row">
+					</c:if>
+					<div class="col-sm-3" style="text-align: center;">
+						<img width="160" height="240" src="${ actor.profile }"/><br>
+						<strong style="font-size:16px"><c:out value="${ actor.actorName }" /></strong><br>
+						<c:out value="${ actor.type }" /><br>
+						<c:out value="${ actor.castName }" /><br>
+					</div>
+					<c:set var="cnt" value="${cnt+1}"/>
+					<c:if test="${cnt == 4 }">
+						</div><br><br>
+						<c:set var="cnt" value="0"/>
+					</c:if>
 				</c:forEach>
 			</div>
 			
 		</div>
-		</div>
-		<div>
+</div>
+
+
+
+
+
+
+	<div>
 		<c:import url="/view/include/footer.jsp" />
 	</div>	
-</div>
+
 </body>
 </html>
