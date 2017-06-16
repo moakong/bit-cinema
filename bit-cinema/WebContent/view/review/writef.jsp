@@ -6,23 +6,46 @@
 <meta charset=UTF-8>
 <title>Insert title here</title>
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<style>
+#main{
+}
+.container *{
+	margin: 5px;
+}
+#title{
+	width:800px;
+}
+#content{
+	width:800px;
+}
+button{
+	 text-align: center;
+}
+.filee{
+	width: 50%; height: 50%;
+}
+</style>
 </head>
 <body>
 
 		<div>
 			<c:import url="/view/include/topMenu.jsp" />
 		</div>
- 
-<form action="${pageContext.request.contextPath}/write" method="post" enctype="multipart/form-data">
-		<input type="hidden" name="mid" value="${mid }">
-	제목<input type="text" name="title"><br>내용<br>
-	<textarea cols="50" rows="20" name="content"></textarea><br>
-	스포일러<input type="radio" name="spo" value="1" >있음
-	<input type="radio" name="spo" value="0" checked="checked">없음<br>
-	첨부파일<input type="file" name="f">
-	첨부파일<input type="file" name="f1">
-	<button>글작성</button>
-</form>		
+		
+ <div class="container">
+	<form action="${pageContext.request.contextPath}/write" method="post" enctype="multipart/form-data">
+		<input  type="hidden" name="mid" value="${mid }">
+<!-- 		<input id="title" type="text" name="title" placeholder="제목을 입력하세요"><br> -->
+		<input type="text" class="form-control" name="title" placeholder="제목을 입력하세요">
+		<input class="filee" type="file" name="f">
+		<input class="filee" type="file" name="f1">
+		스포일러<input type="radio" name="spo" value="1" >있음
+		<input type="radio" name="spo" value="0" checked="checked">없음<br>
+<!-- 		<textarea id="content" cols="100" rows="20" name="content" placeholder="내용을 입력하세요"></textarea><br> -->
+		<textarea class="form-control" rows="20" id="comment" name="content" placeholder="내용을 입력하세요"></textarea>
+		 <center><button  class="btn btn-primary">글작성</button>	</center>
+	</form>		
+ </div>
 
 		<div>
 			<c:import url="/view/include/footer.jsp" />

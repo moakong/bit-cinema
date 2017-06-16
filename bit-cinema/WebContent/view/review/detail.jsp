@@ -35,7 +35,7 @@
 					<td><c:out value="${review.content } "></c:out>	</td>
 				</tr>
 				<tr>
-					<th>추천수</th>
+					<th>조회수</th>
 					<td><c:out value="${review.recomCount } "></c:out>	</td>
 				</tr>
 				<tr>

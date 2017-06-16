@@ -39,26 +39,34 @@ public class ReviewDetail extends HttpServlet{
 		int reviewNo = Integer.parseInt(request.getParameter("reviewNo"));
 		String mmid = request.getParameter("mmid");
 		
-		request.setAttribute("mmid", mmid);
 		
 		
 		ReviewVO review = new ReviewVO();
 		
 		List<ReviewFileVO> files = null;
-		ReviewFileVO file = new ReviewFileVO();
+//		ReviewFileVO file = new ReviewFileVO();
 		try {
+			
+			
 			//글내용
 			review = mapper.detailReview(reviewNo);
 			request.setAttribute("review", review);
 			
-			//파일
+			//추천수 증가 
+			System.out.println(review.getRecomCount());
+
+			int count = review.getRecomCount() + 1;
+			review.setRecomCount(count);
+			 mapper.updateRecom(review);
+			 session.commit();
 			
-				
+			//파일
 			files = mapper.listFile(reviewNo);
-			request.setAttribute("files", files);
 			System.out.println("files"+files);
 			
 			
+			request.setAttribute("files", files);
+			request.setAttribute("mmid", mmid);
 			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

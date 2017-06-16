@@ -11,6 +11,7 @@ public interface ReviewMapper {
 	public ReviewVO detailReview(int reviewNo) throws Exception;
 	public void insertReview(ReviewVO vo) throws Exception;
 	public void deleteReview(int no) throws Exception;
+	public void updateRecom(ReviewVO no) throws Exception;
 	public void updateReview(ReviewVO vo) throws Exception;
 
 	//파일 

@@ -41,8 +41,15 @@
 		</selectKey>
 	insert into reviews(REVIEW_NO,TITLE,CONTENT,SPOILER,READ_COUNT,RECOM_COUNT,MEMBER_ID,MOVIE_ID)
 	values(#{reviewNo},#{title},#{content},#{spoiler},0,0,#{memberId},#{movieId})
-	
 	</insert>
+	
+<!-- 	추천 업데이트 -->
+	<update id="updateRecom" parameterType="Review">
+	update reviews
+	set RECOM_COUNT = #{recomCount}
+	where REVIEW_NO = #{reviewNo}
+	</update>
+	
 		
 	<delete id="deleteReview" parameterType="int">
 	delete from REVIEWS
