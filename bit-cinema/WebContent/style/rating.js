@@ -114,6 +114,11 @@ window.onload = function() {
 	
 	$('button[name=uBtn]').on('click', function() {
 		
+		var content = $('textarea[name=updateContent]');
+		//this.parent().after(content);
+		content.focus();
+		
+		
 		var param = $(this).data("param");
 		console.log("$(this).data('param') = " + $(this).data("param"))
 		location.href	=	"Rating?"+ param;
@@ -122,6 +127,8 @@ window.onload = function() {
 	
 	$('button[name=updateBtn]').on('click', function() {
 		var f = document.updateForm;
+		
+		
 		f.submit();
 			
 		});

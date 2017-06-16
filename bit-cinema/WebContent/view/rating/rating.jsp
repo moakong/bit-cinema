@@ -172,7 +172,7 @@
 		<!-- write rating div -->
 		<!-- <input type="hidden" name="ratingNo" value="${rating.ratingNo}" />
 		rating.ratingNo: <c:out value="${rating.ratingNo}" /> -->
-		<div>
+	<div id="writeAlign">
 		<form method="post" action="writeRating" name="writeForm">
 			<input type="hidden" name="id" value="${movie.movieId}" />
 		 <input type="hidden" name="memberId" value="${user.memberId}" />
@@ -211,11 +211,11 @@
 		
 		
 		<div id="result">
-		  글자수 : <span id="totalChars">0</span>/140<br/>
+		  
 			 <textarea name="content" autofocus rows="4" cols="70" 
 			 placeholder="140자 이내에서 입력해 주세요" maxlength="140"></textarea>
 		</div>
-		
+		글자수 : <span id="totalChars">0</span>/140<br/>
 		<div>
 			<button id="wBtn" type="button">등록</button>
 		
@@ -267,23 +267,24 @@
 					
 	
 	
-			<c:forEach var="rating" items="${listRating}">
-			<c:choose>
-		  	<c:when test="${ratingNo eq rating.ratingNo}">	
+		<c:forEach var="rating" items="${listRating}">
+		<c:choose>
+		
+		<c:when test="${ratingNo eq rating.ratingNo}">	
 			
-			<input type="hidden" name="updateRating" value="${rating.rating}" />
+		<input type="hidden" name="updateRating" value="${rating.rating}" />
 		<div class='starability-result' data-rating='<c:out value="${rating.rating}"/>' aria-describedby='rated-element'></div>
 		<div> 
 				
-		<input type="checkbox" name="updateSpoiler" 
+			<input type="checkbox" name="updateSpoiler" 
 			   <c:if test="${rating.spoiler == 1}" >
 			   checked
 			   </c:if>	
 		       value="1"/>
-		  <label for="updateSpoiler">스포일러</label>
-		  </div>
+		 	<label for="updateSpoiler">스포일러</label>
+		 </div>
 		  <div>
-					  	<textarea name="updateContent" rows="2" cols="60"><c:out value="${rating.content}" /></textarea>
+				<textarea name="updateContent" rows="3" cols="60"><c:out value="${rating.content}" /></textarea>
 					</div>
 					<div>
 					  <span>
@@ -299,29 +300,39 @@
         
 		<c:otherwise>
 			
-			<div class="row">
-					<div class="col-sm-3">
-		<div id= "resultRatingList">
-		<ul>
-		<li>
-		
-		 <div class='starability-result' data-rating='<c:out value="${rating.rating}"/>' aria-describedby='rated-element'></div>
-				
-			<div> <c:if test="${rating.spoiler == 1}" >스포 있음</c:if>
-			<c:if test="${rating.spoiler == 0}" >스포 없음</c:if>
-			 </div>
-				 	
-			<p><c:out value="${rating.content}" /></p>
 			
-			<div>
-			 <span> <c:out value="${rating.nickname}"/> (<c:out value="${rating.memberId}"/>)</span> |
-				 <span>	<fmt:formatDate var="regDate" value="${rating.regDate}" 
-					                      pattern="yyyy-MM-dd HH:mm:ss" />
-				  <c:out value="${regDate}" /></span>
-					      
-			 </div>
-					  
-					  <c:if test="${user.memberId == rating.memberId}">
+			
+		<div id= "resultRatingList">
+		
+		<ul>
+		<li>	
+		
+		<div class="row">
+			<div class="col-sm-1">
+			 	<div class='starability-result' data-rating='<c:out value="${rating.rating}"/>' aria-describedby='rated-element' ></div>
+			</div>
+			
+			<div class="col-sm-2 col-sm-offset-2"> 
+				 <c:if test="${rating.spoiler == 1}" >스포 있음</c:if>
+				<c:if test="${rating.spoiler == 0}" >스포 없음</c:if>
+				
+			</div> 	
+		</div>
+		
+			<div class="row">
+				<div class="col-sm-7 col-sm-offset-3" id="contentList">
+					<c:out value="${rating.content}" />
+				</div>
+				<div class="col-sm-7 col-sm-offset-3">
+					 <span> <c:out value="${rating.nickname}"/> (<c:out value="${rating.memberId}"/>)</span> |
+						 <span>	<fmt:formatDate var="regDate" value="${rating.regDate}" 
+							                      pattern="yyyy-MM-dd HH:mm:ss" />
+						  <c:out value="${regDate}" /></span>
+				     
+				 </div>
+			</div>
+			
+				<c:if test="${user.memberId == rating.memberId}">
 				  <div id="edit">
 				  <button name="dBtn" type="button" data-param="id=${rating.movieId}&ratingNo=${rating.ratingNo}">삭제</button>
 				  <button name="uBtn" type="button" data-param="id=${rating.movieId}&ratingNo=${rating.ratingNo}">수정</button>
@@ -332,14 +343,16 @@
 				-->
 				</div> 
 				</c:if>
-					 </li>
-					 </ul>
-					 </div>		
-					 </div>
-					 </div>
+			  </li>
+			</ul>
+			</div>		
+					
+			
+					 
 			 	</c:otherwise>
-			 </c:choose>	
+			 </c:choose>	 
 			 </c:forEach>
+			
 			 <c:if test="${empty listRating}">
 			 
 			    <span>댓글이 존재하지 않습니다.</span>
@@ -348,11 +361,11 @@
 		
 		</div>
 	
-</form> 
-	</div>	 
-	</div>		
+	</form> 
 	
-
+	</div>
+		
+	</div>
 	<div>
 		<c:import url="/view/include/footer.jsp" />
 	</div>	

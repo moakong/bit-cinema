@@ -71,28 +71,7 @@ h2 {
 
 */
 
-/* 정렬*/
 
-ul.breadcrumb {
-    padding: 10px 16px;
-    list-style: none;
-    background-color: #eee;
-    font-size: 17px;
-}
-ul.breadcrumb li {display: inline;}
-ul.breadcrumb li+li:before {
-    padding: 8px;
-    color: black;
-    content: "/\00a0";
-}
-ul.breadcrumb li a {
-    color: #0275d8;
-    text-decoration: none;
-}
-ul.breadcrumb li a:hover {
-    color: #01447e;
-    text-decoration: underline;
-}
 
 div.rating li:first-child {
     padding-top: 25px;
@@ -331,6 +310,8 @@ button[name=dBtn]:HOVER, button[name=uBtn]:HOVER, button[name=updateBtn]:HOVER {
 }
 
 #resultRatingList li {
+	list-style: none;
+	
     position: relative;
     float: none;
     background: url(http://static.naver.net/movie/2012/06/dot_line.gif) repeat-x 0 100%;
@@ -346,3 +327,27 @@ button[name=dBtn]:HOVER, button[name=uBtn]:HOVER, button[name=updateBtn]:HOVER {
     background-color: initial;
     padding: 14px 0 13px 0;
 }
+
+/*
+#edit {
+	
+	border-bottom-style: dotted;
+	border-color: gray;
+	
+}
+*/
+
+#contentList {
+word-wrap: break-word;
+	
+}
+
+#writeAlign {
+	
+	
+  
+  margin: 0 150px;
+  
+	
+}
+
