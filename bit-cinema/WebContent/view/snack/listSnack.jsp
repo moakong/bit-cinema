@@ -6,9 +6,6 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
-	#all {
-		background-color: #fdfcf0;
-	}
 	.col-sm-2 {
 		width: 230px !important;
 		margin-left: 30px;

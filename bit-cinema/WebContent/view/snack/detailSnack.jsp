@@ -25,7 +25,6 @@
 		margin-top: 30px;
 	}
 	.container {
-		background-color: #fdfcf0;
 	}
 	.btn-danger {
 		display:block;
@@ -73,15 +72,15 @@
 						<table>
 						<tr>
 						<td>
-						 <button type="submit" onclick="cart();">장바구니</button>
+						 <button  class="btn btn-default"  type="submit" onclick="cart();">장바구니</button>
 						</td>
 						<td>
-						<button onclick="doAction()" type="button">바로구매</button>			 
+						<button class="btn btn-default"  onclick="doAction()" type="button">바로구매</button>			 
 						</td>
 						</tr>
 						<tr>
 						<td colspan="2" class="list">
-						<button  class="" type="button" onclick="location.href='${pageContext.request.contextPath}/snack/ListSnack?category=<c:out value="${snack.categoryId}"/>'">목록</button>
+						<button  class="btn btn-default" type="button" onclick="location.href='${pageContext.request.contextPath}/snack/ListSnack?category=<c:out value="${snack.categoryId}"/>'">목록</button>
 						</td>
 						</tr>
 						</table>
