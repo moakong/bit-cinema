@@ -23,4 +23,6 @@ public interface RatingMapper {
 
 	
 	public List<RatingVO> selectRatingList(RatingVO ratingVO) throws Exception;
+	
+	public int selectAllRating(int id) throws Exception;
 }

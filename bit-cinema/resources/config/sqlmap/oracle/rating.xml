@@ -113,6 +113,15 @@
 	
 	
 	
+	<select id="selectAllRating" parameterType="int" resultType="int">
+	
+	select *
+	 from ratings
+	 where rt.movie_id = #{movieId}
+	group by by avg(rating)
+	</select>
+	
+	
 	
 	<!-- 
 		rating_no
