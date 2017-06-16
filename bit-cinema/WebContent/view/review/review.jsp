@@ -193,20 +193,21 @@ margin: 5px;
 				<!-- 여기에 내용 -->
 <%-- 				<a id="returnuser" href="${pageContext.request.contextPath}/writeform?mid=${ movie.movieId }">리뷰쓰기</a> --%>
 				
+					<hr>
 				<button type="button" id="buttonn">리뷰쓰기</button><br><br>
 				
 					<div id="reviewlist">
-					
 					<c:forEach var="review" items="${list }">
 							
-							<div>
+							<div >
 							
 								<span id="retitle"><a href="${pageContext.request.contextPath}/review/Detail?reviewNo=${review.reviewNo}&mmid=${review.memberId }"> <c:out value="${review.title }"/></a></span>
-								<span><c:out value="${review.memberId }"></c:out></span>
+								<span>:<c:out value="${review.memberId }"></c:out></span>
 								<span><fmt:formatDate value="${review.regDate }" pattern="yyyy-MM-dd" /></span>
-								추천<span><c:out value="${review.recomCount }"></c:out></span>
-								<div id="recontent"><a href="${pageContext.request.contextPath}/review/Detail?reviewNo=${review.reviewNo}&mmid=${review.memberId }"><c:out value="${review.content }"></c:out></a></div>
-							</div>	
+								조회수<span><c:out value="${review.recomCount }"></c:out></span>
+								<div id="recontent"><a  href="${pageContext.request.contextPath}/review/Detail?reviewNo=${review.reviewNo}&mmid=${review.memberId }"><c:out  value="${review.content }"></c:out></a></div>
+								<hr>
+							</div>
 					</c:forEach>
 					</div>
 				

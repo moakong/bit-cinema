@@ -26,10 +26,10 @@
 		
 		<div>
 		
-		<span>글번호<c:out value="${review.reviewNo } "></c:out></span>
-		<span>별명<c:out value="${review.nickname } "></c:out></span>
-		<span>조회수<c:out value="${review.recomCount } "></c:out></span>
-		<span>등록일<fmt:formatDate value="${review.regDate }" pattern="yyyy-MM-dd"/></span>
+		<span>글번호:<c:out value="${review.reviewNo } "></c:out></span>
+		<span>별명:<c:out value="${review.nickname } "></c:out></span>
+		<span>조회수:<c:out value="${review.recomCount } "></c:out></span>
+		<span>등록일:<fmt:formatDate value="${review.regDate }" pattern="yyyy-MM-dd"/></span>
 		<div readonly class="form-control" id="title"><c:out value="${review.title } "></c:out></div>
 <%-- 		<div class="form-control id="content"><c:out value="${review.content } "></c:out></div> --%>
 		<textarea readonly class="form-control" rows="20" id="comment" >${review.content }</textarea>
