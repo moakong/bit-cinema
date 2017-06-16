@@ -310,3 +310,39 @@ ul, menu, dir {
 #wBtn:hover {
   background: #3071A9
 }
+
+
+button[name=dBtn], button[name=uBtn], button[name=updateBtn] {
+    background: #428BCA;
+    color: #fff;
+    font-family: Sans-serif;
+    font-size: 12px;
+    height: 30px;
+    width: 50px;
+    line-height: 30px;
+    margin: 15px 15px;
+    text-align: center;
+    border: 0;
+    transition: all 0.3s ease 0s;
+}
+
+button[name=dBtn]:HOVER, button[name=uBtn]:HOVER, button[name=updateBtn]:HOVER {
+  background: #3071A9
+}
+
+#resultRatingList li {
+    position: relative;
+    float: none;
+    background: url(http://static.naver.net/movie/2012/06/dot_line.gif) repeat-x 0 100%;
+    background-image: url(http://static.naver.net/movie/2012/06/dot_line.gif);
+    background-position-x: 0px;
+    background-position-y: 100%;
+    background-size: initial;
+    background-repeat-x: repeat;
+    background-repeat-y: no-repeat;
+    background-attachment: initial;
+    background-origin: initial;
+    background-clip: initial;
+    background-color: initial;
+    padding: 14px 0 13px 0;
+}

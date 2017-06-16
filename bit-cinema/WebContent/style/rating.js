@@ -97,5 +97,32 @@ window.onload = function() {
 	   
 	});
 
+	
+	
+	/* 수정 & 삭제 */
+	
+	
+	$('button[name=dBtn]').on('click', function() {
+		var param = $(this).data("param");
+		console.log("$(this).data('param') = " + $(this).data("param"))
+		location.href	=	"deleteRating?"+ param;
+//		f.submit();
+		
+	});
 
-};
+
+	
+	$('button[name=uBtn]').on('click', function() {
+		
+		var param = $(this).data("param");
+		console.log("$(this).data('param') = " + $(this).data("param"))
+		location.href	=	"Rating?"+ param;
+		
+	});
+	
+	$('button[name=updateBtn]').on('click', function() {
+		var f = document.updateForm;
+		f.submit();
+			
+		});
+	};

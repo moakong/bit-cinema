@@ -193,7 +193,7 @@
 <!-- 
 		<!-- form  update-->
 <div>
-	<form action="updateRating" method="post">
+	<form action="updateRating" method="post" name="updateForm">
 			<input type="hidden" name="id" value="${movie.movieId}" />
 			<input type="hidden" name="ratingNo" value="${ratingNo}" />
 		
@@ -225,7 +225,8 @@
 					</div>
 					<div>
 					  <span>
-					  	  <input type="submit" value="수정" />	
+					   <button name="updateBtn" type="button">수정</button>
+					  	  <!-- <input type="submit" value="수정" />	 -->
 					 </span>
 					</div>
 		</c:when>
@@ -236,12 +237,12 @@
         
 		<c:otherwise>
 			
-			
-		<div>
+			<div class="row">
+					<div class="col-sm-3">
+		<div id= "resultRatingList">
 		<ul>
 		<li>
 		
-		M : <c:out value="${rating.memberId}"/>
 		 <div class='starability-result' data-rating='<c:out value="${rating.rating}"/>' aria-describedby='rated-element'></div>
 				
 			<div> <c:if test="${rating.spoiler == 1}" >스포 있음</c:if>
@@ -260,14 +261,20 @@
 					  
 					  <c:if test="${user.memberId == rating.memberId}">
 				  <div id="edit">
+				  <button name="dBtn" type="button" data-param="id=${rating.movieId}&ratingNo=${rating.ratingNo}">삭제</button>
+				  <button name="uBtn" type="button" data-param="id=${rating.movieId}&ratingNo=${rating.ratingNo}">수정</button>
+					  	<!-- 
 					  	 <a href="deleteRating?id=${rating.movieId}&ratingNo=${rating.ratingNo}">삭제</a>
 					  	  /	
 					  	  <a href="Rating?id=${rating.movieId}&ratingNo=${rating.ratingNo}">수정</a>	
-				</div>
+				-->
+				</div> 
 				</c:if>
 					 </li>
 					 </ul>
 					 </div>		
+					 </div>
+					 </div>
 			 	</c:otherwise>
 			 </c:choose>	
 			 </c:forEach>
