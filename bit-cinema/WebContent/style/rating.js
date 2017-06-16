@@ -37,7 +37,7 @@ window.onload = function() {
 		
 			if(chkUser == "") {
 				
-				alert("로그인이 필요합니다");
+				swal("로그인이 필요합니다");
 				//f.action='writeForm'
 				return false;
 				
@@ -46,7 +46,7 @@ window.onload = function() {
 			
 		if((chkUser != null) && (content.val() == "")) {
 			//if(pass2.value == "") {
-				alert("내용을 입력하세요");
+			swal("내용을 입력하세요");
 				//pass2[0].focus();
 				content.focus();
 				
@@ -120,7 +120,7 @@ window.onload = function() {
 		
 		
 		var param = $(this).data("param");
-		console.log("$(this).data('param') = " + $(this).data("param"))
+		console.log("$(this).data('param') = " + $(this).data("param"));
 		location.href	=	"Rating?"+ param;
 		
 	});

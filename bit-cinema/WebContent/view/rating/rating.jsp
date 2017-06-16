@@ -5,9 +5,12 @@
 <!DOCTYPE html>
 <html>
 <head>
+
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/lib/sweetalert.css">
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/style/starability-all.min.css">
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/style/rating.css">
 
+<script src="${pageContext.request.contextPath}/lib/sweetalert.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/style/rating.js"></script>
 <meta charset="UTF-8">
