@@ -47,6 +47,8 @@ public class RatingServlet extends HttpServlet {
 		int mId = Integer.parseInt(request.getParameter("id"));
 		// String ratingNo = request.getParameter("ratingNo");
 		String ratingNo = request.getParameter("ratingNo");
+		
+		String type = request.getParameter("type");
 
 		List<RatingVO> listRating = null;
 		MovieVO movie = null;
@@ -60,12 +62,34 @@ public class RatingServlet extends HttpServlet {
 			photo = movieMapper.selectThumbnail(mId);
 			photos = movieMapper.selectPhoto(mId);
 
-			
+		
 			if (ratingNo != null) {
-				request.setAttribute("ratingNo", ratingNo);			
+				request.setAttribute("ratingNo", ratingNo);		
+				
+				
 			}
 			
-			listRating = ratingMapper.selectNewRating(mId);
+			RatingVO param = new RatingVO();
+			param.setType(type);
+			param.setMovieId(mId);
+			
+			listRating = ratingMapper.selectRatingList(param);
+			
+	
+			
+			
+			
+			/*
+			if(type.equals("new"))
+				listRating = ratingMapper.selectNewRating(mId);
+			else if ()
+			*/
+			
+			
+			
+			
+			
+			//listRating = ratingMapper.selectNewRating(mId);
 
 			// System.out.println("ratingNo = " + ratingNo);
 			// request.setAttribute("ratingNo", ratingNo);

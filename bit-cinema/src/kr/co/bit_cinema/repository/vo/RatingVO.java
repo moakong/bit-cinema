@@ -4,9 +4,11 @@ import java.util.Date;
 
 public class RatingVO {
 	
+	private String type;
 	
 	
 	
+
 	private int ratingNo;
 	
 	private String memberId;
@@ -84,7 +86,15 @@ public class RatingVO {
 	public void setRegDate(Date regDate) {
 		this.regDate = regDate;
 	}
+
 	
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
 	
 	
 }

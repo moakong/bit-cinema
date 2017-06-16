@@ -17,6 +17,7 @@ import kr.co.bit_cinema.repository.mapper.MovieMapper;
 import kr.co.bit_cinema.repository.mapper.RatingMapper;
 import kr.co.bit_cinema.repository.vo.MemberVO;
 import kr.co.bit_cinema.repository.vo.RatingVO;
+import kr.co.bit_cinema.repository.vo.RatingVO;;
 
 @WebServlet("/rating/updateRating")
 public class UpdateRatingServlet extends HttpServlet {
@@ -38,7 +39,19 @@ public class UpdateRatingServlet extends HttpServlet {
 		
 		int mId = Integer.parseInt(request.getParameter("id"));
 		int ratingNo = Integer.parseInt(request.getParameter("ratingNo"));
-		System.out.println("ratingNo = " + ratingNo);
+		
+		
+		
+		String noRating = request.getParameter("updateRating");
+		
+		if (noRating == null) {
+			
+			noRating = "0";
+			System.out.println("noRating = " + noRating);
+		}
+		
+
+		
 		String updateSpoiler = request.getParameter("updateSpoiler");
 		
 		int chkSpo = 0;
@@ -49,10 +62,9 @@ public class UpdateRatingServlet extends HttpServlet {
 		int updateRating = Integer.parseInt(request.getParameter("updateRating"));
 		
 		System.out.println("updateRating" + updateRating);
-		//int updateSpoiler = Integer.parseInt(request.getParameter("updateSpoiler"));
 		String updateContent = request.getParameter("updateContent");
 		
-		RatingVO ratingVO = new RatingVO();
+		RatingVO rating = new RatingVO();
 		
 		try {
 			//mId = movie id
@@ -65,28 +77,19 @@ public class UpdateRatingServlet extends HttpServlet {
 			MemberVO member = (MemberVO) hSession.getAttribute("user");
 			
 			
-			ratingVO.setRatingNo(ratingNo);
-				ratingVO.setRating(updateRating);
-				ratingVO.setContent(updateContent);
-				ratingVO.setSpoiler(chkSpo);
+			rating.setRatingNo(ratingNo);
+			rating.setRating(Integer.parseInt(noRating));
+			
+			rating.setContent(updateContent);
+			rating.setSpoiler(chkSpo);
 			
 				
-				ratingMapper.updateRating(ratingVO);
-				session.commit();
+			ratingMapper.updateRating(rating);
+			session.commit();
 				
-				request.setAttribute("rating", ratingVO);
+			request.setAttribute("rating", rating);
 				
-				//RequestDispatcher rd = request.getRequestDispatcher("/view/rating/rating2.jsp");
-				//rd.forward(request, response);
-				
-				//RequestDispatcher rd = request.getRequestDispatcher(request.getContextPath() + "/rating/Rating?id=" + mId);
-				//rd.forward(request, response);
-				
-				
-				
-				
-			//}
-			
+		
 			
 		} catch (Exception e) {
 			throw new ServletException(e);

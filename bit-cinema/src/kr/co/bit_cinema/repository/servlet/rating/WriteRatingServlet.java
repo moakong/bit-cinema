@@ -49,41 +49,47 @@ public class WriteRatingServlet extends HttpServlet {
 	
 		//id, mid: movie id
 		int mId = Integer.parseInt(request.getParameter("id"));
-		int rating = Integer.parseInt(request.getParameter("rating"));
+		String noRating = request.getParameter("rating");
 		String spoiler = request.getParameter("spoiler");
 
 		//MovieVO movie = new MovieVO();
 		
 		
 		
-		
-		if(spoiler == null) {
+		if (spoiler == null) {
 			//System.out.println("spoiler = " + spoiler);
 			spoiler = "0";
 			System.out.println("spoiler = " + spoiler);
 			
 		}
 		
+		if (noRating == null) {
+			
+			noRating = "0";
+			System.out.println("noRating = " + noRating);
+		}
 		
 	
-		RatingVO ratingVO = new RatingVO();
+		RatingVO rating = new RatingVO();
 		
 		
-		ratingVO.setMemberId(member.getMemberId());
-		ratingVO.setNickname(member.getNickname());
+		rating.setMemberId(member.getMemberId());
+		rating.setNickname(member.getNickname());
 		
-		ratingVO.setMovieId(mId);
+		rating.setMovieId(mId);
 		
-		ratingVO.setRating(rating);
-		ratingVO.setContent(request.getParameter("content"));
-		ratingVO.setSpoiler(Integer.parseInt(spoiler));
+		rating.setRating(Integer.parseInt(noRating));
+		rating.setContent(request.getParameter("content"));
+		rating.setSpoiler(Integer.parseInt(spoiler));
 	
+		System.out.println(rating);
+		
 		
 		try {
 			
-			System.out.println(ratingVO);
+			System.out.println(rating);
 			
-			ratingMapper.insertRating(ratingVO);
+			ratingMapper.insertRating(rating);
 			session.commit();
 			
 			

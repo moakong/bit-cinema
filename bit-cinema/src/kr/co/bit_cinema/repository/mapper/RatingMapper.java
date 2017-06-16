@@ -20,4 +20,6 @@ public interface RatingMapper {
 	
 	public String selectNickname(String memberId) throws Exception;
 
+	
+	public List<RatingVO> selectRatingList(RatingVO ratingVO) throws Exception;
 }

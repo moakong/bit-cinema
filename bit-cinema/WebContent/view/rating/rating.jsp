@@ -7,7 +7,9 @@
 <head>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/style/starability-all.min.css">
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/style/rating.css">
-<!--  <script type="text/javascript" src="${pageContext.request.contextPath}/style/rating.js"></script>-->
+
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/style/rating.js"></script>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
@@ -17,6 +19,11 @@
 		left: 50px;
 	}
 </style>
+<script type="text/javascript">
+
+</script>
+
+
 </head>
 <body>
 
@@ -106,16 +113,14 @@
 		<!-- <input type="hidden" name="ratingNo" value="${rating.ratingNo}" />
 		rating.ratingNo: <c:out value="${rating.ratingNo}" /> -->
 		<div>
-		<form method="post" action="writeRating">
+		<form method="post" action="writeRating" name="writeForm">
 			<input type="hidden" name="id" value="${movie.movieId}" />
-		 <!-- <input type="hidden" name="memberId" value="${user.memberId}" /> -->
+		 <input type="hidden" name="memberId" value="${user.memberId}" />
 		
 	
 	<!-- 별점 -->
 	
 		
-		<div>
-	
 		<div>
 			<fieldset class="starability-basic">
 			 <!-- <legend>Second rating:</legend> -->
@@ -141,21 +146,50 @@
 		  <input type="checkbox" name="spoiler" value="1"/>
 		  <label for="spoiler">스포일러</label>
 		</div>
-		<div>
+		
+		
+		
+		
+		<div id="result">
+		  글자수 : <span id="totalChars">0</span>/140<br/>
 			 <textarea name="content" autofocus rows="4" cols="70" 
 			 placeholder="140자 이내에서 입력해 주세요" maxlength="140"></textarea>
 		</div>
 		
 		<div>
-			<button>등록</button>
+			<button id="wBtn" type="button">등록</button>
 		
 		</div>
 		
-		</div>
+		
 				
 		</form>
 	</div>
 	
+	<!--  정렬 -->
+	
+
+<div>
+
+	<nav id="primary_nav_wrap">
+	<ul>
+	  <!-- 
+	 
+	  <li><a href="Rating?id=${movie.movieId}&ratingNo=${rating.ratingNo}&type=new">최신순</a></li>
+	  <li><a href="Rating?id=${movie.movieId}&ratingNo=${rating.ratingNo}&type=highRating">평점 높은 순</a></li>
+	  <li><a href="Rating?id=${movie.movieId}&ratingNo=${rating.ratingNo}&type=lowRating">평점 낮은 순</a></li>
+	 -->
+	 
+	  <li><a href="Rating?id=${movie.movieId}&type=new">최신순</a></li>
+	  <li><a href="Rating?id=${movie.movieId}&type=highRating">평점 높은 순</a></li>
+	  <li><a href="Rating?id=${movie.movieId}&type=lowRating">평점 낮은 순</a></li>
+	 
+	 
+	</ul>
+	</nav>
+</div>
+
+
 <!-- 
 		<!-- form  update-->
 <div>
@@ -198,15 +232,21 @@
 			 	
 			 
 			
+	
+        
 		<c:otherwise>
+			
 			
 		<div>
 		<ul>
 		<li>
 		
-		  <div class='starability-result' data-rating='<c:out value="${rating.rating}"/>' aria-describedby='rated-element'></div>
+		M : <c:out value="${rating.memberId}"/>
+		 <div class='starability-result' data-rating='<c:out value="${rating.rating}"/>' aria-describedby='rated-element'></div>
 				
-			<div> <c:out value="${rating.spoiler}" /></div>
+			<div> <c:if test="${rating.spoiler == 1}" >스포 있음</c:if>
+			<c:if test="${rating.spoiler == 0}" >스포 없음</c:if>
+			 </div>
 				 	
 			<p><c:out value="${rating.content}" /></p>
 			
@@ -218,11 +258,13 @@
 					      
 			 </div>
 					  
-				  
+					  <c:if test="${user.memberId == rating.memberId}">
+				  <div id="edit">
 					  	 <a href="deleteRating?id=${rating.movieId}&ratingNo=${rating.ratingNo}">삭제</a>
 					  	  /	
 					  	  <a href="Rating?id=${rating.movieId}&ratingNo=${rating.ratingNo}">수정</a>	
-				
+				</div>
+				</c:if>
 					 </li>
 					 </ul>
 					 </div>		
@@ -240,8 +282,7 @@
 </form> 
 	</div>	 
 	</div>		
-		</div>
-		 	
+	
 
 	<div>
 		<c:import url="/view/include/footer.jsp" />
