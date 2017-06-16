@@ -19,6 +19,19 @@ height: 20px;
 margin: 10px;
 padding: 20px;
 }
+
+
+.well {
+    	border: 1px solid gray !important;
+        background-color: white !important;
+        box-shadow: 3px 3px 5px 1px #9b9ea0 !important;
+       
+        width: 100%;
+        height: 120px;
+        margin: auto;
+    }
+
+
 </style>
 </head>
 <body>
@@ -33,55 +46,56 @@ padding: 20px;
 <!-- 		<div> -->
 <!-- 			<p>마이페이지 메인화면입니다</p> -->
 <!-- 		</div> -->
-			<h3>내가 예매한 영화</h3>
-		<div>
-			<div class="well" style="height:150px;">
-			<c:forEach var="rInfo" items="${reservations}">
-			<div class="col-sm-4">
-					<strong>${rInfo.movieName}</strong><br>
-					비트시네마 ${rInfo.screenName}<br>
-					<fmt:formatDate value="${rInfo.startDate}" pattern="yyyy-MM-dd" /><br>
-					${rInfo.startTime} ~ ${rInfo.endTime}<br>
-					</div>
-					</c:forEach>
-			</div>		
+<!-- 			<h3>내가 예매한 영화</h3> -->
+<!-- 		<div> -->
+<!-- 			<div class="well" style="height:150px;"> -->
+<%-- 			<c:forEach var="rInfo" items="${reservations}"> --%>
+<!-- 			<div class="col-sm-4"> -->
+<%-- 					<strong>${rInfo.movieName}</strong><br> --%>
+<%-- 					비트시네마 ${rInfo.screenName}<br> --%>
+<%-- 					<fmt:formatDate value="${rInfo.startDate}" pattern="yyyy-MM-dd" /><br> --%>
+<%-- 					${rInfo.startTime} ~ ${rInfo.endTime}<br> --%>
+<!-- 					</div> -->
+<%-- 					</c:forEach> --%>
+<!-- 			</div>		 -->
 					
 			<br>
-		</div>
 			<h3>내가 쓴 평점</h3>
 		<div>
 			<div class="well" style="min-height:150px;">
-			<table>
+<!-- 			style="margin-top:-5px;" -->
+			<ul>
 			<c:forEach var="r" items="${ratings}" varStatus="v">
-			<div class="row" style="width:100%; height:50px;">
+			<div class="row" style=" width:100%; height:25px;">
 			
-			<tr>
 <!--  			<div class="col-sm-10"> -->
-				<td><c:out value="${ratingMovie[v.index].movieName}"/></td>
-				<td style="width:200px;"><div class='star starability-result' data-rating='${r.rating}' aria-describedby='rated-element'></div></td>
-				<td><c:out value="${r.content}"/></td>
-				<td><fmt:formatDate value="${r.regDate}" pattern="yyyy-MM-dd" /></td>
+			<li >	<c:out value="${ratingMovie[v.index].movieName}"/>
+<%-- 				<td style="width:200px;"><div class='star starability-result' data-rating='${r.rating}' aria-describedby='rated-element'></div></td> --%>
+				<c:out value="${r.content}"/>
+				<fmt:formatDate value="${r.regDate}" pattern="yyyy-MM-dd" />
 <!-- 				</div> -->
-			</tr>
+</li>			
  			</div>
 			</c:forEach>
-			</table>
+		</ul>
 			</div>
 			<br>
 		</div>
 			<h3>내가 쓴 리뷰</h3>
 		<div>
 			<div class="well" style="min-height:150px;">
+<ul>
 			<c:forEach var="r" items="${reviews}" varStatus="v">
-			<div class="row" style="width:100%; height:50px;">
+			<div class="row" style="width:100%; height:25px;">
 			<div class="col-sm-10">
-				<c:out value="${rivewMovie[v.index].movieName}"/>
+			<li>	<c:out value="${rivewMovie[v.index].movieName}"/>
 				<c:out value="${r.title}"/>
 				<fmt:formatDate value="${r.regDate}" pattern="yyyy-MM-dd" />
+			</li>
 			</div>
 			</div>
 			</c:forEach>
-			
+</ul>			
 			</div>
 		</div>
 	</div>	
