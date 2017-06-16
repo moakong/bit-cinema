@@ -25,10 +25,10 @@ margin-top: 5px;
 	<div>
 		<c:import url="/view/include/topMenu.jsp" />
 	</div>	
-	<div class="container">
 		<div>
 			<c:import url="/view/include/mypageMenu.jsp" />
 		</div>
+	<div class="container">
 		<br><br>
 		<div class="col-md-9" > 
 		<h3 style="padding-bottom: 10px;">비밀번호 확인</h3>

@@ -67,11 +67,11 @@ table {
 	<div>
 		<c:import url="/view/include/topMenu.jsp" />
 	</div>
-	<div class="container">
-		<div class="row">
 		<div>
 			<c:import url="/view/include/mypageMenu.jsp" />
 		</div>
+	<div class="container">
+		<div class="row">
 		<div class="row">
 		
 			<div  class="center-block" style="width: 800px; height: 500px; margin-right: 300px;">

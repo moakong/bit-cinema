@@ -18,10 +18,10 @@
 		</div>
 		
 		
-<div class="container">
 <div>
 			<c:import url="/view/include/mypageMenu.jsp" />
 		</div>
+<div class="container">
 
 		
 		<br><br>
