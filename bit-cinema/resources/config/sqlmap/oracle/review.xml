@@ -17,6 +17,13 @@
 		<result column="movie_id"  property="movieId"/>
 	</resultMap>
 	
+	<select id="myReview" parameterType="String" resultMap="reviewMap">
+		select *
+		  from reviews
+		 where member_id = #{memberId}
+		 order by reg_date desc
+	</select>
+	
 	<select id="listReview" resultMap="reviewMap" parameterType="int">
 	select * 
 	from REVIEWS

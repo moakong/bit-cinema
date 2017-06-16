@@ -160,6 +160,8 @@
 			
 			<div>
 				<h2>감독</h2>
+				
+				
 				<c:forEach var="director" items="${ directors }">
 					<img width="180" height="240" src="${ director.profile }"/><br>
 					감독 <br>

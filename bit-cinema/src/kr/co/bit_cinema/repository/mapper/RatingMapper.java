@@ -10,6 +10,7 @@ public interface RatingMapper {
 	public List<RatingVO> selectNewRating(int id) throws Exception;
 	public List<RatingVO> selectLowRating(int id) throws Exception;
 	public List<RatingVO> selectHighRating(int id) throws Exception;
+	public List<RatingVO> myRating(String memberId) throws Exception;
 	
 	public List<RatingVO> selectRatingByNo(int no) throws Exception;
 	

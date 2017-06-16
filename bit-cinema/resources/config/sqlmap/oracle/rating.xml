@@ -38,6 +38,13 @@
 		<result column="nickname" property="nickname"/>
 	</resultMap>
 
+
+	<select id="myRating" parameterType="String" resultMap="ratingMap">
+		select *
+		  from ratings
+		 where member_id = #{memberId}
+		 order by reg_date desc
+	</select>
 	<!-- 상세 보기 -->
 	<!--  
 	<select id="selectOneRating" parameterType="int" resultType="Rating">

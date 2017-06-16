@@ -72,8 +72,9 @@ ul.nav > span {
 <%--       	<li class="side-cbar tmargin"><img src="<c:out value="${user.profile}"/>" id="mp" class="img-circle" width="150px" height="150px"/></li> --%>
         <ul class="nav navbar-nav side-bar"><span>나의 예매내역</span>
         <li class="side-bar tmargin"><a href="${pageContext.request.contextPath}/reservation/check" ><span class="glyphicon glyphicon-list">&nbsp;</span>예매내역</a></li>
+        <li class="side-bar tmargin"><a href="${pageContext.request.contextPath}/reservation/checkCancelledR" ><span class="glyphicon glyphicon-remove">&nbsp;</span>예매취소내역</a></li>
         </ul>
-        
+
         <ul class="nav navbar-nav side-bar"><span>팝콘 스토어</span>
         <li class="side-bar"><a href="${pageContext.request.contextPath}/cart/ListCart" ><span class="glyphicon glyphicon-shopping-cart">&nbsp;</span>장바구니</a></li>
         <li class="side-bar"><a href="${pageContext.request.contextPath}/order/ListOrder" ><span class="	glyphicon glyphicon-barcode">&nbsp;</span>구매내역</a></li>
