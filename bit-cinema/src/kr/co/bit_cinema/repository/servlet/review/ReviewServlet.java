@@ -16,6 +16,7 @@ import common.db.MyAppSqlConfig;
 import kr.co.bit_cinema.repository.mapper.MovieMapper;
 import kr.co.bit_cinema.repository.mapper.ReviewMapper;
 import kr.co.bit_cinema.repository.vo.ReviewVO;
+import kr.co.bit_cinema.repository.vo.movie.BoxVO;
 import kr.co.bit_cinema.repository.vo.movie.MovieVO;
 @WebServlet("/review/Review")
 public class ReviewServlet extends HttpServlet{
@@ -36,12 +37,14 @@ public class ReviewServlet extends HttpServlet{
 		List<String> genre = null;
 		String photo = null;
 		List<String> photos = null;
+		BoxVO box = null;
 		try {
 			movie = mapperMovie.infoMovie(id);
 			genre = mapperMovie.infoGenre(id);
 			photo = mapperMovie.selectThumbnail(id);
 			list = mapper.listReview(id);
 			photos = mapperMovie.selectPhoto(id);
+			box = mapperMovie.selectBox(id);
 		} catch (Exception e) {
 			new ServletException(e);
 		}
@@ -50,6 +53,7 @@ public class ReviewServlet extends HttpServlet{
 		request.setAttribute("photo", photo);
 		request.setAttribute("photos", photos);
 		request.setAttribute("list", list);
+		request.setAttribute("box", box);
 		
 		RequestDispatcher rd = request.getRequestDispatcher("/view/review/review.jsp");
 		

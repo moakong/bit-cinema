@@ -48,6 +48,49 @@ margin: 5px;
 	color: lime;
 }
 
+	.m-content {
+		
+		position: relative;
+		top: -390px;
+		left: 400px;
+		/* border: 1px solid black; */
+		/* display: inline;
+		width: 500px; */
+	}
+	.m-content2 {
+		position: relative;
+		top: -300px;
+		left: 0px;
+	}
+	/* .carousel-inner {
+		width: 100%;
+		height: 500px;
+	} */
+ 	.item-img{
+ 		width: 100%; 
+ 		height: 500px !important; 
+ 		
+ 	} 
+	.m-title{}
+	.m-engTitle{font-family: "Times New Roman", Times, serif;}
+
+
+	.container {
+		width: 500px;
+	}
+	
+	.well {
+    	border: 1px solid lightgray !important;
+        background-color: white !important;
+        box-shadow: 3px 3px 5px 1px #9b9ea0 !important;
+       
+        width: 700px;
+        margin-left: 100px;
+        margin-top: 20px;
+    }
+
+
+
 
 </style>
 </head>
@@ -57,7 +100,7 @@ margin: 5px;
 			<c:import url="/view/include/topMenu.jsp" />
 		</div>
 		
-<div class="container">	
+<div class="well container">
 <div id="myCarousel" class="carousel slide" data-ride="carousel">
 	<!-- Indicators -->
 	<ol class="carousel-indicators">
@@ -100,32 +143,49 @@ margin: 5px;
     </a>
 </div>	
 		
-		<div>
-			<div>
-				<a href="<c:out value="${ photo }"/>" onclick="window.open(this.href, '_blank'); return false;">
-					<img class="img-thumbnail" src="<c:out value="${ photo }"/>" width="300px" height="400px"/>
-				</a><br>
-				<c:out value="${ movie.movieName }" /><br>
-				<c:out value="${ movie.engTitle }" /><br>
-				<fmt:formatDate value="${ movie.releaseDate }" pattern="yyyy-MM-dd"/><br>
-				<c:forEach var="g" items="${ genre }">
-					<c:out value="${ g }" /><br>
-				</c:forEach>
-				<c:out value="${ movie.runtime }" /><br>
-				<c:out value="${ movie.certificate }" /><br>
-				<c:out value="${ movie.story }" /><br><br>
-				<button type="button" onclick="location.href='../reservation/selectArea?movieId=${movie.movieId}'" class="btn btn-primary">예매하기</button>
+		<div class="img-thumbnail">
+			<a href="<c:out value="${ photo }"/>" onclick="window.open(this.href, '_blank'); return false;">
+				<img src="<c:out value="${ photo }"/>" width="300px" height="400px"/></a>
 			</div>
-				<br><br>
+		<div class="m-content">
+			<h1 class="m-title"><strong><c:out value="${ movie.movieName }" /></strong></h1>
+			<p class="m-engTitle" style="color: gray;"><c:out value="${ movie.engTitle }" /></p>
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-4">
+						<strong>개봉일: </strong><fmt:formatDate value="${ movie.releaseDate }" pattern="yyyy-MM-dd"/><br>
+						<strong>장르: </strong>
+						<c:forEach var="g" items="${ genre }" varStatus="s">
+							<c:out value="${ g }" />
+							<c:if test="${!s.last}">
+							<c:out value=" / "/>
+							</c:if>
+						</c:forEach><br>
+						<strong>상영시간: </strong><c:out value="${ movie.runtime }" /><br>
+						<c:out value="${ movie.certificate }" /><br><br>
+					 	<strong>누적관객: </strong> <fmt:formatNumber value="${box.audience}" pattern="#,###"/>명
+					 	(<fmt:formatDate value="${box.audienceDate}" pattern="yy.MM.dd"/> 기준) <br>
+					</div>
+					<div class="col-sm-4">					 	
+					 	<div class='starability-result' data-rating='4.5' aria-describedby='rated-element'></div>
+					 	<h3 style="margin-left:33px; margin-top:10px;">8.5 / 10<h3>
+					 	<button style="margin-left:33px; " type="button" onclick="location.href='${pageContext.request.contextPath}/reservation/selectMovie" class="btn btn-info">예매하기</button>
+<%-- 					 	<button style="margin-left:33px; margin-top:-20px;" type="button" onclick="location.href='../reservation/selectArea?movieId=${movie.movieId}'" class="btn btn-default">예매하기</button> --%>
+					</div>
+				</div>
+			</div>
+		 	
+		 	<br>
+		</div>
 				
-			<div class="btn-group btn-group-justified" >
-		  <a href="${pageContext.request.contextPath}/movie/DetailMovie?id=<c:out value="${ movie.movieId }" />" class="btn btn-primary">주요정보</a>
-		  <a href="${pageContext.request.contextPath}/movie/DetailCast?id=<c:out value="${ movie.movieId }" />" class="btn btn-primary">감독  / 배우</a>
-		  <a href="${pageContext.request.contextPath}/movie/DetailMedia?id=<c:out value="${ movie.movieId }" />" class="btn btn-primary">동영상 / 포토</a>
-		  <a href="${pageContext.request.contextPath}/rating/Rating?id=<c:out value="${ movie.movieId }" />" class="btn btn-primary">평점</a>
-		  <a href="${pageContext.request.contextPath}/review/Review?id=<c:out value="${ movie.movieId }"/>" class="btn btn-primary">리뷰</a>
-		</div>	
-		<br><br>
+		<div class="m-content2" style="width:900px; margin: -50px auto;">
+		<div class="btn-group btn-group-justified" >
+		  <a href="${pageContext.request.contextPath}/movie/DetailMovie?id=<c:out value="${ movie.movieId }" />" class="btn btn-default">주요정보</a>
+		  <a href="${pageContext.request.contextPath}/movie/DetailCast?id=<c:out value="${ movie.movieId }" />" class="btn btn-default">감독  / 배우</a>
+		  <a href="${pageContext.request.contextPath}/movie/DetailMedia?id=<c:out value="${ movie.movieId }" />" class="btn btn-default">동영상 / 포토</a>
+		  <a href="${pageContext.request.contextPath}/rating/Rating?id=<c:out value="${ movie.movieId }" />" class="btn btn-default">평점</a>
+		  <a href="${pageContext.request.contextPath}/review/Review?id=<c:out value="${ movie.movieId }"/>" class="btn btn-default">리뷰</a>
+		</div><br><br>
 
 			<div id="revieww">
 				<!-- 여기에 내용 -->

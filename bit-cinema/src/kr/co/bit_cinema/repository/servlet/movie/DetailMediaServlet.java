@@ -14,6 +14,7 @@ import org.apache.ibatis.session.SqlSession;
 
 import common.db.MyAppSqlConfig;
 import kr.co.bit_cinema.repository.mapper.MovieMapper;
+import kr.co.bit_cinema.repository.vo.movie.BoxVO;
 import kr.co.bit_cinema.repository.vo.movie.MovieVO;
 import kr.co.bit_cinema.repository.vo.movie.PhotoVO;
 import kr.co.bit_cinema.repository.vo.movie.VideoVO;
@@ -36,12 +37,14 @@ public class DetailMediaServlet extends HttpServlet {
 		String photo = null;
 		List<VideoVO> videos = null;
 		List<String> photos = null;
+		BoxVO box = null;
 		try {
 			movie = mapper.infoMovie(id);
 			genre = mapper.infoGenre(id);
 			photo = mapper.selectThumbnail(id);
 			videos = mapper.selectVideo(id);
 			photos = mapper.selectPhoto(id);
+			box = mapper.selectBox(id);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -50,6 +53,8 @@ public class DetailMediaServlet extends HttpServlet {
 		request.setAttribute("photo", photo);
 		request.setAttribute("videos", videos);
 		request.setAttribute("photos", photos);
+		request.setAttribute("box", box);
+
 		
 		RequestDispatcher rd = request.getRequestDispatcher("/view/movie/detailMedia.jsp");
 		rd.forward(request, response);
